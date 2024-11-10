@@ -1,0 +1,892 @@
+fileFormatVersion: 2
+guid: f581f3541a5533d46aa78e7b0f259590
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 8
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Border_0
+      rect:
+        serializedVersion: 2
+        x: 95
+        y: 371
+        width: 50
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 81c32e9c94c7ad94dba59d2ed11b4c1a
+      internalID: -1883532899
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Border_10
+      rect:
+        serializedVersion: 2
+        x: 95
+        y: 355
+        width: 50
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ade8f559b14977248925fcb35bf559de
+      internalID: -752023620
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Border_20
+      rect:
+        serializedVersion: 2
+        x: 95
+        y: 339
+        width: 52
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 08d8a7a920256444e8e8a61317929803
+      internalID: 384512629
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Border_31
+      rect:
+        serializedVersion: 2
+        x: 95
+        y: 323
+        width: 51
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b65b4703dc1031642bfff17655c6ae4f
+      internalID: -1843462083
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Border_42
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 304
+        width: 48
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4dc28cbc51ec3304fa61cca86ad5dd91
+      internalID: 1531623852
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Border_52
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 288
+        width: 53
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d99e120d6208542429c149039d636ede
+      internalID: 1695420564
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Border_64
+      rect:
+        serializedVersion: 2
+        x: 94
+        y: 271
+        width: 53
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f2e7bbf94c3c14f4792db80e13d467be
+      internalID: -327363123
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Border_75
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 255
+        width: 59
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 059c7f5c848b7104d93df220b939eac0
+      internalID: 1933388474
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Border_87
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 240
+        width: 58
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 57dcb370b873cf942a26be8c58df04ea
+      internalID: -1535756459
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Border_130
+      rect:
+        serializedVersion: 2
+        x: 95
+        y: 176
+        width: 15
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8808c3ef25f9e694baba13a15c4c1013
+      internalID: -1664070080
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Border_134
+      rect:
+        serializedVersion: 2
+        x: 113
+        y: 176
+        width: 15
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0878eda1076b24942860467bda29cf92
+      internalID: -1924150361
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Border_137
+      rect:
+        serializedVersion: 2
+        x: 129
+        y: 176
+        width: 15
+        height: 61
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0eb954026c5cd054eb83cd8f67ea6db4
+      internalID: -553176858
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Border_138
+      rect:
+        serializedVersion: 2
+        x: 95
+        y: 159
+        width: 50
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 80970373e305f5248b0dda8cc3411678
+      internalID: 1822001810
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Border_148
+      rect:
+        serializedVersion: 2
+        x: 95
+        y: 143
+        width: 50
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5e69ce0156e8a03429a50e801b0231c8
+      internalID: 1371095583
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Border_158
+      rect:
+        serializedVersion: 2
+        x: 94
+        y: 131
+        width: 53
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2e5d005d551c2e7478a9c8b2b82eed7d
+      internalID: 207613343
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Border_170
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 112
+        width: 45
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 52ac1418d724c10408e908214102e0bf
+      internalID: -248052760
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Border_180
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 96
+        width: 45
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 43d6df7bb326cef44bfa9901fb6a24e0
+      internalID: -1551636284
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Border_190
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 80
+        width: 45
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 44b93ca8a42774d41b33734d4872f66a
+      internalID: 345501871
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Border_200
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 64
+        width: 45
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a9c7094674f1db44cbffa2f946e7c106
+      internalID: -1756059347
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Border_210
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 42
+        width: 16
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bbe23a32fbdc84e43bb63e82c120f801
+      internalID: -978379573
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Border_214
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 42
+        width: 15
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f18637d18ca091d49bcb05d73446e32f
+      internalID: -842890323
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Border_219
+      rect:
+        serializedVersion: 2
+        x: 127
+        y: 42
+        width: 17
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: db76bd70ac1fc5d4daf88820d6bd0305
+      internalID: 1314211519
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Border_230
+      rect:
+        serializedVersion: 2
+        x: 95
+        y: 10
+        width: 16
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2019044561f227b4f9155b66a02028cb
+      internalID: -114459987
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Border_233
+      rect:
+        serializedVersion: 2
+        x: 110
+        y: 10
+        width: 18
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b1dc7bf5d28e8ae489ef21db8c4311e2
+      internalID: 822051938
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Border_237
+      rect:
+        serializedVersion: 2
+        x: 129
+        y: 10
+        width: 15
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bbc407cd104a4b54b97fbab1ff2a4651
+      internalID: 1038533670
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      Border_0: -1883532899
+      Border_1: 1647166444
+      Border_10: -752023620
+      Border_100: 615976989
+      Border_101: 1488543715
+      Border_102: 1711296686
+      Border_103: -912464103
+      Border_104: -76719256
+      Border_105: 1741061398
+      Border_106: 378326747
+      Border_107: -2094631394
+      Border_108: -441145001
+      Border_109: -1579074471
+      Border_11: -1956602425
+      Border_110: -133948115
+      Border_111: 295700209
+      Border_112: -343615068
+      Border_113: 350552536
+      Border_114: 445689416
+      Border_115: -271296372
+      Border_116: 1819231828
+      Border_117: -294442539
+      Border_118: 1837628128
+      Border_119: 152091300
+      Border_12: -1321763175
+      Border_120: -838236253
+      Border_121: -390353403
+      Border_122: -1954028291
+      Border_123: -1688875272
+      Border_124: -756965419
+      Border_125: 777329272
+      Border_126: -731746695
+      Border_127: -1458109291
+      Border_128: 1237894989
+      Border_129: -745508486
+      Border_13: -521083927
+      Border_130: -1664070080
+      Border_131: -1923139767
+      Border_132: -2122634134
+      Border_133: -1769557924
+      Border_134: -1924150361
+      Border_135: -1509666031
+      Border_136: -1750400819
+      Border_137: -553176858
+      Border_138: 1822001810
+      Border_139: -1268556543
+      Border_14: 1962192369
+      Border_140: 2041228254
+      Border_141: -963664605
+      Border_142: -1626301861
+      Border_143: -753873177
+      Border_144: -895326128
+      Border_145: -1038217941
+      Border_146: 1388188604
+      Border_147: -815289809
+      Border_148: 1371095583
+      Border_149: 954196632
+      Border_15: -554781467
+      Border_150: 1191843860
+      Border_151: -1510555898
+      Border_152: 956483728
+      Border_153: -1737116988
+      Border_154: 545018846
+      Border_155: -1368395020
+      Border_156: 263896289
+      Border_157: 1173098124
+      Border_158: 207613343
+      Border_159: -1975351082
+      Border_16: -1841948708
+      Border_160: -388940357
+      Border_161: -610479493
+      Border_162: 1624307141
+      Border_163: 1026264903
+      Border_164: -516786794
+      Border_165: 1352234121
+      Border_166: -2014801383
+      Border_167: -251516928
+      Border_168: -195621824
+      Border_169: -603396176
+      Border_17: -1784782617
+      Border_170: -248052760
+      Border_171: -915507321
+      Border_172: 712378045
+      Border_173: -995012461
+      Border_174: 751822211
+      Border_175: 1952121352
+      Border_176: 570501558
+      Border_177: -331922373
+      Border_178: -297991022
+      Border_179: -731147728
+      Border_18: 611603013
+      Border_180: -1551636284
+      Border_181: -1749544863
+      Border_182: -438184387
+      Border_183: -1888085736
+      Border_184: -884255798
+      Border_185: 1746793098
+      Border_186: -155021351
+      Border_187: 753097700
+      Border_188: -1486632913
+      Border_189: -83665010
+      Border_19: -567020967
+      Border_190: 345501871
+      Border_191: 1082245785
+      Border_192: 671237285
+      Border_193: -1363725386
+      Border_194: 618440612
+      Border_195: -1843827100
+      Border_196: -531225552
+      Border_197: 442279806
+      Border_198: -499687632
+      Border_199: 145900298
+      Border_2: -1624088542
+      Border_20: 384512629
+      Border_200: -1756059347
+      Border_201: -121252856
+      Border_202: -1207519167
+      Border_203: 1547426721
+      Border_204: 1819836674
+      Border_205: -929114310
+      Border_206: 247749829
+      Border_207: -1794761051
+      Border_208: -1211781524
+      Border_209: -1277871172
+      Border_21: 1734319991
+      Border_210: -978379573
+      Border_211: 204474125
+      Border_212: 1031537797
+      Border_213: 96410784
+      Border_214: -842890323
+      Border_215: -10405812
+      Border_216: 1787178711
+      Border_217: -1790294478
+      Border_218: 176709298
+      Border_219: 1314211519
+      Border_22: 1434748403
+      Border_220: 1048523010
+      Border_221: -439254746
+      Border_222: 1637421234
+      Border_223: 738501734
+      Border_224: -1964686924
+      Border_225: 1561366658
+      Border_226: -1676708153
+      Border_227: 217417853
+      Border_228: 966265017
+      Border_229: -693709208
+      Border_23: -1454284731
+      Border_230: -114459987
+      Border_231: -1290918359
+      Border_232: 1728460664
+      Border_233: 822051938
+      Border_234: -828166760
+      Border_235: -1285517566
+      Border_236: -811009312
+      Border_237: 1038533670
+      Border_238: 680919680
+      Border_239: -827936206
+      Border_24: 839035561
+      Border_25: 293203953
+      Border_26: 1015597730
+      Border_27: 171987435
+      Border_28: 1623390687
+      Border_29: -2012286638
+      Border_3: -1357581665
+      Border_30: -1803115870
+      Border_31: -1843462083
+      Border_32: -1688260171
+      Border_33: 627698390
+      Border_34: -143277776
+      Border_35: 1867979913
+      Border_36: 319760366
+      Border_37: 290760786
+      Border_38: -858157463
+      Border_39: 133278388
+      Border_4: -414011845
+      Border_40: 870503271
+      Border_41: -1592337364
+      Border_42: 1531623852
+      Border_43: 407970695
+      Border_44: -2121260269
+      Border_45: -1494141848
+      Border_46: 800670878
+      Border_47: 2116278252
+      Border_48: -1354797793
+      Border_49: -247223722
+      Border_5: -17398538
+      Border_50: 1070016697
+      Border_51: 1614190077
+      Border_52: 1695420564
+      Border_53: -750866329
+      Border_54: 784425841
+      Border_55: 329048171
+      Border_56: -1647921752
+      Border_57: 302450929
+      Border_58: 1574332254
+      Border_59: 118116223
+      Border_6: -1580767889
+      Border_60: -894905321
+      Border_61: 1489337881
+      Border_62: -414174361
+      Border_63: -1842748651
+      Border_64: -327363123
+      Border_65: 731377709
+      Border_66: -27850061
+      Border_67: -1035554873
+      Border_68: 1858914831
+      Border_69: -124757520
+      Border_7: -124671672
+      Border_70: 1771511064
+      Border_71: 2007248764
+      Border_72: 1840814427
+      Border_73: 226205520
+      Border_74: -670332567
+      Border_75: 1933388474
+      Border_76: 1073143635
+      Border_77: -1073254655
+      Border_78: -482069185
+      Border_79: 956647653
+      Border_8: 2061453442
+      Border_80: 240108852
+      Border_81: 1549442389
+      Border_82: 1807260217
+      Border_83: -1049453479
+      Border_84: 2033370187
+      Border_85: 710531251
+      Border_86: 838935068
+      Border_87: -1535756459
+      Border_88: -926061692
+      Border_89: -1861885905
+      Border_9: 1097924684
+      Border_90: -1250443257
+      Border_91: 25900032
+      Border_92: 1571245787
+      Border_93: 1982486580
+      Border_94: -705312237
+      Border_95: 123902252
+      Border_96: 500113406
+      Border_97: 322556191
+      Border_98: -144329671
+      Border_99: 1080077571
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

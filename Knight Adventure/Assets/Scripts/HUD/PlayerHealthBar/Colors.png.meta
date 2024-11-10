@@ -1,0 +1,859 @@
+fileFormatVersion: 2
+guid: 53a5d833a2202924bb1619182480aea3
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 8
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Colors_0
+      rect:
+        serializedVersion: 2
+        x: 97
+        y: 373
+        width: 46
+        height: 5
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 196ad41a4418d55469619e4b28945d0d
+      internalID: 1935064245
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Colors_10
+      rect:
+        serializedVersion: 2
+        x: 105
+        y: 357
+        width: 38
+        height: 5
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 18d058c86c658484f92e73daeaa3faa6
+      internalID: 371252670
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Colors_18
+      rect:
+        serializedVersion: 2
+        x: 97
+        y: 341
+        width: 47
+        height: 5
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cacc584d1dbdccd43aa2e17a52ff0b4f
+      internalID: -304795513
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Colors_28
+      rect:
+        serializedVersion: 2
+        x: 97
+        y: 325
+        width: 47
+        height: 5
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8a9d7f0bb3648274d97b3292b66b8823
+      internalID: -1353136919
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Colors_38
+      rect:
+        serializedVersion: 2
+        x: 98
+        y: 306
+        width: 22
+        height: 11
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cd6884bdec16f84429948e74a7ac3524
+      internalID: -420221262
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Colors_43
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 292
+        width: 35
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 361f27c70189268469e17093a66860b6
+      internalID: 538643827
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Colors_51
+      rect:
+        serializedVersion: 2
+        x: 95
+        y: 274
+        width: 50
+        height: 11
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 81476f690876be34da606d5dd725b75a
+      internalID: 129203852
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Colors_61
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 259
+        width: 41
+        height: 9
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a9d10318f585deb43bc78e1349566bc3
+      internalID: -954597178
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Colors_70
+      rect:
+        serializedVersion: 2
+        x: 97
+        y: 242
+        width: 55
+        height: 11
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2a989529f4de709428df21591cbbd9a1
+      internalID: 1357255702
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Colors_95
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 192
+        width: 8
+        height: 46
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4a37a3dea850f7245855aa8ac3bc79b6
+      internalID: 1331104859
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Colors_97
+      rect:
+        serializedVersion: 2
+        x: 115
+        y: 192
+        width: 10
+        height: 41
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 910c1e5dfe554b247bac33e2a68383fd
+      internalID: 810609019
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Colors_99
+      rect:
+        serializedVersion: 2
+        x: 130
+        y: 191
+        width: 11
+        height: 41
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9fee6253313a2f34f9f43245ae01fe30
+      internalID: -498156345
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Colors_102
+      rect:
+        serializedVersion: 2
+        x: 130
+        y: 178
+        width: 12
+        height: 11
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b55c58bc134938d4098ff9cbb92a9643
+      internalID: -1548254571
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Colors_105
+      rect:
+        serializedVersion: 2
+        x: 98
+        y: 165
+        width: 44
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9eae3fc6025d4e24f982c1c9be16b85d
+      internalID: -1201010179
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Colors_115
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 149
+        width: 40
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8a4eb3a6d37c77441acedb83925c3135
+      internalID: -158877959
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Colors_123
+      rect:
+        serializedVersion: 2
+        x: 95
+        y: 134
+        width: 50
+        height: 5
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a5ccb163258fcb84fb0274a457e0db58
+      internalID: -576307578
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Colors_132
+      rect:
+        serializedVersion: 2
+        x: 111
+        y: 118
+        width: 28
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0630fa447b6ef61498c6552dad605301
+      internalID: 1409894432
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Colors_138
+      rect:
+        serializedVersion: 2
+        x: 111
+        y: 101
+        width: 28
+        height: 9
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3876f431825e0354dabefc38f452d88f
+      internalID: 1141163865
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Colors_144
+      rect:
+        serializedVersion: 2
+        x: 111
+        y: 85
+        width: 28
+        height: 9
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ff7d973d5e69c3c4aa9d62a5514fea51
+      internalID: 1768839601
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Colors_150
+      rect:
+        serializedVersion: 2
+        x: 111
+        y: 70
+        width: 28
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bed80e1bac1e39645be07681b04300e6
+      internalID: 1888403279
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Colors_161
+      rect:
+        serializedVersion: 2
+        x: 114
+        y: 44
+        width: 12
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 19f465b45338fbf49ae5b11a5b3b663d
+      internalID: -408131368
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Colors_164
+      rect:
+        serializedVersion: 2
+        x: 130
+        y: 44
+        width: 12
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 013f00e003b4c214f952adb47a6f779d
+      internalID: 1768651732
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Colors_166
+      rect:
+        serializedVersion: 2
+        x: 98
+        y: 44
+        width: 12
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 828e6d1db20de1244977d0fc347b39ab
+      internalID: 1155299700
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Colors_176
+      rect:
+        serializedVersion: 2
+        x: 98
+        y: 12
+        width: 12
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 30b579f842aa7ae4888f39e6afec8ab3
+      internalID: -9066087
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Colors_180
+      rect:
+        serializedVersion: 2
+        x: 114
+        y: 12
+        width: 12
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fd80ef4efa1783f4b946bd4cb0b80d28
+      internalID: -1961256352
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Colors_183
+      rect:
+        serializedVersion: 2
+        x: 130
+        y: 12
+        width: 12
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 59e00e6f074567546b197fdb9d2d98f6
+      internalID: 1038071622
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      Colors_0: 1935064245
+      Colors_1: 2063380225
+      Colors_10: 371252670
+      Colors_100: 1074341973
+      Colors_101: 2013292914
+      Colors_102: -1548254571
+      Colors_103: -690769148
+      Colors_104: 1806775689
+      Colors_105: -1201010179
+      Colors_106: 100050421
+      Colors_107: -889288650
+      Colors_108: -1197077274
+      Colors_109: -1336737304
+      Colors_11: -1644798428
+      Colors_110: 1292117857
+      Colors_111: 528164350
+      Colors_112: -1500437225
+      Colors_113: -928580990
+      Colors_114: 279891927
+      Colors_115: -158877959
+      Colors_116: -539741438
+      Colors_117: -1228898741
+      Colors_118: 1114805229
+      Colors_119: 1669779126
+      Colors_12: 901651733
+      Colors_120: -1704223741
+      Colors_121: 1477753485
+      Colors_122: 1628540908
+      Colors_123: -576307578
+      Colors_124: 1777600435
+      Colors_125: -2109046140
+      Colors_126: 4844913
+      Colors_127: 855039783
+      Colors_128: -1300028856
+      Colors_129: 1031029692
+      Colors_13: 695253091
+      Colors_130: 592055527
+      Colors_131: 1983355949
+      Colors_132: 1409894432
+      Colors_133: -34200923
+      Colors_134: 872358145
+      Colors_135: -1349614928
+      Colors_136: -1496376123
+      Colors_137: 609381661
+      Colors_138: 1141163865
+      Colors_139: 982230399
+      Colors_14: 1608266925
+      Colors_140: 47439542
+      Colors_141: -1932202679
+      Colors_142: -1363702823
+      Colors_143: 710599264
+      Colors_144: 1768839601
+      Colors_145: -1824012920
+      Colors_146: -999678223
+      Colors_147: 1617340445
+      Colors_148: -1668921382
+      Colors_149: -1629620333
+      Colors_15: -1679238766
+      Colors_150: 1888403279
+      Colors_151: 936018010
+      Colors_152: 30203410
+      Colors_153: -232236486
+      Colors_154: -1725000598
+      Colors_155: 1509135982
+      Colors_156: 1409551873
+      Colors_157: -2011605732
+      Colors_158: -997943500
+      Colors_159: -1106351447
+      Colors_16: 1224065483
+      Colors_160: -1421347931
+      Colors_161: -408131368
+      Colors_162: -1433846625
+      Colors_163: 823563138
+      Colors_164: 1768651732
+      Colors_165: -1401452377
+      Colors_166: 1155299700
+      Colors_167: -1030349589
+      Colors_168: -975281253
+      Colors_169: 212828180
+      Colors_17: 320672016
+      Colors_170: -526272598
+      Colors_171: 1264038356
+      Colors_172: -527407568
+      Colors_173: 1488747632
+      Colors_174: 902444830
+      Colors_175: 1737977949
+      Colors_176: -9066087
+      Colors_177: -1887431579
+      Colors_178: -1352502505
+      Colors_179: -900394470
+      Colors_18: -304795513
+      Colors_180: -1961256352
+      Colors_181: 1620987486
+      Colors_182: 1250692726
+      Colors_183: 1038071622
+      Colors_184: -602491510
+      Colors_185: -1425740388
+      Colors_19: 1821236386
+      Colors_2: 548348507
+      Colors_20: -2024763944
+      Colors_21: 353876755
+      Colors_22: -1144367594
+      Colors_23: -2032887530
+      Colors_24: 1398338837
+      Colors_25: -643797108
+      Colors_26: -882005312
+      Colors_27: 1922622642
+      Colors_28: -1353136919
+      Colors_29: -227159051
+      Colors_3: 1235054324
+      Colors_30: 407575667
+      Colors_31: -1155260681
+      Colors_32: 1457385486
+      Colors_33: 971984046
+      Colors_34: 1412106782
+      Colors_35: 1545744304
+      Colors_36: 518846655
+      Colors_37: 1074867745
+      Colors_38: -420221262
+      Colors_39: 266533166
+      Colors_4: 1841562519
+      Colors_40: -1854306443
+      Colors_41: -339684756
+      Colors_42: 202669360
+      Colors_43: 538643827
+      Colors_44: 1743919645
+      Colors_45: -1559422750
+      Colors_46: 280667632
+      Colors_47: -1658049381
+      Colors_48: 432350619
+      Colors_49: -1906136664
+      Colors_5: 633272651
+      Colors_50: 1482811392
+      Colors_51: 129203852
+      Colors_52: 2009164799
+      Colors_53: -1543068951
+      Colors_54: -772404862
+      Colors_55: -731410244
+      Colors_56: 1369108168
+      Colors_57: -1315198683
+      Colors_58: -699415863
+      Colors_59: 1250998698
+      Colors_6: -1300117513
+      Colors_60: -902637387
+      Colors_61: -954597178
+      Colors_62: 1956214916
+      Colors_63: -1517122648
+      Colors_64: -1408433049
+      Colors_65: -822185733
+      Colors_66: 56532910
+      Colors_67: 543457164
+      Colors_68: 1634630563
+      Colors_69: 1310834615
+      Colors_7: -1615324995
+      Colors_70: 1357255702
+      Colors_71: -585065877
+      Colors_72: -81200327
+      Colors_73: 1656682493
+      Colors_74: -1088179389
+      Colors_75: 596116473
+      Colors_76: -1639325208
+      Colors_77: -1316768314
+      Colors_78: -1795611622
+      Colors_79: -1253539209
+      Colors_8: -517240524
+      Colors_80: 567431584
+      Colors_81: 679498874
+      Colors_82: 2003679780
+      Colors_83: -690496086
+      Colors_84: -1821216608
+      Colors_85: 16817783
+      Colors_86: 1788453196
+      Colors_87: 458138950
+      Colors_88: -1597775888
+      Colors_89: 1986965551
+      Colors_9: 1827147871
+      Colors_90: -1319451402
+      Colors_91: 661756939
+      Colors_92: 295608117
+      Colors_93: -316319184
+      Colors_94: 500009272
+      Colors_95: 1331104859
+      Colors_96: 1633823520
+      Colors_97: 810609019
+      Colors_98: -1358312851
+      Colors_99: -498156345
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

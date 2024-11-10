@@ -1,0 +1,808 @@
+fileFormatVersion: 2
+guid: f3588a7f9de2d884ba7e4f3a4d966b5f
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 8
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: BorderBG_0
+      rect:
+        serializedVersion: 2
+        x: 97
+        y: 373
+        width: 46
+        height: 5
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f69fd03cb2c39c143b3e3757a5faa83e
+      internalID: -1484718395
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BorderBG_10
+      rect:
+        serializedVersion: 2
+        x: 97
+        y: 357
+        width: 46
+        height: 5
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5434f7fe3964d2440b41a7c193166792
+      internalID: 1833303339
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BorderBG_20
+      rect:
+        serializedVersion: 2
+        x: 97
+        y: 341
+        width: 47
+        height: 5
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ed2e3ec04581f61419f19d598b66426f
+      internalID: -1017741817
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BorderBG_30
+      rect:
+        serializedVersion: 2
+        x: 97
+        y: 325
+        width: 47
+        height: 5
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 11b8c57e5d86f2b4cb42aab4680c6444
+      internalID: 1508950466
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BorderBG_40
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 292
+        width: 35
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4df7fcf7327ee694bada08b6526c3f6e
+      internalID: 1686918261
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BorderBG_48
+      rect:
+        serializedVersion: 2
+        x: 109
+        y: 275
+        width: 36
+        height: 9
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6727f0dc29f58fe4697093a0ba4bc82e
+      internalID: 172685129
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BorderBG_56
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 259
+        width: 41
+        height: 9
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4a84cdb78cb5f5142bf939ac01fec280
+      internalID: -721613354
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BorderBG_65
+      rect:
+        serializedVersion: 2
+        x: 111
+        y: 243
+        width: 41
+        height: 9
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 032787c38f6a505499856761f42313ac
+      internalID: 506089842
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BorderBG_87
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 192
+        width: 8
+        height: 46
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ed57140b5f7788642a63ff008c1fbdbf
+      internalID: 1448348409
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BorderBG_89
+      rect:
+        serializedVersion: 2
+        x: 115
+        y: 192
+        width: 10
+        height: 41
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 569f7a01081da254aa6aa3929edddd34
+      internalID: -1980010574
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BorderBG_91
+      rect:
+        serializedVersion: 2
+        x: 132
+        y: 191
+        width: 9
+        height: 41
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 161c549ebe0dba34f9c6b7b5e9e47b60
+      internalID: -1304153853
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BorderBG_96
+      rect:
+        serializedVersion: 2
+        x: 98
+        y: 165
+        width: 44
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c4f32c1ba17ff084caf81ed290ad6075
+      internalID: 1221241395
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BorderBG_106
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 149
+        width: 40
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bf802813b00b3514984a4d02ab56df3f
+      internalID: -786732173
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BorderBG_114
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 134
+        width: 49
+        height: 5
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 85de9d1744d1e8e478a8cf91594b55ae
+      internalID: -349595110
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BorderBG_123
+      rect:
+        serializedVersion: 2
+        x: 111
+        y: 118
+        width: 28
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 372bd7c34afa4b1439e04c122653c680
+      internalID: -336305386
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BorderBG_129
+      rect:
+        serializedVersion: 2
+        x: 111
+        y: 101
+        width: 28
+        height: 9
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 81d4fc6930dd45e46a4d7880ede686df
+      internalID: 1143746651
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BorderBG_135
+      rect:
+        serializedVersion: 2
+        x: 111
+        y: 85
+        width: 28
+        height: 9
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b5c23082d27464a418bd491b81d250a3
+      internalID: 251700247
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BorderBG_141
+      rect:
+        serializedVersion: 2
+        x: 111
+        y: 70
+        width: 28
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 059a0d71a3f3f874eb9169ff71bc7c9c
+      internalID: 466644219
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BorderBG_157
+      rect:
+        serializedVersion: 2
+        x: 98
+        y: 44
+        width: 12
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 524d37660794066499620e8942b2f836
+      internalID: -737719088
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BorderBG_161
+      rect:
+        serializedVersion: 2
+        x: 114
+        y: 44
+        width: 12
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 01198d1b7c98ec8429a5d844bafd5cd9
+      internalID: 1993103054
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BorderBG_164
+      rect:
+        serializedVersion: 2
+        x: 130
+        y: 44
+        width: 12
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fa167a421caede646b4a49529b3a3ab7
+      internalID: -1331375707
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BorderBG_167
+      rect:
+        serializedVersion: 2
+        x: 98
+        y: 12
+        width: 12
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a36b266b7d7dea049a1a6d12ea3df888
+      internalID: -277283450
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BorderBG_170
+      rect:
+        serializedVersion: 2
+        x: 114
+        y: 12
+        width: 12
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b57603aae28d4b846bf6bbcfc328ed49
+      internalID: -725853581
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BorderBG_174
+      rect:
+        serializedVersion: 2
+        x: 130
+        y: 12
+        width: 12
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b287704e0c2ede542b097ed160de1ddb
+      internalID: 1758628315
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      BorderBG_0: -1484718395
+      BorderBG_1: -978875173
+      BorderBG_10: 1833303339
+      BorderBG_100: -254526569
+      BorderBG_101: -1714923005
+      BorderBG_102: 926076018
+      BorderBG_103: -2060594713
+      BorderBG_104: -1190106058
+      BorderBG_105: -404549383
+      BorderBG_106: -786732173
+      BorderBG_107: 2096862413
+      BorderBG_108: 2041692816
+      BorderBG_109: 583917817
+      BorderBG_11: -2062300648
+      BorderBG_110: -584895546
+      BorderBG_111: 1306743086
+      BorderBG_112: 732432490
+      BorderBG_113: 1600570644
+      BorderBG_114: -349595110
+      BorderBG_115: -244703122
+      BorderBG_116: -1122704539
+      BorderBG_117: -1795218315
+      BorderBG_118: 1627120890
+      BorderBG_119: 71469152
+      BorderBG_12: 166041447
+      BorderBG_120: 654430625
+      BorderBG_121: -1054429757
+      BorderBG_122: 1402305820
+      BorderBG_123: -336305386
+      BorderBG_124: -1176570883
+      BorderBG_125: 1749042556
+      BorderBG_126: -1775020526
+      BorderBG_127: 1166835120
+      BorderBG_128: 1660076414
+      BorderBG_129: 1143746651
+      BorderBG_13: 1621791000
+      BorderBG_130: 1520805816
+      BorderBG_131: -934164265
+      BorderBG_132: -2127575602
+      BorderBG_133: -990705263
+      BorderBG_134: -1710288595
+      BorderBG_135: 251700247
+      BorderBG_136: -367765931
+      BorderBG_137: -1917628209
+      BorderBG_138: -808249972
+      BorderBG_139: -785320485
+      BorderBG_14: 1637221928
+      BorderBG_140: 101498139
+      BorderBG_141: 466644219
+      BorderBG_142: -332291854
+      BorderBG_143: 1206268981
+      BorderBG_144: -1400408276
+      BorderBG_145: 41031920
+      BorderBG_146: -1539620488
+      BorderBG_147: -950369580
+      BorderBG_148: -122407672
+      BorderBG_149: -1642938562
+      BorderBG_15: 895177507
+      BorderBG_150: -2015888248
+      BorderBG_151: 1989204851
+      BorderBG_152: -2142796643
+      BorderBG_153: 509707935
+      BorderBG_154: -1110110513
+      BorderBG_155: 839047038
+      BorderBG_156: 918031322
+      BorderBG_157: -737719088
+      BorderBG_158: 1747981479
+      BorderBG_159: 227259654
+      BorderBG_16: -100047235
+      BorderBG_160: 1183163090
+      BorderBG_161: 1993103054
+      BorderBG_162: 1633108087
+      BorderBG_163: -240431966
+      BorderBG_164: -1331375707
+      BorderBG_165: 967252073
+      BorderBG_166: 1986144698
+      BorderBG_167: -277283450
+      BorderBG_168: 1907931684
+      BorderBG_169: -261451894
+      BorderBG_17: 2131371104
+      BorderBG_170: -725853581
+      BorderBG_171: -537980890
+      BorderBG_172: 460494527
+      BorderBG_173: 951252683
+      BorderBG_174: 1758628315
+      BorderBG_175: -1709441910
+      BorderBG_176: 344067148
+      BorderBG_18: 392139339
+      BorderBG_19: 603805703
+      BorderBG_2: -102185315
+      BorderBG_20: -1017741817
+      BorderBG_21: 752255618
+      BorderBG_22: -553436982
+      BorderBG_23: 1393910148
+      BorderBG_24: 613812207
+      BorderBG_25: 50371443
+      BorderBG_26: 590313643
+      BorderBG_27: 1032548744
+      BorderBG_28: 451961614
+      BorderBG_29: 2143683811
+      BorderBG_3: -1382890962
+      BorderBG_30: 1508950466
+      BorderBG_31: -1888669631
+      BorderBG_32: 983726097
+      BorderBG_33: 1756856886
+      BorderBG_34: 2124492362
+      BorderBG_35: 1008598561
+      BorderBG_36: 54617438
+      BorderBG_37: 390755112
+      BorderBG_38: 266982199
+      BorderBG_39: 122230308
+      BorderBG_4: -968940469
+      BorderBG_40: 1686918261
+      BorderBG_41: 1665919556
+      BorderBG_42: -876972813
+      BorderBG_43: 1800855152
+      BorderBG_44: -1335391316
+      BorderBG_45: 528931199
+      BorderBG_46: 936689764
+      BorderBG_47: 1542071700
+      BorderBG_48: 172685129
+      BorderBG_49: 437862952
+      BorderBG_5: 118642232
+      BorderBG_50: 1185854027
+      BorderBG_51: -822206668
+      BorderBG_52: 678530060
+      BorderBG_53: -1521347985
+      BorderBG_54: 1375588394
+      BorderBG_55: 1903461641
+      BorderBG_56: -721613354
+      BorderBG_57: 1298282394
+      BorderBG_58: -2070392562
+      BorderBG_59: -1141504168
+      BorderBG_6: -1639175521
+      BorderBG_60: 2064644480
+      BorderBG_61: -247071007
+      BorderBG_62: 1557437874
+      BorderBG_63: -1486461339
+      BorderBG_64: -224362369
+      BorderBG_65: 506089842
+      BorderBG_66: 1499041135
+      BorderBG_67: 601603446
+      BorderBG_68: 1149599197
+      BorderBG_69: -1397822157
+      BorderBG_7: 1284357857
+      BorderBG_70: -526280905
+      BorderBG_71: 292481414
+      BorderBG_72: 500481659
+      BorderBG_73: -190614164
+      BorderBG_74: -248469850
+      BorderBG_75: 647335197
+      BorderBG_76: -356687041
+      BorderBG_77: 894928353
+      BorderBG_78: -196975163
+      BorderBG_79: 2008306035
+      BorderBG_8: -1327145219
+      BorderBG_80: -1774506330
+      BorderBG_81: 1726983496
+      BorderBG_82: -1936954015
+      BorderBG_83: -1397637823
+      BorderBG_84: 551335812
+      BorderBG_85: -1141831230
+      BorderBG_86: 1933366748
+      BorderBG_87: 1448348409
+      BorderBG_88: -1661500699
+      BorderBG_89: -1980010574
+      BorderBG_9: -214736979
+      BorderBG_90: -806514037
+      BorderBG_91: -1304153853
+      BorderBG_92: 193453078
+      BorderBG_93: 1293310815
+      BorderBG_94: -1337167837
+      BorderBG_95: 1435766042
+      BorderBG_96: 1221241395
+      BorderBG_97: -1928849126
+      BorderBG_98: 1640147333
+      BorderBG_99: -216038012
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
