@@ -8,6 +8,7 @@ using UnityEngine;
 
 public class EnemyEntity : MonoBehaviour
 {
+    //Присваиваем ScriptObject к нашему противнику
     [SerializeField] private EnemySO _enemySO;
     //Объявляем события Получение урона и Смерть
     public event EventHandler OnTakeHit;

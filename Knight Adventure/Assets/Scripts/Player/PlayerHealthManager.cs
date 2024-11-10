@@ -10,6 +10,7 @@ public class PlayerHealthManager : MonoBehaviour
     [SerializeField]private Image _healthBar;
     //Переменная количества здоровья
     private float _healthAmount;
+    private float _maxHealth;
     private float _healthCurrent;
     private float _damage;
 
@@ -17,10 +18,14 @@ public class PlayerHealthManager : MonoBehaviour
     //{
     //    Instance = this;
     //}
+    private void Awake()
+    {
+        _maxHealth=Player.Instance.GetMaxHealth();
+        _healthAmount = Player.Instance.GetMaxHealth();
+    }
 
     private void Start()
     {
-        _healthAmount = Player.Instance.GetMaxHealth();
         Player.Instance.OnTakeHit += Player_OnTakeHit;
     }
 
@@ -38,7 +43,7 @@ public class PlayerHealthManager : MonoBehaviour
         //Переприсваиваем значение здоровья
         _healthAmount-=damage;
         //Выставляем соответствующий процент на шкале Filled
-        _healthBar.fillAmount = _healthAmount/10f;
+        _healthBar.fillAmount = _healthAmount/_maxHealth;
     }
     //Метод отвечающий за исцеление
     public void Heal(int healingAmount)
@@ -46,10 +51,10 @@ public class PlayerHealthManager : MonoBehaviour
         //Переприсваиваем значение здоровья
         _healthAmount+=healingAmount;
         //Не может превышать 100 и быть ниже 0
-        _healthAmount=Mathf.Clamp(_healthAmount, 0, Player.Instance.GetMaxHealth());
+        _healthAmount=Mathf.Clamp(_healthAmount, 0, _maxHealth);
 
         //Выставляем соответствующий процент на шкале Filled
-        _healthBar.fillAmount = _healthAmount / 10f;
+        _healthBar.fillAmount = _healthAmount / _maxHealth;
     }
     public float SetHealthBar(int health)
     {
