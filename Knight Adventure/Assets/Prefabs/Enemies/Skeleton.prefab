@@ -305,7 +305,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed7dcfff87eabb34cbc74f74c2fec245, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _enemySO: {fileID: 0}
+  _enemySO: {fileID: 11400000, guid: 213a8d029483d304c8ff4d81935c2807, type: 2}
 --- !u!1 &6108695825536202238 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5567660529408417547, guid: 7a24d462bcaea8a4787bf3dd16441d7f, type: 3}
