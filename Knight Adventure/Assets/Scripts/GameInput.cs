@@ -13,8 +13,9 @@ public class GameInput : MonoBehaviour
     //в других классах
     public static GameInput Instance {  get; private set; }
     //Переменные событий Атака и Пауза
-    public event EventHandler _OnPlayerAttack;
-    public event EventHandler _OnPlayerPause;
+    public event EventHandler OnPlayerAttack;
+    public event EventHandler OnPlayerPause;
+    public event EventHandler OnPlayerMagicAttack;
 
     private void Awake()
     {
@@ -26,8 +27,11 @@ public class GameInput : MonoBehaviour
         _playerInputActions.Enable();
         //Подписываемся на события Атаки и Паузы
         _playerInputActions.Combat.Attack.started += PlayerAttack_started;
+        _playerInputActions.Combat.Player_animation_attack.started += Magic_Attack_started;
         _playerInputActions.Player.Pause.started += PlayerPause_started;
     }
+
+  
 
     //Метод отвечающий за передвижение
     public Vector2 GetMovementVector()
@@ -58,13 +62,19 @@ public class GameInput : MonoBehaviour
     //Событие Атаки
     private void PlayerAttack_started(InputAction.CallbackContext obj)
     {
-        _OnPlayerAttack?.Invoke(this, EventArgs.Empty);
+        OnPlayerAttack?.Invoke(this, EventArgs.Empty);
+    }
+
+    //Событие атаки магией
+    private void Magic_Attack_started(InputAction.CallbackContext obj)
+    {
+        OnPlayerMagicAttack?.Invoke(this, EventArgs.Empty);
     }
 
     //Событие паузы
     private void PlayerPause_started(InputAction.CallbackContext obj)
     {
-        _OnPlayerPause?.Invoke(this, EventArgs.Empty);
+        OnPlayerPause?.Invoke(this, EventArgs.Empty);
     }
 
 }

@@ -17,7 +17,7 @@ public class PauseMenu : MonoBehaviour
     private void Start()
     {
         //Подписываемся на событие паузы
-        GameInput.Instance._OnPlayerPause += Player_OnPlayerPause;
+        GameInput.Instance.OnPlayerPause += Player_OnPlayerPause;
     }
 
    //Событие паузы

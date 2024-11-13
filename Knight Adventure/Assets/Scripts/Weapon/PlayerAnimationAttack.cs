@@ -1,24 +1,19 @@
 using UnityEngine;
-using System;
-//Реализуем класс Меча
-public class Sword : MonoBehaviour
+
+public class PlayerAnimationAttack : MonoBehaviour
 {
-    //Создаем переменную уронаОтМеча
-    [SerializeField] private int _damageAmount = 2;
-    //Вызываем событие "Взмах Меча"
-    public event EventHandler OnSwordSwing;
-    //Вводим переменную Полигон Колайдер 2Д
+    //Создаем переменную количество урона 
+    [SerializeField] private int _damageAmount = 5;
+    //Вводим переменную полигон колайдера 2д
     private PolygonCollider2D _polygonCollider2D;
 
-    //Метод Авейк, вызывается при первом появлении
     private void Awake()
     {
-        //Инициализируем ПолигонКолайдер2Д (Кешируем)
+        //Инициализируем полигонколайдер (кешируем)
         _polygonCollider2D = GetComponent<PolygonCollider2D>();
         _polygonCollider2D.enabled = false;
     }
 
-    //Метод Старт, вызывается перед первым методом Апдейт
     private void Start()
     {
         //Выключаем полигонколайдер в самом начале
@@ -30,15 +25,14 @@ public class Sword : MonoBehaviour
     {
         //Включаем полигонколайдер2д при атаке
         AttackCollaiderOffOn();
-        //Вызываем событие "Взмах меча" и получчаем отбратно значение
-        OnSwordSwing?.Invoke(this,EventArgs.Empty);
+     
     }
 
-    //Метод, для проверки не консгулся ли колайдер, другого колайдера в 2д
+    //Метод, для проверки не коcнулся ли колайдер, другого колайдера в 2д
     private void OnTriggerEnter2D(Collider2D collision)
     {
         //Проверяем что ударили по врагу
-        //Возвращаем в строку значение типа EnemyEntuty из-за out
+        //Возвращаем в строку значение типа EnemyEntity из-за out
         if (collision.transform.TryGetComponent(out EnemyEntity enemyEntity))
         {
             //Вызываем метод ПолучениеУрона у enemyEntity 

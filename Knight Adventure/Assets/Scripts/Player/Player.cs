@@ -1,4 +1,3 @@
-using Assets.Scripts;
 using System;
 using System.Collections;
 using UnityEngine;
@@ -6,30 +5,41 @@ using UnityEngine;
 [SelectionBase]
 public class Player : MonoBehaviour
 {
+    //Объявляем класс статическим и делаем из него СинглТон
     public static Player Instance {  get; private set; }
+    //Объявляем события Смерти и получения урона
     public event EventHandler OnPlayerDeath;
     public event EventHandler OnTakeHit;
 
+    //Объявляем переменные
+    //Скорость, макс здоровье, время востановления для получения урона, место нахождения
     [SerializeField] private float _speed = 15.0f;
     [SerializeField] private int _maxHealth = 10;
     [SerializeField] private float _damageRecoveryTime = 0.5f;
     Vector2 _inputVector;
 
+    //Переменные RigidBody (физика) и класс отвечающий за отталкивание при получении урона
     private Rigidbody2D _rb;
     private knockBack _knockBack;
 
+    //Минимальная скорость передвижения и статус бега = фолс
     private float _minMovingSpeed = 0.1f;
     private bool _isRunning = false;
 
+
+    //текущее здоровье, возможно ли получать урон, статус жизни
     private int _currentHealth;
     private bool _canTakeDamage;
     private bool _isAlive = true;
 
+    //Переменная отвечающая за хэлфбар
     private PlayerHealthManager _healthBar;
 
     void Awake()
     {
+        //Инициализируем синглтон
        Instance = this;
+        //Кешируем компоненты
         _rb= GetComponent<Rigidbody2D>();
         _knockBack=GetComponent<knockBack>();
        
@@ -37,13 +47,19 @@ public class Player : MonoBehaviour
 
     private void Start()
     {
+        //Устанавливаем текущее здоровье = максимальноиу
         _currentHealth=_maxHealth;
+        //Может получать урон
         _canTakeDamage=true;
-        GameInput.Instance._OnPlayerAttack += Player_OnPlayerAttack;
+        //Подписываемся на события атаки 
+        GameInput.Instance.OnPlayerAttack += Player_OnPlayerAttack;
+        GameInput.Instance.OnPlayerMagicAttack += Player_OnPlayerMagicAttack;
     }
 
+  
     private void Update()
     {
+        //Отслеживание вектора персонажа
         _inputVector = GameInput.Instance.GetMovementVector();
         // Debug.Log(GameManager.Instance.user.GetName());
     
@@ -54,15 +70,26 @@ public class Player : MonoBehaviour
         //Проверяем находимлся ли мы в состоянии отлета
         if (_knockBack.IsGettingKnockedBack)
             return;
-
+        //метод проверяющий статус бега
         HandleMovement();
     }
+
+    //Событие атаки 
     private void Player_OnPlayerAttack(object sender, System.EventArgs e)
     {
+        //Вызываем метод в атаки в классе Актив Вепон
         ActiveWeapon.Instance.GetActiveWeapon().Attack();
-        
+ 
+    }
+    //Событие магической атаки
+    private void Player_OnPlayerMagicAttack(object sender, EventArgs e)
+    {
+        //Вызываем метод в атаки в классе Актив Вепон
+        ActiveWeapon.Instance.GetMagicWeapon().Attack();
+
     }
 
+    //Отслеживание статуса бега персонажа
     private void HandleMovement()
     {
         _rb.MovePosition(_rb.position + _inputVector * _speed * Time.fixedDeltaTime);
@@ -74,6 +101,7 @@ public class Player : MonoBehaviour
         }
     }
 
+    //Возвращаем статус нашего персонажа и получение закрытых переменных
     public bool IsRunning() { return _isRunning; }
     public bool IsAlive() =>_isAlive;
     public float GetCurrentHealth()
@@ -84,6 +112,7 @@ public class Player : MonoBehaviour
     {
         return _maxHealth;
     }
+    //Получение позиции нашего персонажа относительно экрана
     public Vector3 GetPlayerScreenPosiyion()
     {
         Vector3 playerScreenPosition=Camera.main.WorldToScreenPoint(transform.position);
