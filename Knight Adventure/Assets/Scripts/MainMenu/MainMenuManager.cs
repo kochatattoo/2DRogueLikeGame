@@ -33,6 +33,14 @@ public class MainMenuManager : MonoBehaviour
 
     public void LoadGame()
     {
+        if (SaveManager.LoadUser() != null)
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        }
+        else
+        {
+            Debug.LogError("Пользователь не существует");
+        }
 
     }
 

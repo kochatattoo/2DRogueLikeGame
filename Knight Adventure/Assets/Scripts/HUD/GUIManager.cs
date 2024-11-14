@@ -14,35 +14,31 @@ using Assets.Scripts;
         [SerializeField] TextMeshProUGUI _coins;
         [SerializeField] TextMeshProUGUI _level;
 
-        User user =new User();
+        User user = new User();
 
        private void Awake()
         {
-
             if (Instance == null)
             {
-
-            Instance = this;
+                Instance = this;
             }
-
-            else if (Instance == this)
+            else 
             {
-            Destroy(gameObject);
+                Destroy(gameObject);
             }
 
             DontDestroyOnLoad(gameObject);
             FirstTextAwake();
            //Debug.Log(GameManager.Instance.user.GetName());
-
         }
 
        private void FirstTextAwake()
        {
-        user.LoadUserSerialize();
+            user.LoadUserSerialize();
         //Присваиваем значеие переменных из значения полей USER
-        _name.text = user.GetName();
-        _coins.text = user.GetCoins().ToString();
-        _level.text = user.GetLevel().ToString();
+            _name.text = user.GetName();
+            _coins.text = user.GetCoins().ToString();
+            _level.text = user.GetLevel().ToString();
         }
 
        public void SetTextAreas()
