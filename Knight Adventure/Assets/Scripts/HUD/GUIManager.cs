@@ -19,18 +19,27 @@ using Assets.Scripts;
        private void Awake()
         {
             Instance = this;
-            SetTextAreas();
-            //Debug.Log(GameManager.Instance.user.GetName());
+            FirstTextAwake();
+           //Debug.Log(GameManager.Instance.user.GetName());
 
         }
-   
-       private void SetTextAreas()
+
+       private void FirstTextAwake()
+       {
+        user.LoadUserSerialize();
+        //Присваиваем значеие переменных из значения полей USER
+        _name.text = user.GetName();
+        _coins.text = user.GetCoins().ToString();
+        _level.text = user.GetLevel().ToString();
+        }
+
+       public void SetTextAreas()
         {
             //Присваиваем значеие переменных из значения полей USER
-            _name.text = GameManager.Instance.user.GetName();
-            _coins.text = GameManager.Instance.user.GetCoins().ToString();
-            _level.text = GameManager.Instance.user.GetLevel().ToString();
-
+            _name.text = user.GetName();
+            _coins.text = user.GetCoins().ToString();
+            _level.text = user.GetLevel().ToString();
         }
+        
 
     }

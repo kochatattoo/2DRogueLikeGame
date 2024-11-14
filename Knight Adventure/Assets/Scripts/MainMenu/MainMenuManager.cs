@@ -14,6 +14,7 @@ public class MainMenuManager : MonoBehaviour
     [SerializeField] GameObject OptionMenu;
     [SerializeField] GameObject QuitMenu;
 
+
     [SerializeField] TMP_InputField Name;
    private void Awake()
     {
@@ -27,6 +28,12 @@ public class MainMenuManager : MonoBehaviour
     public void StartGame()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+
+    }
+
+    public void LoadGame()
+    {
+
     }
 
     public void Create()
@@ -37,9 +44,13 @@ public class MainMenuManager : MonoBehaviour
             GameManager.Instance.user.SetName(InputName);
             GameManager.Instance.user.SetLevel(1);
             GameManager.Instance.user.SetCoins(10);
+
+            SaveManager.SaveUser(GameManager.Instance.user);
+            
         }
         else
             Debug.Log("Слишком короткое Имя, Введите длинее");
+
     }
   
 }

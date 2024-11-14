@@ -6,11 +6,14 @@ using System.Threading.Tasks;
 
 namespace Assets.Scripts
 {
+    [System.Serializable]
     public class User
     {
-        private string name;
-        private int level;
-        private int coins;
+        public static User Instance {  get; set; }
+
+        private string name="";
+        private int level=1;
+        private int coins=10;
 
         public User()
         {
@@ -24,7 +27,12 @@ namespace Assets.Scripts
             this.level = level;
             this.coins = coins;
         }
-
+        public User(User other)
+        {
+            this.name=other.name;
+            this.level = other.level;
+            this.coins = other.coins;
+        }
         public void SetName(string Name)
         {
            name = Name;
@@ -37,17 +45,29 @@ namespace Assets.Scripts
         {
            coins = Coins;
         }
-        public int GetLevel()
+        public int GetLevel()=> level;
+        public int GetCoins()=>coins;
+        public string GetName() => name;
+      
+        public void SaveUserSerialize()
         {
-            return level;
+            SaveManager.SaveUser(this);
         }
-        public int GetCoins()
+        public void LoadUserSerialize()
         {
-            return coins;
+            User data = SaveManager.LoadUser();
+            
+            name = data.name;
+            level = data.level;
+            coins = data.coins;
         }
-        public string GetName()
+        public void ResetData()
         {
-            return name;
+            User data = SaveManager.ResetData();
+
+            name = data.name;
+            level = data.level;
+            coins = data.coins;
         }
     }
 }

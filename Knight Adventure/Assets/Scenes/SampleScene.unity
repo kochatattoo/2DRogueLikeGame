@@ -21606,7 +21606,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 974778406}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7f1d2a1eaddece048b3e824871289cfb, type: 3}
+  m_Script: {fileID: 11500000, guid: 3d0ab1a1550ef634596df1f9c3347be7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!4 &1050252268 stripped
@@ -22996,8 +22996,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 974778408}
-        m_TargetAssemblyTypeName: SavePrefs, Assembly-CSharp
+      - m_Target: {fileID: 1380137410}
+        m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
         m_MethodName: SaveGame
         m_Mode: 1
         m_Arguments:
@@ -24364,8 +24364,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 974778408}
-        m_TargetAssemblyTypeName: SavePrefs, Assembly-CSharp
+      - m_Target: {fileID: 1380137410}
+        m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
         m_MethodName: LoadGame
         m_Mode: 1
         m_Arguments:
@@ -35495,9 +35495,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 974778408}
-        m_TargetAssemblyTypeName: SavePrefs, Assembly-CSharp
-        m_MethodName: ResetData
+      - m_Target: {fileID: 1380137410}
+        m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
+        m_MethodName: Reset
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Assets.Scripts;
 
 [RequireComponent(typeof(GameObject))]
 public class PauseMenu : MonoBehaviour
@@ -54,6 +55,27 @@ public class PauseMenu : MonoBehaviour
 
         //Проверка состояния Юзера
         //Debug.Log(GameManager.Instance.user.GetName());
+    }
+
+    
+    public void SaveGame()
+    {
+       // GameManager.Instance.user.SaveUserSerialize();
+        SaveManager.SaveUser(GameManager.Instance.user);
+    }
+
+    public void LoadGame()
+    {
+        // GameManager.Instance.user.LoadUserSerialize();
+        SaveManager.LoadUser();
+        GUIManager.Instance.SetTextAreas();
+    }
+
+    public void Reset()
+    {
+        // GameManager.Instance.user.ResetData();
+        SaveManager.ResetData();
+        GUIManager.Instance.SetTextAreas();
     }
 
     public void LoadMainMenuScene()
