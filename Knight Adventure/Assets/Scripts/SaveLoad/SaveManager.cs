@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class SaveManager : MonoBehaviour
 {
-   
+   //Надо почистить метод сохранения
     public static void SaveUser(User user)
     {
         BinaryFormatter formatter = new BinaryFormatter();

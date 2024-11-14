@@ -350,11 +350,10 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1132845069}
   - {fileID: 1148517199}
   - {fileID: 1380137409}
   - {fileID: 517077290}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1132845069}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -21747,16 +21746,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1132845067}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.48593748, y: 0.48593748, z: 0.48593748}
   m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 351769560}
+  m_Children:
+  - {fileID: 351769560}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 550, y: 233}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1148343747
@@ -24249,7 +24249,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1692207621
 RectTransform:
   m_ObjectHideFlags: 0
@@ -35497,7 +35497,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1380137410}
         m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
-        m_MethodName: Reset
+        m_MethodName: ResetData
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -36914,6 +36914,6 @@ SceneRoots:
   - {fileID: 798343741}
   - {fileID: 701348749}
   - {fileID: 407847988}
-  - {fileID: 351769560}
+  - {fileID: 1132845069}
   - {fileID: 699772294}
   - {fileID: 927635917}
