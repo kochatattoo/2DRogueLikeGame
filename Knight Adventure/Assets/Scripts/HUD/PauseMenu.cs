@@ -71,7 +71,7 @@ public class PauseMenu : MonoBehaviour
         GUIManager.Instance.SetTextAreas();
     }
 
-    public void Reset()
+    public void ResetData()
     {
         // GameManager.Instance.user.ResetData();
         SaveManager.ResetData();
