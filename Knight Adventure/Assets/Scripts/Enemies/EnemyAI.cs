@@ -1,11 +1,7 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 using KnightAdventure.Utils;
-using TMPro;
 
 //Класс отвечающий за поведение Врага
 public class EnemyAI : MonoBehaviour
