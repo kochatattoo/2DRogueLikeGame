@@ -48,6 +48,5 @@ using Assets.Scripts;
             _coins.text = user.GetCoins().ToString();
             _level.text = user.GetLevel().ToString();
         }
-        
 
     }

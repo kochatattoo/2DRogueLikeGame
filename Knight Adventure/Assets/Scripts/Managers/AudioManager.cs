@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class AudioManager : MonoBehaviour
@@ -8,29 +6,68 @@ public class AudioManager : MonoBehaviour
 
     public static bool music = true; //Параметр доступности музыки
     public static bool sounds = true; //Параметр доступности звуков
+
+    private AudioSource _audioSource;
     
-    private void Start()
+    private void Awake()
     {
         //Теперь проверяем существование экземпляра
         if(Instance == null)
         {
             //Задаем ссылку на экземпляр объекта
             Instance = this;
+            //Теперь нам нужно указать, что бы объект не уничтожался
+            //При переходе на другую сцену
+            DontDestroyOnLoad(gameObject);
+            return;
         }
-        else if(Instance == this)
+        else 
         {
             //Удаляем объект
-            Destroy(gameObject);
+            Destroy(this.gameObject);
         }
-
-        //Теперь нам нужно указать, что бы объект не уничтожался
-        //При переходе на другую сцену
-        DontDestroyOnLoad(gameObject);
 
         //И запускаем инициализатор
         InitializeManager();
     }
 
+    private void Start()
+    {
+        _audioSource = GetComponent<AudioSource>();
+        _audioSource.mute = false;
+       
+    }
+
+    public bool StatusMusic()
+    {
+        if (_audioSource.mute == false)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    public void SoundOffOn()
+    {
+        if(_audioSource.mute == false)
+        {
+            _audioSource.mute = true;
+        }
+        else
+        {
+            _audioSource.mute = false;
+        }
+    }
+
+    public static void SaveSettings()
+    {
+        PlayerPrefs.SetString("music",music.ToString()); //применяем параметры музыки
+        PlayerPrefs.SetString("sounds", sounds.ToString());//Применяем параметры звуков
+        PlayerPrefs.Save();//Сохраняем настройки
+    }
     //Метод инициализации менеджера
     private void InitializeManager()
     {
@@ -38,11 +75,4 @@ public class AudioManager : MonoBehaviour
         music = System.Convert.ToBoolean(PlayerPrefs.GetString("music", "true"));
         sounds = System.Convert.ToBoolean(PlayerPrefs.GetString("sounds", "true"));
     }
-    public static void SaveSettings()
-    {
-        PlayerPrefs.SetString("music",music.ToString()); //применяем параметры музыки
-        PlayerPrefs.SetString("sounds", sounds.ToString());//Применяем параметры звуков
-        PlayerPrefs.Save();//Сохраняем настройки
-    }
-   
 }

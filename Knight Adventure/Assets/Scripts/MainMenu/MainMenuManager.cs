@@ -1,8 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 using TMPro;
 using Assets.Scripts;
 
@@ -13,6 +10,7 @@ public class MainMenuManager : MonoBehaviour
     [SerializeField] GameObject LoadMenu;
     [SerializeField] GameObject OptionMenu;
     [SerializeField] GameObject QuitMenu;
+    [SerializeField] GameObject PanelBarMenu;
 
 
     [SerializeField] TMP_InputField Name;
@@ -23,6 +21,7 @@ public class MainMenuManager : MonoBehaviour
         LoadMenu.SetActive(false);
         OptionMenu.SetActive(false);
         QuitMenu.SetActive(false);
+        PanelBarMenu.SetActive(true);
     }
 
     public void StartGame()
@@ -60,5 +59,5 @@ public class MainMenuManager : MonoBehaviour
             Debug.Log("Слишком короткое Имя, Введите длинее");
 
     }
-  
+
 }

@@ -1,36 +1,37 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class AudioMuter : MonoBehaviour
 {
-    //Публичные параметры
-    public bool is_music = false;
+    [SerializeField] private GameObject _soundOn;
+    [SerializeField] private GameObject _soundOff;
 
-    //Приватные параметры
-    private AudioSource _as; //Audio Source
-    private float base_volume = 1F; //Базовая громкость
-
-    void Start()
+    private AudioSource _musicAudioSource;
+    private bool music;
+    
+    private void Start()
     {
-        //Инициализация компонента при старте игры
-        //Получаем компонент AS
-        _as=this.gameObject.GetComponent<AudioSource>();
-        //Получаем базовую громкость из AS
-        base_volume = _as.volume;
+        _musicAudioSource = GetComponent<AudioSource>();
     }
 
-    //Каждый кадр мы проверяем параметры и устанавливаем громкость
-    void Update()
+    public void MuteSound()
     {
-        //Для начала проверки, музыка это или нет
-         if(is_music)
+        AudioManager.Instance.SoundOffOn();
+        SwitchSoundImage();
+    }
+
+    private void SwitchSoundImage()
+    {
+        music = AudioManager.Instance.StatusMusic();
+
+        if (music)
         {
-            _as.volume = (AudioManager.music) ? base_volume : 0F;
+            _soundOn.SetActive(false);
+            _soundOff.SetActive(true);
         }
         else
         {
-            _as.volume = (AudioManager.sounds) ? base_volume : 0F;
+            _soundOn.SetActive(true);
+            _soundOff.SetActive(false);
         }
     }
 }
