@@ -36621,6 +36621,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: AudioManager
       objectReference: {fileID: 0}
+    - target: {fileID: 8771298826660647723, guid: fd45533cfe531624681ebb6b1aa4b19d, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -36919,6 +36923,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2459401041244197711, guid: 14976eb025eae754db564b4f3def98c5, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2459401041244197711, guid: 14976eb025eae754db564b4f3def98c5, type: 3}
+      propertyPath: testClips.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: da83ba4a47c3f434bacac0c937e4ce7f, type: 3}
     - target: {fileID: 2783451701619702284, guid: 14976eb025eae754db564b4f3def98c5, type: 3}
       propertyPath: m_Name
       value: Player
@@ -36927,10 +36939,22 @@ PrefabInstance:
       propertyPath: _speed
       value: 20
       objectReference: {fileID: 0}
+    - target: {fileID: 7491849456964802105, guid: 14976eb025eae754db564b4f3def98c5, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7491849456964802105, guid: 14976eb025eae754db564b4f3def98c5, type: 3}
+      propertyPath: _stepInterval
+      value: 0.3
+      objectReference: {fileID: 0}
     - target: {fileID: 8723083124125520176, guid: 14976eb025eae754db564b4f3def98c5, type: 3}
       propertyPath: _animatioAttack
       value: 
       objectReference: {fileID: 1262868902}
+    - target: {fileID: 8792241502581945058, guid: 14976eb025eae754db564b4f3def98c5, type: 3}
+      propertyPath: m_Pitch
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8994324643977371532, guid: 14976eb025eae754db564b4f3def98c5, type: 3}
       propertyPath: m_FlipX
       value: 0

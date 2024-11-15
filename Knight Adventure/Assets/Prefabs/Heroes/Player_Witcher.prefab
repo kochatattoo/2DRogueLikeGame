@@ -450,6 +450,7 @@ GameObject:
   - component: {fileID: 4238631558147970106}
   - component: {fileID: 8792241502581945058}
   - component: {fileID: 7491849456964802105}
+  - component: {fileID: 2459401041244197711}
   m_Layer: 0
   m_Name: PlayerAudioSource
   m_TagString: Untagged
@@ -482,18 +483,18 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: b2900e70ecd5e924d84e1d84cb7aa751, type: 3}
+  m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
-  m_Pitch: 3
+  m_Pitch: -3
   Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 212
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 500
+  MaxDistance: 10
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0
@@ -575,13 +576,35 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7313663167602698627}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 031b496efd0d75d408a3cbe131ddc2f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _playerAudioSource: {fileID: 8792241502581945058}
+  _audioClips:
+  - {fileID: 8300000, guid: b2900e70ecd5e924d84e1d84cb7aa751, type: 3}
+  - {fileID: 8300000, guid: 7f4c6f3f57788914fbc678378208b744, type: 3}
+  - {fileID: 8300000, guid: fcb2cba046223324cae7c2a17ca39e7e, type: 3}
+  - {fileID: 8300000, guid: 33d22adbe388f614689a1b8d935cde27, type: 3}
+  - {fileID: 8300000, guid: 72aff85cb8af4274ea0681f530b63bc6, type: 3}
   _player: {fileID: 3210193476586843347}
+  _stepInterval: 0.5
+--- !u!114 &2459401041244197711
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7313663167602698627}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 095fdbfdb5189604cab2207ac12b96f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioSource: {fileID: 8792241502581945058}
+  testClips:
+  - {fileID: 8300000, guid: 221b2cbcc89530f44888c7cf27eda869, type: 3}
 --- !u!1001 &6902604153129041515
 PrefabInstance:
   m_ObjectHideFlags: 0

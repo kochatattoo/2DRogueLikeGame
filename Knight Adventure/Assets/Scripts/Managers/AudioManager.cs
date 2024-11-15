@@ -34,8 +34,7 @@ public class AudioManager : MonoBehaviour
     private void Start()
     {
         _audioSource = GetComponent<AudioSource>();
-        _audioSource.mute = false;
-       
+        _audioSource.mute = false;  
     }
 
     public bool StatusMusic()
@@ -60,6 +59,11 @@ public class AudioManager : MonoBehaviour
         {
             _audioSource.mute = false;
         }
+    }
+    public void SetVolume(float volume)
+    {
+        _audioSource.volume = volume;
+        
     }
 
     public static void SaveSettings()
