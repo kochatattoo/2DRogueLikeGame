@@ -53,6 +53,7 @@ public class MainMenuManager : MonoBehaviour
             GameManager.Instance.user.SetCoins(10);
 
             SaveManager.SaveUser(GameManager.Instance.user);
+            SaveManager.Instance.SaveGame(GameManager.Instance.user, InputName);
             
         }
         else
