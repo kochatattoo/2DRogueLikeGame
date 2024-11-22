@@ -1,5 +1,7 @@
 using Assets.Scripts;
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Security.Cryptography;
 using UnityEngine;
@@ -11,8 +13,17 @@ public class SaveManager : MonoBehaviour
 
     private void Start()
     {
-        Instance = this;
-        saveDirectory=Application.persistentDataPath+"/saves/";
+        if (Instance == null)
+        {
+            Instance = this; // Установка единственного экземпляра
+            DontDestroyOnLoad(gameObject); // Опционально: предотвратить уничтожение при загрузке новой сцены
+        }
+        else
+        {
+            Destroy(gameObject); // Удалить дополнительные экземпляры
+        }
+
+        saveDirectory =Application.persistentDataPath+"/saves/";
 
         if(!Directory.Exists(saveDirectory))
         {
@@ -43,6 +54,34 @@ public class SaveManager : MonoBehaviour
             return null;
         }
     }
+    
+    public User LoadLastGame()
+    {
+        string lastFileName = GetLastSaveFileName(); // Получаем имя последнего сохраненного файла
+        if (lastFileName != null)
+        {
+            return LoadGame(lastFileName); // Загружаем игру по имени файла
+        }
+        Debug.LogError("No save files found."); // Если нет файлов, выводим ошибку
+        return null; // Возвращаем null, если не удалось загрузить
+    }
+    // Метод для получения имени последнего сохраненного файла
+    private string GetLastSaveFileName()
+    {
+        if (!Directory.Exists(saveDirectory))
+        {
+            return null; // Если директория не существует, возвращаем null
+        }
+
+        // Получаем все файлы .json в директории и сортируем их по времени создания
+        var files = Directory.GetFiles(saveDirectory, "*.json")
+                             .Select(f => new FileInfo(f))
+                             .OrderByDescending(fi => fi.LastWriteTime)
+                             .ToList();
+
+        return files.Count > 0 ? Path.GetFileNameWithoutExtension(files[0].FullName) : null; // Возвращаем имя последнего файла без расширения
+    }
+
 
     //Надо почистить метод сохранения
     public static void SaveUser(User user)
@@ -92,4 +131,35 @@ public class SaveManager : MonoBehaviour
             return null;
         }
     }
+
+    // Новый метод для получения списка файлов сохранений
+    public List<string> GetSaveFileNames()
+    {
+        List<string> saveFileNames = new List<string>();
+        string[] files = Directory.GetFiles(saveDirectory, "*.json");
+
+        foreach (string file in files)
+        {
+            saveFileNames.Add(Path.GetFileNameWithoutExtension(file)); // Добавляем имя файла без расширения
+        }
+
+        return saveFileNames;
+    }
+
+    // Новый метод для удаления файла сохранения по имени
+    public void DeleteSaveFile(string fileName)
+    {
+        string filePath = Path.Combine(saveDirectory, fileName + ".json");
+
+        if (File.Exists(filePath))
+        {
+            File.Delete(filePath);
+            Debug.Log($"{fileName}.json был удален!");
+        }
+        else
+        {
+            Debug.LogError($"Файл сохранения {fileName}.json не найден.");
+        }
+    }
 }
+

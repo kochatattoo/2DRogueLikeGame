@@ -58,6 +58,8 @@ public class PauseMenu : MonoBehaviour
     }
 
     
+    //»зменить данные методы на другие с образением к Instance
+    //» реализовать быстрое сохранение с записью данных о состо€нии игры
     public void SaveGame()
     {
        // GameManager.Instance.user.SaveUserSerialize();

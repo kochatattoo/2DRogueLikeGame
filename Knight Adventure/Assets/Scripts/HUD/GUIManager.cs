@@ -14,7 +14,7 @@ using Assets.Scripts;
         [SerializeField] TextMeshProUGUI _coins;
         [SerializeField] TextMeshProUGUI _level;
 
-        User user = new User();
+    //private User user;
 
        private void Awake()
         {
@@ -34,19 +34,21 @@ using Assets.Scripts;
 
        private void FirstTextAwake()
        {
-            user.LoadUserSerialize();
+        if (User.Instance == null)
+            User.Instance = SaveManager.Instance.LoadLastGame();
+
         //Присваиваем значеие переменных из значения полей USER
-            _name.text = user.GetName();
-            _coins.text = user.GetCoins().ToString();
-            _level.text = user.GetLevel().ToString();
+            _name.text = User.Instance.GetName();
+            _coins.text = User.Instance.GetCoins().ToString();
+            _level.text = User.Instance.GetLevel().ToString();
         }
 
        public void SetTextAreas()
         {
             //Присваиваем значеие переменных из значения полей USER
-            _name.text = user.GetName();
-            _coins.text = user.GetCoins().ToString();
-            _level.text = user.GetLevel().ToString();
+            _name.text = User.Instance.GetName();
+            _coins.text = User.Instance.GetCoins().ToString();
+            _level.text = User.Instance.GetLevel().ToString();
         }
 
     }

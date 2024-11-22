@@ -32,7 +32,7 @@ public class MainMenuManager : MonoBehaviour
 
     public void LoadGame()
     {
-        if (SaveManager.LoadUser() != null)
+        if (SaveManager.Instance.LoadLastGame() != null)
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
@@ -41,6 +41,10 @@ public class MainMenuManager : MonoBehaviour
             Debug.LogError("Пользователь не существует");
         }
 
+    }
+    public void DeleteSelectedFile()
+    {
+      
     }
 
     public void Create()

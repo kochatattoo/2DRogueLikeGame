@@ -6,14 +6,15 @@ using TMPro;
 
 public class SaveLoadMenu : MonoBehaviour
 {
-    public GameObject buttonPrefab;
-    public Transform contentPanel;
-    private SaveManager _saveManager;
+    public GameObject buttonPrefab; // Префаб кнопки для файлов
+    public Transform contentPanel; // Панель, где будут отображаться кнопки
+    private SaveManager _saveManager; // Ссылка на объект SaveManager
+    private string selectedFileName; // Переменная для хранения выбраного имени файла
 
-    private void Start()
+    private void Start() //Метод вызываемый при запуске скрипта в сцене 
     {
-        _saveManager=FindObjectOfType<SaveManager>();
-        if (_saveManager != null && !string.IsNullOrEmpty(_saveManager.saveDirectory))
+        _saveManager=SaveManager.Instance;
+        if (_saveManager != null && !string.IsNullOrEmpty(_saveManager.saveDirectory)) //проверяем не равен ли savemanager ничему и не пуст ли он
         {
             PopulateSaveLoadMenu();
         }
@@ -53,15 +54,39 @@ public class SaveLoadMenu : MonoBehaviour
             }
 
             newButton.GetComponent<Button>().onClick.AddListener(()=>LoadGame(fileName));
+            // Добавляем слушатель для удаления сохранения
+            newButton.GetComponent<Button>().onClick.AddListener(() => SelectFileForDeletion(fileName));
         }
     }
 
     private void LoadGame(string fileName)
     {
-        User loadUser = _saveManager.LoadGame(fileName);
-        if (loadUser != null)
+        User.Instance = _saveManager.LoadGame(fileName);
+        if (User.Instance != null)
         {
-            Debug.Log("Load player: " + loadUser.GetName());
+            Debug.Log("Load player: " + User.Instance.GetName());
+        }
+    }
+
+    private void SelectFileForDeletion(string fileName)
+    {
+        selectedFileName = fileName; // Сохраняем имя выбранного файла
+        Debug.Log("Selected file for deletion: " + selectedFileName);
+    }
+
+    // Метод для удаления сохранения
+    public void DeleteSelectedSave()
+    {
+        if (!string.IsNullOrEmpty(selectedFileName))
+        {
+            _saveManager.DeleteSaveFile(selectedFileName); // Удаляем файл через SaveManager
+            Debug.Log("File deleted: " + selectedFileName);
+            PopulateSaveLoadMenu(); // Обновляем меню после удаления
+            selectedFileName = null; // Сбрасываем имя файла
+        }
+        else
+        {
+            Debug.LogError("No file selected for deletion.");
         }
     }
 }

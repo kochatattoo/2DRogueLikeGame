@@ -6,15 +6,15 @@ namespace Assets.Scripts
     {
         public static User Instance {  get; set; }
 
-        private string name="";
+        public string name="";
         private int level=1;
         private int coins=10;
 
         public User()
         {
-            name = "";
+            name = "нет игрока";
             level = 1;
-            coins = 0;
+            coins = 10;
         }
         public User(string name, int level, int coins)
         {
@@ -44,13 +44,18 @@ namespace Assets.Scripts
         public int GetCoins()=>coins;
         public string GetName() => name;
       
-        public void SaveUserSerialize()
+        public void LoadLastGame()
         {
-            SaveManager.SaveUser(this);
+            User data = SaveManager.Instance.LoadLastGame();
+
+            name = data.name;
+            level = data.level;
+            coins = data.coins;
         }
-        public void LoadUserSerialize()
+
+        public void LoadUser(string fileName)
         {
-            User data = SaveManager.LoadUser();
+            User data = SaveManager.Instance.LoadGame(fileName);
             
             name = data.name;
             level = data.level;

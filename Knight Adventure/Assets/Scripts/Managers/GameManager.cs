@@ -19,7 +19,7 @@ namespace Assets.Scripts
             else 
             Destroy(this.gameObject);
 
-            user.LoadUserSerialize();
+            user = SaveManager.Instance.LoadLastGame();
         }
         private void Start()
         {
