@@ -11,8 +11,10 @@ public class MainMenuManager : MonoBehaviour
     [SerializeField] GameObject OptionMenu;
     [SerializeField] GameObject QuitMenu;
     [SerializeField] GameObject PanelBarMenu;
+    [SerializeField] GameObject User_Name_Panel;
+    
 
-
+    [SerializeField] TMP_Text User_Name;
     [SerializeField] TMP_InputField Name;
    private void Awake()
     {
@@ -22,6 +24,17 @@ public class MainMenuManager : MonoBehaviour
         OptionMenu.SetActive(false);
         QuitMenu.SetActive(false);
         PanelBarMenu.SetActive(true);
+        User_Name_Panel.SetActive(false);
+        
+    }
+    private void Start()
+    {
+        if (User.Instance!=null)
+        {
+            User_Name_Panel.SetActive(true);
+            User_Name.text = User.Instance.name;
+            Debug.Log(User.Instance.name + "User name !=null");
+        }
     }
 
     public void StartGame()
@@ -42,22 +55,18 @@ public class MainMenuManager : MonoBehaviour
         }
 
     }
-    public void DeleteSelectedFile()
-    {
-      
-    }
-
+ 
     public void Create()
     {
         string InputName=Name.text;
         if (Name.text.Length > 4)
         {
-            GameManager.Instance.user.SetName(InputName);
-            GameManager.Instance.user.SetLevel(1);
-            GameManager.Instance.user.SetCoins(10);
+            User.Instance.SetName(InputName);
+            User.Instance.SetLevel(1);
+            User.Instance.SetCoins(10);
 
-            SaveManager.SaveUser(GameManager.Instance.user);
-            SaveManager.Instance.SaveGame(GameManager.Instance.user, InputName);
+            SaveManager.SaveUser(User.Instance);
+            SaveManager.Instance.SaveGame(User.Instance, InputName);
             
         }
         else

@@ -63,7 +63,7 @@ public class PauseMenu : MonoBehaviour
     public void SaveGame()
     {
        // GameManager.Instance.user.SaveUserSerialize();
-        SaveManager.SaveUser(GameManager.Instance.user);
+        SaveManager.SaveUser(User.Instance);
     }
 
     public void LoadGame()

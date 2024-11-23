@@ -61,9 +61,9 @@ public class SaveLoadPrefs : MonoBehaviour
 
     private void GetUserData()
     {
-        _userName = GameManager.Instance.user.GetName();
-        _userlvl = GameManager.Instance.user.GetLevel();
-        _userCoins = GameManager.Instance.user.GetCoins();
+        _userName = User.Instance.GetName();
+        _userlvl = User.Instance.GetLevel();
+        _userCoins = User.Instance.GetCoins();
         _userPositionX = 0.0f;
         _userPositionY = 0.0f;
     }

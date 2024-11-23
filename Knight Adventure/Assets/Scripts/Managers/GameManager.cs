@@ -4,7 +4,6 @@ namespace Assets.Scripts
 {
     public class GameManager : MonoBehaviour
     {
-        public User user;
         public static GameManager Instance { get; private set; }
 
 
@@ -18,15 +17,13 @@ namespace Assets.Scripts
             }
             else 
             Destroy(this.gameObject);
-
-            user = SaveManager.Instance.LoadLastGame();
         }
+
         private void Start()
         {
-            Debug.Log(user.GetName());
-            
-        }
 
+          
+        }
 
     }
 }

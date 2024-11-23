@@ -11,7 +11,7 @@ public class SaveManager : MonoBehaviour
     public string saveDirectory;
     public static SaveManager Instance;
 
-    private void Start()
+    private void Awake()
     {
         if (Instance == null)
         {
@@ -29,6 +29,8 @@ public class SaveManager : MonoBehaviour
         {
             Directory.CreateDirectory(saveDirectory);
         }
+
+        User.Instance=LoadLastGame();
     }
 
     public void SaveGame(User user, string fileName)
@@ -60,6 +62,7 @@ public class SaveManager : MonoBehaviour
         string lastFileName = GetLastSaveFileName(); // Получаем имя последнего сохраненного файла
         if (lastFileName != null)
         {
+            Debug.Log("Load complete");
             return LoadGame(lastFileName); // Загружаем игру по имени файла
         }
         Debug.LogError("No save files found."); // Если нет файлов, выводим ошибку
@@ -84,13 +87,14 @@ public class SaveManager : MonoBehaviour
 
 
     //Надо почистить метод сохранения
+    //ОТ СЮДА
     public static void SaveUser(User user)
     {
         BinaryFormatter formatter = new BinaryFormatter();
         string path = Application.persistentDataPath + "/user.data";
         FileStream stream = new FileStream(path, FileMode.Create);
         
-        formatter.Serialize(stream, GameManager.Instance.user);
+        formatter.Serialize(stream, User.Instance);
         stream.Close();
         Debug.Log("Save Complete");
     }
@@ -131,6 +135,8 @@ public class SaveManager : MonoBehaviour
             return null;
         }
     }
+    //ПРИМЕРНО ДО СЮДА ЧИСТИТЬ
+
 
     // Новый метод для получения списка файлов сохранений
     public List<string> GetSaveFileNames()

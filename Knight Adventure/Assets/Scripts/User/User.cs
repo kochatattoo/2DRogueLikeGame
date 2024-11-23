@@ -11,10 +11,10 @@ namespace Assets.Scripts
         private int coins=10;
 
         public User()
-        {
-            name = "нет игрока";
-            level = 1;
-            coins = 10;
+        { 
+                name = "нет игрока";
+                level = 1;
+                coins = 10;         
         }
         public User(string name, int level, int coins)
         {
