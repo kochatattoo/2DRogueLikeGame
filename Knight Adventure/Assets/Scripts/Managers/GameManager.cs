@@ -1,5 +1,6 @@
 using Assets.Scripts;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -18,17 +19,56 @@ public class GameManager : MonoBehaviour
         {
             Instance = this; // Установка экземпляра
             DontDestroyOnLoad(gameObject); // Не уничтожать при загрузке новой сцены
-            
+            SceneManager.sceneLoaded += OnSceneLoaded; //Подписка на событие загрузки сцены
+            InitializeManagers();
+            InitializeSingletons();
         }
         else
         {
             Destroy(gameObject); // Удаляем второй экземпляр
         }
         // Инициализация ссылок на синглтоны
-        InitializeSingletons();
+       // InitializeSingletons();
     }
 
-    // Метод для инициализации ссылок на синглтоны
+    private void OnDestroy()
+    {
+        //Отписка от события - что бы не было утечки памяти
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        //Этот метод будет вызван всякий раз, когда загружается новая сцена
+        Debug.Log("Scene Loaded^ " + scene.name);
+        UpdateSceneReferences(); //Обновление ссылок или состояний
+    }
+    
+    private void UpdateSceneReferences()
+    {
+        // Обновите ссылки на объекты, если это необходимо
+        // Например, если у вас есть ссылки на объекты в определённой сцене
+        saveManager = FindObjectOfType<SaveManager>();
+        audioManager = FindObjectOfType<AudioManager>();
+        guiManager = FindObjectOfType<GUIManager>();
+        gameInput = FindObjectOfType<GameInput>();
+    }
+    private void InitializeManagers()
+    {
+        saveManager = FindObjectOfType<SaveManager>();
+        audioManager = FindObjectOfType<AudioManager>();
+        guiManager = FindObjectOfType<GUIManager>();
+        gameInput = FindObjectOfType<GameInput>();
+
+        // Проверяем, найдены ли менеджеры
+        Debug.Assert(saveManager != null, "SaveManager not found in the scene.");
+        Debug.Assert(audioManager != null, "AudioManager not found in the scene.");
+        Debug.Assert(guiManager != null, "GUIManager not found in the scene.");
+        Debug.Assert(gameInput != null, "GameInput not found in the scene");
+    }
+
+
+    //Метод для инициализации ссылок на синглтоны
     private void InitializeSingletons()
     {
         saveManager = SaveManager.Instance; // Получение ссылки на SaveManager

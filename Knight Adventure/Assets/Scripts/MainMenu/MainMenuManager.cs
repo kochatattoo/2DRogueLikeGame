@@ -17,7 +17,7 @@ public class MainMenuManager : MonoBehaviour
     [SerializeField] TMP_Text User_Name;
     [SerializeField] TMP_InputField Name;
 
-   [SerializeField] private SaveLoadMenu SaveMenu;
+    [SerializeField] private SaveLoadMenu SaveMenu;
 
    private void Awake()
     {
@@ -39,7 +39,7 @@ public class MainMenuManager : MonoBehaviour
             Debug.Log(User.Instance.name + "User name !=null");
         }
 
-        SaveMenu.Refresh += SaveMenu_Refresh;
+        SaveMenu._LoadGame += SaveMenu_Refresh;
     }
 
     private void SaveMenu_Refresh(object sender, System.EventArgs e)
@@ -54,10 +54,8 @@ public class MainMenuManager : MonoBehaviour
 
     public void StartGame()
     {
-
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         //Использовать поиск скриптов для подключения
-
     }
 
     public void LoadGame()
@@ -70,7 +68,6 @@ public class MainMenuManager : MonoBehaviour
         {
             Debug.LogError("Пользователь не существует");
         }
-
     }
  
     public void Create()

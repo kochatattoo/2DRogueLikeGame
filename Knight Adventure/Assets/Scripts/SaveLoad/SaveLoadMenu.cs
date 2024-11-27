@@ -9,7 +9,7 @@ public class SaveLoadMenu : MonoBehaviour
 {
     public GameObject buttonPrefab; // Префаб кнопки для файлов
     public Transform contentPanel; // Панель, где будут отображаться кнопки
-    public event EventHandler Refresh; // Событие обновления 
+    public event EventHandler _LoadGame; // Событие обновления 
 
     private SaveManager _saveManager; // Ссылка на объект SaveManager
     private string selectedFileName; // Переменная для хранения выбраного имени файла
@@ -104,7 +104,7 @@ public class SaveLoadMenu : MonoBehaviour
             Debug.Log("Load player: " + User.Instance.GetName());
         }
 
-        Refresh?.Invoke(this, EventArgs.Empty);
+        _LoadGame?.Invoke(this, EventArgs.Empty);
     }
 
     private void SelectFileForDeletion(string fileName)
