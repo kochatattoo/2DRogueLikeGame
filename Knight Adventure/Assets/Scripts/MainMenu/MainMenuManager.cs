@@ -16,6 +16,9 @@ public class MainMenuManager : MonoBehaviour
 
     [SerializeField] TMP_Text User_Name;
     [SerializeField] TMP_InputField Name;
+
+   [SerializeField] private SaveLoadMenu SaveMenu;
+
    private void Awake()
     {
         GameMenu.SetActive(true);
@@ -35,10 +38,23 @@ public class MainMenuManager : MonoBehaviour
             User_Name.text = User.Instance.name;
             Debug.Log(User.Instance.name + "User name !=null");
         }
+
+        SaveMenu.Refresh += SaveMenu_Refresh;
+    }
+
+    private void SaveMenu_Refresh(object sender, System.EventArgs e)
+    {
+        RefreshName();
+    }
+    public void RefreshName()
+    {
+        User_Name.text = User.Instance.name;
+        Debug.Log(User.Instance.name + "User name !=null");
     }
 
     public void StartGame()
     {
+
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         //Использовать поиск скриптов для подключения
 
@@ -74,5 +90,4 @@ public class MainMenuManager : MonoBehaviour
             Debug.Log("Слишком короткое Имя, Введите длинее");
 
     }
-
 }

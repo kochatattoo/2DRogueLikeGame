@@ -3,13 +3,17 @@ using System.IO;
 using UnityEngine.UI;
 using Assets.Scripts;
 using TMPro;
+using System;
 
 public class SaveLoadMenu : MonoBehaviour
 {
     public GameObject buttonPrefab; // Префаб кнопки для файлов
     public Transform contentPanel; // Панель, где будут отображаться кнопки
+    public event EventHandler Refresh; // Событие обновления 
+
     private SaveManager _saveManager; // Ссылка на объект SaveManager
     private string selectedFileName; // Переменная для хранения выбраного имени файла
+    private TMP_Text selectedText; // Ссылка на текст выбранного файла
 
     private void Start() //Метод вызываемый при запуске скрипта в сцене 
     {
@@ -52,12 +56,45 @@ public class SaveLoadMenu : MonoBehaviour
             {
                 Debug.LogError("TMP_Text component not found on button prefab");
             }
-
+            // Добавляем слушателя для загрузки сохранения
             newButton.GetComponent<Button>().onClick.AddListener(()=>LoadGame(fileName));
             // Добавляем слушатель для удаления сохранения
             newButton.GetComponent<Button>().onClick.AddListener(() => SelectFileForDeletion(fileName));
+            // Добавляем слушателя для выбора загрузки
+            newButton.GetComponent<Button>().onClick.AddListener(() => SelectFileForLoading(fileName, buttonText));
         }
     }
+
+
+    private void SelectFileForLoading(string fileName, TMP_Text buttonText)
+    {
+        DeselectCurrentFile(); // Снимаем выделение с текущего файла
+        selectedFileName = fileName; // Сохраняем имя выбранного файла
+        selectedText = buttonText; // Сохраняем ссылку на текст
+
+        HighlightSelectedFile(selectedText); // Подсвечиваем выбранный файл
+        Debug.Log("Selected file for loading: " + selectedFileName); // Логируем выбранный файл
+    }
+    private void HighlightSelectedFile(TMP_Text buttonText)
+    {
+        // Здесь можно добавить вашу логику обводки текста
+        buttonText.fontSize *= 1.1f; // Увеличьте размер шрифта, чтобы сделать текст более заметным
+        buttonText.color = Color.yellow; // Изменяем цвет текста на желтый или измените на свои цвета
+        // Можно использовать Material или Shader для создания эффекта обводки
+    }
+
+    // Метод для снятия выделения с текущего файла
+    private void DeselectCurrentFile()
+    {
+        if (selectedText != null)
+        {
+            // Возвращаем текст обратно к обычному стилю
+            selectedText.fontSize /= 1.1f; // Возвращаем прежний размер шрифта
+            selectedText.color = Color.black; // Меняем цвет текста обратно
+            // Также можно отменить обводку, если используете для этого Material или специальный эффект
+        }
+    }
+
 
     private void LoadGame(string fileName)
     {
@@ -66,6 +103,8 @@ public class SaveLoadMenu : MonoBehaviour
         {
             Debug.Log("Load player: " + User.Instance.GetName());
         }
+
+        Refresh?.Invoke(this, EventArgs.Empty);
     }
 
     private void SelectFileForDeletion(string fileName)
