@@ -12,6 +12,8 @@ public class GameManager : MonoBehaviour
     public GameInput gameInput; // Ссылка на GameInputManager
     public User user; // Ссылка на объект User
 
+    public MapManager mapManager; // Ссылка на MapManager
+
     private void Awake()
     {
         // Проверка на существование экземпляра GameManager
@@ -52,19 +54,23 @@ public class GameManager : MonoBehaviour
         audioManager = FindObjectOfType<AudioManager>();
         guiManager = FindObjectOfType<GUIManager>();
         gameInput = FindObjectOfType<GameInput>();
+        mapManager = FindObjectOfType<MapManager>();
     }
     private void InitializeManagers()
     {
+        //Поиск необходим элементов в объектах сцены
         saveManager = FindObjectOfType<SaveManager>();
         audioManager = FindObjectOfType<AudioManager>();
         guiManager = FindObjectOfType<GUIManager>();
         gameInput = FindObjectOfType<GameInput>();
+        mapManager = FindObjectOfType<MapManager>();
 
         // Проверяем, найдены ли менеджеры
-        Debug.Assert(saveManager != null, "SaveManager not found in the scene.");
+        Debug.Assert(saveManager != null, "SaveManager not found in the scene."); //Проверка на наличие подключения менеджера
         Debug.Assert(audioManager != null, "AudioManager not found in the scene.");
         Debug.Assert(guiManager != null, "GUIManager not found in the scene.");
         Debug.Assert(gameInput != null, "GameInput not found in the scene");
+        Debug.Assert(mapManager != null, "MapManager not found  in the scene");
     }
 
 
@@ -76,6 +82,7 @@ public class GameManager : MonoBehaviour
         guiManager = GUIManager.Instance; // Получение ссылки на GUIManager
         user = User.Instance; // Получение ссылки на User
         gameInput = GameInput.Instance; // Получение ссылки на GameInput
+        mapManager = MapManager.Instance; //Получение ссылки на MapManager
     }
 
 
