@@ -28,11 +28,17 @@ using Assets.Scripts;
             }
 
             DontDestroyOnLoad(gameObject);
-            FirstTextAwake();
-           //Debug.Log(GameManager.Instance.user.GetName());
-        }
+            //Debug.Log(GameManager.Instance.user.GetName());
 
-       private void FirstTextAwake()
+       }
+
+    private void Start()
+    {
+        User.Instance = SaveManager.Instance.LoadLastGame();
+        FirstTextAwake();
+    }
+
+    private void FirstTextAwake()
        {
         if (User.Instance == null)
             User.Instance = SaveManager.Instance.LoadLastGame();

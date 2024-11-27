@@ -61,13 +61,13 @@ namespace Assets.Scripts
             level = data.level;
             coins = data.coins;
         }
-        public void ResetData()
-        {
-            User data = SaveManager.ResetData();
+        //public void ResetData()
+        //{
+        //    User data = SaveManager.ResetData();
 
-            name = data.name;
-            level = data.level;
-            coins = data.coins;
-        }
+        //    name = data.name;
+        //    level = data.level;
+        //    coins = data.coins;
+        //}
     }
 }

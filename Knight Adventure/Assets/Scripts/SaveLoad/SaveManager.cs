@@ -40,6 +40,22 @@ public class SaveManager : MonoBehaviour
         Debug.Log("Game saved to "+saveDirectory+fileName+".json");
     }
 
+    public void QuickSaveGame(User user)
+    {
+        string fileName;
+        if(GetLastSaveFileName()==null)
+        {
+            Debug.Log("Save fille no exist!");
+            fileName = "QuickSaved";
+        }
+        else
+        {
+            fileName=GetLastSaveFileName();
+            DeleteSaveFile(GetLastSaveFileName());
+            SaveGame(user, fileName);
+        }
+    }
+
     public User LoadGame(string fileName)
     {
         string path = saveDirectory + fileName + ".json";
@@ -88,53 +104,53 @@ public class SaveManager : MonoBehaviour
 
     //Íàäî ïî÷èñòèòü ìåòîä ñîõğàíåíèÿ
     //ÎÒ ÑŞÄÀ
-    public static void SaveUser(User user)
-    {
-        BinaryFormatter formatter = new BinaryFormatter();
-        string path = Application.persistentDataPath + "/user.data";
-        FileStream stream = new FileStream(path, FileMode.Create);
+    //public static void SaveUser(User user)
+    //{
+    //    BinaryFormatter formatter = new BinaryFormatter();
+    //    string path = Application.persistentDataPath + "/user.data";
+    //    FileStream stream = new FileStream(path, FileMode.Create);
         
-        formatter.Serialize(stream, User.Instance);
-        stream.Close();
-        Debug.Log("Save Complete");
-    }
-    public static User LoadUser()
-    {
-        string path = Application.persistentDataPath + "/user.data";
-        if (File.Exists(path))
-        {
-            BinaryFormatter formatter = new BinaryFormatter();
-            FileStream stream = new FileStream(path, FileMode.Open);
+    //    formatter.Serialize(stream, User.Instance);
+    //    stream.Close();
+    //    Debug.Log("Save Complete");
+    //}
+    //public static User LoadUser()
+    //{
+    //    string path = Application.persistentDataPath + "/user.data";
+    //    if (File.Exists(path))
+    //    {
+    //        BinaryFormatter formatter = new BinaryFormatter();
+    //        FileStream stream = new FileStream(path, FileMode.Open);
 
-            User data = formatter.Deserialize(stream) as User;
-            stream.Close();
-            Debug.Log("Save has loaded");
+    //        User data = formatter.Deserialize(stream) as User;
+    //        stream.Close();
+    //        Debug.Log("Save has loaded");
 
-            return data;
-        }
-        else
-        {
-            Debug.LogError("Save file not found in" + path);
-            return null;
-        }
-    }
-    public static User ResetData()
-    {
-        User user = new User();
-        string path = Application.persistentDataPath + "/user.data";
+    //        return data;
+    //    }
+    //    else
+    //    {
+    //        Debug.LogError("Save file not found in" + path);
+    //        return null;
+    //    }
+    //}
+    //public static User ResetData()
+    //{
+    //    User user = new User();
+    //    string path = Application.persistentDataPath + "/user.data";
 
-        if (File.Exists(path))
-        {
-           File.Delete(path);
-            Debug.Log("Data reset complete");
-            return user;
-        }
-        else
-        {
-            Debug.LogError("Save file not found in" + path);
-            return null;
-        }
-    }
+    //    if (File.Exists(path))
+    //    {
+    //       File.Delete(path);
+    //        Debug.Log("Data reset complete");
+    //        return user;
+    //    }
+    //    else
+    //    {
+    //        Debug.LogError("Save file not found in" + path);
+    //        return null;
+    //    }
+    //}
     //ÏĞÈÌÅĞÍÎ ÄÎ ÑŞÄÀ ×ÈÑÒÈÒÜ
 
 

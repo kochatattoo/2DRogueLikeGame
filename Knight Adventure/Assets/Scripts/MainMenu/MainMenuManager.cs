@@ -40,6 +40,7 @@ public class MainMenuManager : MonoBehaviour
     public void StartGame()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        //Использовать поиск скриптов для подключения
 
     }
 
@@ -65,7 +66,7 @@ public class MainMenuManager : MonoBehaviour
             User.Instance.SetLevel(1);
             User.Instance.SetCoins(10);
 
-            SaveManager.SaveUser(User.Instance);
+            //SaveManager.SaveUser(User.Instance);
             SaveManager.Instance.SaveGame(User.Instance, InputName);
             
         }

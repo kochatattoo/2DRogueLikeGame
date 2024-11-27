@@ -58,27 +58,26 @@ public class PauseMenu : MonoBehaviour
     }
 
     
-    //»зменить данные методы на другие с образением к Instance
     //» реализовать быстрое сохранение с записью данных о состо€нии игры
     public void SaveGame()
     {
        // GameManager.Instance.user.SaveUserSerialize();
-        SaveManager.SaveUser(User.Instance);
+        SaveManager.Instance.QuickSaveGame(User.Instance);
     }
 
     public void LoadGame()
     {
         // GameManager.Instance.user.LoadUserSerialize();
-        SaveManager.LoadUser();
+        SaveManager.Instance.LoadLastGame();
         GUIManager.Instance.SetTextAreas();
     }
 
-    public void ResetData()
-    {
-        // GameManager.Instance.user.ResetData();
-        SaveManager.ResetData();
-        GUIManager.Instance.SetTextAreas();
-    }
+    //public void ResetData()
+    //{
+    //    // GameManager.Instance.user.ResetData();
+    //    SaveManager.ResetData();
+    //    GUIManager.Instance.SetTextAreas();
+    //}
 
     public void LoadMainMenuScene()
     {
