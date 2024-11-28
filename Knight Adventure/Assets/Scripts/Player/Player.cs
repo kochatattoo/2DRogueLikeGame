@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 [SelectionBase]
 public class Player : MonoBehaviour
@@ -35,6 +36,9 @@ public class Player : MonoBehaviour
     //Переменная отвечающая за хэлфбар
     private PlayerHealthManager _healthBar;
 
+    //Переменная отвечающая за свет от персонажа
+    private Light2D _playerLight;
+
     void Awake()
     {
         //Инициализируем синглтон
@@ -54,6 +58,8 @@ public class Player : MonoBehaviour
         //Подписываемся на события атаки 
         GameInput.Instance.OnPlayerAttack += Player_OnPlayerAttack;
         GameInput.Instance.OnPlayerMagicAttack += Player_OnPlayerMagicAttack;
+
+        LightSetting(); //Вызываем метод для установки света у нашего персонажа
     }
 
   
@@ -162,4 +168,19 @@ public class Player : MonoBehaviour
             _canTakeDamage = true;
     }
 
+    private void LightSetting()
+    {
+        // Создание источника света для игрока
+        GameObject lightObject = new GameObject("PlayerLight");
+        _playerLight = lightObject.AddComponent<Light2D>();
+        _playerLight.lightType = Light2D.LightType.Point;
+        _playerLight.intensity = 2f; // Яркость
+        _playerLight.pointLightInnerRadius = 1f; // Внутренний радиус
+        _playerLight.pointLightOuterRadius = 3f; // Внешний радиус
+        _playerLight.color=Color.cyan; // Цвето света
+
+        // Установка света как дочернего объекта персонажа
+        lightObject.transform.parent = transform; // Устанавливаем объект света как дочерний к персонажу
+        lightObject.transform.localPosition = new Vector3(0, 0.5f, 0); // Позиция относительно персонажа
+    }
 }
