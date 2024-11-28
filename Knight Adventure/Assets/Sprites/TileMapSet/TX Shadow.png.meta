@@ -451,7 +451,7 @@ TextureImporter:
         serializedVersion: 2
         x: 23
         y: 288
-        width: 32
+        width: 55
         height: 32
       alignment: 9
       pivot: {x: 0.5, y: 0.11}
@@ -462,27 +462,6 @@ TextureImporter:
       bones: []
       spriteID: 4903129ed139f8846a8d1cb80af53dd2
       internalID: 2004482215
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: TX Shadow_61
-      rect:
-        serializedVersion: 2
-        x: 56
-        y: 288
-        width: 32
-        height: 32
-      alignment: 9
-      pivot: {x: 0.5, y: 0.11}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 27fea436d60bd634b9e93c98d6666b0c
-      internalID: -1316300403
       vertices: []
       indices: 
       edges: []
