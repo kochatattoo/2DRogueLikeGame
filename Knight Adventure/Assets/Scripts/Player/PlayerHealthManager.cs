@@ -18,14 +18,16 @@ public class PlayerHealthManager : MonoBehaviour
     //{
     //    Instance = this;
     //}
-    private void Awake()
-    {
-        _maxHealth=Player.Instance.GetMaxHealth();
-        _healthAmount = Player.Instance.GetMaxHealth();
-    }
+    //private void Awake()
+    //{
+    //    _maxHealth=Player.Instance.GetMaxHealth();
+    //    _healthAmount = Player.Instance.GetMaxHealth();
+    //}
 
     private void Start()
     {
+        _maxHealth = Player.Instance.GetMaxHealth();
+        _healthAmount = Player.Instance.GetMaxHealth();
         Player.Instance.OnTakeHit += Player_OnTakeHit;
     }
 
