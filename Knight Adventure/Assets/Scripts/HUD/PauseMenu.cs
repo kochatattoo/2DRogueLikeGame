@@ -6,14 +6,22 @@ using Assets.Scripts;
 public class PauseMenu : MonoBehaviour
 {
     //ќбъ€вл€ем переменую ћеню паузы
-    [SerializeField] GameObject _pauseMenuDisplay;
+    public GameObject _pauseMenuDisplayPref;
+    private GameObject _pausemenuWindow;
 
     //ѕеременна€ отве€чающа€ за паузу
     private bool _pauseGame;
 
     private void Awake()
     {
-        _pauseMenuDisplay.SetActive(false);
+        // _pauseMenuDisplay.SetActive(false);
+
+        //if(_pauseMenuDisplayPref.gameObject != null)
+        //{
+        //    Destroy(_pauseMenuDisplayPref.gameObject);
+        //}
+
+        CloseCurrentWindow();
     }
     private void Start()
     {
@@ -42,14 +50,21 @@ public class PauseMenu : MonoBehaviour
 
     public void Resume()
     {
-        _pauseMenuDisplay.SetActive(false);
+       // _pauseMenuDisplay.SetActive(false);
+      // Destroy(_pauseMenuDisplayPref.gameObject);
+
+        CloseCurrentWindow();
         Time.timeScale = 1.0f;
         _pauseGame = false;
     }
 
     public void Pause()
     {
-        _pauseMenuDisplay.SetActive(true);
+        // _pauseMenuDisplay.SetActive(true);
+       // Instantiate(_pauseMenuDisplayPref);
+       // _pauseMenuDisplayPref.transform.SetParent(GameObject.Find("Canvas").transform, false);
+
+        OpenWindow();
         Time.timeScale = 0f;
         _pauseGame = true;
 
@@ -84,5 +99,26 @@ public class PauseMenu : MonoBehaviour
         Time.timeScale = 1.0f;
         SceneManager.LoadScene("Menu");
         GameInput.Instance.DisableMovement();
+    }
+
+    public void OpenWindow()
+    {
+        if(_pausemenuWindow != null)
+        {
+            Destroy( _pausemenuWindow );
+        }
+
+        _pausemenuWindow = Instantiate(_pauseMenuDisplayPref);
+        _pausemenuWindow.transform.SetParent(GameObject.Find("PauseMenu").transform, false );
+    }
+
+    public void CloseCurrentWindow()
+    {
+        if( _pausemenuWindow != null)
+        {
+            Destroy( _pausemenuWindow );
+            _pausemenuWindow = null;
+        }
+        Destroy(_pausemenuWindow);
     }
 }
