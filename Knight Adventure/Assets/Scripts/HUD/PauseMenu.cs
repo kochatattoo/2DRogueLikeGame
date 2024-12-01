@@ -21,12 +21,14 @@ public class PauseMenu : MonoBehaviour
         //    Destroy(_pauseMenuDisplayPref.gameObject);
         //}
 
-        CloseCurrentWindow();
+        // GUIManager.Instance.CloseCurrentWindow();
     }
     private void Start()
     {
         //Подписываемся на событие паузы
         GameInput.Instance.OnPlayerPause += Player_OnPlayerPause;
+
+        GUIManager.Instance.CloseCurrentWindow();
     }
 
    //Событие паузы
@@ -53,7 +55,7 @@ public class PauseMenu : MonoBehaviour
        // _pauseMenuDisplay.SetActive(false);
       // Destroy(_pauseMenuDisplayPref.gameObject);
 
-        CloseCurrentWindow();
+        GUIManager.Instance.CloseCurrentWindow();
         Time.timeScale = 1.0f;
         _pauseGame = false;
     }
@@ -61,10 +63,10 @@ public class PauseMenu : MonoBehaviour
     public void Pause()
     {
         // _pauseMenuDisplay.SetActive(true);
-       // Instantiate(_pauseMenuDisplayPref);
-       // _pauseMenuDisplayPref.transform.SetParent(GameObject.Find("Canvas").transform, false);
+        // Instantiate(_pauseMenuDisplayPref);
+        // _pauseMenuDisplayPref.transform.SetParent(GameObject.Find("Canvas").transform, false);
 
-        OpenWindow();
+        GUIManager.Instance.OpenWindow(0);
         Time.timeScale = 0f;
         _pauseGame = true;
 

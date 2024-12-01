@@ -99,7 +99,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 463388569180086103}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -5.0366154}
   m_LocalScale: {x: 0.48593748, y: 0.48593748, z: 0.48593748}
   m_ConstrainProportionsScale: 0
@@ -127,6 +127,8 @@ MonoBehaviour:
   _name: {fileID: 4513478680181870637}
   _coins: {fileID: 8547660209458349564}
   _level: {fileID: 5028283031149246818}
+  uiPrefabs:
+  - {fileID: 4584014276880947565, guid: b42ab704d81760a499e6293fb70582e9, type: 3}
 --- !u!1 &1547318489934298664
 GameObject:
   m_ObjectHideFlags: 0
@@ -1095,12 +1097,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7656667596947891804, guid: bfb77d5d2f2f2a346b829fb696cd8cde, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7807306985889727593, guid: bfb77d5d2f2f2a346b829fb696cd8cde, type: 3}
+      propertyPath: _pauseMenuDisplayPref
+      value: 
+      objectReference: {fileID: 4584014276880947565, guid: b42ab704d81760a499e6293fb70582e9, type: 3}
     - target: {fileID: 8445572240452636319, guid: bfb77d5d2f2f2a346b829fb696cd8cde, type: 3}
       propertyPath: m_Name
       value: PauseMenu
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 5505221405954071004, guid: bfb77d5d2f2f2a346b829fb696cd8cde, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bfb77d5d2f2f2a346b829fb696cd8cde, type: 3}
