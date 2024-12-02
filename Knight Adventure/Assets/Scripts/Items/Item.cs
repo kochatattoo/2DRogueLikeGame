@@ -8,9 +8,11 @@ public class Item
 {
     public string itemName; // Название предмета
     public string itemDescription; // Описание предмета
+
     public int itemID; // Уникальный идентификатор предмета
     public int quantity; // Количество предметов (если можно иметь несколько одинаковых)
     public Sprite itemSprite; // Изображение предмета для UI
+
     public int width; // Ширина предмета в сетке
     public int height; // Высота предмета в сетке
 

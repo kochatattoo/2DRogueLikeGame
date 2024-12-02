@@ -14,11 +14,49 @@ public class InventoryUI : MonoBehaviour
 
     private void Start()
     {
-        inventory = FindObjectOfType<Player>().GetComponent<Inventory>();
+        // Попытка получить компонент Inventory из объекта Player
+        if (inventory == null)
+        {
+            inventory = FindObjectOfType<Player>().GetComponent<Inventory>();
+            if (inventory == null)
+            {
+                Debug.LogError("Inventory component not found on Player!");
+            }
+        }
         // Создание слотов в инвентаре
         CreateInventorySlots();
+        UpdateInventoryUI(); // Обновляем интерфейс при старте
     }
 
+    public void UpdateInventoryUI()
+    {
+        // Удаляем старые элементы инвентаря
+        foreach (Transform child in slotsParent)
+        {
+            Destroy(child.gameObject);
+        }
+
+        // Обновляем текст монет (если есть)
+        coinsText.text = "Coins: " + inventory.coins;
+
+        // Создаем новые элементы для каждого предмета в инвентаре
+        for (int x = 0; x < inventory.width; x++)
+        {
+            for (int y = 0; y < inventory.height; y++)
+            {
+                Item item = inventory.GetItem(x, y);
+                if (item != null)
+                {
+                    GameObject slot = Instantiate(slotPrefab, slotsParent);
+                    slot.GetComponent<Image>().sprite = item.itemSprite; // Установка спрайта предмета
+
+                    // Если нужно, установите текст или другие компоненты
+                   // slot.transform.Find("ItemName").GetComponent<Text>().text = item.itemName; // Установите имя предмета
+                   // slot.transform.Find("ItemQuantity").GetComponent<Text>().text = item.quantity.ToString(); // Установите количество предметов
+                }
+            }
+        }
+    }
     private void CreateInventorySlots()
     {
         // Очистка предыдущих слотов
