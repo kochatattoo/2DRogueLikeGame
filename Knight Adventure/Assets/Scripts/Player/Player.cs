@@ -29,7 +29,7 @@ public class Player : MonoBehaviour
 
 
     //текущее здоровье, возможно ли получать урон, статус жизни
-    private int _currentHealth;
+    private float _currentHealth;
     private bool _canTakeDamage;
     private bool _isAlive = true;
 
@@ -110,14 +110,14 @@ public class Player : MonoBehaviour
     //Возвращаем статус нашего персонажа и получение закрытых переменных
     public bool IsRunning() { return _isRunning; }
     public bool IsAlive() =>_isAlive;
-    public float GetCurrentHealth()
+    public float GetCurrentHealth() => _currentHealth;
+    public float GetMaxHealth() => _maxHealth;
+  
+    public float SetCurrentHealth(float health)
     {
-        return _currentHealth;
+       return _currentHealth = health;
     }
-    public float GetMaxHealth()
-    {
-        return _maxHealth;
-    }
+
     //Получение позиции нашего персонажа относительно экрана
     public Vector3 GetPlayerScreenPosiyion()
     {

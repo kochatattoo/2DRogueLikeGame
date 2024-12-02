@@ -6,7 +6,8 @@ public class MapManager : MonoBehaviour
 {
     public static MapManager Instance {  get; private set; }
 
-    public List<GameObject> maps; // Список тайловых карт
+    public GameObject[] maps; // Список тайловых карт
+    private GameObject currentMap; // Текущая карта
     private int currentMapIndex = 0; // Индекс текущей карты
 
     private void Awake()
@@ -30,29 +31,64 @@ public class MapManager : MonoBehaviour
     // Метод для загрузки карты
     public void LoadMap(int index)
     {
-        if (index < 0 || index >= maps.Count)
+        if (index < 0 || index >= maps.Length)
             return;
 
-        // Скрыть все карты
-        foreach (var map in maps)
+        // Удаление текущей карты, если она существует
+        if (currentMap != null)
         {
-            map.gameObject.SetActive(false);
+            Destroy(currentMap); // Удаляем старую карту
         }
 
-        // Отображаем выбранную карту
-        maps[index].gameObject.SetActive(true);
-        currentMapIndex = index;
+        // Загружаем новую карту
+        currentMap = Instantiate(maps[index]); // Создаём новый экземпляр карты
+        currentMap.transform.position = Player.Instance.transform.position; // Устанавливаем нужную позицию, если необходимо
     }
 
     // Метод для переключения на следующую карту
     public void SwitchToNextMap()
     {
-        LoadMap((currentMapIndex + 1) % maps.Count);
+        currentMapIndex = (currentMapIndex + 1) % maps.Length;
+        LoadMap(currentMapIndex);
     }
 
     // Метод для переключения на предыдущую карту
     public void SwitchToPreviousMap()
     {
-        LoadMap((currentMapIndex - 1 + maps.Count) % maps.Count);
+        currentMapIndex=(currentMapIndex - 1 + maps.Length) % maps.Length;
+        LoadMap(currentMapIndex);
+    }
+
+
+    // Метод для сохранения состояния персонажа
+    private void SavePlayerState()
+    {
+        //Player player = FindObjectOfType<Player>();
+
+        Player player = Player.Instance;
+        Inventory playerInventory = FindObjectOfType<Inventory>();  
+
+        // Сохраняем здоровье
+        GameData.playerHealth = player.GetCurrentHealth(); // Например, используйте свой класс PlayerData
+        GameData.inventory = playerInventory; // Предполагается, что Inventory доступен
+    }
+
+    // Метод для восстановления состояния персонажа
+    private void RestorePlayerState()
+    {
+       // Player player = FindObjectOfType<Player>();
+
+        Player player = Player.Instance;
+        Inventory playerInventory = FindObjectOfType<Inventory>();
+
+        // Восстанавливаем здоровье
+        player.SetCurrentHealth(GameData.playerHealth);
+        // Здесь также можете восстановить инвентарь, если у вас есть такая логика
+        if (GameData.inventory != null)
+        {
+            playerInventory = GameData.inventory; // Восстановите инвентарь
+                                                     // Например, вызовите метод обновления UI инвентаря, если это необходимо
+           // playerInventory.UpdateInventoryUI(); // Настройте этот метод в вашем классе Inventory
+        }
     }
 }

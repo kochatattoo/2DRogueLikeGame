@@ -9,6 +9,9 @@ public class GameData : MonoBehaviour
 {
     public string playerName;
     public int playerLevel;
-    public float playerHealth;
+    public static float playerHealth;
+    public static Inventory inventory;
+
+
     // Добавь другие необходимые данные
 }

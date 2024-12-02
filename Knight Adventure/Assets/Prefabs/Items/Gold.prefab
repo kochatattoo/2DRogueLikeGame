@@ -149,5 +149,5 @@ MonoBehaviour:
     itemID: 1
     quantity: 1
     itemSprite: {fileID: -1937116324, guid: 294aa8f6575666b4e904ae79e399560f, type: 3}
-    width: 80
-    height: 80
+    width: 1
+    height: 1
