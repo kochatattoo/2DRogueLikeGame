@@ -18,6 +18,9 @@ using Assets.Scripts;
 
     private GameObject _currentWindow; // Текущее окно
 
+    public const int PAUSE_WINDOW = 0;
+    public const int INVENTORY_WINDOW = 1;
+
     //private User user;
 
        private void Awake()
@@ -64,7 +67,7 @@ using Assets.Scripts;
             // Создание нового окна
             _currentWindow = Instantiate(uiPrefabs[windowIndex]);
             // Убедитесь, что новое окно прикреплено к Canvas
-            _currentWindow.transform.SetParent(GameObject.Find("PauseMenu").transform, false);
+            _currentWindow.transform.SetParent(GameObject.Find("GUI_Display").transform, false);
         }
         else
         {
@@ -80,6 +83,12 @@ using Assets.Scripts;
             Destroy(_currentWindow);
             _currentWindow = null;
         }
+    }
+
+    public void OpenInventory()
+    {
+        OpenWindow(INVENTORY_WINDOW);
+        Debug.Log("Open Inventory");
     }
 
     private void FirstTextAwake()

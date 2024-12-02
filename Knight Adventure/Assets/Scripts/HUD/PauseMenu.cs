@@ -103,24 +103,24 @@ public class PauseMenu : MonoBehaviour
         GameInput.Instance.DisableMovement();
     }
 
-    public void OpenWindow()
-    {
-        if(_pausemenuWindow != null)
-        {
-            Destroy( _pausemenuWindow );
-        }
+    //public void OpenWindow()
+    //{
+    //    if(_pausemenuWindow != null)
+    //    {
+    //        Destroy( _pausemenuWindow );
+    //    }
 
-        _pausemenuWindow = Instantiate(_pauseMenuDisplayPref);
-        _pausemenuWindow.transform.SetParent(GameObject.Find("PauseMenu").transform, false );
-    }
+    //    _pausemenuWindow = Instantiate(_pauseMenuDisplayPref);
+    //    _pausemenuWindow.transform.SetParent(GameObject.Find("PauseMenu").transform, false );
+    //}
 
-    public void CloseCurrentWindow()
-    {
-        if( _pausemenuWindow != null)
-        {
-            Destroy( _pausemenuWindow );
-            _pausemenuWindow = null;
-        }
-        Destroy(_pausemenuWindow);
-    }
+    //public void CloseCurrentWindow()
+    //{
+    //    if( _pausemenuWindow != null)
+    //    {
+    //        Destroy( _pausemenuWindow );
+    //        _pausemenuWindow = null;
+    //    }
+    //    Destroy(_pausemenuWindow);
+    //}
 }

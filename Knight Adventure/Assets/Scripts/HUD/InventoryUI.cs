@@ -9,17 +9,17 @@ public class InventoryUI : MonoBehaviour
    
     public TextMeshProUGUI coinsText; // Текст для отображения количества монет
     public Inventory inventory; // Ссылка на инвентарь
-
     public GameObject slotPrefab; // Префаб слота инвентаря
     public Transform slotsParent;  // Родительский объект для слотов
 
-    void Start()
+    private void Start()
     {
+        inventory = FindObjectOfType<Player>().GetComponent<Inventory>();
         // Создание слотов в инвентаре
         CreateInventorySlots();
     }
 
-    void CreateInventorySlots()
+    private void CreateInventorySlots()
     {
         // Очистка предыдущих слотов
         foreach (Transform child in slotsParent)
@@ -44,7 +44,7 @@ public class InventoryUI : MonoBehaviour
         }
     }
 
-    void OnSlotClicked(int x, int y)
+    private void OnSlotClicked(int x, int y)
     {
         Item item = inventory.GetItem(x, y);
         if (item != null)

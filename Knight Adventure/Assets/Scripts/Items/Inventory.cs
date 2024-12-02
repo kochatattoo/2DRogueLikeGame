@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Inventory : MonoBehaviour
 {
-    public int width = 4;  // Ширина инвентаря
-    public int height = 4; // Высота инвентаря
+    public int width = 6;  // Ширина инвентаря
+    public int height = 6; // Высота инвентаря
     private Item[,] items;  // Двумерный массив для хранения предметов
 
     public int coins; // Количество монет
