@@ -20,6 +20,9 @@ using Assets.Scripts;
 
     public const int PAUSE_WINDOW = 0;
     public const int INVENTORY_WINDOW = 1;
+    public const int CHARACTERISTIC_WINDOW = 2;
+    public const int OPTION_WINDOW = 3;
+    public const int ACHIVMENT_WINDOW = 4;
 
     //private User user;
 
@@ -91,6 +94,23 @@ using Assets.Scripts;
         Debug.Log("Open Inventory");
     }
 
+    public void OpenCharacteristic()
+    {
+        OpenWindow(CHARACTERISTIC_WINDOW);
+        Debug.Log("Open Characteristic Window");
+    }
+
+    public void OpenOption()
+    {
+        OpenWindow(OPTION_WINDOW);
+        Debug.Log("Open Option Window");
+    }
+
+    public void OpenAchivements()
+    {
+        OpenWindow(ACHIVMENT_WINDOW);
+        Debug.Log("Open Achivements Window");
+    }
     private void FirstTextAwake()
     {
         if (User.Instance == null)
