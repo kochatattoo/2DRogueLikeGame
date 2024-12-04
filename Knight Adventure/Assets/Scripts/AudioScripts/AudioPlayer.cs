@@ -84,4 +84,9 @@ public class AudioPlayer : MonoBehaviour
             _playerAudioSource.PlayOneShot(_audioClips[0]);
         }
     }
+
+    public void SetVolume(float volume)
+    {
+        _playerAudioSource.volume=volume;
+    }
 }

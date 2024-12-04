@@ -52,8 +52,6 @@ public class Player : MonoBehaviour
         //Кешируем компоненты
         _rb= GetComponent<Rigidbody2D>();
         _knockBack=GetComponent<knockBack>();
-
-        SetPlayerCharacteristics();
     }
 
     private void Start()
@@ -66,6 +64,7 @@ public class Player : MonoBehaviour
         GameInput.Instance.OnPlayerAttack += Player_OnPlayerAttack;
         GameInput.Instance.OnPlayerMagicAttack += Player_OnPlayerMagicAttack;
 
+        SetPlayerCharacteristics();
         LightSetting(); //Вызываем метод для установки света у нашего персонажа
     }
 

@@ -32,6 +32,10 @@ public class GameManager : MonoBehaviour
         // Инициализация ссылок на синглтоны
        // InitializeSingletons();
     }
+    private void Start()
+    {
+        user = saveManager.LoadLastGame();
+    }
 
     private void OnDestroy()
     {

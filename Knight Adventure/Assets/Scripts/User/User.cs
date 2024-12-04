@@ -55,6 +55,7 @@ namespace Assets.Scripts
             name = data.name;
             level = data.level;
             coins = data.coins;
+            playerStats = data.playerStats;
         }
 
         public void LoadUser(string fileName)
@@ -64,6 +65,7 @@ namespace Assets.Scripts
             name = data.name;
             level = data.level;
             coins = data.coins;
+            playerStats = data.playerStats;
         }
         //public void ResetData()
         //{
