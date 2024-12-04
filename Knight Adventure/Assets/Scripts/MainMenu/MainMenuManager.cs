@@ -75,10 +75,12 @@ public class MainMenuManager : MonoBehaviour
         string InputName=Name.text;
         if (Name.text.Length > 4)
         {
+
             User.Instance.SetName(InputName);
             User.Instance.SetLevel(1);
             User.Instance.SetCoins(10);
 
+            SetCharacteristics(User.Instance);
             //SaveManager.SaveUser(User.Instance);
             SaveManager.Instance.SaveGame(User.Instance, InputName);
             
@@ -86,5 +88,10 @@ public class MainMenuManager : MonoBehaviour
         else
             Debug.Log("Слишком короткое Имя, Введите длинее");
 
+    }
+
+    private void SetCharacteristics(User user)
+    {
+        User.Instance.playerStats.CreatePlayerCharacteristics(user);
     }
 }

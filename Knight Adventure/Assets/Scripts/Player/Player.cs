@@ -1,3 +1,5 @@
+using Assets.Scripts.Player;
+using Assets.Scripts;
 using System;
 using System.Collections;
 using UnityEngine;
@@ -8,6 +10,10 @@ public class Player : MonoBehaviour
 {
     //Объявляем класс статическим и делаем из него СинглТон
     public static Player Instance {  get; private set; }
+
+    //Объявляем ссылку на статистику персонажа
+    public PlayerStats playerStats;
+
     //Объявляем события Смерти и получения урона
     public event EventHandler OnPlayerDeath;
     public event EventHandler OnTakeHit;
@@ -46,13 +52,14 @@ public class Player : MonoBehaviour
         //Кешируем компоненты
         _rb= GetComponent<Rigidbody2D>();
         _knockBack=GetComponent<knockBack>();
-       
+
+        SetPlayerCharacteristics();
     }
 
     private void Start()
     {
         //Устанавливаем текущее здоровье = максимальноиу
-        _currentHealth=_maxHealth;
+         _currentHealth=_maxHealth;
         //Может получать урон
         _canTakeDamage=true;
         //Подписываемся на события атаки 
@@ -145,6 +152,12 @@ public class Player : MonoBehaviour
         //Отслеживае состояние смерти
         DetectDeath();
     }
+    private void SetPlayerCharacteristics()
+    {
+        playerStats = User.Instance.playerStats;
+    }
+
+
     //Метод отслеживающий состояние смерти героя
     private void DetectDeath()
     {

@@ -1,3 +1,4 @@
+using Assets.Scripts.Player;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,7 +12,7 @@ public class GameData : MonoBehaviour
     public int playerLevel;
     public static float playerHealth;
     public static Inventory inventory;
-
+    public static PlayerStats stats;
 
     // Добавь другие необходимые данные
 }

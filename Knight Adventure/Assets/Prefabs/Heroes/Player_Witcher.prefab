@@ -62,9 +62,10 @@ GameObject:
   - component: {fileID: 4321220226903919994}
   - component: {fileID: 3210193476586843347}
   - component: {fileID: 1389518870108349314}
+  - component: {fileID: 788446368520586253}
   m_Layer: 0
   m_Name: Player_Witcher
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -208,6 +209,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfc9ea38bfb317f4b9225318f8e305d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerStats:
+    characterName: 
+    level: 0
+    currentExperience: 0
+    experienceToNextLevel: 0
+    maxHealth: 0
+    maxMana: 0
+    attack: 0
+    defense: 0
+    strength: 0
+    intelligence: 0
+    agility: 0
   _speed: 20
   _maxHealth: 10
   _damageRecoveryTime: 0.5
@@ -225,6 +238,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _knockBackForce: 1
   _knockBackMovingTimeMax: 0.3
+--- !u!114 &788446368520586253
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2783451701619702284}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45087fbe4652da64484754457c8cab21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  width: 6
+  height: 6
+  coins: 100
 --- !u!1 &3344575327089830432
 GameObject:
   m_ObjectHideFlags: 0
@@ -354,7 +382,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7224423504854642863}
-  - component: {fileID: 6213625413982117117}
   m_Layer: 0
   m_Name: PlayerInventory
   m_TagString: Untagged
@@ -377,21 +404,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 433093437036271474}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6213625413982117117
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3349039010287143279}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 45087fbe4652da64484754457c8cab21, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  width: 6
-  height: 6
-  coins: 0
 --- !u!1 &5325613727456110554
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,10 +1,14 @@
 ﻿
+using Assets.Scripts.Player;
+
 namespace Assets.Scripts
 {
     [System.Serializable]
     public class User
     {
         public static User Instance {  get; set; }
+
+        public PlayerStats playerStats;
 
         public string name="";
         private int level=1;
