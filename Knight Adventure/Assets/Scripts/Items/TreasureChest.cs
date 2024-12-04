@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -10,9 +11,11 @@ public class TreasureChest : MonoBehaviour
     public List<GameObject> possibleLootItems; // Список возможных предметов для выпадения
     public float interactionDistance = 3f; // Дистанция для взаимодействия
     public TextMeshProUGUI interactionText; // Текст для отображения подсказки
+    public EventHandler ChestIsOpen; // Событие открытие сундука
 
     private bool isOpen = false; // Статус открытия сундука
     private Transform playerTransform; // Ссылка на игрока
+
 
     private void Start()
     {
@@ -30,7 +33,8 @@ public class TreasureChest : MonoBehaviour
             // Отображаем клавишу нажатия
             ShowInteractionPrompt();
             OpenChest();
-           
+
+            ChestIsOpen?.Invoke(this, EventArgs.Empty);
         }
     }
     private void Update()
@@ -83,11 +87,14 @@ public class TreasureChest : MonoBehaviour
     private bool IsPositionAvailable(Vector3 position)
     {
         // Проверка доступности позиции с помощью OverlapCircle
-        float checkRadius = 0.5f; // Радиус проверки (в зависимости от размера объекта)
-        int layerMask = LayerMask.GetMask("Default"); // Укажите здесь нужный слой, если требуется
+        //float checkRadius = 0.5f; // Радиус проверки (в зависимости от размера объекта)
+        //int layerMask = LayerMask.GetMask("Default"); // Укажите здесь нужный слой, если требуется
 
         // Возвращаем true, если область свободна (нет коллайдеров), иначе false
-        return !Physics2D.OverlapCircle(position, checkRadius, layerMask);
+        // return !Physics2D.OverlapCircle(position, checkRadius, layerMask);
+
+        //заглушка
+        return true;
     }
 
     private Vector3 GetRandomDropPosition()
