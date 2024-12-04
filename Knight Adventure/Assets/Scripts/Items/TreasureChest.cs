@@ -67,7 +67,7 @@ public class TreasureChest : MonoBehaviour
         foreach (GameObject item in possibleLootItems)
         {
             // Случайное выпадение предмета (например, 50% шанс)
-            if (Random.value > 0.1f)
+            if (UnityEngine.Random.value > 0.1f)
             {
                 Vector3 dropPosition = GetRandomDropPosition(); // Получаем случайную позицию для выпадения предмета
                                                                 
@@ -103,8 +103,8 @@ public class TreasureChest : MonoBehaviour
         float dropRadius = 1.5f; // Задайте желаемый радиус
 
         // Генерируем случайные координаты по осям X и Y в пределах заданного радиуса
-        float randomX = Random.Range(-dropRadius, dropRadius);
-        float randomY = Random.Range(-dropRadius, dropRadius);
+        float randomX = UnityEngine.Random.Range(-dropRadius, dropRadius);
+        float randomY = UnityEngine.Random.Range(-dropRadius, dropRadius);
 
         // Возвращаем позицию с фиксированным Z (например, 0)
         return new Vector3(transform.position.x + randomX, transform.position.y + randomY, transform.position.z);
