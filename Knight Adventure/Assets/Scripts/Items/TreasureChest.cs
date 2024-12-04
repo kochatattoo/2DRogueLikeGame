@@ -63,18 +63,31 @@ public class TreasureChest : MonoBehaviour
         foreach (GameObject item in possibleLootItems)
         {
             // Случайное выпадение предмета (например, 50% шанс)
-            if (Random.value > 0.5f)
+            if (Random.value > 0.1f)
             {
-                Instantiate(item, lootPrefab.transform.position, Quaternion.identity);
-                Debug.Log($"Dropped: {item.name}");
+                Vector3 dropPosition = GetRandomDropPosition(); // Получаем случайную позицию для выпадения предмета
+                Instantiate(item, dropPosition, Quaternion.identity); // Создаем предмет в случайной позиции
+                Debug.Log($"Dropped: {item.name} at {dropPosition}");
             }
         }
+    }
+    private Vector3 GetRandomDropPosition()
+    {
+        // Определяем радиус выпадения предметов
+        float dropRadius = 1.5f; // Задайте желаемый радиус
+
+        // Генерируем случайные координаты по осям X и Y в пределах заданного радиуса
+        float randomX = Random.Range(-dropRadius, dropRadius);
+        float randomY = Random.Range(-dropRadius, dropRadius);
+
+        // Возвращаем позицию с фиксированным Z (например, 0)
+        return new Vector3(transform.position.x + randomX, transform.position.y + randomY, transform.position.z);
     }
     private void ShowInteractionPrompt()
     {
         interactionText.text = "Press 'E' to open the chest"; // Отображение подсказки
         interactionText.gameObject.SetActive(true); // Включаем текст
-        UpdatePromptPosition(); // Обновляем позицию подсказки
+       // UpdatePromptPosition(); // Обновляем позицию подсказки
     }
     private void HideInteractionPrompt()
     {
