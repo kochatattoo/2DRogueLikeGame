@@ -9,6 +9,7 @@ namespace Assets.Scripts
         public static User Instance {  get; set; }
 
         public PlayerStats playerStats;
+        public PlayerAchievements playerAchievements;
 
         public string name="";
         private int level=1;
@@ -56,6 +57,7 @@ namespace Assets.Scripts
             level = data.level;
             coins = data.coins;
             playerStats = data.playerStats;
+            playerAchievements = data.playerAchievements;
         }
 
         public void LoadUser(string fileName)
@@ -66,6 +68,7 @@ namespace Assets.Scripts
             level = data.level;
             coins = data.coins;
             playerStats = data.playerStats;
+            playerAchievements= data.playerAchievements;
         }
         //public void ResetData()
         //{

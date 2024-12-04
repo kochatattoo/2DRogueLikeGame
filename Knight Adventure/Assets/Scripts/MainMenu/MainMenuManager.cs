@@ -81,6 +81,7 @@ public class MainMenuManager : MonoBehaviour
             User.Instance.SetCoins(10);
 
             SetCharacteristics(User.Instance);
+
             //SaveManager.SaveUser(User.Instance);
             SaveManager.Instance.SaveGame(User.Instance, InputName);
             
@@ -93,5 +94,10 @@ public class MainMenuManager : MonoBehaviour
     private void SetCharacteristics(User user)
     {
         User.Instance.playerStats.CreatePlayerCharacteristics(user);
+    }
+
+    private void SetRewardsAndAchivements(User user)
+    {
+        User.Instance.playerAchievements = new Assets.Scripts.Player.PlayerAchievements();
     }
 }

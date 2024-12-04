@@ -13,6 +13,7 @@ public class Player : MonoBehaviour
 
     //Объявляем ссылку на статистику персонажа
     public PlayerStats playerStats;
+    public PlayerAchievements playerAchievements;
 
     //Объявляем события Смерти и получения урона
     public event EventHandler OnPlayerDeath;
@@ -65,6 +66,7 @@ public class Player : MonoBehaviour
         GameInput.Instance.OnPlayerMagicAttack += Player_OnPlayerMagicAttack;
 
         SetPlayerCharacteristics();
+        SetPlayerAchivements();
         LightSetting(); //Вызываем метод для установки света у нашего персонажа
     }
 
@@ -155,7 +157,11 @@ public class Player : MonoBehaviour
     {
         playerStats = User.Instance.playerStats;
     }
-
+    
+    private void SetPlayerAchivements()
+    {
+        playerAchievements=User.Instance.playerAchievements;
+    }
 
     //Метод отслеживающий состояние смерти героя
     private void DetectDeath()
