@@ -66,11 +66,30 @@ public class TreasureChest : MonoBehaviour
             if (Random.value > 0.1f)
             {
                 Vector3 dropPosition = GetRandomDropPosition(); // Получаем случайную позицию для выпадения предмета
-                Instantiate(item, dropPosition, Quaternion.identity); // Создаем предмет в случайной позиции
-                Debug.Log($"Dropped: {item.name} at {dropPosition}");
+                                                                
+                // Проверяем, доступно ли это место
+                if (IsPositionAvailable(dropPosition))
+                {
+                    Instantiate(item, dropPosition, Quaternion.identity); // Создаем предмет в случайной позиции
+                    Debug.Log($"Dropped: {item.name} at {dropPosition}");
+                }
+                else
+                {
+                    Debug.Log($"Position {dropPosition} is not available.");
+                }
             }
         }
     }
+    private bool IsPositionAvailable(Vector3 position)
+    {
+        // Проверка доступности позиции с помощью OverlapCircle
+        float checkRadius = 0.5f; // Радиус проверки (в зависимости от размера объекта)
+        int layerMask = LayerMask.GetMask("Default"); // Укажите здесь нужный слой, если требуется
+
+        // Возвращаем true, если область свободна (нет коллайдеров), иначе false
+        return !Physics2D.OverlapCircle(position, checkRadius, layerMask);
+    }
+
     private Vector3 GetRandomDropPosition()
     {
         // Определяем радиус выпадения предметов
