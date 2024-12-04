@@ -217,6 +217,34 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""Open"",
+            ""id"": ""86b34cff-2c14-456a-b184-45c97421cd6c"",
+            ""actions"": [
+                {
+                    ""name"": ""Open"",
+                    ""type"": ""Button"",
+                    ""id"": ""0e70881c-cdfd-467e-9b1c-6cfcab7fcddb"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""621fee90-face-49d1-aa65-455d1ee30318"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Open"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -229,12 +257,16 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         m_Combat = asset.FindActionMap("Combat", throwIfNotFound: true);
         m_Combat_Attack = m_Combat.FindAction("Attack", throwIfNotFound: true);
         m_Combat_Player_animation_attack = m_Combat.FindAction("Player_animation_attack", throwIfNotFound: true);
+        // Open
+        m_Open = asset.FindActionMap("Open", throwIfNotFound: true);
+        m_Open_Open = m_Open.FindAction("Open", throwIfNotFound: true);
     }
 
     ~@PlayerInputActions()
     {
         UnityEngine.Debug.Assert(!m_Player.enabled, "This will cause a leak and performance issues, PlayerInputActions.Player.Disable() has not been called.");
         UnityEngine.Debug.Assert(!m_Combat.enabled, "This will cause a leak and performance issues, PlayerInputActions.Combat.Disable() has not been called.");
+        UnityEngine.Debug.Assert(!m_Open.enabled, "This will cause a leak and performance issues, PlayerInputActions.Open.Disable() has not been called.");
     }
 
     public void Dispose()
@@ -400,6 +432,52 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         }
     }
     public CombatActions @Combat => new CombatActions(this);
+
+    // Open
+    private readonly InputActionMap m_Open;
+    private List<IOpenActions> m_OpenActionsCallbackInterfaces = new List<IOpenActions>();
+    private readonly InputAction m_Open_Open;
+    public struct OpenActions
+    {
+        private @PlayerInputActions m_Wrapper;
+        public OpenActions(@PlayerInputActions wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Open => m_Wrapper.m_Open_Open;
+        public InputActionMap Get() { return m_Wrapper.m_Open; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(OpenActions set) { return set.Get(); }
+        public void AddCallbacks(IOpenActions instance)
+        {
+            if (instance == null || m_Wrapper.m_OpenActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_OpenActionsCallbackInterfaces.Add(instance);
+            @Open.started += instance.OnOpen;
+            @Open.performed += instance.OnOpen;
+            @Open.canceled += instance.OnOpen;
+        }
+
+        private void UnregisterCallbacks(IOpenActions instance)
+        {
+            @Open.started -= instance.OnOpen;
+            @Open.performed -= instance.OnOpen;
+            @Open.canceled -= instance.OnOpen;
+        }
+
+        public void RemoveCallbacks(IOpenActions instance)
+        {
+            if (m_Wrapper.m_OpenActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        public void SetCallbacks(IOpenActions instance)
+        {
+            foreach (var item in m_Wrapper.m_OpenActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_OpenActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    public OpenActions @Open => new OpenActions(this);
     public interface IPlayerActions
     {
         void OnMove(InputAction.CallbackContext context);
@@ -409,5 +487,9 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
     {
         void OnAttack(InputAction.CallbackContext context);
         void OnPlayer_animation_attack(InputAction.CallbackContext context);
+    }
+    public interface IOpenActions
+    {
+        void OnOpen(InputAction.CallbackContext context);
     }
 }

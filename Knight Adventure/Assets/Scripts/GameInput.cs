@@ -17,6 +17,8 @@ public class GameInput : MonoBehaviour
     public event EventHandler OnPlayerPause;
     public event EventHandler OnPlayerMagicAttack;
 
+    public event EventHandler OnPlayerOpen;
+
     private void Awake()
     {
         //ќбъ€вл€ем синглтоном
@@ -29,9 +31,8 @@ public class GameInput : MonoBehaviour
         _playerInputActions.Combat.Attack.started += PlayerAttack_started;
         _playerInputActions.Combat.Player_animation_attack.started += Magic_Attack_started;
         _playerInputActions.Player.Pause.started += PlayerPause_started;
+        _playerInputActions.Open.Open.started += Open_started;
     }
-
-  
 
     //ћетод отвечающий за передвижение
     public Vector2 GetMovementVector()
@@ -75,6 +76,11 @@ public class GameInput : MonoBehaviour
     private void PlayerPause_started(InputAction.CallbackContext obj)
     {
         OnPlayerPause?.Invoke(this, EventArgs.Empty);
+    }
+
+    private void Open_started(InputAction.CallbackContext obj)
+    {
+        OnPlayerOpen?.Invoke(this, EventArgs.Empty);
     }
 
 }

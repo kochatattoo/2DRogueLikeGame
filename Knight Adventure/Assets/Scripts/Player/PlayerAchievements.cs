@@ -10,7 +10,7 @@ namespace Assets.Scripts.Player
         public PlayerAchievements()
         {
             rewards = new string[1];
-            rewards[0] = "Noa Rewards";
+            rewards[0] = "No Rewards";
             achievements = new string[1];
             achievements[0] = "No Achievements";
         }

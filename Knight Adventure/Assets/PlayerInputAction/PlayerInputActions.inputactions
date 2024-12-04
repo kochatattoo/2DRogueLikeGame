@@ -195,6 +195,34 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "Open",
+            "id": "86b34cff-2c14-456a-b184-45c97421cd6c",
+            "actions": [
+                {
+                    "name": "Open",
+                    "type": "Button",
+                    "id": "0e70881c-cdfd-467e-9b1c-6cfcab7fcddb",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "621fee90-face-49d1-aa65-455d1ee30318",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Open",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": []
