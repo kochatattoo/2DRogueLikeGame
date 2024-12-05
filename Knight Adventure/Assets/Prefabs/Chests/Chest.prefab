@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 877792116070974823}
   - component: {fileID: 5131191821778616920}
   m_Layer: 0
-  m_Name: ChestShadow
+  m_Name: ObjectsShadow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -92,14 +92,15 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 907407235639369073}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7548716823801d64aa59208d476632b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _sprite:
+  _sprites:
   - {fileID: -2006348829, guid: d5ca41e77f0fd084282c5868cdafe2eb, type: 3}
   - {fileID: 1027685843, guid: d5ca41e77f0fd084282c5868cdafe2eb, type: 3}
+  _shadowSprites: []
 --- !u!1 &5339129876036720087
 GameObject:
   m_ObjectHideFlags: 0
@@ -160,7 +161,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_TargetDisplay: 0
 --- !u!114 &919269600099161180
 MonoBehaviour:
@@ -213,7 +214,7 @@ GameObject:
   - component: {fileID: 2376568858995975915}
   - component: {fileID: 5538344963583291660}
   m_Layer: 0
-  m_Name: Light 2D (3)
+  m_Name: Chest_light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -438,9 +439,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7548716823801d64aa59208d476632b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _sprite:
+  _sprites:
   - {fileID: 1314101708, guid: 069aa966d97549344b6bb421a614df4c, type: 3}
   - {fileID: -372348835, guid: 069aa966d97549344b6bb421a614df4c, type: 3}
+  _shadowSprites:
+  - {fileID: -2006348829, guid: d5ca41e77f0fd084282c5868cdafe2eb, type: 3}
+  - {fileID: 1027685843, guid: d5ca41e77f0fd084282c5868cdafe2eb, type: 3}
 --- !u!114 &1484037539141819111
 MonoBehaviour:
   m_ObjectHideFlags: 0

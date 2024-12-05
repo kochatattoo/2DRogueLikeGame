@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 96531911792737369}
   - component: {fileID: 2629681078408154211}
   m_Layer: 0
-  m_Name: DoorShadow
+  m_Name: ObjectsShadow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -92,14 +92,15 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4364108004719729402}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7548716823801d64aa59208d476632b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _sprite:
+  _sprites:
   - {fileID: -1756775101, guid: d5ca41e77f0fd084282c5868cdafe2eb, type: 3}
   - {fileID: 2004482215, guid: d5ca41e77f0fd084282c5868cdafe2eb, type: 3}
+  _shadowSprites: []
 --- !u!1 &6637739667045454879
 GameObject:
   m_ObjectHideFlags: 0
@@ -200,9 +201,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7548716823801d64aa59208d476632b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _sprite:
+  _sprites:
   - {fileID: -385588222, guid: 069aa966d97549344b6bb421a614df4c, type: 3}
   - {fileID: 1627926681, guid: 069aa966d97549344b6bb421a614df4c, type: 3}
+  _shadowSprites:
+  - {fileID: -1756775101, guid: d5ca41e77f0fd084282c5868cdafe2eb, type: 3}
+  - {fileID: 2004482215, guid: d5ca41e77f0fd084282c5868cdafe2eb, type: 3}
 --- !u!70 &7104996648770509758
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -235,8 +239,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.024405956, y: 3.1058712}
-  m_Size: {x: 4.6698847, y: 6.0527744}
+  m_Offset: {x: -0.08015585, y: 3.1393213}
+  m_Size: {x: 3.9785852, y: 5.0492744}
   m_Direction: 0
 --- !u!114 &8928224805122210637
 MonoBehaviour:

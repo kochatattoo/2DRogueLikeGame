@@ -34,7 +34,7 @@ public class GameManager : MonoBehaviour
     }
     private void Start()
     {
-        user = saveManager.LoadLastGame();
+        user = saveManager.LoadLastGame(); 
     }
 
     private void OnDestroy()
