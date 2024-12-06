@@ -11,6 +11,9 @@ namespace Assets.Scripts
         public PlayerStats playerStats;
         public PlayerAchievements playerAchievements;
 
+        //Забыл про инвентарь
+        public Inventory playerInventory;
+
         public string name="";
         private int level=1;
         private int coins=10;
@@ -58,6 +61,9 @@ namespace Assets.Scripts
             coins = data.coins;
             playerStats = data.playerStats;
             playerAchievements = data.playerAchievements;
+
+            //Загружаем состояние инвентаря
+            playerInventory = data.playerInventory;
         }
 
         public void LoadUser(string fileName)
@@ -69,6 +75,9 @@ namespace Assets.Scripts
             coins = data.coins;
             playerStats = data.playerStats;
             playerAchievements= data.playerAchievements;
+
+            //Загружаем состояние инвентаря
+            playerInventory = data.playerInventory;
         }
         //public void ResetData()
         //{

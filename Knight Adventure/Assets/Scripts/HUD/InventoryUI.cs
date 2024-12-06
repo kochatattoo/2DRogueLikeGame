@@ -28,7 +28,7 @@ public class InventoryUI : MonoBehaviour
         UpdateInventoryUI(); // Обновляем интерфейс при старте
     }
 
-    public void UpdateInventoryUI()
+    public virtual void UpdateInventoryUI()
     {
         // Удаляем старые элементы инвентаря
         foreach (Transform child in slotsParent)
@@ -57,7 +57,7 @@ public class InventoryUI : MonoBehaviour
             }
         }
     }
-    private void CreateInventorySlots()
+    protected void CreateInventorySlots()
     {
         // Очистка предыдущих слотов
         foreach (Transform child in slotsParent)
@@ -82,7 +82,7 @@ public class InventoryUI : MonoBehaviour
         }
     }
 
-    private void OnSlotClicked(int x, int y)
+    protected virtual void OnSlotClicked(int x, int y)
     {
         Item item = inventory.GetItem(x, y);
         if (item != null)

@@ -69,7 +69,7 @@ public class MapManager : MonoBehaviour
         Inventory playerInventory = FindObjectOfType<Inventory>();  
 
         // Сохраняем здоровье
-        GameData.playerHealth = player.GetCurrentHealth(); // Например, используйте свой класс PlayerData
+        GameData.playerHealth = player.GetCurrentHealth(); // Например, используйте свой класс GameData
         GameData.inventory = playerInventory; // Предполагается, что Inventory доступен
     }
 

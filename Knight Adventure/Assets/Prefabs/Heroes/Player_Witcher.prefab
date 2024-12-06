@@ -87,7 +87,6 @@ Transform:
   - {fileID: 1039639707561621346}
   - {fileID: 4238631558147970106}
   - {fileID: 7165926802886904890}
-  - {fileID: 7224423504854642863}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &1579922429465814143
@@ -221,6 +220,11 @@ MonoBehaviour:
     strength: 0
     intelligence: 0
     agility: 0
+  playerAchievements:
+    rewards:
+    - Non Rewards
+    achievements:
+    - Non Achievements
   _speed: 20
   _maxHealth: 10
   _damageRecoveryTime: 0.5
@@ -373,37 +377,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _animatioAttack: {fileID: 1585101795893045098}
---- !u!1 &3349039010287143279
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 7224423504854642863}
-  m_Layer: 0
-  m_Name: PlayerInventory
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &7224423504854642863
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3349039010287143279}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 433093437036271474}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5325613727456110554
 GameObject:
   m_ObjectHideFlags: 0
