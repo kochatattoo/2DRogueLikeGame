@@ -8,7 +8,7 @@ using TMPro;
 public class StorageChest : MonoBehaviour
 {
     public EventHandler ChestOpened; // Событие открытия сундука
-    public Inventory chestInventory; // Инвентарь сундука
+    public StorageInventory chestInventory; // Инвентарь сундука
 
     private bool isOpen = false; // Статус открытия сундука
     public float interactionDistance = 3f; // Дистанция для взаимодействия
@@ -19,9 +19,9 @@ public class StorageChest : MonoBehaviour
 
     private void Start()
     {
-        GameObject chestObject = new GameObject("ChestInventory");
+        //GameObject chestObject = new GameObject("ChestInventory");
         // Добавьте компонент "Inventory" к созданному объекту
-        chestInventory = chestObject.AddComponent<Inventory>();
+        //chestInventory = chestObject.AddComponent<Inventory>();
 
         chestInventory.width = inventoryWidth; // Устанавливаем ширину
         chestInventory.height = inventoryHeight; // Устанавливаем высоту
