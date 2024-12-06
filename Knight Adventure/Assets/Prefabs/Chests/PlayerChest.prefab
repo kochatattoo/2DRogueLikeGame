@@ -84,53 +84,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 1
---- !u!1 &1562461469882397347
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 4058051157653829874}
-  - component: {fileID: 1552530372817882628}
-  m_Layer: 0
-  m_Name: PlayerChestInventory
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &4058051157653829874
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1562461469882397347}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 4317007153994853751}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1552530372817882628
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1562461469882397347}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c1b3d6e0b50a89d41aff173aaa959ce2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  width: 6
-  height: 6
-  coins: 0
 --- !u!1 &2002177983587035416
 GameObject:
   m_ObjectHideFlags: 0
@@ -176,9 +129,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   coinsText: {fileID: 0}
-  inventory: {fileID: 0}
-  slotPrefab: {fileID: 0}
-  slotsParent: {fileID: 0}
+  inventory: {fileID: 7085448677267702693}
+  slotPrefab: {fileID: 105359878510314464, guid: dee663ff162775643b84578b6e8a1b8a, type: 3}
+  slotsParent: {fileID: 1296393824763746014}
   storageChest: {fileID: 4287174055975489958}
 --- !u!1 &5368392650315281987
 GameObject:
@@ -510,6 +463,7 @@ GameObject:
   - component: {fileID: 8659169114611703565}
   - component: {fileID: 384361666159384174}
   - component: {fileID: 4287174055975489958}
+  - component: {fileID: 7085448677267702693}
   m_Layer: 0
   m_Name: PlayerChest
   m_TagString: Untagged
@@ -532,9 +486,8 @@ Transform:
   m_Children:
   - {fileID: 7880264749967097514}
   - {fileID: 7667060082599637813}
-  - {fileID: 8440454439689419410}
-  - {fileID: 4058051157653829874}
   - {fileID: 1296393824763746014}
+  - {fileID: 8440454439689419410}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &8659169114611703565
@@ -600,8 +553,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee0cad1999d691545b9ff1cf6f205898, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chestInventory: {fileID: 1552530372817882628}
+  chestInventory: {fileID: 7085448677267702693}
   interactionDistance: 3
   interactionText: {fileID: 4334827765457922017}
-  inventoryWidth: 4
-  inventoryHeight: 3
+  inventoryWindowPrefab: {fileID: 3735742290121073184, guid: dab0466ccb880f64190d55eac621920f, type: 3}
+  inventoryWidth: 6
+  inventoryHeight: 6
+--- !u!114 &7085448677267702693
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8542066839170598761}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1b3d6e0b50a89d41aff173aaa959ce2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  width: 6
+  height: 6
+  coins: 0

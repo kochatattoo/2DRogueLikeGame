@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using Assets.Scripts.Items;
 
 public class StorageInventoryUI : InventoryUI
 {
@@ -7,6 +8,8 @@ public class StorageInventoryUI : InventoryUI
 
     private void Start()
     {
+        //Находим необходимый нам объект
+        inventory = FindObjectOfType<StorageChest>().GetComponent<StorageInventory>();
         // Подписка на событие открытия сундука
         storageChest.ChestOpened += OnChestOpened;
         // Создание слотов и обновление интерфейса при старте

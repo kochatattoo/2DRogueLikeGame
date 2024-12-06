@@ -17,7 +17,9 @@ public class InventoryUI : MonoBehaviour
         // Попытка получить компонент Inventory из объекта Player
         if (inventory == null)
         {
-            inventory = FindObjectOfType<Player>().GetComponent<Inventory>();
+            //inventory = FindObjectOfType<Player>().GetComponent<Inventory>();
+
+            inventory = Player.Instance.playerInventory;
             if (inventory == null)
             {
                 Debug.LogError("Inventory component not found on Player!");

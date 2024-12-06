@@ -13,6 +13,7 @@ public class GameData : MonoBehaviour
     public static float playerHealth;
     public static Inventory inventory;
     public static PlayerStats stats;
+    public static PlayerAchievements playerAchievements;
 
     // Добавь другие необходимые данные
 }

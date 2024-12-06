@@ -15,9 +15,10 @@ public class StorageChest : MonoBehaviour
 
     public float interactionDistance = 3f; // Дистанция для взаимодействия
     public TextMeshProUGUI interactionText; // Текст для отображения подсказки
+    public GameObject inventoryWindowPrefab; // Префаб окна инвентаря
 
-    public int inventoryWidth = 4; // Ширина инвентаря
-    public int inventoryHeight = 3; // Высота инвентаря
+    public int inventoryWidth = 6; // Ширина инвентаря
+    public int inventoryHeight = 6; // Высота инвентаря
 
     private void Start()
     {
@@ -62,6 +63,7 @@ public class StorageChest : MonoBehaviour
 
         ChestOpened?.Invoke(this, EventArgs.Empty);
         // Здесь можно добавить код для отображения UI сундука
+        OpenInventory(); // Метод, открывающий инвентари игрока и сундука
     }
 
     public void AddItemToChest(Item item, int x, int y)
@@ -94,9 +96,24 @@ public class StorageChest : MonoBehaviour
         interactionText.transform.position = screenPos; // Устанавливаем позицию на экране
     }
 
+    private void OpenInventory()
+    {
+        // Создаем окно инвентаря
+        GameObject inventoryWindow = Instantiate(inventoryWindowPrefab); // Создаем экземпляр префаба окна инвентаря
+
+        // Получаем доступ к компоненту InventoryUI или StorageInventoryUI
+        InventoryUI inventoryUI = inventoryWindow.GetComponent<InventoryUI>();
+
+        if (inventoryUI != null)
+        {
+            inventoryUI.inventory = chestInventory; // Связываем инвентарь сундука с UI-инвентаря
+            inventoryUI.UpdateInventoryUI(); // Обновляем UI для сундука
+        }
+    }
 
     private void OnDestroy() // Отписываемся от события при уничтожении объекта
     {
         GameInput.Instance.OnPlayerOpen -= PlayerOnPlayerOpen;
     }
+
 }

@@ -62,7 +62,7 @@ GameObject:
   - component: {fileID: 4321220226903919994}
   - component: {fileID: 3210193476586843347}
   - component: {fileID: 1389518870108349314}
-  - component: {fileID: 788446368520586253}
+  - component: {fileID: 3123862110624027575}
   m_Layer: 0
   m_Name: Player_Witcher
   m_TagString: Player
@@ -225,6 +225,7 @@ MonoBehaviour:
     - Non Rewards
     achievements:
     - Non Achievements
+  playerInventory: {fileID: 3123862110624027575}
   _speed: 20
   _maxHealth: 10
   _damageRecoveryTime: 0.5
@@ -242,7 +243,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _knockBackForce: 1
   _knockBackMovingTimeMax: 0.3
---- !u!114 &788446368520586253
+--- !u!114 &3123862110624027575
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

@@ -15,6 +15,10 @@ public class Player : MonoBehaviour
     public PlayerStats playerStats;
     public PlayerAchievements playerAchievements;
 
+    //ќбъ€вл€ю ссылку на инвентарь персонажа - но на данный момент в инвентарь доступ происходит
+    //„ерез ссылание на свой же объект 
+    public Inventory playerInventory;
+
     //ќбъ€вл€ем событи€ —мерти и получени€ урона
     public event EventHandler OnPlayerDeath;
     public event EventHandler OnTakeHit;
