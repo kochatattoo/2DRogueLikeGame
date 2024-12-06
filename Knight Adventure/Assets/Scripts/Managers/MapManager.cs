@@ -66,7 +66,9 @@ public class MapManager : MonoBehaviour
         //Player player = FindObjectOfType<Player>();
 
         Player player = Player.Instance;
-        Inventory playerInventory = FindObjectOfType<Inventory>();  
+
+        //Inventory playerInventory = FindObjectOfType<Inventory>();  
+        Inventory playerInventory = Player.Instance.playerInventory;
 
         // Сохраняем здоровье
         GameData.playerHealth = player.GetCurrentHealth(); // Например, используйте свой класс GameData
@@ -79,7 +81,9 @@ public class MapManager : MonoBehaviour
        // Player player = FindObjectOfType<Player>();
 
         Player player = Player.Instance;
-        Inventory playerInventory = FindObjectOfType<Inventory>();
+
+        //Inventory playerInventory = FindObjectOfType<Inventory>();
+        Inventory playerInventory = Player.Instance.playerInventory;
 
         // Восстанавливаем здоровье
         player.SetCurrentHealth(GameData.playerHealth);

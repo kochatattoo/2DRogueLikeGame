@@ -23,6 +23,7 @@ using Assets.Scripts;
     public const int CHARACTERISTIC_WINDOW = 2;
     public const int OPTION_WINDOW = 3;
     public const int ACHIVMENT_WINDOW = 4;
+    public const int STORAGE_CHEST_WINDOW = 5;
 
     //private User user;
 
@@ -46,6 +47,7 @@ using Assets.Scripts;
     {
         User.Instance = SaveManager.Instance.LoadLastGame();
         FirstTextAwake();
+        CloseCurrentWindow();
     }
 
     public void SetTextAreas()
@@ -110,6 +112,20 @@ using Assets.Scripts;
     {
         OpenWindow(ACHIVMENT_WINDOW);
         Debug.Log("Open Achivements Window");
+    }
+
+    public void OpenStorageChestInventory(Inventory chestInventory)
+    {
+        OpenWindow(STORAGE_CHEST_WINDOW);
+
+        // Получаем доступ к компоненту инвентаря (InventoryUI)
+        InventoryUI inventoryUI = _currentWindow.GetComponent<InventoryUI>();
+        if (inventoryUI != null)
+        {
+            // Связываем инвентарь сундука с соответствующим UI
+            inventoryUI.inventory = chestInventory;
+            inventoryUI.UpdateInventoryUI(); // Обновляем UI для отображения содержимого сундука
+        }
     }
     private void FirstTextAwake()
     {

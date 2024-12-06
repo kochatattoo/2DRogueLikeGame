@@ -84,55 +84,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 1
---- !u!1 &2002177983587035416
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1296393824763746014}
-  - component: {fileID: 4854346047497798042}
-  m_Layer: 0
-  m_Name: PlayerChestUI
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1296393824763746014
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2002177983587035416}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 4317007153994853751}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4854346047497798042
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2002177983587035416}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 412c536c8eef6864ab4c85a94c418590, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  coinsText: {fileID: 0}
-  inventory: {fileID: 7085448677267702693}
-  slotPrefab: {fileID: 105359878510314464, guid: dee663ff162775643b84578b6e8a1b8a, type: 3}
-  slotsParent: {fileID: 1296393824763746014}
-  storageChest: {fileID: 4287174055975489958}
 --- !u!1 &5368392650315281987
 GameObject:
   m_ObjectHideFlags: 0
@@ -167,7 +118,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 2.93, y: -1.0932}
+  m_AnchoredPosition: {x: 1.93, y: -0.58}
   m_SizeDelta: {x: 7.643, y: 2.1864}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8076520522448559856
@@ -486,7 +437,6 @@ Transform:
   m_Children:
   - {fileID: 7880264749967097514}
   - {fileID: 7667060082599637813}
-  - {fileID: 1296393824763746014}
   - {fileID: 8440454439689419410}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -556,7 +506,6 @@ MonoBehaviour:
   chestInventory: {fileID: 7085448677267702693}
   interactionDistance: 3
   interactionText: {fileID: 4334827765457922017}
-  inventoryWindowPrefab: {fileID: 3735742290121073184, guid: dab0466ccb880f64190d55eac621920f, type: 3}
   inventoryWidth: 6
   inventoryHeight: 6
 --- !u!114 &7085448677267702693

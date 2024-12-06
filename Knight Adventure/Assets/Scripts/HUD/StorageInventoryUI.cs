@@ -10,6 +10,8 @@ public class StorageInventoryUI : InventoryUI
     {
         //Находим необходимый нам объект
         inventory = FindObjectOfType<StorageChest>().GetComponent<StorageInventory>();
+        //ТУТ ОШИБКА - надо сделать что бы он находил объект сам
+        storageChest =FindAnyObjectByType<StorageChest>();
         // Подписка на событие открытия сундука
         storageChest.ChestOpened += OnChestOpened;
         // Создание слотов и обновление интерфейса при старте

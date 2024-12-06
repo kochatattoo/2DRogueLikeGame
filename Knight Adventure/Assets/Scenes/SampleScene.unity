@@ -175,16 +175,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4617643405912893780, guid: 1f454e951fe0a66418625dc154b773b0, type: 3}
+      propertyPath: inventoryWindowPrefab
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6572857945714035440, guid: 1f454e951fe0a66418625dc154b773b0, type: 3}
       propertyPath: m_Name
       value: Taverna
       objectReference: {fileID: 0}
     - target: {fileID: 6572857945714035440, guid: 1f454e951fe0a66418625dc154b773b0, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 6963438465991856618, guid: 1f454e951fe0a66418625dc154b773b0, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1f454e951fe0a66418625dc154b773b0, type: 3}
@@ -1019,10 +1024,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: GUI_Manager
       objectReference: {fileID: 0}
-    - target: {fileID: 3765711283860627306, guid: d5340e8a1fde4ec41a16d8b755ffac8a, type: 3}
-      propertyPath: m_FillAmount
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5180684606918476575, guid: d5340e8a1fde4ec41a16d8b755ffac8a, type: 3}
       propertyPath: m_Pivot.x
       value: 0.49999982
@@ -1101,10 +1102,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5180684606918476575, guid: d5340e8a1fde4ec41a16d8b755ffac8a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6851630251226208188, guid: d5340e8a1fde4ec41a16d8b755ffac8a, type: 3}
-      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
