@@ -1,8 +1,8 @@
+using Assets.Scripts;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using Assets.Scripts;
-   
+
 //Автоматически добавляем необходимые компонент
 [RequireComponent (typeof(SceneManager))]
 //Класс отвечающий за реализацию HUD меню
@@ -124,7 +124,7 @@ using Assets.Scripts;
         {
             // Связываем инвентарь сундука с соответствующим UI
             inventoryUI.inventory = chestInventory;
-            inventoryUI.UpdateInventoryUI(); // Обновляем UI для отображения содержимого сундука
+            //inventoryUI.UpdateInventoryUI(); // Обновляем UI для отображения содержимого сундука
         }
     }
     private void FirstTextAwake()

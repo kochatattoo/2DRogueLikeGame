@@ -60,7 +60,7 @@ public class StorageChest : MonoBehaviour
        // isOpen = true; // Устанавливаем статус на открытый
         HideInteractionPrompt(); // Скрываем подсказку при открытии
 
-        ChestOpened?.Invoke(this, EventArgs.Empty);
+         ChestOpened?.Invoke(this, EventArgs.Empty);
         // Открытие инвентаря сундука через GUI_Manager
         GUIManager.Instance.OpenStorageChestInventory(chestInventory); // Открываем инвентарь через GUI_Manager
     }

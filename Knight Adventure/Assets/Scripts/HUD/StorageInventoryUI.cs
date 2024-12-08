@@ -11,17 +11,13 @@ public class StorageInventoryUI : InventoryUI
         //Находим необходимый нам объект
         inventory = FindObjectOfType<StorageChest>().GetComponent<StorageInventory>();
         //ТУТ ОШИБКА - надо сделать что бы он находил объект сам
-        storageChest =FindAnyObjectByType<StorageChest>();
-        // Подписка на событие открытия сундука
-        storageChest.ChestOpened += OnChestOpened;
+        storageChest = FindAnyObjectByType<StorageChest>();
+
+        //хотел указать прямой путь к префабу ,но не потребовалось
+        //slotPrefab = Resources.Load<GameObject>("Prefabs/Buttons/InventorySlot");
+
         // Создание слотов и обновление интерфейса при старте
         CreateInventorySlots();
-        UpdateInventoryUI();
-    }
-
-    private void OnChestOpened(object sender, System.EventArgs e)
-    {
-        // Обновляем интерфейс при открытии сундука
         UpdateInventoryUI();
     }
 
@@ -32,6 +28,7 @@ public class StorageInventoryUI : InventoryUI
 
         // Здесь можно добавить дополнительные изменения или улучшения для конкретного инвентаря сундука, если это необходимо
     }
+
 
     // Метод, который может быть расширен для других нужд, например, выбора предмета
     protected override void OnSlotClicked(int x, int y)

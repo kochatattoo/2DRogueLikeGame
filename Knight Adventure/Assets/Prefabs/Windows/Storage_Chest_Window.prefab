@@ -52,7 +52,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   coinsText: {fileID: 2875696415473295581}
   inventory: {fileID: 0}
-  slotPrefab: {fileID: 3449640550109794559}
+  slotPrefab: {fileID: 105359878510314464, guid: dee663ff162775643b84578b6e8a1b8a, type: 3}
   slotsParent: {fileID: 1730918434182153288}
   storageChest: {fileID: 0}
 --- !u!1 &5085804798682066018
@@ -387,11 +387,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dee663ff162775643b84578b6e8a1b8a, type: 3}
---- !u!1 &3449640550109794559 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 105359878510314464, guid: dee663ff162775643b84578b6e8a1b8a, type: 3}
-  m_PrefabInstance: {fileID: 3362435810421658399}
-  m_PrefabAsset: {fileID: 0}
 --- !u!224 &4417253848124318929 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1433544863794673614, guid: dee663ff162775643b84578b6e8a1b8a, type: 3}
