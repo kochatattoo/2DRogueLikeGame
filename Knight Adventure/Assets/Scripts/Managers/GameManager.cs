@@ -12,6 +12,9 @@ public class GameManager : MonoBehaviour
     public GameInput gameInput; // —сылка на GameInputManager
     public User user; // —сылка на объект User
 
+    // ”брать User на Player и почитстить все
+    // ћетоды Awake и Start посмотреть что бы все срабатывали правильно
+
     public MapManager mapManager; // —сылка на MapManager
 
     private void Awake()

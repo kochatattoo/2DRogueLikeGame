@@ -5,6 +5,8 @@ using UnityEngine;
 
 //Тестовый
 //Класс который содержит данные, которые мы хотим сохранить
+
+// Сделать как описание данных мира
 [System.Serializable]
 public class GameData : MonoBehaviour
 {
