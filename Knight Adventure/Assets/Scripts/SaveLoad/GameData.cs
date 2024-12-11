@@ -5,17 +5,21 @@ using UnityEngine;
 
 //Тестовый
 //Класс который содержит данные, которые мы хотим сохранить
+//Пока нигде не используется 
 
 // Сделать как описание данных мира
 [System.Serializable]
 public class GameData : MonoBehaviour
 {
-    public string playerName;
-    public int playerLevel;
-    public static float playerHealth;
-    public static Inventory inventory;
-    public static PlayerStats stats;
-    public static PlayerAchievements playerAchievements;
+    public List<ObjectData> objectsData; // Состояние всех объектов
+    public PlayerData playerData; // Состояние игрока (например, здоровье, уровень и т.д.)
+}
 
-    // Добавь другие необходимые данные
+[System.Serializable]
+public class ObjectData
+{
+    public string objectName; // Название объекта
+    public Vector3 position; // Позиция объекта
+    public Quaternion rotation; // Поворот объекта
+    public bool isActive; // Активен ли объект
 }
