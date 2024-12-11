@@ -8,6 +8,7 @@ namespace Assets.Scripts.Player
         public int level;
         public float currentExperience;
         public float experienceToNextLevel;
+        public float speed;
         public int maxHealth;
         public int maxMana;
         public int attack;
@@ -23,6 +24,7 @@ namespace Assets.Scripts.Player
             level = 1;
             currentExperience = 0f;
             experienceToNextLevel = 10f;
+            speed =  15.0f;
             maxHealth = 15;
             maxMana = 15;
             attack = 2;

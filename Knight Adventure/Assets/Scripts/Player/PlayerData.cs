@@ -1,6 +1,7 @@
 ﻿using Assets.Scripts.Player;
 
-    public class PlayerData
+[System.Serializable]
+public class PlayerData
     {
         public static  PlayerData Instance {  get; private set; }
 

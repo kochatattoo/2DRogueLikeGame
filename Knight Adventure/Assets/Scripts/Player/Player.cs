@@ -27,8 +27,8 @@ public class Player : MonoBehaviour
 
     //Объявляем переменные
     //Скорость, макс здоровье, время востановления для получения урона, место нахождения
-    [SerializeField] private float _speed = 15.0f;
-    [SerializeField] private int _maxHealth = 10;
+    [SerializeField] private float _speed;
+    [SerializeField] private int _maxHealth;
     [SerializeField] private float _damageRecoveryTime = 0.5f;
     Vector2 _inputVector;
 
@@ -73,6 +73,7 @@ public class Player : MonoBehaviour
 
         SetPlayerCharacteristics();
         SetPlayerAchivements();
+        SetPlayerActuallyStats();
         //SetPlayerInventory();
         LightSetting(); //Вызываем метод для установки света у нашего персонажа
     }
@@ -164,7 +165,13 @@ public class Player : MonoBehaviour
     {
         playerStats = GameManager.Instance.playerData.playerStats;
     }
-    
+
+    // В данном методе будем устанавливать Актуальные характеристики нашего персонажа от егго статистик
+    private void SetPlayerActuallyStats()
+    {
+        _speed = playerStats.speed;
+        _maxHealth = playerStats.maxHealth;
+    }
     private void SetPlayerAchivements()
     {
         playerAchievements = GameManager.Instance.playerData.playerAchievements;
