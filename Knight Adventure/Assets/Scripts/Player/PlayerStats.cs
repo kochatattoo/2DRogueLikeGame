@@ -16,11 +16,11 @@ namespace Assets.Scripts.Player
         public int intelligence;
         public int agility;
 
-        public void CreatePlayerCharacteristics(User user)
+        public void CreatePlayerCharacteristics(PlayerData playerData)
         {
             // Заглушка для создания характеристики персонажа
-            characterName = user.name;
-            level = user.GetLevel();
+            characterName =playerData.name;
+            level = 1;
             currentExperience = 0f;
             experienceToNextLevel = 10f;
             maxHealth = 15;

@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
-using Assets.Scripts;
+
 
 public class MainMenuManager : MonoBehaviour
 {
@@ -32,11 +32,11 @@ public class MainMenuManager : MonoBehaviour
     }
     private void Start()
     {
-        if (User.Instance!=null)
+        if (GameManager.Instance.playerData !=null)
         {
             User_Name_Panel.SetActive(true);
-            User_Name.text = User.Instance.name;
-            Debug.Log(User.Instance.name + "User name !=null");
+            User_Name.text = GameManager.Instance.playerData.name;
+            Debug.Log(GameManager.Instance.playerData.name + "User name !=null");
         }
 
         SaveMenu._LoadGame += SaveMenu_Refresh;
@@ -48,8 +48,8 @@ public class MainMenuManager : MonoBehaviour
     }
     public void RefreshName()
     {
-        User_Name.text = User.Instance.name;
-        Debug.Log(User.Instance.name + "User name !=null");
+        User_Name.text = GameManager.Instance.playerData.name;
+        Debug.Log(GameManager.Instance.playerData.name + "User name !=null");
     }
 
     public void StartGame()
@@ -76,14 +76,12 @@ public class MainMenuManager : MonoBehaviour
         if (Name.text.Length > 4)
         {
 
-            User.Instance.SetName(InputName);
-            User.Instance.SetLevel(1);
-            User.Instance.SetCoins(10);
+            GameManager.Instance.playerData.name=InputName;
 
-            SetCharacteristics(User.Instance);
+            SetCharacteristics();
 
             //SaveManager.SaveUser(User.Instance);
-            SaveManager.Instance.SaveGame(User.Instance, InputName);
+            SaveManager.Instance.SaveGame(GameManager.Instance.playerData, InputName);
             
         }
         else
@@ -91,13 +89,13 @@ public class MainMenuManager : MonoBehaviour
 
     }
 
-    private void SetCharacteristics(User user)
+    private void SetCharacteristics()
     {
-        User.Instance.playerStats.CreatePlayerCharacteristics(user);
+        GameManager.Instance.playerData.playerStats.CreatePlayerCharacteristics(GameManager.Instance.playerData);
     }
 
-    private void SetRewardsAndAchivements(User user)
+    private void SetRewardsAndAchivements()
     {
-        User.Instance.playerAchievements = new Assets.Scripts.Player.PlayerAchievements();
+        GameManager.Instance.playerData.playerAchievements = new Assets.Scripts.Player.PlayerAchievements();
     }
 }

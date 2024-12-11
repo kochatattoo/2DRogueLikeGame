@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using Assets.Scripts;
 
 [RequireComponent(typeof(GameObject))]
 public class PauseMenu : MonoBehaviour
@@ -79,7 +78,7 @@ public class PauseMenu : MonoBehaviour
     public void SaveGame()
     {
        // GameManager.Instance.user.SaveUserSerialize();
-        SaveManager.Instance.QuickSaveGame(User.Instance);
+        SaveManager.Instance.QuickSaveGame(GameManager.Instance.playerData);
     }
 
     public void LoadGame()

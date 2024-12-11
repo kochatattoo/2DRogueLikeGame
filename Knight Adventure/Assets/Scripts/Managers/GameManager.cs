@@ -1,4 +1,3 @@
-using Assets.Scripts;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -10,12 +9,12 @@ public class GameManager : MonoBehaviour
     public AudioManager audioManager; // Ссылка на AudioManager
     public GUIManager guiManager; // Ссылка на GUIManager
     public GameInput gameInput; // Ссылка на GameInputManager
-    public User user; // Ссылка на объект User
+    public MapManager mapManager; // Ссылка на MapManager
 
-    // Убрать User на Player и почитстить все
+    public PlayerData playerData; // Ссылка на объект PlayerData
+
     // Методы Awake и Start посмотреть что бы все срабатывали правильно
 
-    public MapManager mapManager; // Ссылка на MapManager
 
     private void Awake()
     {
@@ -37,7 +36,7 @@ public class GameManager : MonoBehaviour
     }
     private void Start()
     {
-        user = saveManager.LoadLastGame(); 
+        playerData = saveManager.LoadLastGame(); 
     }
 
     private void OnDestroy()
@@ -62,6 +61,7 @@ public class GameManager : MonoBehaviour
         guiManager = FindObjectOfType<GUIManager>();
         gameInput = FindObjectOfType<GameInput>();
         mapManager = FindObjectOfType<MapManager>();
+
     }
     private void InitializeManagers()
     {
@@ -71,6 +71,7 @@ public class GameManager : MonoBehaviour
         guiManager = FindObjectOfType<GUIManager>();
         gameInput = FindObjectOfType<GameInput>();
         mapManager = FindObjectOfType<MapManager>();
+
 
         // Проверяем, найдены ли менеджеры
         Debug.Assert(saveManager != null, "SaveManager not found in the scene."); //Проверка на наличие подключения менеджера
@@ -87,16 +88,16 @@ public class GameManager : MonoBehaviour
         saveManager = SaveManager.Instance; // Получение ссылки на SaveManager
         audioManager = AudioManager.Instance; // Получение ссылки на AudioManager
         guiManager = GUIManager.Instance; // Получение ссылки на GUIManager
-        user = User.Instance; // Получение ссылки на User
         gameInput = GameInput.Instance; // Получение ссылки на GameInput
         mapManager = MapManager.Instance; //Получение ссылки на MapManager
+        playerData = PlayerData.Instance; //Получение ссылки на PlayerData
     }
 
 
     // Вы можете добавить методы, которые обращаются к функционалу других менеджеров
     public void SaveGame(string fileName)
     {
-        saveManager.SaveGame(user, fileName);
+        saveManager.SaveGame(playerData, fileName);
     }
 
     // Другие методы для взаимодействия с другими синглтонами...

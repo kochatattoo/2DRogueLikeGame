@@ -1,7 +1,6 @@
 using UnityEngine;
 using System.IO;
 using UnityEngine.UI;
-using Assets.Scripts;
 using TMPro;
 using System;
 
@@ -98,10 +97,10 @@ public class SaveLoadMenu : MonoBehaviour
 
     private void LoadGame(string fileName)
     {
-        User.Instance = _saveManager.LoadGame(fileName);
-        if (User.Instance != null)
+        GameManager.Instance.playerData = _saveManager.LoadGame(fileName);
+        if (GameManager.Instance.playerData != null)
         {
-            Debug.Log("Load player: " + User.Instance.GetName());
+            Debug.Log("Load player: " + GameManager.Instance.playerData.name);
         }
 
         _LoadGame?.Invoke(this, EventArgs.Empty);

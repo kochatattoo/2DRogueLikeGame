@@ -6,6 +6,7 @@ public class AudioPlayer : MonoBehaviour
     [SerializeField] private AudioSource _playerAudioSource;
     [SerializeField] private AudioClip[] _audioClips;
     [SerializeField] private Player _player;
+    //Возможно сделать прямое обращение 
 
     [SerializeField] float _stepInterval = 0.5f;
     private float _stepTimer;

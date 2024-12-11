@@ -1,4 +1,3 @@
-using Assets.Scripts;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -53,7 +52,7 @@ using UnityEngine.SceneManagement;
 
     private void Start()
     {
-        User.Instance = SaveManager.Instance.LoadLastGame();
+        GameManager.Instance.playerData = SaveManager.Instance.LoadLastGame();
         FirstTextAwake();
         CloseCurrentWindow();
     }
@@ -61,9 +60,9 @@ using UnityEngine.SceneManagement;
     public void SetTextAreas()
     {
         //Присваиваем значеие переменных из значения полей USER
-        _name.text = User.Instance.GetName();
-        _coins.text = User.Instance.GetCoins().ToString();
-        _level.text = User.Instance.GetLevel().ToString();
+        _name.text = GameManager.Instance.playerData.name;
+        _coins.text = GameManager.Instance.playerData.coins.ToString();
+        _level.text = GameManager.Instance.playerData.level.ToString();
     }
 
     public void OpenWindow(int windowIndex)
@@ -137,12 +136,12 @@ using UnityEngine.SceneManagement;
     }
     private void FirstTextAwake()
     {
-        if (User.Instance == null)
-            User.Instance = SaveManager.Instance.LoadLastGame();
+        if (Player.Instance == null)
+            GameManager.Instance.playerData = SaveManager.Instance.LoadLastGame();
 
         //Присваиваем значеие переменных из значения полей USER
-        _name.text = User.Instance.GetName();
-        _coins.text = User.Instance.GetCoins().ToString();
-        _level.text = User.Instance.GetLevel().ToString();
+        _name.text = GameManager.Instance.playerData.name;
+        _coins.text = GameManager.Instance.playerData.coins.ToString();
+        _level.text = GameManager.Instance.playerData.level.ToString();
     }
 }

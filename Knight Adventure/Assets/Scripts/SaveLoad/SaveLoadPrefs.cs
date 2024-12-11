@@ -1,4 +1,3 @@
-using Assets.Scripts;
 using UnityEngine;
 
 public class SaveLoadPrefs : MonoBehaviour
@@ -61,9 +60,9 @@ public class SaveLoadPrefs : MonoBehaviour
 
     private void GetUserData()
     {
-        _userName = User.Instance.GetName();
-        _userlvl = User.Instance.GetLevel();
-        _userCoins = User.Instance.GetCoins();
+        _userName = GameManager.Instance.playerData.name;
+        _userlvl = GameManager.Instance.playerData.level;
+        _userCoins = GameManager.Instance.playerData.coins;
         _userPositionX = 0.0f;
         _userPositionY = 0.0f;
     }

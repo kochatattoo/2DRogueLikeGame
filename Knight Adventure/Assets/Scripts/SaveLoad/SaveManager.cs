@@ -1,4 +1,3 @@
-using Assets.Scripts;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -30,17 +29,17 @@ public class SaveManager : MonoBehaviour
             Directory.CreateDirectory(saveDirectory);
         }
 
-        User.Instance=LoadLastGame();
+        GameManager.Instance.playerData=LoadLastGame();
     }
 
-    public void SaveGame(User user, string fileName)
+    public void SaveGame(PlayerData playerData, string fileName)
     {
-        string json =JsonUtility.ToJson(user);
+        string json =JsonUtility.ToJson(playerData);
         File.WriteAllText(saveDirectory+fileName+".json", json);
         Debug.Log("Game saved to "+saveDirectory+fileName+".json");
     }
 
-    public void QuickSaveGame(User user)
+    public void QuickSaveGame(PlayerData playerData)
     {
         string fileName;
         if(GetLastSaveFileName()==null)
@@ -52,19 +51,19 @@ public class SaveManager : MonoBehaviour
         {
             fileName=GetLastSaveFileName();
             DeleteSaveFile(GetLastSaveFileName());
-            SaveGame(user, fileName);
+            SaveGame(playerData, fileName);
         }
     }
 
-    public User LoadGame(string fileName)
+    public PlayerData LoadGame(string fileName)
     {
         string path = saveDirectory + fileName + ".json";
         if (File.Exists(path))
         {
             string json = File.ReadAllText(path);
-            User user = JsonUtility.FromJson<User>(json);
+            PlayerData playerData = JsonUtility.FromJson<PlayerData>(json);
             Debug.Log("Game loaded from " + path);
-            return user;
+            return playerData;
         }
         else
         {
@@ -73,7 +72,7 @@ public class SaveManager : MonoBehaviour
         }
     }
     
-    public User LoadLastGame()
+    public PlayerData LoadLastGame()
     {
         string lastFileName = GetLastSaveFileName(); // Получаем имя последнего сохраненного файла
         if (lastFileName != null)

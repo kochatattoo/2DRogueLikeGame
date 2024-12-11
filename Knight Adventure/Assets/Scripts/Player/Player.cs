@@ -1,5 +1,4 @@
 using Assets.Scripts.Player;
-using Assets.Scripts;
 using System;
 using System.Collections;
 using UnityEngine;
@@ -10,6 +9,9 @@ public class Player : MonoBehaviour
 {
     //Объявляем класс статическим и делаем из него СинглТон
     public static Player Instance {  get; private set; }
+
+    //Класс хранящий информацию для загрузыки и сохранения
+    public PlayerData playerData;
 
     //Объявляем ссылку на статистику персонажа
     public PlayerStats playerStats;
@@ -71,6 +73,7 @@ public class Player : MonoBehaviour
 
         SetPlayerCharacteristics();
         SetPlayerAchivements();
+        //SetPlayerInventory();
         LightSetting(); //Вызываем метод для установки света у нашего персонажа
     }
 
@@ -159,13 +162,18 @@ public class Player : MonoBehaviour
     }
     private void SetPlayerCharacteristics()
     {
-        playerStats = User.Instance.playerStats;
+        playerStats = GameManager.Instance.playerData.playerStats;
     }
     
     private void SetPlayerAchivements()
     {
-        playerAchievements=User.Instance.playerAchievements;
+        playerAchievements = GameManager.Instance.playerData.playerAchievements;
     }
+
+    //private void SetPlayerInventory()
+    //{
+    //    playerInventory =GameManager.Instance.playerData.playerInventory;
+    //}
 
     //Метод отслеживающий состояние смерти героя
     private void DetectDeath()
