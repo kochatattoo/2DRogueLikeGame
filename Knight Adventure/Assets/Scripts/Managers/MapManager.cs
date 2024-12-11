@@ -60,39 +60,39 @@ public class MapManager : MonoBehaviour
     }
 
 
-    // Метод для сохранения состояния персонажа
-    private void SavePlayerState()
-    {
-        //Player player = FindObjectOfType<Player>();
+    //// Метод для сохранения состояния персонажа
+    //private void SavePlayerState()
+    //{
+    //    //Player player = FindObjectOfType<Player>();
 
-        Player player = Player.Instance;
+    //    Player player = Player.Instance;
 
-        //Inventory playerInventory = FindObjectOfType<Inventory>();  
-        Inventory playerInventory = Player.Instance.playerInventory;
+    //    //Inventory playerInventory = FindObjectOfType<Inventory>();  
+    //    Inventory playerInventory = Player.Instance.playerInventory;
 
-        // Сохраняем здоровье
-        GameData.playerHealth = player.GetCurrentHealth(); // Например, используйте свой класс GameData
-        GameData.inventory = playerInventory; // Предполагается, что Inventory доступен
-    }
+    //    // Сохраняем здоровье
+    //    GameData.playerHealth = player.GetCurrentHealth(); // Например, используйте свой класс GameData
+    //    GameData.inventory = playerInventory; // Предполагается, что Inventory доступен
+    //}
 
-    // Метод для восстановления состояния персонажа
-    private void RestorePlayerState()
-    {
-       // Player player = FindObjectOfType<Player>();
+    //// Метод для восстановления состояния персонажа
+    //private void RestorePlayerState()
+    //{
+    //   // Player player = FindObjectOfType<Player>();
 
-        Player player = Player.Instance;
+    //    Player player = Player.Instance;
 
-        //Inventory playerInventory = FindObjectOfType<Inventory>();
-        Inventory playerInventory = Player.Instance.playerInventory;
+    //    //Inventory playerInventory = FindObjectOfType<Inventory>();
+    //    Inventory playerInventory = Player.Instance.playerInventory;
 
-        // Восстанавливаем здоровье
-        player.SetCurrentHealth(GameData.playerHealth);
-        // Здесь также можете восстановить инвентарь, если у вас есть такая логика
-        if (GameData.inventory != null)
-        {
-            playerInventory = GameData.inventory; // Восстановите инвентарь
-                                                     // Например, вызовите метод обновления UI инвентаря, если это необходимо
-           // playerInventory.UpdateInventoryUI(); // Настройте этот метод в вашем классе Inventory
-        }
-    }
+    //    // Восстанавливаем здоровье
+    //    player.SetCurrentHealth(GameData.playerHealth);
+    //    // Здесь также можете восстановить инвентарь, если у вас есть такая логика
+    //    if (GameData.inventory != null)
+    //    {
+    //        playerInventory = GameData.inventory; // Восстановите инвентарь
+    //                                                 // Например, вызовите метод обновления UI инвентаря, если это необходимо
+    //       // playerInventory.UpdateInventoryUI(); // Настройте этот метод в вашем классе Inventory
+    //    }
+    //}
 }

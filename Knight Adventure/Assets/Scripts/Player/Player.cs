@@ -28,7 +28,7 @@ public class Player : MonoBehaviour
     //Объявляем переменные
     //Скорость, макс здоровье, время востановления для получения урона, место нахождения
     [SerializeField] private float _speed;
-    [SerializeField] private int _maxHealth;
+    [SerializeField] private float _maxHealth;
     [SerializeField] private float _damageRecoveryTime = 0.5f;
     Vector2 _inputVector;
 
@@ -63,8 +63,6 @@ public class Player : MonoBehaviour
 
     private void Start()
     {
-        //Устанавливаем текущее здоровье = максимальноиу
-         _currentHealth=_maxHealth;
         //Может получать урон
         _canTakeDamage=true;
         //Подписываемся на события атаки 
@@ -74,6 +72,10 @@ public class Player : MonoBehaviour
         SetPlayerCharacteristics();
         SetPlayerAchivements();
         SetPlayerActuallyStats();
+
+        //Устанавливаем текущее здоровье = максимальноиу
+        _currentHealth = _maxHealth;
+
         //SetPlayerInventory();
         LightSetting(); //Вызываем метод для установки света у нашего персонажа
     }
