@@ -55,6 +55,7 @@ public class PauseMenu : MonoBehaviour
       // Destroy(_pauseMenuDisplayPref.gameObject);
 
         GUIManager.Instance.CloseCurrentWindow();
+        GameInput.Instance.EnableMovement(); // Включает действия игрока
         Time.timeScale = 1.0f;
         _pauseGame = false;
     }
@@ -66,6 +67,7 @@ public class PauseMenu : MonoBehaviour
         // _pauseMenuDisplayPref.transform.SetParent(GameObject.Find("Canvas").transform, false);
 
         GUIManager.Instance.OpenPlayerWindow(0);
+        GameInput.Instance.DisableMovement(); // Отключает действия игрока, но не дает действия для кнопки ESC
         Time.timeScale = 0f;
         _pauseGame = true;
 

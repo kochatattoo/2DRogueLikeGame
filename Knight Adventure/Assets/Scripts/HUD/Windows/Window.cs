@@ -28,6 +28,8 @@ public class Window : MonoBehaviour
         Time.timeScale = 0; // Ставим игру на паузу
         isPaused = true; // Устанавливаем флаг паузы
         activeWindow = this; // Устанавливаем активное окно
+
+        GameInput.Instance.DisableMovement(); // Отключает действия игрока, но не дает действия для кнопки ESC
     }
 
     public virtual void CloseWindow()
@@ -41,6 +43,7 @@ public class Window : MonoBehaviour
             activeWindow = null; // Убираем ссылку на активное окно
             ShowNextWindow(); // Показ следующего окна из очереди
 
+            GameInput.Instance.EnableMovement(); // Включает действия игрока
             Destroy(this.gameObject);
         }
     }
