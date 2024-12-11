@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//мхцде ме хяонкэгсеряъ
+
 [System.Serializable]
 public class CharacterState
 {
