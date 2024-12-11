@@ -40,6 +40,8 @@ public class Window : MonoBehaviour
             isPaused = false; // Сбрасываем флаг паузы
             activeWindow = null; // Убираем ссылку на активное окно
             ShowNextWindow(); // Показ следующего окна из очереди
+
+            Destroy(this.gameObject);
         }
     }
 
