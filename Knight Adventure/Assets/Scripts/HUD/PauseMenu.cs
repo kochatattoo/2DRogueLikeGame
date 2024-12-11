@@ -65,7 +65,7 @@ public class PauseMenu : MonoBehaviour
         // Instantiate(_pauseMenuDisplayPref);
         // _pauseMenuDisplayPref.transform.SetParent(GameObject.Find("Canvas").transform, false);
 
-        GUIManager.Instance.OpenWindow(0);
+        GUIManager.Instance.OpenPlayerWindow(0);
         Time.timeScale = 0f;
         _pauseGame = true;
 

@@ -13,24 +13,18 @@ using UnityEngine.SceneManagement;
         [SerializeField] TextMeshProUGUI _coins;
         [SerializeField] TextMeshProUGUI _level;
 
-    public GameObject[] uiPrefabs; // Массив префабов для UI окон
-
-    // Делать массив так как может быть несколько открытых окон
-    // Делать массив очередь окон и проверку на наличие и отсутствие окон 
-    // Доп функционал - окно с бэком (что бы закрыть функицонал сбоку)
-    // Информативные окна с важной инфой должны быть в приоретете
-    // Сделать универсальный класс окна завязанный на очередь и проверку открытости/закрытости
-    // С помощью родительского класса можно настроить анимацию и болванку с кнопками
-    // И наследовать от него все остальные окна
+    public GameObject[] uiPrefabsPlayerWindows; // Массив префабов для UI окон
+    public GameObject[] uiPrefabsInformationWindows; // Массив префабов для окон с информацией
+    public GameObject[] uiPrefabsWarningWindows; // Массив префабов для окон с ошибками 
 
     private GameObject _currentWindow; // Текущее окно
 
-    public const int PAUSE_WINDOW = 0;
-    public const int INVENTORY_WINDOW = 1;
-    public const int CHARACTERISTIC_WINDOW = 2;
-    public const int OPTION_WINDOW = 3;
-    public const int ACHIVMENT_WINDOW = 4;
-    public const int STORAGE_CHEST_WINDOW = 5;
+    public const int PAUSE_WINDOW = 0; // Pause_Menu_Display
+    public const int INVENTORY_WINDOW = 1; // InventoryUI
+    public const int CHARACTERISTIC_WINDOW = 2; // CharacteristicWindow
+    public const int OPTION_WINDOW = 3; // OptionWindow
+    public const int ACHIVMENT_WINDOW = 4; // AchivementsWindow
+    public const int STORAGE_CHEST_WINDOW = 5; // Storage_CHest_Window
 
     //private User user;
 
@@ -55,6 +49,7 @@ using UnityEngine.SceneManagement;
         GameManager.Instance.playerData = SaveManager.Instance.LoadLastGame();
         FirstTextAwake();
         CloseCurrentWindow();
+        OpenInformationWindow(0);
     }
 
     public void SetTextAreas()
@@ -65,7 +60,7 @@ using UnityEngine.SceneManagement;
         _level.text = GameManager.Instance.playerData.level.ToString();
     }
 
-    public void OpenWindow(int windowIndex)
+    public void OpenPlayerWindow(int windowIndex)
     {
         // Закрывайте текущее окно, если оно существует
         if (_currentWindow != null)
@@ -74,12 +69,49 @@ using UnityEngine.SceneManagement;
         }
 
         // Проверка на валидность индекса
-        if (windowIndex >= 0 && windowIndex < uiPrefabs.Length)
+        if (windowIndex >= 0 && windowIndex < uiPrefabsPlayerWindows.Length)
         {
             // Создание нового окна
-            _currentWindow = Instantiate(uiPrefabs[windowIndex]);
+            _currentWindow = Instantiate(uiPrefabsPlayerWindows[windowIndex]);
             // Убедитесь, что новое окно прикреплено к Canvas
             _currentWindow.transform.SetParent(GameObject.Find("GUI_Display").transform, false);
+        }
+        else
+        {
+            Debug.LogWarning("Window index out of range: " + windowIndex);
+        }
+    }
+
+    //Добавляю метод для создания информационных окон, коорый буду тзагружаться в очередь
+    public void OpenInformationWindow(int windowIndex)
+    {
+        if (windowIndex >= 0 && windowIndex < uiPrefabsInformationWindows.Length)
+        {
+            GameObject windowObject = Instantiate(uiPrefabsInformationWindows[windowIndex]);
+            windowObject.transform.SetParent(GameObject.Find("GUI_Display").transform, false) ;
+            Window window = windowObject.GetComponent<Window>();
+            if (window != null)
+            {
+                window.OpenWindow();
+            }
+        }
+        else
+        {
+            Debug.LogWarning("Window index out of range: " + windowIndex);
+        }
+    }
+    //Добавляю метод для создания  окон который отображают ОШИБКИ
+    public void OpenWarningWindow(int windowIndex)
+    {
+        if (windowIndex >= 0 && windowIndex < uiPrefabsWarningWindows.Length)
+        {
+            GameObject windowObject = Instantiate(uiPrefabsWarningWindows[windowIndex]);
+            windowObject.transform.SetParent(GameObject.Find("GUI_Display").transform, false);
+            Window window = windowObject.GetComponent<Window>();
+            if (window != null)
+            {
+                window.OpenWindow();
+            }
         }
         else
         {
@@ -99,31 +131,31 @@ using UnityEngine.SceneManagement;
 
     public void OpenInventory()
     {
-        OpenWindow(INVENTORY_WINDOW);
+        OpenPlayerWindow(INVENTORY_WINDOW);
         Debug.Log("Open Inventory");
     }
 
     public void OpenCharacteristic()
     {
-        OpenWindow(CHARACTERISTIC_WINDOW);
+        OpenPlayerWindow(CHARACTERISTIC_WINDOW);
         Debug.Log("Open Characteristic Window");
     }
 
     public void OpenOption()
     {
-        OpenWindow(OPTION_WINDOW);
+        OpenPlayerWindow(OPTION_WINDOW);
         Debug.Log("Open Option Window");
     }
 
     public void OpenAchivements()
     {
-        OpenWindow(ACHIVMENT_WINDOW);
+        OpenPlayerWindow(ACHIVMENT_WINDOW);
         Debug.Log("Open Achivements Window");
     }
 
     public void OpenStorageChestInventory(Inventory chestInventory)
     {
-        OpenWindow(STORAGE_CHEST_WINDOW);
+        OpenPlayerWindow(STORAGE_CHEST_WINDOW);
 
         // Получаем доступ к компоненту инвентаря (InventoryUI)
         InventoryUI inventoryUI = _currentWindow.GetComponent<InventoryUI>();
