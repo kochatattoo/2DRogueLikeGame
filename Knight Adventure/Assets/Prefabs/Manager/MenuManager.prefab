@@ -1,0 +1,56 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5734283206722503121
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3196838682372285249}
+  - component: {fileID: 9142123474299600543}
+  m_Layer: 0
+  m_Name: MenuManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3196838682372285249
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5734283206722503121}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 661.1906, y: 281.92236, z: 0.44210702}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &9142123474299600543
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5734283206722503121}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9aa2f5ca76ec3244083d163df4229ae2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GameMenu: {fileID: 1691863457518013843, guid: c631f0e6b415eeb47abf2f757494a86e, type: 3}
+  StartMenu: {fileID: 310116252685192267, guid: d7a2f4a77ff161745aadc204640054d5, type: 3}
+  LoadMenu: {fileID: 1477503735826220549, guid: fc3f1de0b2e8f144eb2a17f7f9f19519, type: 3}
+  OptionMenu: {fileID: 9144002674268392770, guid: 8768655995615eb428c9ff03ed9e279c, type: 3}
+  QuitMenu: {fileID: 5252402368670113983, guid: d743088c78418b94daf52d1c796dd857, type: 3}
+  PanelBarMenu: {fileID: 8715034194399631214, guid: 4bcb4e35cc6756f429edb7cfe106f20f, type: 3}
+  User_Name_Panel: {fileID: 0}
+  User_Name: {fileID: 0}
+  Name: {fileID: 0}
+  SaveMenu: {fileID: 0}

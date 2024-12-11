@@ -19,13 +19,17 @@ public class MainMenuManager : MonoBehaviour
 
     [SerializeField] private SaveLoadMenu SaveMenu;
 
-   private void Awake()
+    private GameObject _currentWindow; // Текущее окно
+
+    private void Awake()
     {
         GameMenu.SetActive(true);
         StartMenu.SetActive(false);
         LoadMenu.SetActive(false);
         OptionMenu.SetActive(false);
         QuitMenu.SetActive(false);
+        //CloseCurrentWindow();
+        //OpenGameMenu();
         PanelBarMenu.SetActive(true);
         User_Name_Panel.SetActive(false);
         
@@ -39,13 +43,63 @@ public class MainMenuManager : MonoBehaviour
             Debug.Log(GameManager.Instance.playerData.name + "User name !=null");
         }
 
+        //SaveMenu = FindAnyObjectByType<SaveLoadMenu>();
+        //User_Name =FindAnyObjectByType<TMP_Text>();
+
         SaveMenu._LoadGame += SaveMenu_Refresh;
     }
-
     private void SaveMenu_Refresh(object sender, System.EventArgs e)
     {
         RefreshName();
     }
+    public void OpenMenuWindow(GameObject window)
+    {
+        // Закрывайте текущее окно, если оно существует
+        if (_currentWindow != null)
+        {
+            Destroy(_currentWindow);
+        }
+        // Создание нового окна
+        _currentWindow = Instantiate(window);
+        // Убедитесь, что новое окно прикреплено к Canvas
+        _currentWindow.transform.SetParent(GameObject.Find("Background").transform, false);
+        _currentWindow.SetActive(true) ;
+        
+       
+    }
+    // Метод для закрытия текущего окна
+    public void CloseCurrentWindow()
+    {
+        if (_currentWindow != null)
+        {
+            Destroy(_currentWindow);
+            _currentWindow = null;
+        }
+    }
+    public void OpenGameMenu()
+    {
+        OpenMenuWindow(GameMenu);
+    }
+
+    public void OpenStartMenu()
+    {
+        OpenMenuWindow(StartMenu);   
+    }
+
+    public void OpenLoadMenu()
+    {
+        OpenMenuWindow(LoadMenu);
+    }
+
+    public void OpenOptionMenu()
+    {
+        OpenMenuWindow(OptionMenu);
+    }
+    public void OpenQuitMenu()
+    {
+        OpenMenuWindow(QuitMenu);
+    }
+
     public void RefreshName()
     {
         User_Name.text = GameManager.Instance.playerData.name;
@@ -69,7 +123,6 @@ public class MainMenuManager : MonoBehaviour
             Debug.LogError("Пользователь не существует");
         }
     }
- 
     public void Create()
     {
         string InputName=Name.text;

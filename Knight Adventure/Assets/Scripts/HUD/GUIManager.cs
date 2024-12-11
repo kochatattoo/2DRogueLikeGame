@@ -15,7 +15,7 @@ using UnityEngine.SceneManagement;
 
     public GameObject[] uiPrefabsPlayerWindows; // Массив префабов для UI окон
     public GameObject[] uiPrefabsInformationWindows; // Массив префабов для окон с информацией
-    public GameObject[] uiPrefabsWarningWindows; // Массив префабов для окон с ошибками 
+    public GameObject[] uiPrefabsPriorityWindows; // Массив префабов для окон с ошибками 
 
     private GameObject _currentWindow; // Текущее окно
 
@@ -50,6 +50,7 @@ using UnityEngine.SceneManagement;
         FirstTextAwake();
         CloseCurrentWindow();
         OpenInformationWindow(0);
+        // Не понял почему при отображении 2х окон, не откликается окно и отображаются не в том порядке (как работать с очередью?)
     }
 
     public void SetTextAreas()
@@ -92,7 +93,8 @@ using UnityEngine.SceneManagement;
             Window window = windowObject.GetComponent<Window>();
             if (window != null)
             {
-                window.OpenWindow();
+                Window.QueueWindow(window); // Добавляем окно в очередь
+                //window.OpenWindow();
             }
         }
         else
@@ -101,16 +103,16 @@ using UnityEngine.SceneManagement;
         }
     }
     //Добавляю метод для создания  окон который отображают ОШИБКИ
-    public void OpenWarningWindow(int windowIndex)
+    public void OpenPriorityWindow(int windowIndex)
     {
-        if (windowIndex >= 0 && windowIndex < uiPrefabsWarningWindows.Length)
+        if (windowIndex >= 0 && windowIndex < uiPrefabsPriorityWindows.Length)
         {
-            GameObject windowObject = Instantiate(uiPrefabsWarningWindows[windowIndex]);
+            GameObject windowObject = Instantiate(uiPrefabsPriorityWindows[windowIndex]);
             windowObject.transform.SetParent(GameObject.Find("GUI_Display").transform, false);
             Window window = windowObject.GetComponent<Window>();
             if (window != null)
             {
-                window.OpenWindow();
+                Window.ShowPriorityWindow(window); // Открываем окно с высоким приоритетом
             }
         }
         else
