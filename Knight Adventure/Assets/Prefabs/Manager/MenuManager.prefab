@@ -54,3 +54,4 @@ MonoBehaviour:
   User_Name: {fileID: 0}
   Name: {fileID: 0}
   SaveMenu: {fileID: 0}
+  _currentWindow: {fileID: 0}

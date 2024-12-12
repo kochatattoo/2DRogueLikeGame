@@ -15,11 +15,11 @@ public class MainMenuManager : MonoBehaviour
     
 
     [SerializeField] TMP_Text User_Name;
-    [SerializeField] TMP_InputField Name;
+    [SerializeField] private TMP_InputField Name;
 
     [SerializeField] private SaveLoadMenu SaveMenu;
 
-    private GameObject _currentWindow; // Текущее окно
+    [SerializeField]private GameObject _currentWindow; // Текущее окно
 
     private void Awake()
     {
@@ -52,13 +52,15 @@ public class MainMenuManager : MonoBehaviour
     {
         RefreshName();
     }
+
+    // Отсюда я пытался настроить загрузку окон посредством загрузки префабов
+    // Но столкнулся с проблемой, почему то при поиске объекта - объект подключался к префабу в папке 
+    // А не объекту на сцене Иеархии и поэтому не работали методы записи и загрузки
+
     public void OpenMenuWindow(GameObject window)
     {
         // Закрывайте текущее окно, если оно существует
-        if (_currentWindow != null)
-        {
-            Destroy(_currentWindow);
-        }
+        CloseCurrentWindow();
         // Создание нового окна
         _currentWindow = Instantiate(window);
         // Убедитесь, что новое окно прикреплено к Canvas
@@ -76,6 +78,7 @@ public class MainMenuManager : MonoBehaviour
             _currentWindow = null;
         }
     }
+
     public void OpenGameMenu()
     {
         OpenMenuWindow(GameMenu);
@@ -83,12 +86,20 @@ public class MainMenuManager : MonoBehaviour
 
     public void OpenStartMenu()
     {
-        OpenMenuWindow(StartMenu);   
+        OpenMenuWindow(StartMenu);
+
+        Name = FindObjectOfType<TMP_InputField>();
+        Debug.Log(Name);
     }
 
     public void OpenLoadMenu()
     {
         OpenMenuWindow(LoadMenu);
+
+        SaveMenu = FindObjectOfType<SaveLoadMenu>();
+        SaveMenu._LoadGame += SaveMenu_Refresh;
+
+        Debug.Log(SaveMenu);
     }
 
     public void OpenOptionMenu()
@@ -99,6 +110,8 @@ public class MainMenuManager : MonoBehaviour
     {
         OpenMenuWindow(QuitMenu);
     }
+
+    // Вот по сюда, я страдал дичью
 
     public void RefreshName()
     {
@@ -132,6 +145,7 @@ public class MainMenuManager : MonoBehaviour
             GameManager.Instance.playerData.name=InputName;
 
             SetCharacteristics();
+            SetRewardsAndAchivements();
 
             //SaveManager.SaveUser(User.Instance);
             SaveManager.Instance.SaveGame(GameManager.Instance.playerData, InputName);

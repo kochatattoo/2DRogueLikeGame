@@ -868,7 +868,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 9142123474299600543, guid: 1508c91aab8b8864589cf42eb42e2651, type: 3}
         m_TargetAssemblyTypeName: MainMenuManager, Assembly-CSharp
         m_MethodName: OpenGameMenu
         m_Mode: 1

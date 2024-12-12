@@ -1,27 +1,11 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-[RequireComponent(typeof(GameObject))]
 public class PauseMenu : MonoBehaviour
 {
-    //Объявляем переменую Меню паузы
-    public GameObject _pauseMenuDisplayPref;
-    private GameObject _pausemenuWindow;
-
-    //Переменная отвеячающая за паузу
+    //Переменная отвечающая за паузу
     private bool _pauseGame;
 
-    private void Awake()
-    {
-        // _pauseMenuDisplay.SetActive(false);
-
-        //if(_pauseMenuDisplayPref.gameObject != null)
-        //{
-        //    Destroy(_pauseMenuDisplayPref.gameObject);
-        //}
-
-        // GUIManager.Instance.CloseCurrentWindow();
-    }
     private void Start()
     {
         //Подписываемся на событие паузы
@@ -51,9 +35,7 @@ public class PauseMenu : MonoBehaviour
 
     public void Resume()
     {
-       // _pauseMenuDisplay.SetActive(false);
-      // Destroy(_pauseMenuDisplayPref.gameObject);
-
+      
         GUIManager.Instance.CloseCurrentWindow();
         GameInput.Instance.EnableMovement(); // Включает действия игрока
         Time.timeScale = 1.0f;
@@ -62,40 +44,24 @@ public class PauseMenu : MonoBehaviour
 
     public void Pause()
     {
-        // _pauseMenuDisplay.SetActive(true);
-        // Instantiate(_pauseMenuDisplayPref);
-        // _pauseMenuDisplayPref.transform.SetParent(GameObject.Find("Canvas").transform, false);
-
         GUIManager.Instance.OpenPlayerWindow(0);
         GameInput.Instance.DisableMovement(); // Отключает действия игрока, но не дает действия для кнопки ESC
         Time.timeScale = 0f;
         _pauseGame = true;
 
-        //Проверка состояния Юзера
-        //Debug.Log(GameManager.Instance.user.GetName());
     }
 
-    
     //И реализовать быстрое сохранение с записью данных о состоянии игры
     public void SaveGame()
     {
-       // GameManager.Instance.user.SaveUserSerialize();
         SaveManager.Instance.QuickSaveGame(GameManager.Instance.playerData);
     }
 
     public void LoadGame()
     {
-        // GameManager.Instance.user.LoadUserSerialize();
         SaveManager.Instance.LoadLastGame();
         GUIManager.Instance.SetTextAreas();
     }
-
-    //public void ResetData()
-    //{
-    //    // GameManager.Instance.user.ResetData();
-    //    SaveManager.ResetData();
-    //    GUIManager.Instance.SetTextAreas();
-    //}
 
     public void LoadMainMenuScene()
     {
@@ -103,25 +69,4 @@ public class PauseMenu : MonoBehaviour
         SceneManager.LoadScene("Menu");
         GameInput.Instance.DisableMovement();
     }
-
-    //public void OpenWindow()
-    //{
-    //    if(_pausemenuWindow != null)
-    //    {
-    //        Destroy( _pausemenuWindow );
-    //    }
-
-    //    _pausemenuWindow = Instantiate(_pauseMenuDisplayPref);
-    //    _pausemenuWindow.transform.SetParent(GameObject.Find("PauseMenu").transform, false );
-    //}
-
-    //public void CloseCurrentWindow()
-    //{
-    //    if( _pausemenuWindow != null)
-    //    {
-    //        Destroy( _pausemenuWindow );
-    //        _pausemenuWindow = null;
-    //    }
-    //    Destroy(_pausemenuWindow);
-    //}
 }

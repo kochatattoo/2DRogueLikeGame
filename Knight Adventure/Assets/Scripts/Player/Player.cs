@@ -78,6 +78,7 @@ public class Player : MonoBehaviour
 
         //SetPlayerInventory();
         LightSetting(); //Вызываем метод для установки света у нашего персонажа
+
     }
 
   
@@ -86,7 +87,9 @@ public class Player : MonoBehaviour
         //Отслеживание вектора персонажа
         _inputVector = GameInput.Instance.GetMovementVector();
         // Debug.Log(GameManager.Instance.user.GetName());
-    
+
+        // Поделючим инвентарь нашего персонажа к данным об игроке
+        GameManager.Instance.playerData.playerInventory = playerInventory;
     }
 
     void FixedUpdate()
