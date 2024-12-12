@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System;
 
 public class Window : MonoBehaviour
 {
@@ -10,9 +11,11 @@ public class Window : MonoBehaviour
     public Button okButton;       // Кнопка "ОК"
 
     private AudioSource audioSource;  // Аудиомодуль
+
     private static Window activeWindow; // Текущее активное окно
-    private static Queue<Window> windowQueue = new Queue<Window>(); // Очередь окон
-    private static bool isPaused = false; // Флаг паузы
+
+    // Событие, вызываемое при закрытии окна
+    public event Action OnWindowClosed;
 
     private void Awake()
     {
@@ -26,12 +29,12 @@ public class Window : MonoBehaviour
         PlaySound(openSound); // Воспроизведение звука открытия
         gameObject.SetActive(true); // Активируем окно
         Time.timeScale = 0; // Ставим игру на паузу
-        isPaused = true; // Устанавливаем флаг паузы
         activeWindow = this; // Устанавливаем активное окно
 
         GameInput.Instance.DisableMovement(); // Отключает действия игрока, но не дает действия для кнопки ESC
     }
 
+    // Почему то возвращает действия игрока, и он может ходить после первого закрытого сообщения
     public virtual void CloseWindow()
     {
         if (activeWindow == this) // Проверка, является ли текущее активное окно
@@ -39,13 +42,21 @@ public class Window : MonoBehaviour
             PlaySound(closeSound); // Воспроизведение звука закрытия
             gameObject.SetActive(false); // Деактивируем окно
             Time.timeScale = 1; // Возобновляем игру
-            isPaused = false; // Сбрасываем флаг паузы
-            activeWindow = null; // Убираем ссылку на активное окно
-            ShowNextWindow(); // Показ следующего окна из очереди
 
-            GameInput.Instance.EnableMovement(); // Включает действия игрока
-            Destroy(this.gameObject);
+            OnWindowClosed?.Invoke(); // Вызываем событие закрытия
+
+            if (GUIManager.IsQueueEmpty())
+            {
+                GameInput.Instance.EnableMovement();
+            }
+            else
+            {
+                GUIManager.ShowNextWindow(); // Показ следующего окна из очереди
+            }
+
         }
+     
+        Destroy(this.gameObject);
     }
 
     protected virtual void OnOkButtonClicked()
@@ -64,27 +75,7 @@ public class Window : MonoBehaviour
 
     public static void QueueWindow(Window window) // Метод для добавления в очередь
     {
-        windowQueue.Enqueue(window);
-        if (activeWindow == null)
-        {
-            ShowNextWindow(); // Показать следующее окно в очереди
-        }
-    }
-
-    public static void ShowNextWindow() // Метод для показа следующего окна
-    {
-        if (windowQueue.Count > 0)
-        {
-            Window nextWindow = windowQueue.Dequeue(); // Получаем следующее окно из очереди
-            if (nextWindow != null)
-            {
-                nextWindow.OpenWindow(); // Открываем следующее окно
-            }
-        }
-        else
-        {
-            Time.timeScale = 1; // Возвращаем игровую скорость к норме, когда нет активных окон
-        }
+       GUIManager.QueueWindow(window);
     }
 
     public static void ShowPriorityWindow(Window window) // Метод для показа приоритетных окон

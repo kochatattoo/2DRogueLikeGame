@@ -1,9 +1,11 @@
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 //Автоматически добавляем необходимые компонент
 [RequireComponent (typeof(SceneManager))]
+
 //Класс отвечающий за реализацию HUD меню
   public class GUIManager : MonoBehaviour
     {
@@ -18,6 +20,9 @@ using UnityEngine.SceneManagement;
     public GameObject[] uiPrefabsPriorityWindows; // Массив префабов для окон с ошибками 
 
     private GameObject _currentWindow; // Текущее окно
+
+    private static Queue<Window> windowQueue = new Queue<Window>(); // Очередь окон
+    private static Window activeWindow; // Текущее активное окно
 
     public const int PAUSE_WINDOW = 0; // Pause_Menu_Display
     public const int INVENTORY_WINDOW = 1; // InventoryUI
@@ -49,7 +54,12 @@ using UnityEngine.SceneManagement;
         GameManager.Instance.playerData = SaveManager.Instance.LoadLastGame();
         FirstTextAwake();
         CloseCurrentWindow();
-        OpenInformationWindow(0);
+
+        // Наполняем очередь окнами информации (пример)
+        for (int i = 0; i < uiPrefabsInformationWindows.Length; i++)
+        {
+            OpenInformationWindow(i); // Добавляем окна в очередь
+        }
         // Не понял почему при отображении 2х окон, не откликается окно и отображаются не в том порядке (как работать с очередью?)
     }
 
@@ -83,13 +93,15 @@ using UnityEngine.SceneManagement;
         }
     }
 
-    //Добавляю метод для создания информационных окон, коорый буду тзагружаться в очередь
+    /////////////////////////////////////////////////////////////////////////////////////
+    //Добавляю метод для создания информационных окон, коорый будут загружаться в очередь
     public void OpenInformationWindow(int windowIndex)
     {
         if (windowIndex >= 0 && windowIndex < uiPrefabsInformationWindows.Length)
         {
             GameObject windowObject = Instantiate(uiPrefabsInformationWindows[windowIndex]);
             windowObject.transform.SetParent(GameObject.Find("GUI_Display").transform, false) ;
+
             Window window = windowObject.GetComponent<Window>();
             if (window != null)
             {
@@ -102,6 +114,34 @@ using UnityEngine.SceneManagement;
             Debug.LogWarning("Window index out of range: " + windowIndex);
         }
     }
+    public static void QueueWindow(Window window) // Метод для добавления в очередь
+    {
+        windowQueue.Enqueue(window);
+        if (activeWindow == null)
+        {
+            ShowNextWindow(); // Показать следующее окно в очереди
+        }
+    }
+    public static bool IsQueueEmpty()
+    {
+        return windowQueue.Count == 0;
+    }
+    public static void ShowNextWindow()
+    {
+        if (windowQueue.Count > 0)
+        {
+            Window nextWindow = windowQueue.Dequeue(); // Получаем следующее окно из очереди
+            if (nextWindow != null)
+            {
+                nextWindow.OpenWindow(); // Открываем следующее окно
+            }
+        }
+        else
+        {
+            Time.timeScale = 1; // Возвращаем игровую скорость к норме, когда нет активных окон
+        }
+    }
+
     //Добавляю метод для создания  окон который отображают ОШИБКИ
     public void OpenPriorityWindow(int windowIndex)
     {
@@ -109,10 +149,12 @@ using UnityEngine.SceneManagement;
         {
             GameObject windowObject = Instantiate(uiPrefabsPriorityWindows[windowIndex]);
             windowObject.transform.SetParent(GameObject.Find("GUI_Display").transform, false);
+
             Window window = windowObject.GetComponent<Window>();
             if (window != null)
             {
                 Window.ShowPriorityWindow(window); // Открываем окно с высоким приоритетом
+                //Window.QueueWindow(window);
             }
         }
         else
@@ -120,7 +162,7 @@ using UnityEngine.SceneManagement;
             Debug.LogWarning("Window index out of range: " + windowIndex);
         }
     }
-
+    ////////////////////////////////////////////////////////////////////////////////////////////////////
     // Метод для закрытия текущего окна
     public void CloseCurrentWindow()
     {

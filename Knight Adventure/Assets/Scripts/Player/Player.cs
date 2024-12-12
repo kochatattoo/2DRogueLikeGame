@@ -79,6 +79,9 @@ public class Player : MonoBehaviour
         //SetPlayerInventory();
         LightSetting(); //Вызываем метод для установки света у нашего персонажа
 
+        // ПРисвоим инвентарю персонажа - инвентарь из наших данных 
+        playerInventory = GameManager.Instance.playerData.playerInventory;
+
     }
 
   
@@ -89,7 +92,7 @@ public class Player : MonoBehaviour
         // Debug.Log(GameManager.Instance.user.GetName());
 
         // Поделючим инвентарь нашего персонажа к данным об игроке
-        GameManager.Instance.playerData.playerInventory = playerInventory;
+       // GameManager.Instance.playerData.playerInventory = playerInventory;
     }
 
     void FixedUpdate()
