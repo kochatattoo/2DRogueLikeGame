@@ -28,9 +28,19 @@ public class AudioPlayer : MonoBehaviour
 
         _player.OnPlayerDeath += Player_OnPlayerDeath;
         _player.OnTakeHit += Player_OnTakeHit;
+        
 
         GameInput.Instance.OnPlayerAttack += Player_OnPlayerAttack;
+        GameInput.Instance.OnPlayerRangeAttack += Player_OnPlayerRangeAttack;
         GameInput.Instance.OnPlayerMagicAttack += Player_OnPlayerMagicAttack;
+    }
+
+    private void Player_OnPlayerRangeAttack(object sender, System.EventArgs e)
+    {
+        if (_audioClips.Length > 1 && _audioClips[4] != null)
+        {
+            _playerAudioSource.PlayOneShot(_audioClips[5]);
+        }
     }
 
     private void Player_OnPlayerAttack(object sender, System.EventArgs e)
