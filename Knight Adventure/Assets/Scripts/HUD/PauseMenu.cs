@@ -44,7 +44,8 @@ public class PauseMenu : MonoBehaviour
 
     public void Pause()
     {
-        GUIManager.Instance.OpenPlayerWindow(0);
+        //GUIManager.Instance.OpenPlayerWindow(0);
+        GUIManager.Instance.OpenPlayerWindow(GameManager.Instance.resourcesLoadManager.LoadPlayerWindow("PauseMenuDisplay"));
         GameInput.Instance.DisableMovement(); // Отключает действия игрока, но не дает действия для кнопки ESC
         Time.timeScale = 0f;
         _pauseGame = true;

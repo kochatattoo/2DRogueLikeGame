@@ -95,7 +95,21 @@ using UnityEngine.SceneManagement;
             HandleError("Произошла ошибка: Не существует окна в указаном индексе.", 0);
         }
     }
+    // Сделаем перегрузку для метода OpenPlayerWindow
+    public void OpenPlayerWindow(GameObject name)
+    {
+        // Закрывайте текущее окно, если оно существует
+        if (_currentWindow != null)
+        {
+            Destroy(_currentWindow);
+        }
 
+         // Создание нового окна
+         _currentWindow = Instantiate(name);
+         // Убедитесь, что новое окно прикреплено к Canvas
+         _currentWindow.transform.SetParent(GameObject.Find("GUI_Display").transform, false);
+        
+    }
     /////////////////////////////////////////////////////////////////////////////////////
     //Добавляю метод для создания информационных окон, который будут загружаться в очередь
     public void OpenInformationWindow(int windowIndex)
@@ -195,31 +209,36 @@ using UnityEngine.SceneManagement;
 
     public void OpenInventory()
     {
-        OpenPlayerWindow(INVENTORY_WINDOW);
-        Debug.Log("Open Inventory");
+        //OpenPlayerWindow(INVENTORY_WINDOW);
+        OpenPlayerWindow(GameManager.Instance.resourcesLoadManager.LoadPlayerWindow("InventoryWindow")); // Новый метод по пути
+        Debug.Log("Open Inventory"); 
     }
 
     public void OpenCharacteristic()
     {
-        OpenPlayerWindow(CHARACTERISTIC_WINDOW);
+        //OpenPlayerWindow(CHARACTERISTIC_WINDOW);
+        OpenPlayerWindow(GameManager.Instance.resourcesLoadManager.LoadPlayerWindow("CharactristicWindow")); // Новый метод по пути
         Debug.Log("Open Characteristic Window");
     }
 
     public void OpenOption()
     {
-        OpenPlayerWindow(OPTION_WINDOW);
+        //OpenPlayerWindow(OPTION_WINDOW);
+        OpenPlayerWindow(GameManager.Instance.resourcesLoadManager.LoadPlayerWindow("OptionWindow")); // Новый метод по пути
         Debug.Log("Open Option Window");
     }
 
     public void OpenAchivements()
     {
-        OpenPlayerWindow(ACHIVMENT_WINDOW);
+        //OpenPlayerWindow(ACHIVMENT_WINDOW);
+        OpenPlayerWindow(GameManager.Instance.resourcesLoadManager.LoadPlayerWindow("AchivmentsWindow")); // Новый метод по пути
         Debug.Log("Open Achivements Window");
     }
 
     public void OpenStorageChestInventory(Inventory chestInventory)
     {
-        OpenPlayerWindow(STORAGE_CHEST_WINDOW);
+        //OpenPlayerWindow(STORAGE_CHEST_WINDOW); - старый метод по мндексу
+        OpenPlayerWindow( GameManager.Instance.resourcesLoadManager.LoadChestWindow("Storage_Chest_Window")); // Новый метод по пути
 
         // Получаем доступ к компоненту инвентаря (InventoryUI)
         InventoryUI inventoryUI = _currentWindow.GetComponent<InventoryUI>();

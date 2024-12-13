@@ -5,9 +5,9 @@ using UnityEngine;
 public class ResourcesLoadManager : MonoBehaviour
 {
     // Загрузка окна по имени
-    public GameObject LoadWindow(string windowName)
+    public GameObject LoadPlayerWindow(string windowName)
     {
-        return LoadPrefab("Windows/" + windowName);
+        return LoadPrefab("Windows/Player_Windows_prefs/" + windowName);
     }
     // Загрузка стартового окна
     public GameObject LoadStartScreenWindow(string startScreenName)
