@@ -1,17 +1,20 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEditor;
 
 public class StartScreenManager : MonoBehaviour
 {
     [Header("UI Elements")]
-    [SerializeField] private GameObject startScreenPrefab; // Префаб стартового экрана
+    private GameObject startScreenPrefab; // Префаб стартового экрана
     private Button continueButton; // Кнопка для продолжения
 
     private GameObject startScreen; // экземпляр стартового экрана
 
     private void Start()
     {
+        startScreenPrefab = GameManager.Instance.resourcesLoadManager.LoadStartScreenWindow("Star_Screen_Window");
+       // startScreenPrefab = Resources.Load<GameObject>("Windows/StartScreenWindow/Star_Screen_Window");
         InitializeStartScreen(); // Инициализация стартового экрана
     }
 

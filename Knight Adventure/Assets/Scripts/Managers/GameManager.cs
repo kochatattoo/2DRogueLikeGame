@@ -5,6 +5,8 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
 
+    public ResourcesLoadManager resourcesLoadManager;
+
     public SaveManager saveManager; // Ссылка на SaveManager
     public AudioManager audioManager; // Ссылка на AudioManager
     public GUIManager guiManager; // Ссылка на GUIManager
@@ -65,6 +67,8 @@ public class GameManager : MonoBehaviour
     }
     private void InitializeManagers()
     {
+        resourcesLoadManager = gameObject.AddComponent<ResourcesLoadManager>(); // Создаем экземпляр ResourcesLoadManager
+
         //Поиск необходим элементов в объектах сцены
         saveManager = FindObjectOfType<SaveManager>();
         audioManager = FindObjectOfType<AudioManager>();
