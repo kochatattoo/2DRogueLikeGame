@@ -9,7 +9,7 @@ public class MagicalBall : MonoBehaviour
 
     public event EventHandler OnMagicalBallCast;
 
-    public float speed = 20f; // Скорость полета шара
+    public float speed = 30f; // Скорость полета шара
     public int damage = 2; // Урон, который будет наноситься
 
     private CircleCollider2D _circleCollider2D;

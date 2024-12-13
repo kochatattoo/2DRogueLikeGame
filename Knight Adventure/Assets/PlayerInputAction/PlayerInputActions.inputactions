@@ -162,9 +162,18 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Player_animation_attack",
+                    "name": "Range_Attack",
                     "type": "Button",
                     "id": "54c5bd91-5352-4701-bba5-205142d1532e",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Magic_Attack",
+                    "type": "Button",
+                    "id": "cffc4861-1a31-4bc3-b263-33f332339b5b",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -190,7 +199,18 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Player_animation_attack",
+                    "action": "Range_Attack",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e72ba7e2-eef4-4f2c-90da-cc1e9bc1feef",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Magic_Attack",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

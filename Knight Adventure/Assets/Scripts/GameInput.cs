@@ -16,6 +16,7 @@ public class GameInput : MonoBehaviour
     public event EventHandler OnPlayerAttack;
     public event EventHandler OnPlayerPause;
     public event EventHandler OnPlayerMagicAttack;
+    public event EventHandler OnPlayerRangeAttack;
 
     public event EventHandler OnPlayerOpen;
 
@@ -29,7 +30,8 @@ public class GameInput : MonoBehaviour
         _playerInputActions.Enable();
         //Подписываемся на события Атаки и Паузы
         _playerInputActions.Combat.Attack.started += PlayerAttack_started;
-        _playerInputActions.Combat.Player_animation_attack.started += Magic_Attack_started;
+        _playerInputActions.Combat.Range_Attack.started += Range_Attack_started;
+        _playerInputActions.Combat.Magic_Attack.started += Magic_Attack_started;
         _playerInputActions.Player.Pause.started += PlayerPause_started;
         _playerInputActions.Open.Open.started += Open_started;
     }
@@ -75,7 +77,10 @@ public class GameInput : MonoBehaviour
     {
         OnPlayerAttack?.Invoke(this, EventArgs.Empty);
     }
-
+    private void Range_Attack_started(InputAction.CallbackContext obj)
+    {
+        OnPlayerRangeAttack?.Invoke(this, EventArgs.Empty);
+    }
     //Событие атаки магией
     private void Magic_Attack_started(InputAction.CallbackContext obj)
     {

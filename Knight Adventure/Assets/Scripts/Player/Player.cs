@@ -67,6 +67,7 @@ public class Player : MonoBehaviour
         _canTakeDamage=true;
         //Подписываемся на события атаки 
         GameInput.Instance.OnPlayerAttack += Player_OnPlayerAttack;
+        GameInput.Instance.OnPlayerRangeAttack += Player_OnPlayerRangeAttack;
         GameInput.Instance.OnPlayerMagicAttack += Player_OnPlayerMagicAttack;
 
         SetPlayerCharacteristics();
@@ -84,7 +85,7 @@ public class Player : MonoBehaviour
 
     }
 
-  
+
     private void Update()
     {
         //Отслеживание вектора персонажа
@@ -116,11 +117,14 @@ public class Player : MonoBehaviour
     private void Player_OnPlayerMagicAttack(object sender, EventArgs e)
     {
         //Вызываем метод в атаки в классе Актив Вепон
-        //ActiveWeapon.Instance.GetMagicWeapon().Attack();
-        ActiveWeapon.Instance.GetMagicalBall().Attack();
+        ActiveWeapon.Instance.GetMagicWeapon().Attack();
+       // ActiveWeapon.Instance.GetMagicalBall().Attack();
 
     }
-
+    private void Player_OnPlayerRangeAttack(object sender, EventArgs e)
+    {
+        ActiveWeapon.Instance.GetMagicalBall().Attack();
+    }
     //Отслеживание статуса бега персонажа
     private void HandleMovement()
     {

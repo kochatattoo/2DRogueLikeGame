@@ -184,9 +184,18 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Player_animation_attack"",
+                    ""name"": ""Range_Attack"",
                     ""type"": ""Button"",
                     ""id"": ""54c5bd91-5352-4701-bba5-205142d1532e"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Magic_Attack"",
+                    ""type"": ""Button"",
+                    ""id"": ""cffc4861-1a31-4bc3-b263-33f332339b5b"",
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
@@ -212,7 +221,18 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Player_animation_attack"",
+                    ""action"": ""Range_Attack"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e72ba7e2-eef4-4f2c-90da-cc1e9bc1feef"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Magic_Attack"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -256,7 +276,8 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         // Combat
         m_Combat = asset.FindActionMap("Combat", throwIfNotFound: true);
         m_Combat_Attack = m_Combat.FindAction("Attack", throwIfNotFound: true);
-        m_Combat_Player_animation_attack = m_Combat.FindAction("Player_animation_attack", throwIfNotFound: true);
+        m_Combat_Range_Attack = m_Combat.FindAction("Range_Attack", throwIfNotFound: true);
+        m_Combat_Magic_Attack = m_Combat.FindAction("Magic_Attack", throwIfNotFound: true);
         // Open
         m_Open = asset.FindActionMap("Open", throwIfNotFound: true);
         m_Open_Open = m_Open.FindAction("Open", throwIfNotFound: true);
@@ -383,13 +404,15 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
     private readonly InputActionMap m_Combat;
     private List<ICombatActions> m_CombatActionsCallbackInterfaces = new List<ICombatActions>();
     private readonly InputAction m_Combat_Attack;
-    private readonly InputAction m_Combat_Player_animation_attack;
+    private readonly InputAction m_Combat_Range_Attack;
+    private readonly InputAction m_Combat_Magic_Attack;
     public struct CombatActions
     {
         private @PlayerInputActions m_Wrapper;
         public CombatActions(@PlayerInputActions wrapper) { m_Wrapper = wrapper; }
         public InputAction @Attack => m_Wrapper.m_Combat_Attack;
-        public InputAction @Player_animation_attack => m_Wrapper.m_Combat_Player_animation_attack;
+        public InputAction @Range_Attack => m_Wrapper.m_Combat_Range_Attack;
+        public InputAction @Magic_Attack => m_Wrapper.m_Combat_Magic_Attack;
         public InputActionMap Get() { return m_Wrapper.m_Combat; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -402,9 +425,12 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @Attack.started += instance.OnAttack;
             @Attack.performed += instance.OnAttack;
             @Attack.canceled += instance.OnAttack;
-            @Player_animation_attack.started += instance.OnPlayer_animation_attack;
-            @Player_animation_attack.performed += instance.OnPlayer_animation_attack;
-            @Player_animation_attack.canceled += instance.OnPlayer_animation_attack;
+            @Range_Attack.started += instance.OnRange_Attack;
+            @Range_Attack.performed += instance.OnRange_Attack;
+            @Range_Attack.canceled += instance.OnRange_Attack;
+            @Magic_Attack.started += instance.OnMagic_Attack;
+            @Magic_Attack.performed += instance.OnMagic_Attack;
+            @Magic_Attack.canceled += instance.OnMagic_Attack;
         }
 
         private void UnregisterCallbacks(ICombatActions instance)
@@ -412,9 +438,12 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @Attack.started -= instance.OnAttack;
             @Attack.performed -= instance.OnAttack;
             @Attack.canceled -= instance.OnAttack;
-            @Player_animation_attack.started -= instance.OnPlayer_animation_attack;
-            @Player_animation_attack.performed -= instance.OnPlayer_animation_attack;
-            @Player_animation_attack.canceled -= instance.OnPlayer_animation_attack;
+            @Range_Attack.started -= instance.OnRange_Attack;
+            @Range_Attack.performed -= instance.OnRange_Attack;
+            @Range_Attack.canceled -= instance.OnRange_Attack;
+            @Magic_Attack.started -= instance.OnMagic_Attack;
+            @Magic_Attack.performed -= instance.OnMagic_Attack;
+            @Magic_Attack.canceled -= instance.OnMagic_Attack;
         }
 
         public void RemoveCallbacks(ICombatActions instance)
@@ -486,7 +515,8 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
     public interface ICombatActions
     {
         void OnAttack(InputAction.CallbackContext context);
-        void OnPlayer_animation_attack(InputAction.CallbackContext context);
+        void OnRange_Attack(InputAction.CallbackContext context);
+        void OnMagic_Attack(InputAction.CallbackContext context);
     }
     public interface IOpenActions
     {
