@@ -27,7 +27,8 @@ public class PlayerVisual : MonoBehaviour
         //Подписываемся на события Смерти и Получения урона персонажа
         Player.Instance.OnPlayerDeath += Player_OnPlayerDeath;
         Player.Instance.OnTakeHit += Player_OnTakeHit;
-        
+        GameInput.Instance.OnPlayerMagicAttack += Player_OnPlayerMagicAttack;
+
     }
 
     //Событие получение урона
@@ -55,23 +56,24 @@ public class PlayerVisual : MonoBehaviour
         {
             //Следим за направлением мыши
             AdjustPlayerFacingDirection();
-            //Подписываемся на событие магической атаки
-            GameInput.Instance.OnPlayerMagicAttack += Player_OnPlayerMagicAttack;
         }
     }
 
     //Событие магической атаки
     private void Player_OnPlayerMagicAttack(object sender, System.EventArgs e)
     {
+        if (Player.Instance.IsAlive())
         //Устанавливаем тригер анимамтора 
-        animator.SetTrigger(ANIMATION_ATTACK);
+        { 
+            animator.SetTrigger(ANIMATION_ATTACK);
+        }
     }
 
     //Следим за нахождением мыши на экране и попорачиваем персонажа в ее сторону
     private void AdjustPlayerFacingDirection()
     {
         Vector3 mousePos=GameInput.Instance.GetMousePosition();
-        Vector3 playerPos=Player.Instance.GetPlayerScreenPosiyion();
+        Vector3 playerPos=Player.Instance.GetPlayerScreenPosition();
 
         if (mousePos.x < playerPos.x)
         {

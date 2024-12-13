@@ -93,6 +93,7 @@ public class Player : MonoBehaviour
 
         // Поделючим инвентарь нашего персонажа к данным об игроке
         GameManager.Instance.playerData.playerInventory = playerInventory;
+
     }
 
     void FixedUpdate()
@@ -115,7 +116,8 @@ public class Player : MonoBehaviour
     private void Player_OnPlayerMagicAttack(object sender, EventArgs e)
     {
         //Вызываем метод в атаки в классе Актив Вепон
-        ActiveWeapon.Instance.GetMagicWeapon().Attack();
+        //ActiveWeapon.Instance.GetMagicWeapon().Attack();
+        ActiveWeapon.Instance.GetMagicalBall().Attack();
 
     }
 
@@ -143,7 +145,7 @@ public class Player : MonoBehaviour
     }
 
     //Получение позиции нашего персонажа относительно экрана
-    public Vector3 GetPlayerScreenPosiyion()
+    public Vector3 GetPlayerScreenPosition()
     {
         Vector3 playerScreenPosition=Camera.main.WorldToScreenPoint(transform.position);
         return playerScreenPosition;
@@ -228,4 +230,5 @@ public class Player : MonoBehaviour
         lightObject.transform.parent = transform; // Устанавливаем объект света как дочерний к персонажу
         lightObject.transform.localPosition = new Vector3(0, 0.5f, 0); // Позиция относительно персонажа
     }
+
 }

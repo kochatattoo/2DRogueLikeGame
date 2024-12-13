@@ -1,5 +1,52 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2009029799918859287
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2139609504084685647}
+  - component: {fileID: 1656678922237480119}
+  m_Layer: 0
+  m_Name: MagicalBall
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2139609504084685647
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2009029799918859287}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.05, y: 0.31, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1039639707561621346}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1656678922237480119
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2009029799918859287}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c32ef90c31306d4eb88f9d4e6b9c123, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  magicalBallPrefab: {fileID: 6364501318000965586, guid: c90748e0456152d45b5dee73c1fbaf14, type: 3}
+  speed: 30
+  damage: 2
 --- !u!1 &2548657134212605633
 GameObject:
   m_ObjectHideFlags: 0
@@ -32,6 +79,7 @@ Transform:
   m_Children:
   - {fileID: 7783835582507590373}
   - {fileID: 3998583033905126112}
+  - {fileID: 2139609504084685647}
   m_Father: {fileID: 433093437036271474}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1270154003247506765
@@ -48,6 +96,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sword: {fileID: 1847707016629962642}
   _magic: {fileID: 1585101795893045098}
+  _magicalBall: {fileID: 1656678922237480119}
 --- !u!1 &2783451701619702284
 GameObject:
   m_ObjectHideFlags: 0
@@ -208,11 +257,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfc9ea38bfb317f4b9225318f8e305d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerData:
+    playerStats:
+      characterName: 
+      level: 0
+      currentExperience: 0
+      experienceToNextLevel: 0
+      speed: 0
+      maxHealth: 0
+      maxMana: 0
+      attack: 0
+      defense: 0
+      strength: 0
+      intelligence: 0
+      agility: 0
+    playerAchievements:
+      rewards:
+      - No Rewards
+      achievements:
+      - No Achievements
+    playerInventory: {fileID: 0}
+    name: 
+    level: 1
+    coins: 10
   playerStats:
     characterName: 
     level: 0
     currentExperience: 0
     experienceToNextLevel: 0
+    speed: 0
     maxHealth: 0
     maxMana: 0
     attack: 0
@@ -222,12 +295,12 @@ MonoBehaviour:
     agility: 0
   playerAchievements:
     rewards:
-    - Non Rewards
+    - No Rewards
     achievements:
-    - Non Achievements
+    - No Achievements
   playerInventory: {fileID: 6149334074932530076}
-  _speed: 20
-  _maxHealth: 10
+  _speed: 0
+  _maxHealth: 0
   _damageRecoveryTime: 0.5
 --- !u!114 &1389518870108349314
 MonoBehaviour:

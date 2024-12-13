@@ -10,6 +10,8 @@ public class ActiveWeapon : MonoBehaviour
     //Объявляем переменные классов Меч и Магия
     [SerializeField] private Sword sword;
     [SerializeField] private PlayerAnimationAttack _magic;
+    [SerializeField] private MagicalBall _magicalBall;
+
 
     private void Awake()
     {
@@ -21,7 +23,9 @@ public class ActiveWeapon : MonoBehaviour
     {
         //Если игрок жив, то следуюем за игроком
         if (Player.Instance.IsAlive())
-         FollowMousePosition();
+        { 
+            FollowMousePosition();
+        }
     }
 
     //Методы для получения активного орудия атаки
@@ -29,11 +33,13 @@ public class ActiveWeapon : MonoBehaviour
     { return sword; }
     public PlayerAnimationAttack GetMagicWeapon() 
     { return _magic; }
+    public MagicalBall GetMagicalBall()
+    { return _magicalBall; }
 
     private void FollowMousePosition()
     {
         Vector3 mousePos = GameInput.Instance.GetMousePosition();
-        Vector3 playerPos = Player.Instance.GetPlayerScreenPosiyion();
+        Vector3 playerPos = Player.Instance.GetPlayerScreenPosition();
 
         if (mousePos.x < playerPos.x)
         {

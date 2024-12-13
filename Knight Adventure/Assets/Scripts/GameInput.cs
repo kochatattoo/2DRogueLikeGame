@@ -47,6 +47,16 @@ public class GameInput : MonoBehaviour
         Vector3 mousePos = Mouse.current.position.ReadValue();
         return mousePos;
     }
+    public Vector3 GetMousePositionToScreenWorldPoint()
+    {
+        // Получаем позицию курсора в экранных координатах
+        Vector3 mousePos = Input.mousePosition;
+
+        // Преобразуем экранные координаты в мировые координаты
+        mousePos = Camera.main.ScreenToWorldPoint(mousePos);
+        mousePos.z = 0; // Устанавливаем z в 0 для 2D
+        return mousePos;
+    }
 
     //Метод не позволяющий передвигаться
     public void DisableMovement()
