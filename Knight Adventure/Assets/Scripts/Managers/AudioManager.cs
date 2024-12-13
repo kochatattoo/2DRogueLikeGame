@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class AudioManager : MonoBehaviour
 {
@@ -8,6 +9,7 @@ public class AudioManager : MonoBehaviour
     public static bool sounds = true; //Параметр доступности звуков
 
     private AudioSource _audioSource;
+    [SerializeField] AudioPlayer _playerAudio;
     
     private void Awake()
     {
@@ -19,6 +21,8 @@ public class AudioManager : MonoBehaviour
             //Теперь нам нужно указать, что бы объект не уничтожался
             //При переходе на другую сцену
             DontDestroyOnLoad(gameObject);
+            //И запускаем инициализатор
+            InitializeManager();
             return;
         }
         else 
@@ -27,16 +31,19 @@ public class AudioManager : MonoBehaviour
             Destroy(this.gameObject);
         }
 
-        //И запускаем инициализатор
-        InitializeManager();
     }
 
     private void Start()
     {
         _audioSource = GetComponent<AudioSource>();
         _audioSource.mute = false;  
+        FindPlayerAudio();
     }
 
+    public void FindPlayerAudio()
+    {
+        _playerAudio = FindObjectOfType<AudioPlayer>();
+    }
     public bool StatusMusic()
     {
         if (_audioSource.mute == false)
@@ -78,5 +85,19 @@ public class AudioManager : MonoBehaviour
         //Здесь мы загружаем и конвертируем настройки из PlayerPrefs
         music = System.Convert.ToBoolean(PlayerPrefs.GetString("music", "true"));
         sounds = System.Convert.ToBoolean(PlayerPrefs.GetString("sounds", "true"));
+        SceneManager.sceneLoaded += OnSceneLoaded; //Подписка на событие загрузки сцены
+    }
+
+    private void OnDestroy()
+    {
+        //Отписка от события - что бы не было утечки памяти
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        //Этот метод будет вызван всякий раз, когда загружается новая сцена
+        Debug.Log("Scene Loaded^ " + scene.name);
+        FindPlayerAudio(); //Обновление ссылок или состояний
     }
 }

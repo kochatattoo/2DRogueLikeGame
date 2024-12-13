@@ -23,6 +23,7 @@ public class InventoryUI : MonoBehaviour
             if (inventory == null)
             {
                 Debug.LogError("Inventory component not found on Player!");
+                GUIManager.Instance.HandleError("Произошла ошибка: Не найден инвентарь игрока.", 0);
             }
         }
         // Создание слотов в инвентаре

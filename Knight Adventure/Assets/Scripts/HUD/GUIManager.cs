@@ -56,11 +56,13 @@ using UnityEngine.SceneManagement;
         CloseCurrentWindow();
 
         // Наполняем очередь окнами информации (пример)
-        for (int i = 0; i < uiPrefabsInformationWindows.Length; i++)
-        {
-            OpenInformationWindow(i); // Добавляем окна в очередь
-        }
-        // Не понял почему при отображении 2х окон, не откликается окно и отображаются не в том порядке (как работать с очередью?)
+        //for (int i = 0; i < uiPrefabsInformationWindows.Length; i++)
+        //{
+        //    OpenInformationWindow(i); // Добавляем окна в очередь
+        //}
+
+        //ShowWindowQueue();
+
     }
 
     public void SetTextAreas()
@@ -90,11 +92,12 @@ using UnityEngine.SceneManagement;
         else
         {
             Debug.LogWarning("Window index out of range: " + windowIndex);
+            HandleError("Произошла ошибка: Не существует окна в указаном индексе.", 0);
         }
     }
 
     /////////////////////////////////////////////////////////////////////////////////////
-    //Добавляю метод для создания информационных окон, коорый будут загружаться в очередь
+    //Добавляю метод для создания информационных окон, который будут загружаться в очередь
     public void OpenInformationWindow(int windowIndex)
     {
         if (windowIndex >= 0 && windowIndex < uiPrefabsInformationWindows.Length)
@@ -112,6 +115,7 @@ using UnityEngine.SceneManagement;
         else
         {
             Debug.LogWarning("Window index out of range: " + windowIndex);
+            HandleError("Произошла ошибка: Не существует окна в указаном индексе.", 0);
         }
     }
     public static void QueueWindow(Window window) // Метод для добавления в очередь
@@ -141,6 +145,14 @@ using UnityEngine.SceneManagement;
             Time.timeScale = 1; // Возвращаем игровую скорость к норме, когда нет активных окон
         }
     }
+    public void ShowWindowQueue()
+    {
+        // Наполняем очередь окнами информации (пример)
+        for (int i = 0; i < uiPrefabsInformationWindows.Length; i++)
+        {
+            OpenInformationWindow(i); // Добавляем окна в очередь
+        }
+    }
 
     //Добавляю метод для создания  окон который отображают ОШИБКИ
     public void OpenPriorityWindow(int windowIndex)
@@ -160,7 +172,15 @@ using UnityEngine.SceneManagement;
         else
         {
             Debug.LogWarning("Window index out of range: " + windowIndex);
+            HandleError("Произошла ошибка: Не существует окна в указаном индексе.", 0);
         }
+    }
+    public void HandleError(string errorMessage, int numberOfError)
+    {
+        Debug.LogError(errorMessage); // Записываем сообщение об ошибке в консоль
+
+        // Можно создать и открыть окно с сообщением об ошибке
+        OpenPriorityWindow(numberOfError); // Например, если у вас есть префаб окна с индексом 0 для ошибок
     }
     ////////////////////////////////////////////////////////////////////////////////////////////////////
     // Метод для закрытия текущего окна

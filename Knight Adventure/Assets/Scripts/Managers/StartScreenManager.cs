@@ -6,8 +6,7 @@ public class StartScreenManager : MonoBehaviour
 {
     [Header("UI Elements")]
     [SerializeField] private GameObject startScreenPrefab; // Префаб стартового экрана
-    [SerializeField] private TextMeshProUGUI welcomeText; // Приветственное сообщение
-    [SerializeField] private Button continueButton; // Кнопка для продолжения
+    private Button continueButton; // Кнопка для продолжения
 
     private GameObject startScreen; // экземпляр стартового экрана
 
@@ -18,17 +17,12 @@ public class StartScreenManager : MonoBehaviour
 
     private void InitializeStartScreen()
     {
+        GameInput.Instance.DisableMovement();
         // Создание экземпляра стартового экрана
         startScreen = Instantiate(startScreenPrefab);
         startScreen.transform.SetParent(GameObject.Find("GUI_Display").transform, false); // Привязываем к Canvas
 
-        // Устанавливаем текст приветствия
-        welcomeText = startScreen.GetComponentInChildren<TextMeshProUGUI>();
-        if (welcomeText != null)
-        {
-            welcomeText.text = "Добро пожаловать в нашу игру!"; // Установите текст приветствия
-        }
-
+        continueButton = FindObjectOfType<Button>();
         // Привязываем кнопку для продолжения
         continueButton = startScreen.GetComponentInChildren<Button>();
         if (continueButton != null)
@@ -45,7 +39,7 @@ public class StartScreenManager : MonoBehaviour
         // Здесь мы открываем первое окно информации из очереди, если оно есть
         if (GUIManager.Instance != null) // Проверяем, что GUIManager существует
         {
-            GUIManager.Instance.OpenInformationWindow(0); // Открываем первое информационное окно как пример
+            GUIManager.Instance.ShowWindowQueue(); // Открываем первое информационное окно как пример
         }
     }
 }
