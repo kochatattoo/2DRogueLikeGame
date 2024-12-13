@@ -710,6 +710,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 935c743fe09b96643a6faf80e1e0cfa2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  resourcesLoadManager: {fileID: 0}
   saveManager: {fileID: 0}
   audioManager: {fileID: 0}
   guiManager: {fileID: 0}
@@ -782,7 +783,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e73806d2feffe84ba146825c8b70c7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startScreenPrefab: {fileID: 7289765175754459468, guid: de45865af5b80d64b806657c08edba10, type: 3}
 --- !u!114 &1038671681 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7491849456964802105, guid: 14976eb025eae754db564b4f3def98c5, type: 3}
