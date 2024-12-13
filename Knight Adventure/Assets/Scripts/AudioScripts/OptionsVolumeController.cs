@@ -10,8 +10,12 @@ namespace Assets.Scripts.AudioScripts
 
         private void Start()
         {
-            //soundSlider.value = PlayerPrefs.GetFloat("sound_volume", 0.5f);
-            audioPlayer=FindObjectOfType<AudioPlayer>();
+            // Получаем уровень громкости из PlayerPrefs и устанавливаем его на слайдер
+            float savedVolume = PlayerPrefs.GetFloat("sound_volume", 0.5f); // Значение по умолчанию 0.5f
+
+            soundSlider.value = savedVolume; // Устанавливаем значение слайдера
+            audioPlayer = FindObjectOfType<AudioPlayer>(); // Находим AudioPlayer
+            audioPlayer.SetVolume(savedVolume); // Устанавливаем начальный уровень громкости
         }
         public void OnSoundChange()
         {

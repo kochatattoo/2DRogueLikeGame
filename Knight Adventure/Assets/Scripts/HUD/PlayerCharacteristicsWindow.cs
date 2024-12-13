@@ -21,6 +21,7 @@ public class PlayerCharacteristicsWindow : MonoBehaviour
     private void Start()
     {
         playerStats = Player.Instance.playerStats;
+        levelSlider.interactable = false; // Закрываем для взаимодействия
         UpdateUI();
         
     }
@@ -39,5 +40,23 @@ public class PlayerCharacteristicsWindow : MonoBehaviour
         // Устанавливаем значение слайдера для уровня
         float experiencePercentage = (float)playerStats.currentExperience / playerStats.experienceToNextLevel;
         levelSlider.value = experiencePercentage;
+
+        // Проверяем, достиг ли игрок следующего уровня
+        if (playerStats.currentExperience >= playerStats.experienceToNextLevel)
+        {
+            LevelUp();
+        }
+    }
+    private void LevelUp()
+    {
+        playerStats.currentExperience -= playerStats.experienceToNextLevel; // Вычитаем опыт для следующего уровня
+        playerStats.level++; // Увеличиваем уровень
+        playerStats.experienceToNextLevel = CalculateExperienceToNextLevel(playerStats.level); // Рассчитываем новый опыт для следующего уровня
+        UpdateUI(); // Обновляем интерфейс
+    }
+    private float CalculateExperienceToNextLevel(int level)
+    {
+        // Простая формула для расчета опыта для следующего уровня
+        return level * 100; // Например, 100 опыта на уровень
     }
 }
