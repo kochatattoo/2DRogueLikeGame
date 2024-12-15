@@ -82,6 +82,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   magicalBallPrefab: {fileID: 6364501318000965586}
+  magicalBallVisual: {fileID: 6514519825005467554}
   speed: 30
   damage: 2
 --- !u!1 &8519924147883943023

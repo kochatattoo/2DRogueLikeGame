@@ -16,6 +16,7 @@ public class Player : MonoBehaviour
     //ќбъ€вл€ем ссылку на статистику персонажа
     public PlayerStats playerStats;
     public PlayerAchievements playerAchievements;
+    public PlayerHealthManager playerHealthBar;
 
     //ќбъ€вл€ю ссылку на инвентарь персонажа - но на данный момент в инвентарь доступ происходит
     //„ерез ссылание на свой же объект 
@@ -74,14 +75,18 @@ public class Player : MonoBehaviour
         SetPlayerAchivements();
         SetPlayerActuallyStats();
 
-        //”станавливаем текущее здоровье = максимальноиу
+        ////”станавливаем текущее здоровье = максимальноиу
         _currentHealth = _maxHealth;
 
-        //SetPlayerInventory();
+        playerHealthBar = FindObjectOfType<PlayerHealthManager>();
+        playerHealthBar.StartPlayerHealthManager(_maxHealth);
+
         LightSetting(); //¬ызываем метод дл€ установки света у нашего персонажа
+
 
         // ѕ–исвоим инвентарю персонажа - инвентарь из наших данных 
         //playerInventory = GameManager.Instance.playerData.playerInventory;
+        //SetPlayerInventory();
 
     }
 

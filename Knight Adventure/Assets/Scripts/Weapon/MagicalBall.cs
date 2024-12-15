@@ -6,6 +6,7 @@ using System;
 public class MagicalBall : MonoBehaviour
 {
     [SerializeField] private GameObject magicalBallPrefab;
+    [SerializeField] private MagicalBallVisual magicalBallVisual;
 
     public event EventHandler OnMagicalBallCast;
 
@@ -50,15 +51,20 @@ public class MagicalBall : MonoBehaviour
             Vector2 direction = ( mousePos - transform.position).normalized; // Направление на курсор
             magicBall.GetComponent<MagicalBall>().Initialize(direction); // Передаем направление в магический шарs
 
-            Debug.Log(transform.position);
-            Debug.Log(mousePos);
-            Debug.Log(direction);
+           // Debug.Log(transform.position);
+           // Debug.Log(mousePos);
+           // Debug.Log(direction);
             OnMagicalBallCast?.Invoke(this, EventArgs.Empty);
         }
         else
         {
             Debug.LogError("MagicalBall prefab or shootPoint is not assigned.");
         }
+    }
+
+    public void DestroyMagicBall()
+    {
+        Destroy(gameObject);
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -69,13 +75,20 @@ public class MagicalBall : MonoBehaviour
             if (enemy != null)
             {
                 enemy.TakeDamage(damage); // Наносим урон
-                Debug.Log("Magic ball hit the enemy");
+                direction = Vector2.zero;
+
+              //  Debug.Log("Magic ball hit the enemy");
+                magicalBallVisual.SetState(MagicalBallVisual.State.Hit);
             }
-            Destroy(gameObject); // Уничтожаем шар после столкновения
+
+           // Destroy(gameObject); // Уничтожаем шар после столкновения
         }
         else if (!collision.CompareTag("Player"))
         {
-            Destroy(gameObject); // Уничтожаем шар после столкновения
+            direction = Vector2.zero;
+            magicalBallVisual.SetState(MagicalBallVisual.State.Destroy);
+
+           // Destroy(gameObject); // Уничтожаем шар после столкновения
         }
        // Вы можете добавить дополнительные действия, если шар столкнется с другими объектами
        //, например, уничтожение шара при столкновении с препятствиями.

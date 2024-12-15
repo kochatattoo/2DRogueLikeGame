@@ -4,9 +4,7 @@ using UnityEngine.UI;
 
 public class PlayerHealthManager : MonoBehaviour
 {
-    //public static PlayerHealthManager Instance {  get; private set; }
-
-    //Обращаемся к переменой Изображения
+       //Обращаемся к переменой Изображения
     [SerializeField]private Image _healthBar;
     //Переменная количества здоровья
     private float _healthAmount;
@@ -14,20 +12,10 @@ public class PlayerHealthManager : MonoBehaviour
     private float _healthCurrent;
     private float _damage;
 
-    //private void Awake()
-    //{
-    //    Instance = this;
-    //}
-    //private void Awake()
-    //{
-    //    _maxHealth=Player.Instance.GetMaxHealth();
-    //    _healthAmount = Player.Instance.GetMaxHealth();
-    //}
-
     private void Start()
     {
-        _maxHealth = Player.Instance.GetMaxHealth();
-        _healthAmount = Player.Instance.GetMaxHealth();
+        //_maxHealth = Player.Instance.GetMaxHealth();
+        //_healthAmount = Player.Instance.GetMaxHealth();
         Player.Instance.OnTakeHit += Player_OnTakeHit;
     }
 
@@ -61,5 +49,13 @@ public class PlayerHealthManager : MonoBehaviour
     public float SetHealthBar(int health)
     {
         return _healthAmount = health;
+    }
+    public void StartPlayerHealthManager(float maxHealth)
+    {
+        //_maxHealth = Player.Instance.GetMaxHealth();
+        //_healthAmount = Player.Instance.GetMaxHealth();
+
+        _maxHealth = maxHealth;
+        _healthAmount = maxHealth;
     }
 }

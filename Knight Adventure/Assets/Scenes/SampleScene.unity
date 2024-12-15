@@ -1510,6 +1510,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 7491849456964802105, guid: 14976eb025eae754db564b4f3def98c5, type: 3}
+      propertyPath: _audioClips.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7491849456964802105, guid: 14976eb025eae754db564b4f3def98c5, type: 3}
+      propertyPath: _audioClips.Array.data[5]
+      value: 
+      objectReference: {fileID: 8300000, guid: 110010d4dbab1b3479fa800b15ec9db5, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
