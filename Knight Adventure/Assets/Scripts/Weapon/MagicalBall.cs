@@ -70,6 +70,8 @@ public class MagicalBall : MonoBehaviour
     {
         if (collision.CompareTag("Enemy"))
         {
+            Debug.Log("Collided with: " + collision.name); // —ообщает, с чем столкнулс€ шар.
+
             // ѕредполагаем, что у врага есть компонент, отвечающий за получение урона
             EnemyEntity enemy = collision.GetComponent<EnemyEntity>();
             if (enemy != null)
@@ -92,5 +94,9 @@ public class MagicalBall : MonoBehaviour
         }
        // ¬ы можете добавить дополнительные действи€, если шар столкнетс€ с другими объектами
        //, например, уничтожение шара при столкновении с преп€тстви€ми.
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        
     }
 }

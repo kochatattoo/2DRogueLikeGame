@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MagicalBallVisual : MonoBehaviour
 {
-    // private MagicalBall magicalBall;
+    [SerializeField] private MagicalBall magicalBall;
     public enum State
     {
         Flying,
@@ -57,6 +57,8 @@ public class MagicalBallVisual : MonoBehaviour
         animator.SetBool("IsFlying", true);
         animator.SetBool("HasHit", false);
         animator.SetBool("IsDestroying", false);
+        Destroy(magicalBall. gameObject, 2.8f);
+       // Destroy(gameObject, 2.8f);
     }
 
     private void PlayHitAnimation()
@@ -66,7 +68,8 @@ public class MagicalBallVisual : MonoBehaviour
         animator.SetBool("IsDestroying", false);
 
         // После завершения анимации уничтожите объект
-        Destroy(gameObject, 0.8f); // Уничтожение через 1 секунду (или по времени анимации)
+        Destroy(magicalBall. gameObject, 0.8f);
+       // Destroy(gameObject, 0.8f); // Уничтожение через 1 секунду (или по времени анимации)
     }
 
     private void PlayDestroyAnimation()
@@ -76,6 +79,7 @@ public class MagicalBallVisual : MonoBehaviour
         animator.SetBool("IsDestroying", true);
 
         // После завершения анимации уничтожите объект
-        Destroy(gameObject, 0.8f); // Уничтожение через 1 секунду (или по времени анимации)
+        Destroy(magicalBall.gameObject, 0.8f);
+       // Destroy(gameObject, 0.8f); // Уничтожение через 1 секунду (или по времени анимации)
     }
 }

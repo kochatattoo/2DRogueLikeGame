@@ -204,3 +204,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5af855396fced9942bccbc8a2284e66e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  magicalBall: {fileID: 2976156655437922066}
