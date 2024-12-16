@@ -21,6 +21,8 @@ using UnityEngine.SceneManagement;
 
     private GameObject _currentWindow; // Текущее окно
 
+    [SerializeField] GameObject GUIDisplay;
+
     private static Queue<Window> windowQueue = new Queue<Window>(); // Очередь окон
     private static Window activeWindow; // Текущее активное окно
 
@@ -64,7 +66,10 @@ using UnityEngine.SceneManagement;
         //ShowWindowQueue();
 
     }
+    public void AddQueueWindows()
+    {
 
+    }
     public void SetTextAreas()
     {
         //Присваиваем значеие переменных из значения полей USER
@@ -87,7 +92,7 @@ using UnityEngine.SceneManagement;
             // Создание нового окна
             _currentWindow = Instantiate(uiPrefabsPlayerWindows[windowIndex]);
             // Убедитесь, что новое окно прикреплено к Canvas
-            _currentWindow.transform.SetParent(GameObject.Find("GUI_Display").transform, false);
+            _currentWindow.transform.SetParent(GUIDisplay.transform, false);
         }
         else
         {
@@ -105,9 +110,7 @@ using UnityEngine.SceneManagement;
         }
 
          // Создание нового окна
-         _currentWindow = Instantiate(name);
-         // Убедитесь, что новое окно прикреплено к Canvas
-         _currentWindow.transform.SetParent(GameObject.Find("GUI_Display").transform, false);
+         _currentWindow = Instantiate(name, GUIDisplay.transform); // переписать ко всем интсниэйт родителей вторым аргументом
         
     }
     /////////////////////////////////////////////////////////////////////////////////////
@@ -117,7 +120,7 @@ using UnityEngine.SceneManagement;
         if (windowIndex >= 0 && windowIndex < uiPrefabsInformationWindows.Length)
         {
             GameObject windowObject = Instantiate(uiPrefabsInformationWindows[windowIndex]);
-            windowObject.transform.SetParent(GameObject.Find("GUI_Display").transform, false) ;
+            windowObject.transform.SetParent(GUIDisplay.transform, false) ;
 
             Window window = windowObject.GetComponent<Window>();
             if (window != null)
@@ -174,7 +177,7 @@ using UnityEngine.SceneManagement;
         if (windowIndex >= 0 && windowIndex < uiPrefabsPriorityWindows.Length)
         {
             GameObject windowObject = Instantiate(uiPrefabsPriorityWindows[windowIndex]);
-            windowObject.transform.SetParent(GameObject.Find("GUI_Display").transform, false);
+            windowObject.transform.SetParent(GUIDisplay.transform.transform, false);
 
             Window window = windowObject.GetComponent<Window>();
             if (window != null)

@@ -89,7 +89,12 @@ public class Player : MonoBehaviour
         //SetPlayerInventory();
 
     }
-
+    private void OnDisable()
+    {
+        GameInput.Instance.OnPlayerAttack -= Player_OnPlayerAttack;
+        GameInput.Instance.OnPlayerRangeAttack -= Player_OnPlayerRangeAttack;
+        GameInput.Instance.OnPlayerMagicAttack -= Player_OnPlayerMagicAttack;
+    }
 
     private void Update()
     {

@@ -15,7 +15,7 @@ public class MagicalBall : MonoBehaviour
 
     private CircleCollider2D _circleCollider2D;
    
-    private Vector2 direction; // Направление движения шара
+    private Vector3 direction; // Направление движения шара
 
     private void Awake()
     {
@@ -23,15 +23,22 @@ public class MagicalBall : MonoBehaviour
        // _circleCollider2D.enabled = false;
     }
 
-    public void Initialize(Vector2 dir)
+    public void Initialize(Vector3 dir)
     {
         direction = dir;
+        // Тут надо править
+        //Vector3 pos = new Vector3();
+        //pos.x = dir.x;
+        //pos.y = dir.y;
+        //pos.z = 0;
+        //transform.LookAt(pos);
     }
     private void Update()
     {
         // Если направление не в нулевом состоянии, перемещаем шар
-        if (direction != Vector2.zero)
+        if (direction != Vector3.zero)
         {
+            direction.z = 0;
             transform.Translate(direction * speed * Time.deltaTime); // Перемещение шара
         }
     }
@@ -44,6 +51,9 @@ public class MagicalBall : MonoBehaviour
         if (magicalBallPrefab != null)
         {
             GameObject magicBall = Instantiate(magicalBallPrefab, this.transform.position, Quaternion.identity);
+            // Сделать пустой объект в точке выстрела и привязать к нему как к родительскому объекту
+            magicBall.transform.SetParent(Player.Instance.transform);
+            
 
             Vector3 mousePos = GameInput.Instance.GetMousePositionToScreenWorldPoint();
             mousePos.z = 0;
@@ -87,6 +97,7 @@ public class MagicalBall : MonoBehaviour
         }
         else if (!collision.CompareTag("Player"))
         {
+            Debug.Log("Collided with: " + collision.name); // Сообщает, с чем столкнулся шар.
             direction = Vector2.zero;
             magicalBallVisual.SetState(MagicalBallVisual.State.Destroy);
 

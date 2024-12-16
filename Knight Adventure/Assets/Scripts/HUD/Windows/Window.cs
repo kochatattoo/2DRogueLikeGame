@@ -40,7 +40,7 @@ public class Window : MonoBehaviour
         if (activeWindow == this) // Проверка, является ли текущее активное окно
         {
             PlaySound(closeSound); // Воспроизведение звука закрытия
-            gameObject.SetActive(false); // Деактивируем окно
+          //  gameObject.SetActive(false); // Деактивируем окно
             Time.timeScale = 1; // Возобновляем игру
 
             OnWindowClosed?.Invoke(); // Вызываем событие закрытия

@@ -18,6 +18,10 @@ public class PlayerHealthManager : MonoBehaviour
         //_healthAmount = Player.Instance.GetMaxHealth();
         Player.Instance.OnTakeHit += Player_OnTakeHit;
     }
+    private void OnDisable()
+    {
+        Player.Instance.OnTakeHit -= Player_OnTakeHit;
+    }
 
     private void Player_OnTakeHit(object sender, System.EventArgs e)
     {

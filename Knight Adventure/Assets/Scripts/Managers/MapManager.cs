@@ -7,7 +7,7 @@ public class MapManager : MonoBehaviour
     public static MapManager Instance {  get; private set; }
 
     public GameObject[] maps; // Список тайловых карт
-    private GameObject currentMap; // Текущая карта
+    public GameObject currentMap; // Текущая карта
     private int currentMapIndex = 0; // Индекс текущей карты
 
     private void Awake()
