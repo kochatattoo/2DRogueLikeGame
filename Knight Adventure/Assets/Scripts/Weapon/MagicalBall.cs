@@ -50,9 +50,12 @@ public class MagicalBall : MonoBehaviour
 
         if (magicalBallPrefab != null)
         {
+            //Vector3 position = this.transform.position;
+            //position.z = 0;
             GameObject magicBall = Instantiate(magicalBallPrefab, this.transform.position, Quaternion.identity);
             // Сделать пустой объект в точке выстрела и привязать к нему как к родительскому объекту
             magicBall.transform.SetParent(Player.Instance.transform);
+            
             
 
             Vector3 mousePos = GameInput.Instance.GetMousePositionToScreenWorldPoint();
