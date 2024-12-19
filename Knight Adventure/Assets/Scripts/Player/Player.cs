@@ -26,10 +26,16 @@ public class Player : MonoBehaviour
     public event EventHandler OnPlayerDeath;
     public event EventHandler OnTakeHit;
 
+    public event EventHandler OnPlayerUpdateCurrentExpirience;
+    public event EventHandler OnPlayerUpdateCurrentMana;
+    public event EventHandler OnPlayerUpdateCurrentHealth;
+
     //Объявляем переменные
     //Скорость, макс здоровье, время востановления для получения урона, место нахождения
     [SerializeField] private float _speed;
     [SerializeField] private float _maxHealth;
+    [SerializeField] private float _maxMana;
+    [SerializeField] private float _maxExpirience;
     [SerializeField] private float _damageRecoveryTime = 0.5f;
     Vector2 _inputVector;
 
@@ -44,11 +50,16 @@ public class Player : MonoBehaviour
 
     //текущее здоровье, возможно ли получать урон, статус жизни
     private float _currentHealth;
+    private float _currentMana;
+    private float _currentExpirience;
     private bool _canTakeDamage;
     private bool _isAlive = true;
 
     //Переменная отвечающая за хэлфбар
     private PlayerHealthManager _healthBar;
+
+    private PlayerStatsUIManager _statsUIManager;
+
 
     //Переменная отвечающая за свет от персонажа
     private Light2D _playerLight;
@@ -77,9 +88,14 @@ public class Player : MonoBehaviour
 
         ////Устанавливаем текущее здоровье = максимальноиу
         _currentHealth = _maxHealth;
+        _currentExpirience = 0;
+        _currentMana = _maxMana;
 
         playerHealthBar = FindObjectOfType<PlayerHealthManager>();
         playerHealthBar.StartPlayerHealthManager(_maxHealth);
+
+        _statsUIManager = FindAnyObjectByType<PlayerStatsUIManager>();
+        _statsUIManager.StartPlayerStatsUIManager(_maxHealth, _maxMana);
 
         LightSetting(); //Вызываем метод для установки света у нашего персонажа
 
@@ -128,13 +144,18 @@ public class Player : MonoBehaviour
     {
         //Вызываем метод в атаки в классе Актив Вепон
         ActiveWeapon.Instance.GetMagicWeapon().Attack();
-       // ActiveWeapon.Instance.GetMagicalBall().Attack();
+        _currentMana -= 5;
+        GetCurrentManaEvent();
 
     }
     private void Player_OnPlayerRangeAttack(object sender, EventArgs e)
     {
+        //Вызываем метод в атаки в классе Актив Вепон
         ActiveWeapon.Instance.GetMagicalBall().Attack();
+        _currentMana -= 2;
+        GetCurrentManaEvent();
     }
+
     //Отслеживание статуса бега персонажа
     private void HandleMovement()
     {
@@ -151,11 +172,38 @@ public class Player : MonoBehaviour
     public bool IsRunning() { return _isRunning; }
     public bool IsAlive() =>_isAlive;
     public float GetCurrentHealth() => _currentHealth;
+    public float GetCurrentMana() => _currentMana;
+    public float GetCurrentExpirience()=>_currentExpirience;
+ 
     public float GetMaxHealth() => _maxHealth;
+    public float GetMaxMana() => _maxMana;
+    public float GetMaxExpirience()=>_maxExpirience;
   
     public float SetCurrentHealth(float health)
     {
        return _currentHealth = health;
+    }
+    public float SetCurrentMana(float mana)
+    {
+        return _currentMana = mana;
+    }
+    public float SetCurrentExpirience(float exp)
+    {
+        return _currentExpirience = exp;
+    }
+
+    // Методы вызывающие события для обновления значений характеристик баров у перса
+    public void GetCurrentHealthEvent()
+    {
+        OnPlayerUpdateCurrentHealth?.Invoke(this, EventArgs.Empty);
+    }
+    public void GetCurrentManaEvent()
+    {
+        OnPlayerUpdateCurrentMana?.Invoke(this, EventArgs.Empty);
+    }
+    public void GetCurrentExpirienceEvent()
+    {
+        OnPlayerUpdateCurrentExpirience?.Invoke(this, EventArgs.Empty);
     }
 
     //Получение позиции нашего персонажа относительно экрана
@@ -173,6 +221,10 @@ public class Player : MonoBehaviour
         {
             //Высчитываем текущее здоровье в диапазоне 0 и макс здоровья
             _currentHealth = Mathf.Max(0, _currentHealth -= damage);
+
+            //VМетод вызываемый при обновлении здоровья перса
+            GetCurrentHealthEvent();
+
             //Вызываем метод отскакивания при получении урона
             _knockBack.GetKnockBack(damageSourse);
             //Больше не можем получать урон
@@ -185,16 +237,19 @@ public class Player : MonoBehaviour
         //Отслеживае состояние смерти
         DetectDeath();
     }
+
     private void SetPlayerCharacteristics()
     {
         playerStats = GameManager.Instance.playerData.playerStats;
     }
 
-    // В данном методе будем устанавливать Актуальные характеристики нашего персонажа от егго статистик
+    // В данном методе будем устанавливать Актуальные характеристики нашего персонажа от его статистик
     private void SetPlayerActuallyStats()
     {
         _speed = playerStats.speed;
         _maxHealth = playerStats.maxHealth;
+        _maxMana = playerStats.maxMana;
+        _maxExpirience = playerStats.currentExperience;
     }
     private void SetPlayerAchivements()
     {
