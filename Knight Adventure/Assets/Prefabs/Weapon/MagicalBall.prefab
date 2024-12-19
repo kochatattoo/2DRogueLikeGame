@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6779141742880729691}
   - component: {fileID: 6244142103833451599}
   - component: {fileID: 2976156655437922066}
+  - component: {fileID: 8865830512018949803}
   m_Layer: 0
   m_Name: MagicalBall
   m_TagString: Untagged
@@ -85,6 +86,33 @@ MonoBehaviour:
   magicalBallVisual: {fileID: 6514519825005467554}
   speed: 30
   damage: 2
+--- !u!50 &8865830512018949803
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6364501318000965586}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 2
 --- !u!1 &8519924147883943023
 GameObject:
   m_ObjectHideFlags: 0

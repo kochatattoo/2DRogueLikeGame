@@ -14,24 +14,23 @@ public class MagicalBall : MonoBehaviour
     public int damage = 2; // Урон, который будет наноситься
 
     private CircleCollider2D _circleCollider2D;
+    private Rigidbody2D _rigidbody2D;
    
     private Vector3 direction; // Направление движения шара
 
     private void Awake()
     {
         _circleCollider2D = GetComponent<CircleCollider2D>();
+        _rigidbody2D = GetComponent<Rigidbody2D>();
+
        // _circleCollider2D.enabled = false;
     }
 
     public void Initialize(Vector3 dir)
     {
         direction = dir;
-        // Тут надо править
-        //Vector3 pos = new Vector3();
-        //pos.x = dir.x;
-        //pos.y = dir.y;
-        //pos.z = 0;
-        //transform.LookAt(pos);
+        magicalBallVisual.SetDirection(direction);
+
     }
     private void Update()
     {
@@ -50,11 +49,11 @@ public class MagicalBall : MonoBehaviour
 
         if (magicalBallPrefab != null)
         {
-            //Vector3 position = this.transform.position;
-            //position.z = 0;
+            Vector3 position = this.transform.position;
+            position.z = 0;
             GameObject magicBall = Instantiate(magicalBallPrefab, this.transform.position, Quaternion.identity);
             // Сделать пустой объект в точке выстрела и привязать к нему как к родительскому объекту
-            magicBall.transform.SetParent(Player.Instance.transform);
+           // magicBall.transform.SetParent(Player.Instance.transform);
             
             
 

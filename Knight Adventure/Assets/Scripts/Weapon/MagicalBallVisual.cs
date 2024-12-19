@@ -51,6 +51,12 @@ public class MagicalBallVisual : MonoBehaviour
                 break;
         }
     }
+    public void SetDirection(Vector3 direction)
+    {
+        // Рассчитываем угол поворота на основе направления
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg; // Получаем угол в градусах
+        transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle)); // Применяем вращение к спрайту
+    }
 
     private void PlayFlyingAnimation()
     {
