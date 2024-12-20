@@ -5,6 +5,7 @@ using Assets.Scripts.Items;
 public class StorageInventoryUI : InventoryUI
 {
     public StorageChest storageChest; // Привязка к сундуку
+    private GameObject _currentWindow; // Текущее окно
 
     private void Start()
     {

@@ -90,9 +90,10 @@ using UnityEngine.SceneManagement;
         if (windowIndex >= 0 && windowIndex < uiPrefabsPlayerWindows.Length)
         {
             // Создание нового окна
-            _currentWindow = Instantiate(uiPrefabsPlayerWindows[windowIndex]);
+            _currentWindow = Instantiate(uiPrefabsPlayerWindows[windowIndex], GUIDisplay.transform);
+
             // Убедитесь, что новое окно прикреплено к Canvas
-            _currentWindow.transform.SetParent(GUIDisplay.transform, false);
+           // _currentWindow.transform.SetParent(GUIDisplay.transform, false);
         }
         else
         {
@@ -119,8 +120,9 @@ using UnityEngine.SceneManagement;
     {
         if (windowIndex >= 0 && windowIndex < uiPrefabsInformationWindows.Length)
         {
-            GameObject windowObject = Instantiate(uiPrefabsInformationWindows[windowIndex]);
-            windowObject.transform.SetParent(GUIDisplay.transform, false) ;
+            GameObject windowObject = Instantiate(uiPrefabsInformationWindows[windowIndex], GUIDisplay.transform);
+
+           // windowObject.transform.SetParent(GUIDisplay.transform, false) ;
 
             Window window = windowObject.GetComponent<Window>();
             if (window != null)
@@ -176,8 +178,8 @@ using UnityEngine.SceneManagement;
     {
         if (windowIndex >= 0 && windowIndex < uiPrefabsPriorityWindows.Length)
         {
-            GameObject windowObject = Instantiate(uiPrefabsPriorityWindows[windowIndex]);
-            windowObject.transform.SetParent(GUIDisplay.transform.transform, false);
+            GameObject windowObject = Instantiate(uiPrefabsPriorityWindows[windowIndex], GUIDisplay.transform);
+           // windowObject.transform.SetParent(GUIDisplay.transform.transform, false);
 
             Window window = windowObject.GetComponent<Window>();
             if (window != null)
@@ -231,12 +233,6 @@ using UnityEngine.SceneManagement;
         Debug.Log("Open Option Window");
     }
 
-    public void OpenAchivements()
-    {
-        //OpenPlayerWindow(ACHIVMENT_WINDOW);
-        OpenPlayerWindow(GameManager.Instance.resourcesLoadManager.LoadPlayerWindow("AchivmentsWindow")); // Новый метод по пути
-        Debug.Log("Open Achivements Window");
-    }
 
     public void OpenStorageChestInventory(Inventory chestInventory)
     {
