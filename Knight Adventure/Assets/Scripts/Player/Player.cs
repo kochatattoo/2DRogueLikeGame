@@ -16,7 +16,7 @@ public class Player : MonoBehaviour
     //ќбъ€вл€ем ссылку на статистику персонажа
     public PlayerStats playerStats;
     public PlayerAchievements playerAchievements;
-    public PlayerHealthManager playerHealthBar;
+   
 
     //ќбъ€вл€ю ссылку на инвентарь персонажа - но на данный момент в инвентарь доступ происходит
     //„ерез ссылание на свой же объект 
@@ -55,9 +55,6 @@ public class Player : MonoBehaviour
     private bool _canTakeDamage;
     private bool _isAlive = true;
 
-    //ѕеременна€ отвечающа€ за хэлфбар
-    private PlayerHealthManager _healthBar;
-
     private PlayerStatsUIManager _statsUIManager;
 
 
@@ -90,9 +87,6 @@ public class Player : MonoBehaviour
         _currentHealth = _maxHealth;
         _currentExpirience = 0;
         _currentMana = _maxMana;
-
-        playerHealthBar = FindObjectOfType<PlayerHealthManager>();
-        playerHealthBar.StartPlayerHealthManager(_maxHealth);
 
         _statsUIManager = FindAnyObjectByType<PlayerStatsUIManager>();
         _statsUIManager.StartPlayerStatsUIManager(_maxHealth, _maxMana);
