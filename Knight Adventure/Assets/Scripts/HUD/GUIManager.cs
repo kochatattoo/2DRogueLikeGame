@@ -9,15 +9,14 @@ using UnityEngine.SceneManagement;
 //Класс отвечающий за реализацию HUD меню
   public class GUIManager : MonoBehaviour
     {
-       public static GUIManager Instance {  get; private set; }
+    public static GUIManager Instance {  get; private set; }
         //Объявляем переменные текстовых полей
-        [SerializeField] TextMeshProUGUI _name;
-        [SerializeField] TextMeshProUGUI _coins;
-        [SerializeField] TextMeshProUGUI _level;
+    [SerializeField] TextMeshProUGUI _name;
+    [SerializeField] TextMeshProUGUI _coins;
+    [SerializeField] TextMeshProUGUI _level;
 
-    public GameObject[] uiPrefabsPlayerWindows; // Массив префабов для UI окон
-    public GameObject[] uiPrefabsInformationWindows; // Массив префабов для окон с информацией
-    public GameObject[] uiPrefabsPriorityWindows; // Массив префабов для окон с ошибками 
+    private GameObject[] uiPrefabsInformationWindows; // Массив префабов для окон с информацией
+    private GameObject[] uiPrefabsPriorityWindows; // Массив префабов для окон с ошибками 
 
     private GameObject _currentWindow; // Текущее окно
 
@@ -26,14 +25,6 @@ using UnityEngine.SceneManagement;
     private static Queue<Window> windowQueue = new Queue<Window>(); // Очередь окон
     private static Window activeWindow; // Текущее активное окно
 
-    public const int PAUSE_WINDOW = 0; // Pause_Menu_Display
-    public const int INVENTORY_WINDOW = 1; // InventoryUI
-    public const int CHARACTERISTIC_WINDOW = 2; // CharacteristicWindow
-    public const int OPTION_WINDOW = 3; // OptionWindow
-    public const int ACHIVMENT_WINDOW = 4; // AchivementsWindow
-    public const int STORAGE_CHEST_WINDOW = 5; // Storage_CHest_Window
-
-    //private User user;
 
        private void Awake()
         {
@@ -55,6 +46,10 @@ using UnityEngine.SceneManagement;
     {
         GameManager.Instance.playerData = SaveManager.Instance.LoadLastGame();
         FirstTextAwake();
+
+        IniitializeUIPrefabsInformationWindows();
+        IniitializeUIPrefabsWarningWindows();
+
         CloseCurrentWindow();
 
         // Наполняем очередь окнами информации (пример)
@@ -65,6 +60,20 @@ using UnityEngine.SceneManagement;
 
         //ShowWindowQueue();
 
+    }
+    private void IniitializeUIPrefabsInformationWindows()
+    {
+        uiPrefabsInformationWindows = new GameObject[3];
+
+        uiPrefabsInformationWindows[0] = GameManager.Instance.resourcesLoadManager.LoadInformationWindow("Window_Info");
+        uiPrefabsInformationWindows[1] = GameManager.Instance.resourcesLoadManager.LoadInformationWindow("Window_Shares");
+        uiPrefabsInformationWindows[2] = GameManager.Instance.resourcesLoadManager.LoadInformationWindow("Window_Entry");
+    }
+    private void IniitializeUIPrefabsWarningWindows()
+    {
+        uiPrefabsPriorityWindows = new GameObject[1];
+
+        uiPrefabsPriorityWindows[0] = GameManager.Instance.resourcesLoadManager.LoadPriorityWindow("Window_Warning");
     }
     public void AddQueueWindows()
     {
@@ -78,29 +87,6 @@ using UnityEngine.SceneManagement;
         _level.text = GameManager.Instance.playerData.level.ToString();
     }
 
-    public void OpenPlayerWindow(int windowIndex)
-    {
-        // Закрывайте текущее окно, если оно существует
-        if (_currentWindow != null)
-        {
-            Destroy(_currentWindow);
-        }
-
-        // Проверка на валидность индекса
-        if (windowIndex >= 0 && windowIndex < uiPrefabsPlayerWindows.Length)
-        {
-            // Создание нового окна
-            _currentWindow = Instantiate(uiPrefabsPlayerWindows[windowIndex], GUIDisplay.transform);
-
-            // Убедитесь, что новое окно прикреплено к Canvas
-           // _currentWindow.transform.SetParent(GUIDisplay.transform, false);
-        }
-        else
-        {
-            Debug.LogWarning("Window index out of range: " + windowIndex);
-            HandleError("Произошла ошибка: Не существует окна в указаном индексе.", 0);
-        }
-    }
     // Сделаем перегрузку для метода OpenPlayerWindow
     public void OpenPlayerWindow(GameObject name)
     {
@@ -114,6 +100,7 @@ using UnityEngine.SceneManagement;
          _currentWindow = Instantiate(name, GUIDisplay.transform); // переписать ко всем интсниэйт родителей вторым аргументом
         
     }
+
     /////////////////////////////////////////////////////////////////////////////////////
     //Добавляю метод для создания информационных окон, который будут загружаться в очередь
     public void OpenInformationWindow(int windowIndex)
@@ -202,6 +189,7 @@ using UnityEngine.SceneManagement;
         OpenPriorityWindow(numberOfError); // Например, если у вас есть префаб окна с индексом 0 для ошибок
     }
     ////////////////////////////////////////////////////////////////////////////////////////////////////
+    
     // Метод для закрытия текущего окна
     public void CloseCurrentWindow()
     {
@@ -212,20 +200,7 @@ using UnityEngine.SceneManagement;
         }
     }
 
-    public void OpenInventory()
-    {
-        //OpenPlayerWindow(INVENTORY_WINDOW);
-        OpenPlayerWindow(GameManager.Instance.resourcesLoadManager.LoadPlayerWindow("InventoryWindow")); // Новый метод по пути
-        Debug.Log("Open Inventory"); 
-    }
-
-    public void OpenCharacteristic()
-    {
-        //OpenPlayerWindow(CHARACTERISTIC_WINDOW);
-        OpenPlayerWindow(GameManager.Instance.resourcesLoadManager.LoadPlayerWindow("CharactristicWindow")); // Новый метод по пути
-        Debug.Log("Open Characteristic Window");
-    }
-
+    // Методы для открытия окон, которые ни к чему не привязаны(ну или пока не получилось привязать) 
     public void OpenOption()
     {
         //OpenPlayerWindow(OPTION_WINDOW);
@@ -248,6 +223,8 @@ using UnityEngine.SceneManagement;
             //inventoryUI.UpdateInventoryUI(); // Обновляем UI для отображения содержимого сундука
         }
     }
+
+    // Методот загружающий текст имени Пользователя
     private void FirstTextAwake()
     {
         if (Player.Instance == null)

@@ -94,6 +94,11 @@ public class InventoryUI : MonoBehaviour
             // Здесь вы можете добавить логику для отображения информации о предмете
         }
     }
-
+    public static void OpenInventory()
+    {
+        //OpenPlayerWindow(INVENTORY_WINDOW);
+        GUIManager.Instance.OpenPlayerWindow(GameManager.Instance.resourcesLoadManager.LoadPlayerWindow("InventoryWindow")); // Новый метод по пути
+        Debug.Log("Open Inventory");
+    }
 
 }

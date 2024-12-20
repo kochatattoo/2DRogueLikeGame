@@ -59,4 +59,10 @@ public class PlayerCharacteristicsWindow : MonoBehaviour
         // Простая формула для расчета опыта для следующего уровня
         return level * 100; // Например, 100 опыта на уровень
     }
+    public static void OpenCharacteristic()
+    {
+        //OpenPlayerWindow(CHARACTERISTIC_WINDOW);
+        GUIManager.Instance.OpenPlayerWindow(GameManager.Instance.resourcesLoadManager.LoadPlayerWindow("CharactristicWindow")); // Новый метод по пути
+        Debug.Log("Open Characteristic Window");
+    }
 }
