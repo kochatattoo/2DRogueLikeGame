@@ -1,3 +1,5 @@
+using Assets.Scripts.gameEventArgs;
+using Assets.Scripts.Interfaces;
 using Assets.Scripts.Player;
 using System;
 using System.Collections;
@@ -16,16 +18,11 @@ public class Player : MonoBehaviour
     //Объявляем ссылку на статистику персонажа
     public PlayerStats playerStats;
     public PlayerAchievements playerAchievements;
-   
-
-    //Объявляю ссылку на инвентарь персонажа - но на данный момент в инвентарь доступ происходит
-    //Через ссылание на свой же объект 
     public Inventory playerInventory;
 
     //Объявляем события Смерти и получения урона
     public event EventHandler OnPlayerDeath;
-    public event EventHandler OnTakeHit;
-
+    public event EventHandler<DamageEventArgs> OnTakeHit;
     public event EventHandler OnPlayerUpdateCurrentExpirience;
     public event EventHandler OnPlayerUpdateCurrentMana;
     public event EventHandler OnPlayerUpdateCurrentHealth;
@@ -57,9 +54,11 @@ public class Player : MonoBehaviour
 
     private PlayerStatsUIManager _statsUIManager;
 
-
     //Переменная отвечающая за свет от персонажа
     private Light2D _playerLight;
+
+    // Попробуем добавить ПАТТЕРН НАБЛЮДАТЕЛЬ
+    private Subject _subject = new Subject();
 
     void Awake()
     {
@@ -168,7 +167,7 @@ public class Player : MonoBehaviour
     public float GetCurrentHealth() => _currentHealth;
     public float GetCurrentMana() => _currentMana;
     public float GetCurrentExpirience()=>_currentExpirience;
- 
+    public Subject GetSubject() => _subject;
     public float GetMaxHealth() => _maxHealth;
     public float GetMaxMana() => _maxMana;
     public float GetMaxExpirience()=>_maxExpirience;
@@ -223,13 +222,23 @@ public class Player : MonoBehaviour
             _knockBack.GetKnockBack(damageSourse);
             //Больше не можем получать урон
             _canTakeDamage = false;
-            OnTakeHit?.Invoke(this, EventArgs.Empty);
+           // OnTakeHit?.Invoke(this, EventArgs.Empty);
+
+            // Вызываем событие о получении урона, передаем текущий уровень здоровья
+            OnTakeHit?.Invoke(this, new DamageEventArgs { Damage = damage, CurrentHealth = _currentHealth });
+
+            NotifyObservers("PlayerTakesDamage");
+
             //Начинаем отчет до следующей возможности получать урон
             StartCoroutine(DamageRecoveryRoutine());
             Debug.Log(_currentHealth);
         }
         //Отслеживае состояние смерти
         DetectDeath();
+    }
+    private void NotifyObservers(string message)
+    {
+        _subject.NotifyObservers(message);
     }
 
     private void SetPlayerCharacteristics()
@@ -259,7 +268,7 @@ public class Player : MonoBehaviour
     private void DetectDeath()
     {
         //Если текущее здоровье равно 0, то останавливаем время
-        if (_currentHealth == 0)
+        if (_currentHealth <= 0 && _isAlive)
         {
             _knockBack.StopKnockBackMovement();
             _isAlive = false;

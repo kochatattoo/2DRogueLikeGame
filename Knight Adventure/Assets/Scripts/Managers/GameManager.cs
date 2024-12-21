@@ -1,3 +1,4 @@
+using Assets.Scripts.Interfaces;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -6,14 +7,13 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance { get; private set; }
 
     public ResourcesLoadManager resourcesLoadManager;
-
     public SaveManager saveManager; // Ссылка на SaveManager
     public AudioManager audioManager; // Ссылка на AudioManager
     public GUIManager guiManager; // Ссылка на GUIManager
     public GameInput gameInput; // Ссылка на GameInputManager
     public MapManager mapManager; // Ссылка на MapManager
-
     public PlayerData playerData; // Ссылка на объект PlayerData
+
 
     // Методы Awake и Start посмотреть что бы все срабатывали правильно
 
@@ -25,9 +25,11 @@ public class GameManager : MonoBehaviour
         {
             Instance = this; // Установка экземпляра
             DontDestroyOnLoad(gameObject); // Не уничтожать при загрузке новой сцены
+
             SceneManager.sceneLoaded += OnSceneLoaded; //Подписка на событие загрузки сцены
             InitializeManagers();
             InitializeSingletons();
+
         }
         else
         {

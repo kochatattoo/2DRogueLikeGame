@@ -1,8 +1,10 @@
+using Assets.Scripts.gameEventArgs;
+using Assets.Scripts.Interfaces;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PlayerStatsUIManager : MonoBehaviour
+public class PlayerStatsUIManager : MonoBehaviour, IObserver
 {
     // Обращаемся к переменным Изображения и Текста
     [SerializeField] private Image _healthBar;
@@ -25,13 +27,39 @@ public class PlayerStatsUIManager : MonoBehaviour
 
     private void Start()
     {
+        Subject subject = Player.Instance.GetSubject();
+        if (subject != null)
+        {
+            subject.RegisterObserver(this);
+        }
+
+
         Player.Instance.OnTakeHit += Player_OnTakeHit;
         Player.Instance.OnPlayerUpdateCurrentExpirience += Player_OnPlayerUpdateCurrentExpirience;
         Player.Instance.OnPlayerUpdateCurrentHealth += Player_OnPlayerUpdateCurrentHealth;
         Player.Instance.OnPlayerUpdateCurrentMana += Player_OnPlayerUpdateCurrentMana;
+
+        
         // Здесь можно подписаться на события маны и опыта, если они есть
     }
-
+    private void OnDestroy()
+    {
+        // Удаление наблюдателя при уничтожении
+        Subject subject = Player.Instance.GetSubject();
+        if (subject != null)
+        {
+            subject.UnregisterObserver(this);
+        }
+    }
+    public void OnNotify(string message)
+    {
+        if (message == "PlayerTakesDamage")
+        {
+            // Реакция на уведомление о получении урона
+            Debug.Log("Player takeDAMAGE triggered!");
+            // Логика тряски камеры
+        }
+    }
     private void OnDisable()
     {
         Player.Instance.OnTakeHit -= Player_OnTakeHit;
@@ -40,8 +68,9 @@ public class PlayerStatsUIManager : MonoBehaviour
         Player.Instance.OnPlayerUpdateCurrentMana -= Player_OnPlayerUpdateCurrentMana;
     }
 
-    private void Player_OnTakeHit(object sender, System.EventArgs e)
+    private void Player_OnTakeHit(object sender, DamageEventArgs e)
     {
+        _healthAmount=e.CurrentHealth;
         _healthAmount = Player.Instance.GetCurrentHealth();
         TakeDamage();
     }
