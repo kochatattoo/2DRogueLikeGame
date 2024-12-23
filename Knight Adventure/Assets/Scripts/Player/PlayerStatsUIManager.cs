@@ -70,8 +70,8 @@ public class PlayerStatsUIManager : MonoBehaviour, IObserver
 
     private void Player_OnTakeHit(object sender, DamageEventArgs e)
     {
-        _healthAmount=e.CurrentHealth;
-        _healthAmount = Player.Instance.GetCurrentHealth();
+        _healthAmount=e.CurrentHealth; // Передача через события
+        _healthAmount = Player.Instance.GetCurrentHealth(); // Присвоение через синглтон
         TakeDamage();
     }
     private void Player_OnPlayerUpdateCurrentMana(object sender, System.EventArgs e)
