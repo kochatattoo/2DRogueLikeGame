@@ -36,6 +36,11 @@ public class ResourcesLoadManager : MonoBehaviour
         return LoadPrefab("Maps/" + mapName);
     }
 
+    public GameObject LoadManager(string managerName)
+    {
+        return LoadPrefab("Managers/"+managerName);
+    }
+
     // Общий метод для загрузки префабов
     private GameObject LoadPrefab(string resourcePath)
     {

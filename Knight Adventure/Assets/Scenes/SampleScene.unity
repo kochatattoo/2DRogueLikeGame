@@ -1345,6 +1345,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 3089395501182947148, guid: 14976eb025eae754db564b4f3def98c5, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 7491849456964802105, guid: 14976eb025eae754db564b4f3def98c5, type: 3}
       propertyPath: _audioClips.Array.size
       value: 6
