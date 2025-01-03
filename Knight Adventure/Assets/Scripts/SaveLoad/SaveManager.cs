@@ -100,60 +100,6 @@ public class SaveManager : MonoBehaviour
         return files.Count > 0 ? Path.GetFileNameWithoutExtension(files[0].FullName) : null; // Возвращаем имя последнего файла без расширения
     }
 
-
-    //Надо почистить метод сохранения
-    //ОТ СЮДА
-    //public static void SaveUser(User user)
-    //{
-    //    BinaryFormatter formatter = new BinaryFormatter();
-    //    string path = Application.persistentDataPath + "/user.data";
-    //    FileStream stream = new FileStream(path, FileMode.Create);
-        
-    //    formatter.Serialize(stream, User.Instance);
-    //    stream.Close();
-    //    Debug.Log("Save Complete");
-    //}
-    //public static User LoadUser()
-    //{
-    //    string path = Application.persistentDataPath + "/user.data";
-    //    if (File.Exists(path))
-    //    {
-    //        BinaryFormatter formatter = new BinaryFormatter();
-    //        FileStream stream = new FileStream(path, FileMode.Open);
-
-    //        User data = formatter.Deserialize(stream) as User;
-    //        stream.Close();
-    //        Debug.Log("Save has loaded");
-
-    //        return data;
-    //    }
-    //    else
-    //    {
-    //        Debug.LogError("Save file not found in" + path);
-    //        return null;
-    //    }
-    //}
-    //public static User ResetData()
-    //{
-    //    User user = new User();
-    //    string path = Application.persistentDataPath + "/user.data";
-
-    //    if (File.Exists(path))
-    //    {
-    //       File.Delete(path);
-    //        Debug.Log("Data reset complete");
-    //        return user;
-    //    }
-    //    else
-    //    {
-    //        Debug.LogError("Save file not found in" + path);
-    //        return null;
-    //    }
-    //}
-    //ПРИМЕРНО ДО СЮДА ЧИСТИТЬ
-
-
-    // Новый метод для получения списка файлов сохранений
     public List<string> GetSaveFileNames()
     {
         List<string> saveFileNames = new List<string>();
