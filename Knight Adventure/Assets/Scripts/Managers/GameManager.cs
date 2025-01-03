@@ -1,4 +1,4 @@
-using Assets.Scripts.Interfaces;
+using Assets.ServiceLocator;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -29,7 +29,7 @@ public class GameManager : MonoBehaviour
             SceneManager.sceneLoaded += OnSceneLoaded; //Подписка на событие загрузки сцены
             InitializeManagers();
             InitializeSingletons();
-
+            InitializeManagersByServiceLocator();
         }
         else
         {
@@ -66,6 +66,27 @@ public class GameManager : MonoBehaviour
         gameInput = FindObjectOfType<GameInput>();
         mapManager = FindObjectOfType<MapManager>();
 
+    }
+    private void InitializeManagersByServiceLocator()
+    {
+        var saveManager = FindObjectOfType<SaveManager>();
+        ServiceLocator.RegisterService(saveManager);
+
+        var audioManager = FindObjectOfType<AudioManager>();
+        ServiceLocator.RegisterService(audioManager);
+
+        var guiManager = FindObjectOfType<GUIManager>();
+        ServiceLocator.RegisterService(guiManager);
+
+        //Регистрировать можно самих себя в методе Start
+        //var gameInput = FindObjectOfType<GameInput>();
+        //ServiceLocator.RegisterService(gameInput);
+
+        var mapManager = FindObjectOfType<MapManager>();
+        ServiceLocator.RegisterService(mapManager);
+
+        var playerData = new PlayerData();
+        ServiceLocator.RegisterService(playerData);
     }
     private void InitializeManagers()
     {

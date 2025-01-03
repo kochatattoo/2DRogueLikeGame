@@ -1,3 +1,4 @@
+using Assets.ServiceLocator;
 using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -24,6 +25,9 @@ public class GameInput : MonoBehaviour
     {
         //ќбъ€вл€ем синглтоном
         Instance = this;
+
+        // –егистраци€ самого себ€ в Service Locator
+        ServiceLocator.RegisterService<GameInput>(this);
 
         //вводим playerInputAction, делаем его доступным
         _playerInputActions = new PlayerInputActions();

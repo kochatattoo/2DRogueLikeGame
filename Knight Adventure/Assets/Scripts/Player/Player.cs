@@ -1,6 +1,7 @@
 using Assets.Scripts.gameEventArgs;
 using Assets.Scripts.Interfaces;
 using Assets.Scripts.Player;
+using Assets.ServiceLocator;
 using System;
 using System.Collections;
 using UnityEngine;
@@ -60,6 +61,7 @@ public class Player : MonoBehaviour
     // Попробуем добавить ПАТТЕРН НАБЛЮДАТЕЛЬ
     private Subject _subject = new Subject();
 
+
     void Awake()
     {
         //Инициализируем синглтон
@@ -73,8 +75,9 @@ public class Player : MonoBehaviour
     {
         //Может получать урон
         _canTakeDamage=true;
+        var gameInput = ServiceLocator.GetService<GameInput>();
         //Подписываемся на события атаки 
-        GameInput.Instance.OnPlayerAttack += Player_OnPlayerAttack;
+        gameInput.OnPlayerAttack += Player_OnPlayerAttack;
         GameInput.Instance.OnPlayerRangeAttack += Player_OnPlayerRangeAttack;
         GameInput.Instance.OnPlayerMagicAttack += Player_OnPlayerMagicAttack;
 
