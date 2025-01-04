@@ -25,6 +25,7 @@ public class MapManager : MonoBehaviour
 
     private void Start()
     {
+        LoadMapFromResources();
         LoadMap(currentMapIndex);
     }
 
@@ -59,6 +60,13 @@ public class MapManager : MonoBehaviour
         LoadMap(currentMapIndex);
     }
 
+    private void LoadMapFromResources()
+    {
+        ResourcesLoadManager resourcesLoadManager = gameObject.AddComponent<ResourcesLoadManager>();
+
+        maps[0]=resourcesLoadManager.LoadMap("Taverna");
+        maps[1] = resourcesLoadManager.LoadMap("Map_1");
+    }
 
     //// Метод для сохранения состояния персонажа
     //private void SavePlayerState()

@@ -72,8 +72,8 @@ public class GameManager : MonoBehaviour
         var saveManager = FindObjectOfType<SaveManager>();
         ServiceLocator.RegisterService(saveManager);
 
-        var audioManager = FindObjectOfType<AudioManager>();
-        ServiceLocator.RegisterService(audioManager);
+        //var audioManager = FindObjectOfType<AudioManager>();
+        //ServiceLocator.RegisterService(audioManager);
 
         var guiManager = FindObjectOfType<GUIManager>();
         ServiceLocator.RegisterService(guiManager);

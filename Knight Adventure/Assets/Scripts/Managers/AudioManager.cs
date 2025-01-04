@@ -1,7 +1,9 @@
+using Assets.Scripts.Interfaces;
+using Assets.ServiceLocator;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class AudioManager : MonoBehaviour
+public class AudioManager : MonoBehaviour, IAudioManager
 {
     public static AudioManager Instance {  get; private set; } //Экземпляр объекта
 
@@ -13,23 +15,26 @@ public class AudioManager : MonoBehaviour
     
     private void Awake()
     {
-        //Теперь проверяем существование экземпляра
-        if(Instance == null)
-        {
-            //Задаем ссылку на экземпляр объекта
-            Instance = this;
-            //Теперь нам нужно указать, что бы объект не уничтожался
-            //При переходе на другую сцену
-            DontDestroyOnLoad(gameObject);
-            //И запускаем инициализатор
-            InitializeManager();
-            return;
-        }
-        else 
-        {
-            //Удаляем объект
-            Destroy(this.gameObject);
-        }
+        ////Теперь проверяем существование экземпляра
+        //if(Instance == null)
+        //{
+        //    //Задаем ссылку на экземпляр объекта
+        //    Instance = this;
+        //    //Теперь нам нужно указать, что бы объект не уничтожался
+        //    //При переходе на другую сцену
+        //    DontDestroyOnLoad(gameObject);
+        //    //И запускаем инициализатор
+        //    InitializeManager();
+        //    return;
+        //}
+        //else 
+        //{
+        //    //Удаляем объект
+        //    Destroy(this.gameObject);
+        //}
+
+        InitializeManager();
+        InitializeServices();
 
     }
 
@@ -40,12 +45,17 @@ public class AudioManager : MonoBehaviour
         FindPlayerAudio();
     }
 
+    private void InitializeServices()
+    {
+       // ServiceLocator.RegisterService<AudioManager>(this);
+    }
     public void FindPlayerAudio()
     {
         _playerAudio = FindObjectOfType<AudioPlayer>();
     }
     public bool StatusMusic()
     {
+        /*
         if (_audioSource.mute == false)
         {
             return true;
@@ -54,10 +64,14 @@ public class AudioManager : MonoBehaviour
         {
             return false;
         }
+        */
+
+        return !_audioSource.mute;
     }
 
     public void SoundOffOn()
     {
+        /*
         if(_audioSource.mute == false)
         {
             _audioSource.mute = true;
@@ -65,7 +79,8 @@ public class AudioManager : MonoBehaviour
         else
         {
             _audioSource.mute = false;
-        }
+        }*/
+        _audioSource.mute = !_audioSource.mute;
     }
     public void SetVolume(float volume)
     {

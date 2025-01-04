@@ -1,3 +1,4 @@
+using Assets.Scripts.Interfaces;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -5,7 +6,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 using System.Security.Cryptography;
 using UnityEngine;
 
-public class SaveManager : MonoBehaviour
+public class SaveManager : MonoBehaviour, ISaveManager
 {
     public string saveDirectory;
     public static SaveManager Instance;
@@ -29,7 +30,8 @@ public class SaveManager : MonoBehaviour
             Directory.CreateDirectory(saveDirectory);
         }
 
-        GameManager.Instance.playerData=LoadLastGame();
+        //PlayerData.Instance.LoadLastGame();
+        //GameManager.Instance.playerData=LoadLastGame();
     }
 
     public void SaveGame(PlayerData playerData, string fileName)
