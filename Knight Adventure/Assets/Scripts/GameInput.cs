@@ -1,10 +1,11 @@
 using Assets.ServiceLocator;
+using Assets.Scripts.Interfaces;
 using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 // ласс отвечающий за логику ввода 
-public class GameInput : MonoBehaviour
+public class GameInput : MonoBehaviour, IGameInput
 {
     //ќбъ€вл€ем переменную класса InputAction котора€ автоматичски создает
     //методы дл€ управлени€

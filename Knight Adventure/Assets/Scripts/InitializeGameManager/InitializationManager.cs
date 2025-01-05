@@ -11,6 +11,7 @@ public class InitializationManager : MonoBehaviour
 
     private void Awake()
     {
+        CreateAndRegisterManagers();
         // Инициализация сервисов
         InitializeServices();
 
@@ -20,7 +21,7 @@ public class InitializationManager : MonoBehaviour
 
     private void InitializeServices()
     {
-        CreateManagers();
+        CreateAndRegisterManagers();
 
        // var audioManager = FindObjectOfType<AudioManager>();
        // var saveManager = FindObjectOfType<SaveManager>();
@@ -40,7 +41,7 @@ public class InitializationManager : MonoBehaviour
         // Последовательность можно настроить, чтобы избежать проблем с зависимостями
         StartGame();
     }
-    private void CreateManagers()
+    private void CreateAndRegisterManagers()
     {
         resourcesLoadManager = gameObject.AddComponent<ResourcesLoadManager>(); // Создаем экземпляр ResourcesLoadManager
 
@@ -54,19 +55,25 @@ public class InitializationManager : MonoBehaviour
 
         //GameObject gameInputManagerPrefab = resourcesLoadManager.LoadManager("GameInput");
         //GameObject gameInputManagerInstance = Instantiate(gameInputManagerPrefab);
+        //var gameInputManager = gameInputManagerInstance.GetComponent<GameInput>();
+        //ServiceLocator.RegisterService<IGameInput>(gameInputManager);
         //DontDestroyOnLoad(gameInputManagerInstance);
 
         //GameObject guiManagerPrefab = resourcesLoadManager.LoadManager("GUI_Manager");
         //GameObject guiManagerInstance = Instantiate(guiManagerPrefab);
+        //var guiManager = guiManagerInstance.GetComponent<GUIManager>();
+        //ServiceLocator.RegisterService<IGUIManager>(guiManager);
         //DontDestroyOnLoad(guiManagerInstance);
 
         //GameObject mapManagerPrefab = resourcesLoadManager.LoadManager("MapManager");
         //GameObject mapManagerInstance = Instantiate(mapManagerPrefab);
+        //var mapManager = mapManagerInstance.GetComponent<MapManager>();
+        //ServiceLocator.RegisterService<IMapManager>(mapManager);
         //DontDestroyOnLoad(mapManagerInstance);
 
-        //GameObject menuManagerPrefab = resourcesLoadManager.LoadManager("MenuManager");
-        //GameObject menuManagerInstance = Instantiate(menuManagerPrefab);
-        //DontDestroyOnLoad(menuManagerInstance);
+        ////GameObject menuManagerPrefab = resourcesLoadManager.LoadManager("MenuManager");
+        ////GameObject menuManagerInstance = Instantiate(menuManagerPrefab);
+        ////DontDestroyOnLoad(menuManagerInstance);
 
         GameObject saveManagerPrefab = resourcesLoadManager.LoadManager("SaveLoadManager");
         GameObject saveManagerInstance = Instantiate(saveManagerPrefab);
@@ -76,12 +83,14 @@ public class InitializationManager : MonoBehaviour
 
         DontDestroyOnLoad(saveManagerInstance);
 
-        //GameObject startScreenManagerPrefab = resourcesLoadManager.LoadManager("StartScreenManager");
-        //GameObject startScreenManagerInstance = Instantiate(startScreenManagerPrefab);
-        //DontDestroyOnLoad(startScreenManagerInstance);
+        ////GameObject startScreenManagerPrefab = resourcesLoadManager.LoadManager("StartScreenManager");
+        ////GameObject startScreenManagerInstance = Instantiate(startScreenManagerPrefab);
+        ////DontDestroyOnLoad(startScreenManagerInstance);
 
         GameObject gameManagerPrefab = resourcesLoadManager.LoadManager("GameManager");
         GameObject gameManagerInstance = Instantiate(gameManagerPrefab);
+        var gameManager = gameManagerInstance.GetComponent<GameManager>();
+        ServiceLocator.RegisterService<IGameManager>(gameManager);
         DontDestroyOnLoad(gameManagerInstance);
 
     }

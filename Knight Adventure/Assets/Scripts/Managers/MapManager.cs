@@ -1,8 +1,9 @@
 using UnityEngine;
+using Assets.Scripts.Interfaces;
 using UnityEngine.Tilemaps;
 using System.Collections.Generic;
 
-public class MapManager : MonoBehaviour
+public class MapManager : MonoBehaviour, IMapManager
 {
     public static MapManager Instance {  get; private set; }
 

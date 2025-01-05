@@ -1,8 +1,9 @@
 using Assets.ServiceLocator;
+using Assets.Scripts.Interfaces;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class GameManager : MonoBehaviour
+public class GameManager : MonoBehaviour, IGameManager
 {
     public static GameManager Instance { get; private set; }
 

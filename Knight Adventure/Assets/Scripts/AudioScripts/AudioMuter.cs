@@ -1,3 +1,5 @@
+using Assets.Scripts.Interfaces;
+using Assets.ServiceLocator;
 using UnityEngine;
 
 public class AudioMuter : MonoBehaviour
@@ -15,13 +17,18 @@ public class AudioMuter : MonoBehaviour
 
     public void MuteSound()
     {
-        AudioManager.Instance.SoundOffOn();
+        var audioManager = ServiceLocator.GetService<IAudioManager>();
+        audioManager.SoundOffOn();
+        //AudioManager.Instance.SoundOffOn();
         SwitchSoundImage();
     }
 
     private void SwitchSoundImage()
     {
-        music = AudioManager.Instance.StatusMusic();
+        var audioManager = ServiceLocator.GetService<IAudioManager>();
+        music=audioManager.StatusMusic();
+
+       // music = AudioManager.Instance.StatusMusic();
 
         if (music)
         {

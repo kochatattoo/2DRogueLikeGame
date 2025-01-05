@@ -1,3 +1,5 @@
+using Assets.ServiceLocator;
+using Assets.Scripts.Interfaces;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -13,7 +15,10 @@ public class VolumeControler : MonoBehaviour
     public void OnVolumeChange()
     {
         float volume = volumeSlider.value;
-        AudioManager.Instance.SetVolume(volume);
+        var audioManager = ServiceLocator.GetService<IAudioManager>();
+        audioManager.SetVolume(volume);
+
+        //AudioManager.Instance.SetVolume(volume);
         PlayerPrefs.SetFloat("volume", volume);
     }
 }

@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Assets.Scripts.Interfaces;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -7,7 +8,7 @@ using UnityEngine.SceneManagement;
 [RequireComponent (typeof(SceneManager))]
 
 // ласс отвечающий за реализацию HUD меню
-  public class GUIManager : MonoBehaviour
+  public class GUIManager : MonoBehaviour, IGUIManager
     {
     public static GUIManager Instance {  get; private set; }
         //ќбъ€вл€ем переменные текстовых полей
