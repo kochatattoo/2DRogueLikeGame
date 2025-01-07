@@ -30,7 +30,7 @@ public class GameManager : MonoBehaviour, IGameManager
             SceneManager.sceneLoaded += OnSceneLoaded; //Подписка на событие загрузки сцены
             InitializeManagers();
             InitializeSingletons();
-            InitializeManagersByServiceLocator();
+           // InitializeManagersByServiceLocator();
         }
         else
         {
@@ -43,7 +43,10 @@ public class GameManager : MonoBehaviour, IGameManager
     {
         playerData = saveManager.LoadLastGame(); 
     }
+    public void StartManager()
+    {
 
+    }
     private void OnDestroy()
     {
         //Отписка от события - что бы не было утечки памяти

@@ -11,5 +11,7 @@ namespace Assets.Scripts.Interfaces
         bool StatusMusic();
         void SoundOffOn();
         void SetVolume(float volume);
+        //Метод для старта менеджера  
+        void StartManager();
     }
 }

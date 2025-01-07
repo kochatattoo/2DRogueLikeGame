@@ -16,6 +16,9 @@ public interface IGameInput
       void EnableMovement();
       void DisableMovement();
 
+      //Метод для старта менеджера  
+      void StartManager();
+      void DisableManager();
       // События, связанные с игроком
       event EventHandler OnPlayerAttack;
       event EventHandler OnPlayerPause;

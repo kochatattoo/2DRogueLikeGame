@@ -45,13 +45,13 @@ using UnityEngine.SceneManagement;
 
     private void Start()
     {
-        GameManager.Instance.playerData = SaveManager.Instance.LoadLastGame();
-        FirstTextAwake();
+        //GameManager.Instance.playerData = SaveManager.Instance.LoadLastGame();
+        //FirstTextAwake();
 
-        IniitializeUIPrefabsInformationWindows();
-        IniitializeUIPrefabsWarningWindows();
+        //IniitializeUIPrefabsInformationWindows();
+        //IniitializeUIPrefabsWarningWindows();
 
-        CloseCurrentWindow();
+        //CloseCurrentWindow();
 
         // Наполняем очередь окнами информации (пример)
         //for (int i = 0; i < uiPrefabsInformationWindows.Length; i++)
@@ -60,6 +60,17 @@ using UnityEngine.SceneManagement;
         //}
 
         //ShowWindowQueue();
+
+    }
+    public void StartManager()
+    {
+        GameManager.Instance.playerData = SaveManager.Instance.LoadLastGame();
+        FirstTextAwake();
+
+        IniitializeUIPrefabsInformationWindows();
+        IniitializeUIPrefabsWarningWindows();
+
+        CloseCurrentWindow();
 
     }
     private void IniitializeUIPrefabsInformationWindows()

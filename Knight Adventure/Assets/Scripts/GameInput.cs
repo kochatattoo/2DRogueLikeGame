@@ -28,8 +28,21 @@ public class GameInput : MonoBehaviour, IGameInput
         Instance = this;
 
         // Регистрация самого себя в Service Locator
-        ServiceLocator.RegisterService<GameInput>(this);
+        //ServiceLocator.RegisterService<GameInput>(this);
 
+        ////вводим playerInputAction, делаем его доступным
+        //_playerInputActions = new PlayerInputActions();
+        //_playerInputActions.Enable();
+        ////Подписываемся на события Атаки и Паузы
+        //_playerInputActions.Combat.Attack.started += PlayerAttack_started;
+        //_playerInputActions.Combat.Range_Attack.started += Range_Attack_started;
+        //_playerInputActions.Combat.Magic_Attack.started += Magic_Attack_started;
+        //_playerInputActions.Player.Pause.started += PlayerPause_started;
+        //_playerInputActions.Open.Open.started += Open_started;
+    }
+
+    public void StartManager()
+    {
         //вводим playerInputAction, делаем его доступным
         _playerInputActions = new PlayerInputActions();
         _playerInputActions.Enable();
@@ -40,7 +53,17 @@ public class GameInput : MonoBehaviour, IGameInput
         _playerInputActions.Player.Pause.started += PlayerPause_started;
         _playerInputActions.Open.Open.started += Open_started;
     }
-
+    public void DisableManager()
+    {
+        _playerInputActions.Disable();
+        //Подписываемся на события Атаки и Паузы
+        _playerInputActions.Combat.Attack.started -= PlayerAttack_started;
+        _playerInputActions.Combat.Range_Attack.started -= Range_Attack_started;
+        _playerInputActions.Combat.Magic_Attack.started -= Magic_Attack_started;
+        _playerInputActions.Player.Pause.started -= PlayerPause_started;
+        _playerInputActions.Open.Open.started -= Open_started;
+        _playerInputActions=null;
+    }
     //Метод отвечающий за передвижение
     public Vector2 GetMovementVector()
     {

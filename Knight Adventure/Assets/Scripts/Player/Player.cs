@@ -75,7 +75,7 @@ public class Player : MonoBehaviour
     {
         //Может получать урон
         _canTakeDamage=true;
-        var gameInput = ServiceLocator.GetService<GameInput>();
+        var gameInput = ServiceLocator.GetService<IGameInput>();
         //Подписываемся на события атаки 
         gameInput.OnPlayerAttack += Player_OnPlayerAttack;
         GameInput.Instance.OnPlayerRangeAttack += Player_OnPlayerRangeAttack;
@@ -91,6 +91,7 @@ public class Player : MonoBehaviour
         _currentMana = _maxMana;
 
         _statsUIManager = FindAnyObjectByType<PlayerStatsUIManager>();
+        _statsUIManager.StartManager();
         _statsUIManager.StartPlayerStatsUIManager(_maxHealth, _maxMana);
 
         LightSetting(); //Вызываем метод для установки света у нашего персонажа
@@ -107,7 +108,15 @@ public class Player : MonoBehaviour
         GameInput.Instance.OnPlayerRangeAttack -= Player_OnPlayerRangeAttack;
         GameInput.Instance.OnPlayerMagicAttack -= Player_OnPlayerMagicAttack;
     }
+    private void OnDestroy()
+    {
+        var gameInput = ServiceLocator.GetService<IGameInput>();
+        //Подписываемся на события атаки 
+        gameInput.OnPlayerAttack -= Player_OnPlayerAttack;
+        GameInput.Instance.OnPlayerRangeAttack -= Player_OnPlayerRangeAttack;
+        GameInput.Instance.OnPlayerMagicAttack -= Player_OnPlayerMagicAttack;
 
+    }
     private void Update()
     {
         //Отслеживание вектора персонажа

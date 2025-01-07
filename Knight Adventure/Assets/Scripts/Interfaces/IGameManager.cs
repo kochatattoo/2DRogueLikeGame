@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace Assets.Scripts.Interfaces
 {
-    internal interface IGameManager
+    public interface IGameManager
     {
+        //Метод для старта менеджера  
+        void StartManager();
     }
 }

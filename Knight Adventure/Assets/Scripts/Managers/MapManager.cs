@@ -26,10 +26,14 @@ public class MapManager : MonoBehaviour, IMapManager
 
     private void Start()
     {
+        //LoadMapFromResources();
+        //LoadMap(currentMapIndex);
+    }
+    public void StartManager()
+    {
         LoadMapFromResources();
         LoadMap(currentMapIndex);
     }
-
     // Метод для загрузки карты
     public void LoadMap(int index)
     {

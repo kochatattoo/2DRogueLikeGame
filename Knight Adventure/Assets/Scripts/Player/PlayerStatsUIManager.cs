@@ -27,30 +27,29 @@ public class PlayerStatsUIManager : MonoBehaviour, IObserver
 
     private void Start()
     {
-        Subject subject = Player.Instance.GetSubject();
-        if (subject != null)
-        {
-            subject.RegisterObserver(this);
-        }
+        //Subject subject = Player.Instance.GetSubject();
+        //if (subject != null)
+        //{
+        //    subject.RegisterObserver(this);
+        //}
 
 
-        Player.Instance.OnTakeHit += Player_OnTakeHit;
-        Player.Instance.OnPlayerUpdateCurrentExpirience += Player_OnPlayerUpdateCurrentExpirience;
-        Player.Instance.OnPlayerUpdateCurrentHealth += Player_OnPlayerUpdateCurrentHealth;
-        Player.Instance.OnPlayerUpdateCurrentMana += Player_OnPlayerUpdateCurrentMana;
+        //Player.Instance.OnTakeHit += Player_OnTakeHit;
+        //Player.Instance.OnPlayerUpdateCurrentExpirience += Player_OnPlayerUpdateCurrentExpirience;
+        //Player.Instance.OnPlayerUpdateCurrentHealth += Player_OnPlayerUpdateCurrentHealth;
+        //Player.Instance.OnPlayerUpdateCurrentMana += Player_OnPlayerUpdateCurrentMana;
 
         
         // Здесь можно подписаться на события маны и опыта, если они есть
     }
-    private void OnDestroy()
+    public void StartManager()
     {
-        // Удаление наблюдателя при уничтожении
-        Subject subject = Player.Instance.GetSubject();
-        if (subject != null)
-        {
-            subject.UnregisterObserver(this);
-        }
+        Player.Instance.OnTakeHit += Player_OnTakeHit;
+        Player.Instance.OnPlayerUpdateCurrentExpirience += Player_OnPlayerUpdateCurrentExpirience;
+        Player.Instance.OnPlayerUpdateCurrentHealth += Player_OnPlayerUpdateCurrentHealth;
+        Player.Instance.OnPlayerUpdateCurrentMana += Player_OnPlayerUpdateCurrentMana;
     }
+  
     public void OnNotify(string message)
     {
         if (message == "PlayerTakesDamage")
@@ -61,6 +60,13 @@ public class PlayerStatsUIManager : MonoBehaviour, IObserver
         }
     }
     private void OnDisable()
+    {
+        //Player.Instance.OnTakeHit -= Player_OnTakeHit;
+        //Player.Instance.OnPlayerUpdateCurrentExpirience -= Player_OnPlayerUpdateCurrentExpirience;
+        //Player.Instance.OnPlayerUpdateCurrentHealth -= Player_OnPlayerUpdateCurrentHealth;
+        //Player.Instance.OnPlayerUpdateCurrentMana -= Player_OnPlayerUpdateCurrentMana;
+    }
+    public void OnDestroyManager()
     {
         Player.Instance.OnTakeHit -= Player_OnTakeHit;
         Player.Instance.OnPlayerUpdateCurrentExpirience -= Player_OnPlayerUpdateCurrentExpirience;

@@ -33,7 +33,10 @@ public class SaveManager : MonoBehaviour, ISaveManager
         //PlayerData.Instance.LoadLastGame();
         //GameManager.Instance.playerData=LoadLastGame();
     }
+    public void StartManager()
+    {
 
+    }
     public void SaveGame(PlayerData playerData, string fileName)
     {
         string json =JsonUtility.ToJson(playerData);

@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace Assets.Scripts.Interfaces
 {
-    internal interface IMapManager
+    public interface IMapManager
     {
+        //Метод для старта менеджера  
+        void StartManager();
     }
 }

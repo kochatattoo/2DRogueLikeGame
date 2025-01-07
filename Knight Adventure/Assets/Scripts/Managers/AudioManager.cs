@@ -15,23 +15,23 @@ public class AudioManager : MonoBehaviour, IAudioManager
     
     private void Awake()
     {
-        ////Теперь проверяем существование экземпляра
-        //if(Instance == null)
-        //{
-        //    //Задаем ссылку на экземпляр объекта
-        //    Instance = this;
-        //    //Теперь нам нужно указать, что бы объект не уничтожался
-        //    //При переходе на другую сцену
-        //    DontDestroyOnLoad(gameObject);
-        //    //И запускаем инициализатор
-        //    InitializeManager();
-        //    return;
-        //}
-        //else 
-        //{
-        //    //Удаляем объект
-        //    Destroy(this.gameObject);
-        //}
+        //Теперь проверяем существование экземпляра
+        if (Instance == null)
+        {
+            //Задаем ссылку на экземпляр объекта
+            Instance = this;
+            //Теперь нам нужно указать, что бы объект не уничтожался
+            //При переходе на другую сцену
+            DontDestroyOnLoad(gameObject);
+            //И запускаем инициализатор
+            InitializeManager();
+            return;
+        }
+        else
+        {
+            //Удаляем объект
+            Destroy(this.gameObject);
+        }
 
         InitializeManager();
         InitializeServices();
@@ -44,7 +44,10 @@ public class AudioManager : MonoBehaviour, IAudioManager
         _audioSource.mute = false;  
         FindPlayerAudio();
     }
+    public void StartManager()
+    {
 
+    }
     private void InitializeServices()
     {
        // ServiceLocator.RegisterService<AudioManager>(this);

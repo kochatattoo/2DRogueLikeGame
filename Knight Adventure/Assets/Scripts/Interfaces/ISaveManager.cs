@@ -8,5 +8,7 @@ namespace Assets.Scripts.Interfaces
 {
     public interface ISaveManager
     {
+        void StartManager();
+        
     }
 }

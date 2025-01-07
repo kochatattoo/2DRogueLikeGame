@@ -2,8 +2,9 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEditor;
+using Assets.Scripts.Interfaces;
 
-public class StartScreenManager : MonoBehaviour
+public class StartScreenManager : MonoBehaviour, IStartScreenManager
 {
     [Header("UI Elements")]
     private GameObject startScreenPrefab; // Префаб стартового экрана
@@ -13,17 +14,23 @@ public class StartScreenManager : MonoBehaviour
 
     private void Start()
     {
-        startScreenPrefab = GameManager.Instance.resourcesLoadManager.LoadStartScreenWindow("Star_Screen_Window");
-       // startScreenPrefab = Resources.Load<GameObject>("Windows/StartScreenWindow/Star_Screen_Window");
+       // startScreenPrefab = GameManager.Instance.resourcesLoadManager.LoadStartScreenWindow("Star_Screen_Window");
+       //// startScreenPrefab = Resources.Load<GameObject>("Windows/StartScreenWindow/Star_Screen_Window");
+       // InitializeStartScreen(); // Инициализация стартового экрана
+    }
+    public void StartManager()
+    {
+        ResourcesLoadManager resourcesLoadManager  = gameObject.AddComponent<ResourcesLoadManager>(); 
+        startScreenPrefab = resourcesLoadManager.LoadStartScreenWindow("Star_Screen_Window");
+        // startScreenPrefab = Resources.Load<GameObject>("Windows/StartScreenWindow/Star_Screen_Window");
         InitializeStartScreen(); // Инициализация стартового экрана
     }
-
     private void InitializeStartScreen()
     {
         GameInput.Instance.DisableMovement();
         // Создание экземпляра стартового экрана
         startScreen = Instantiate(startScreenPrefab);
-        startScreen.transform.SetParent(GameObject.Find("GUI_Display").transform, false); // Привязываем к Canvas
+        startScreen.transform.SetParent(GameObject.Find("Window_Display").transform, false); // Привязываем к Canvas
 
         continueButton = FindObjectOfType<Button>();
         // Привязываем кнопку для продолжения

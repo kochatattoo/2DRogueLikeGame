@@ -1,9 +1,10 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
+using Assets.Scripts.Interfaces;
 
 
-public class MainMenuManager : MonoBehaviour
+public class MainMenuManager : MonoBehaviour, IMainMenuManager
 {
     [SerializeField] GameObject GameMenu;
     [SerializeField] GameObject StartMenu;
@@ -47,6 +48,10 @@ public class MainMenuManager : MonoBehaviour
         //User_Name =FindAnyObjectByType<TMP_Text>();
 
         SaveMenu._LoadGame += SaveMenu_Refresh;
+    }
+    public void StartManager()
+    {
+
     }
     private void SaveMenu_Refresh(object sender, System.EventArgs e)
     {

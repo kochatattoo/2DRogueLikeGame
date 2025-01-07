@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Assets.Scripts.Interfaces
 {
-    public interface IGUIManager
+    public interface IStartScreenManager
     {
         //Метод для старта менеджера  
         void StartManager();
