@@ -32,57 +32,35 @@ public class AudioManager : MonoBehaviour, IAudioManager
             //Удаляем объект
             Destroy(this.gameObject);
         }
-
-        InitializeManager();
-        InitializeServices();
-
     }
 
     private void Start()
     {
         _audioSource = GetComponent<AudioSource>();
-        _audioSource.mute = false;  
-        FindPlayerAudio();
+        _audioSource.mute = false;
+        InitializePlayerAudio();
     }
     public void StartManager()
     {
+        InitializeManager();
 
+        _audioSource = GetComponent<AudioSource>();
+        _audioSource.mute = false;
+        InitializePlayerAudio();
     }
-    private void InitializeServices()
-    {
-       // ServiceLocator.RegisterService<AudioManager>(this);
-    }
-    public void FindPlayerAudio()
+
+    private void InitializePlayerAudio()
     {
         _playerAudio = FindObjectOfType<AudioPlayer>();
+        _playerAudio.StartScript();
     }
     public bool StatusMusic()
     {
-        /*
-        if (_audioSource.mute == false)
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
-        */
-
         return !_audioSource.mute;
     }
 
     public void SoundOffOn()
     {
-        /*
-        if(_audioSource.mute == false)
-        {
-            _audioSource.mute = true;
-        }
-        else
-        {
-            _audioSource.mute = false;
-        }*/
         _audioSource.mute = !_audioSource.mute;
     }
     public void SetVolume(float volume)
@@ -116,6 +94,9 @@ public class AudioManager : MonoBehaviour, IAudioManager
     {
         //Этот метод будет вызван всякий раз, когда загружается новая сцена
         Debug.Log("Scene Loaded^ " + scene.name);
-        FindPlayerAudio(); //Обновление ссылок или состояний
+        if (_playerAudio != null)
+        {
+            InitializePlayerAudio(); //Обновление ссылок или состояний
+        }
     }
 }

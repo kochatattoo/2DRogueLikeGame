@@ -13,6 +13,29 @@ public class AudioPlayer : MonoBehaviour
 
     private void Start()
     {
+        //if (_playerAudioSource == null)
+        //{
+        //    _playerAudioSource = GetComponent<AudioSource>();
+        //}
+
+        //if (_player == null)
+        //{
+        //    Debug.LogError("Player is not assigned!");
+        //    return;
+        //}
+
+        //_stepTimer = _stepInterval;
+
+        //_player.OnPlayerDeath += Player_OnPlayerDeath;
+        //_player.OnTakeHit += Player_OnTakeHit;
+        
+
+        //GameInput.Instance.OnPlayerAttack += Player_OnPlayerAttack;
+        //GameInput.Instance.OnPlayerRangeAttack += Player_OnPlayerRangeAttack;
+        //GameInput.Instance.OnPlayerMagicAttack += Player_OnPlayerMagicAttack;
+    }
+    public void StartScript()
+    {
         if (_playerAudioSource == null)
         {
             _playerAudioSource = GetComponent<AudioSource>();
@@ -28,13 +51,12 @@ public class AudioPlayer : MonoBehaviour
 
         _player.OnPlayerDeath += Player_OnPlayerDeath;
         _player.OnTakeHit += Player_OnTakeHit;
-        
+
 
         GameInput.Instance.OnPlayerAttack += Player_OnPlayerAttack;
         GameInput.Instance.OnPlayerRangeAttack += Player_OnPlayerRangeAttack;
         GameInput.Instance.OnPlayerMagicAttack += Player_OnPlayerMagicAttack;
     }
-
     private void Player_OnPlayerRangeAttack(object sender, System.EventArgs e)
     {
         if (_audioClips.Length > 1 && _audioClips[4] != null)

@@ -30,7 +30,7 @@ public class StartScreenManager : MonoBehaviour, IStartScreenManager
         GameInput.Instance.DisableMovement();
         // Создание экземпляра стартового экрана
         startScreen = Instantiate(startScreenPrefab);
-        startScreen.transform.SetParent(GameObject.Find("Window_Display").transform, false); // Привязываем к Canvas
+        startScreen.transform.SetParent(GameObject.Find("GUI_Display").transform, false); // Привязываем к Canvas
 
         continueButton = FindObjectOfType<Button>();
         // Привязываем кнопку для продолжения

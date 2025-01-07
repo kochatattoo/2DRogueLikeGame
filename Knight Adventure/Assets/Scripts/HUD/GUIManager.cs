@@ -26,6 +26,8 @@ using UnityEngine.SceneManagement;
     private static Queue<Window> windowQueue = new Queue<Window>(); // Очередь окон
     private static Window activeWindow; // Текущее активное окно
 
+    private ResourcesLoadManager resourcesLoadManager;
+
 
        private void Awake()
         {
@@ -45,6 +47,7 @@ using UnityEngine.SceneManagement;
 
     private void Start()
     {
+        //resourcesLoadManager = gameObject.AddComponent<ResourcesLoadManager>();
         //GameManager.Instance.playerData = SaveManager.Instance.LoadLastGame();
         //FirstTextAwake();
 
@@ -64,6 +67,7 @@ using UnityEngine.SceneManagement;
     }
     public void StartManager()
     {
+        resourcesLoadManager = gameObject.AddComponent<ResourcesLoadManager>();
         GameManager.Instance.playerData = SaveManager.Instance.LoadLastGame();
         FirstTextAwake();
 
@@ -77,15 +81,15 @@ using UnityEngine.SceneManagement;
     {
         uiPrefabsInformationWindows = new GameObject[3];
 
-        uiPrefabsInformationWindows[0] = GameManager.Instance.resourcesLoadManager.LoadInformationWindow("Window_Info");
-        uiPrefabsInformationWindows[1] = GameManager.Instance.resourcesLoadManager.LoadInformationWindow("Window_Shares");
-        uiPrefabsInformationWindows[2] = GameManager.Instance.resourcesLoadManager.LoadInformationWindow("Window_Entry");
+        uiPrefabsInformationWindows[0] = resourcesLoadManager.LoadInformationWindow("Window_Info");
+        uiPrefabsInformationWindows[1] = resourcesLoadManager.LoadInformationWindow("Window_Shares");
+        uiPrefabsInformationWindows[2] = resourcesLoadManager.LoadInformationWindow("Window_Entry");
     }
     private void IniitializeUIPrefabsWarningWindows()
     {
         uiPrefabsPriorityWindows = new GameObject[1];
 
-        uiPrefabsPriorityWindows[0] = GameManager.Instance.resourcesLoadManager.LoadPriorityWindow("Window_Warning");
+        uiPrefabsPriorityWindows[0] = resourcesLoadManager.LoadPriorityWindow("Window_Warning");
     }
     public void AddQueueWindows()
     {
@@ -216,7 +220,7 @@ using UnityEngine.SceneManagement;
     public void OpenOption()
     {
         //OpenPlayerWindow(OPTION_WINDOW);
-        OpenPlayerWindow(GameManager.Instance.resourcesLoadManager.LoadPlayerWindow("OptionWindow")); // Новый метод по пути
+        OpenPlayerWindow(resourcesLoadManager.LoadPlayerWindow("OptionWindow")); // Новый метод по пути
         Debug.Log("Open Option Window");
     }
 
@@ -224,7 +228,7 @@ using UnityEngine.SceneManagement;
     public void OpenStorageChestInventory(Inventory chestInventory)
     {
         //OpenPlayerWindow(STORAGE_CHEST_WINDOW); - старый метод по мндексу
-        OpenPlayerWindow( GameManager.Instance.resourcesLoadManager.LoadChestWindow("Storage_Chest_Window")); // Новый метод по пути
+        OpenPlayerWindow( resourcesLoadManager.LoadChestWindow("Storage_Chest_Window")); // Новый метод по пути
 
         // Получаем доступ к компоненту инвентаря (InventoryUI)
         InventoryUI inventoryUI = _currentWindow.GetComponent<InventoryUI>();
