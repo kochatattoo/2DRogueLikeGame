@@ -24,7 +24,7 @@ public class AudioManager : MonoBehaviour, IAudioManager
             //При переходе на другую сцену
             DontDestroyOnLoad(gameObject);
             //И запускаем инициализатор
-            InitializeManager();
+           // InitializeManager();
             return;
         }
         else
@@ -49,10 +49,17 @@ public class AudioManager : MonoBehaviour, IAudioManager
         InitializePlayerAudio();
     }
 
-    private void InitializePlayerAudio()
+    public void InitializePlayerAudio()
     {
         _playerAudio = FindObjectOfType<AudioPlayer>();
-        _playerAudio.StartScript();
+        if (_playerAudio == null)
+        {
+            return;
+        }
+        else
+        {
+            _playerAudio.StartScript();
+        }
     }
     public bool StatusMusic()
     {

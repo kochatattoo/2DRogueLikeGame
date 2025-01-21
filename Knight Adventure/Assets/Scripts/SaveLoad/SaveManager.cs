@@ -35,7 +35,12 @@ public class SaveManager : MonoBehaviour, ISaveManager
     }
     public void StartManager()
     {
+        saveDirectory = Application.persistentDataPath + "/saves/";
 
+        if (!Directory.Exists(saveDirectory))
+        {
+            Directory.CreateDirectory(saveDirectory);
+        }
     }
     public void SaveGame(PlayerData playerData, string fileName)
     {

@@ -21,7 +21,12 @@ namespace Assets.ServiceLocator
             }
             else
             {
-                throw new Exception($"Service of type {typeof(T)} is already registered.");
+                // throw new Exception($"Service of type {typeof(T)} is already registered.");
+                if (_services[typeof(T)] is UnityEngine.MonoBehaviour newService)
+                {
+                    UnityEngine.Object.Destroy(newService.gameObject);
+                }
+                return;
             }
         }
 

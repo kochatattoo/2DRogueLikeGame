@@ -11,6 +11,7 @@ public class InitializationManager : MonoBehaviour
 
     private void Awake()
     {
+
         CreateAndRegisterManagers();
         // Инициализация сервисов
         InitializeServices();
@@ -139,18 +140,22 @@ public class InitializationManager : MonoBehaviour
     {
         // Включаем игровые менеджеры
         var gameInputManager = ServiceLocator.GetService<IGameInput>();
-        gameInputManager.StartManager();
         var mapManager = ServiceLocator.GetService<IMapManager>();
-        mapManager.StartManager();
         var guiManager = ServiceLocator.GetService<IGUIManager>();
-        guiManager.StartManager();
         var startScreenManager = ServiceLocator.GetService<IStartScreenManager>();
-        startScreenManager.StartManager();
 
         if (gameInputManager is MonoBehaviour gameInputScript) gameInputScript.gameObject.SetActive(true);
         if (mapManager is MonoBehaviour mapScript) mapScript.gameObject.SetActive(true);
         if (guiManager is MonoBehaviour guiScript) guiScript.gameObject.SetActive(true);
         if (startScreenManager is MonoBehaviour startScreenScript) startScreenScript.gameObject.SetActive(true);
+
+        gameInputManager.StartManager();
+        mapManager.StartManager();
+        guiManager.StartManager();
+        startScreenManager.StartManager();
+
+        var audioManager = ServiceLocator.GetService<IAudioManager>();
+        audioManager.InitializePlayerAudio();
     }
 
     private void DisableGameManagers()
@@ -175,7 +180,10 @@ public class InitializationManager : MonoBehaviour
     private void StartGame()
     {
         var audioService = ServiceLocator.GetService<IAudioManager>();
-        //audioService.PlaySound("game_start");
+        audioService.StartManager();
+       
+        //var guiService = ServiceLocator.GetService<IGUIManager>();
+        //guiService.StartManager();
 
         var saveService = ServiceLocator.GetService<ISaveManager>();
         //saveService.SaveGame("initial_savefile");

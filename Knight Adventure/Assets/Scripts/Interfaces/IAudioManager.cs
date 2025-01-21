@@ -13,7 +13,8 @@ namespace Assets.Scripts.Interfaces
         void SetVolume(float volume);
         //Метод для старта менеджера  
         void StartManager();
-        
+
+        void InitializePlayerAudio();
 
     }
 }

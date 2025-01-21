@@ -126,7 +126,7 @@ public class MainMenuManager : MonoBehaviour, IMainMenuManager
 
     public void StartGame()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        SceneManager.LoadScene("Game");
         //Использовать поиск скриптов для подключения
     }
 
@@ -134,7 +134,7 @@ public class MainMenuManager : MonoBehaviour, IMainMenuManager
     {
         if (SaveManager.Instance.LoadLastGame() != null)
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            SceneManager.LoadScene("Game");
         }
         else
         {
