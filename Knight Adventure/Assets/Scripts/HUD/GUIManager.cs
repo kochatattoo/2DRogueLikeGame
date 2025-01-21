@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Assets.Scripts.Interfaces;
+using Assets.ServiceLocator;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -27,6 +28,8 @@ using UnityEngine.SceneManagement;
     private static Window activeWindow; // Текущее активное окно
 
     private ResourcesLoadManager resourcesLoadManager;
+
+    private PlayerData _playerData;
 
 
        private void Awake()
@@ -68,8 +71,13 @@ using UnityEngine.SceneManagement;
     public void StartManager()
     {
         resourcesLoadManager = gameObject.AddComponent<ResourcesLoadManager>();
-        GameManager.Instance.playerData = SaveManager.Instance.LoadLastGame();
-        FirstTextAwake();
+        //GameManager.Instance.playerData = SaveManager.Instance.LoadLastGame();
+       
+       var saveManager=ServiceLocator.GetService<ISaveManager>();
+       _playerData = saveManager.LoadLastGame();
+
+        //FirstTextAwake();
+        FirstTextAwake2();
 
         IniitializeUIPrefabsInformationWindows();
         IniitializeUIPrefabsWarningWindows();
@@ -250,5 +258,12 @@ using UnityEngine.SceneManagement;
         _name.text = GameManager.Instance.playerData.name;
         _coins.text = GameManager.Instance.playerData.coins.ToString();
         _level.text = GameManager.Instance.playerData.level.ToString();
+
+    }
+    private void FirstTextAwake2()
+    {
+        _name.text = _playerData.name;
+        _coins.text = _playerData.coins.ToString();
+        _level.text = _playerData.level.ToString();
     }
 }
