@@ -186,6 +186,7 @@ public class InitializationManager : MonoBehaviour
         //guiService.StartManager();
 
         var saveService = ServiceLocator.GetService<ISaveManager>();
+        saveService.StartManager();
         //saveService.SaveGame("initial_savefile");
     }
     private void OnDestroy()

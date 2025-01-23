@@ -61,6 +61,9 @@ public class Player : MonoBehaviour
     // Попробуем добавить ПАТТЕРН НАБЛЮДАТЕЛЬ
     private Subject _subject = new Subject();
 
+    //Добавляем ПАТЕРН СЕРВИС ЛОКАТОР
+    private IGameInput gameInput;
+
 
     void Awake()
     {
@@ -75,11 +78,11 @@ public class Player : MonoBehaviour
     {
         //Может получать урон
         _canTakeDamage=true;
-        var gameInput = ServiceLocator.GetService<IGameInput>();
+        gameInput = ServiceLocator.GetService<IGameInput>();
         //Подписываемся на события атаки 
         gameInput.OnPlayerAttack += Player_OnPlayerAttack;
-        GameInput.Instance.OnPlayerRangeAttack += Player_OnPlayerRangeAttack;
-        GameInput.Instance.OnPlayerMagicAttack += Player_OnPlayerMagicAttack;
+        gameInput.OnPlayerRangeAttack += Player_OnPlayerRangeAttack;
+        gameInput.OnPlayerMagicAttack += Player_OnPlayerMagicAttack;
 
         SetPlayerCharacteristics();
         SetPlayerAchivements();
@@ -104,23 +107,26 @@ public class Player : MonoBehaviour
     }
     private void OnDisable()
     {
-        GameInput.Instance.OnPlayerAttack -= Player_OnPlayerAttack;
-        GameInput.Instance.OnPlayerRangeAttack -= Player_OnPlayerRangeAttack;
-        GameInput.Instance.OnPlayerMagicAttack -= Player_OnPlayerMagicAttack;
+        gameInput = ServiceLocator.GetService<IGameInput>();
+        //Подписываемся на события атаки 
+        gameInput.OnPlayerAttack -= Player_OnPlayerAttack;
+        gameInput.OnPlayerRangeAttack -= Player_OnPlayerRangeAttack;
+        gameInput.OnPlayerMagicAttack -= Player_OnPlayerMagicAttack;
     }
     private void OnDestroy()
     {
-        var gameInput = ServiceLocator.GetService<IGameInput>();
+        gameInput = ServiceLocator.GetService<IGameInput>();
         //Подписываемся на события атаки 
         gameInput.OnPlayerAttack -= Player_OnPlayerAttack;
-        GameInput.Instance.OnPlayerRangeAttack -= Player_OnPlayerRangeAttack;
-        GameInput.Instance.OnPlayerMagicAttack -= Player_OnPlayerMagicAttack;
+        gameInput.OnPlayerRangeAttack -= Player_OnPlayerRangeAttack;
+        gameInput.OnPlayerMagicAttack -= Player_OnPlayerMagicAttack;
 
     }
     private void Update()
     {
         //Отслеживание вектора персонажа
-        _inputVector = GameInput.Instance.GetMovementVector();
+        //_inputVector = GameInput.Instance.GetMovementVector();
+        _inputVector = gameInput.GetMovementVector();
         // Debug.Log(GameManager.Instance.user.GetName());
 
         // Поделючим инвентарь нашего персонажа к данным об игроке
