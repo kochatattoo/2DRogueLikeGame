@@ -50,23 +50,7 @@ using UnityEngine.SceneManagement;
 
     private void Start()
     {
-        //resourcesLoadManager = gameObject.AddComponent<ResourcesLoadManager>();
-        //GameManager.Instance.playerData = SaveManager.Instance.LoadLastGame();
-        //FirstTextAwake();
-
-        //IniitializeUIPrefabsInformationWindows();
-        //IniitializeUIPrefabsWarningWindows();
-
-        //CloseCurrentWindow();
-
-        // Наполняем очередь окнами информации (пример)
-        //for (int i = 0; i < uiPrefabsInformationWindows.Length; i++)
-        //{
-        //    OpenInformationWindow(i); // Добавляем окна в очередь
-        //}
-
-        //ShowWindowQueue();
-
+    
     }
     public void StartManager()
     {

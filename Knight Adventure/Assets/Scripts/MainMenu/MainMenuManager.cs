@@ -6,62 +6,52 @@ using Assets.Scripts.Interfaces;
 
 public class MainMenuManager : MonoBehaviour, IMainMenuManager
 {
-    [SerializeField] GameObject GameMenu;
-    [SerializeField] GameObject StartMenu;
-    [SerializeField] GameObject LoadMenu;
-    [SerializeField] GameObject OptionMenu;
-    [SerializeField] GameObject QuitMenu;
-    [SerializeField] GameObject PanelBarMenu;
-    [SerializeField] GameObject User_Name_Panel;
-    
+    [SerializeField] private GameObject _gameMenu;
+    [SerializeField] private GameObject _startMenu;
+    [SerializeField] private GameObject _loadMenu;
+    [SerializeField] private GameObject _optionMenu;
+    [SerializeField] private GameObject _quitMenu;
+    [SerializeField] private GameObject _panelBarMenu;
+    [SerializeField] private GameObject _user_Name_Panel;
+    [SerializeField] private GameObject _currentWindow; // Текущее окно
 
-    [SerializeField] TMP_Text User_Name;
-    [SerializeField] private TMP_InputField Name;
+    [SerializeField] private TMP_Text _user_Name;
+    [SerializeField] private TMP_InputField _name;
 
-    [SerializeField] private SaveLoadMenu SaveMenu;
-
-    [SerializeField]private GameObject _currentWindow; // Текущее окно
+    [SerializeField] private SaveLoadMenu _saveLoadMenu;
 
     private void Awake()
     {
-        GameMenu.SetActive(true);
-        StartMenu.SetActive(false);
-        LoadMenu.SetActive(false);
-        OptionMenu.SetActive(false);
-        QuitMenu.SetActive(false);
+        _gameMenu.SetActive(true);
+        _startMenu.SetActive(false);
+        _loadMenu.SetActive(false);
+        _optionMenu.SetActive(false);
+        _quitMenu.SetActive(false);
         //CloseCurrentWindow();
         //OpenGameMenu();
-        PanelBarMenu.SetActive(true);
-        User_Name_Panel.SetActive(false);
+        _panelBarMenu.SetActive(true);
+        _user_Name_Panel.SetActive(false);
         
     }
     private void Start()
     {
-        //if (GameManager.Instance.playerData !=null)
-        //{
-        //    User_Name_Panel.SetActive(true);
-        //    User_Name.text = GameManager.Instance.playerData.name;
-        //    Debug.Log(GameManager.Instance.playerData.name + "User name !=null");
-        //}
-
-        ////SaveMenu = FindAnyObjectByType<SaveLoadMenu>();
-        ////User_Name =FindAnyObjectByType<TMP_Text>();
-        //SaveMenu.StartScript();
-        //SaveMenu._LoadGame += SaveMenu_Refresh;
+     
     }
     public void StartManager()
     {
         if (GameManager.Instance.playerData != null)
         {
-            User_Name_Panel.SetActive(true);
-            User_Name.text = GameManager.Instance.playerData.name;
+            _user_Name_Panel.SetActive(true);
+            _user_Name.text = GameManager.Instance.playerData.name;
             Debug.Log(GameManager.Instance.playerData.name + "User name !=null");
         }
+        else
+        {
+            _user_Name_Panel.SetActive(true);
+        }
 
-        //SaveMenu = FindAnyObjectByType<SaveLoadMenu>();
-        //User_Name =FindAnyObjectByType<TMP_Text>();
-        SaveMenu.StartScript();
-        SaveMenu._LoadGame += SaveMenu_Refresh;
+        _saveLoadMenu.StartScript();
+        _saveLoadMenu._LoadGame += SaveMenu_Refresh;
     }
     private void SaveMenu_Refresh(object sender, System.EventArgs e)
     {
@@ -96,41 +86,41 @@ public class MainMenuManager : MonoBehaviour, IMainMenuManager
 
     public void OpenGameMenu()
     {
-        OpenMenuWindow(GameMenu);
+        OpenMenuWindow(_gameMenu);
     }
 
     public void OpenStartMenu()
     {
-        OpenMenuWindow(StartMenu);
+        OpenMenuWindow(_startMenu);
 
-        Name = FindObjectOfType<TMP_InputField>();
-        Debug.Log(Name);
+        _name = FindObjectOfType<TMP_InputField>();
+        Debug.Log(_name);
     }
 
     public void OpenLoadMenu()
     {
-        OpenMenuWindow(LoadMenu);
+        OpenMenuWindow(_loadMenu);
 
-        SaveMenu = FindObjectOfType<SaveLoadMenu>();
-        SaveMenu._LoadGame += SaveMenu_Refresh;
+        _saveLoadMenu = FindObjectOfType<SaveLoadMenu>();
+        _saveLoadMenu._LoadGame += SaveMenu_Refresh;
 
-        Debug.Log(SaveMenu);
+        Debug.Log(_saveLoadMenu);
     }
 
     public void OpenOptionMenu()
     {
-        OpenMenuWindow(OptionMenu);
+        OpenMenuWindow(_optionMenu);
     }
     public void OpenQuitMenu()
     {
-        OpenMenuWindow(QuitMenu);
+        OpenMenuWindow(_quitMenu);
     }
 
     ///////////////////////Вот по сюда, я страдал дичью////////////////////////////////
 
     public void RefreshName()
     {
-        User_Name.text = GameManager.Instance.playerData.name;
+        _user_Name.text = GameManager.Instance.playerData.name;
         Debug.Log(GameManager.Instance.playerData.name + "User name !=null");
     }
 
@@ -153,8 +143,8 @@ public class MainMenuManager : MonoBehaviour, IMainMenuManager
     }
     public void Create()
     {
-        string InputName=Name.text;
-        if (Name.text.Length > 4)
+        string InputName=_name.text;
+        if (_name.text.Length > 4)
         {
 
             GameManager.Instance.playerData.name=InputName;

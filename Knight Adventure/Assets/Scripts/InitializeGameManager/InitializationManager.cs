@@ -11,15 +11,14 @@ public class InitializationManager : MonoBehaviour
 
     private void Awake()
     {
+        resourcesLoadManager = gameObject.AddComponent<ResourcesLoadManager>(); // Создаем экземпляр ResourcesLoadManager
 
         CreateAndRegisterManagers();
-        // Инициализация сервисов
-        InitializeServices();
-        // Выполнение инициализации всех систем
-        InitializeSystems();
-        // Подписка на события загрузки сцены
-        SceneManager.sceneLoaded += OnSceneLoaded;
 
+        InitializeServices();
+        InitializeSystems();
+
+        SceneManager.sceneLoaded += OnSceneLoaded;
         DontDestroyOnLoad(this);
     }
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
@@ -39,37 +38,20 @@ public class InitializationManager : MonoBehaviour
                 DisableMenuManagers();
                 EnableGameManagers();
                 break;
-
-            // Добавьте дополнительные случаи для других сцен при необходимости
-
             default:
                 break;
         }
     }
     private void InitializeServices()
     {
-       // CreateAndRegisterManagers();
-
-       // var audioManager = FindObjectOfType<AudioManager>();
-       // var saveManager = FindObjectOfType<SaveManager>();
-
-        // Регистрация сервисов
-       // ServiceLocator.RegisterService<IAudioManager>(audioManager);
-      //  ServiceLocator.RegisterService<ISaveManager>(saveManager);
-
         
     }
     private void InitializeSystems()
     {
-        
-        // Здесь можно вызывать инициализацию других систем
-        // Последовательность можно настроить, чтобы избежать проблем с зависимостямиaaaaaaaaa
         StartGame();
     }
     private void CreateAndRegisterManagers()
     {
-        resourcesLoadManager = gameObject.AddComponent<ResourcesLoadManager>(); // Создаем экземпляр ResourcesLoadManager
-
         GameObject audioManagerPrefab = resourcesLoadManager.LoadManager("AudioManager");
         GameObject audioManagerInstance = Instantiate(audioManagerPrefab);
         var audioManager = audioManagerInstance.GetComponent<AudioManager>();
@@ -171,18 +153,20 @@ public class InitializationManager : MonoBehaviour
     }
     private void StartGame()
     {
-        var menuManager = FindObjectOfType<MainMenuManager>();
-        if (menuManager != null)
-        {
-            menuManager.StartManager();
-        }
-
         var audioService = ServiceLocator.GetService<IAudioManager>();
         audioService.StartManager();
 
         var saveService = ServiceLocator.GetService<ISaveManager>();
         saveService.StartManager();
 
+        var gameService = ServiceLocator.GetService<IGameManager>();
+        gameService.StartManager();
+
+        var menuManager = FindObjectOfType<MainMenuManager>();
+        if (menuManager != null)
+        {
+            menuManager.StartManager();
+        }
     }
     private void OnDestroy()
     {

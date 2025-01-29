@@ -45,7 +45,7 @@ public class GameManager : MonoBehaviour, IGameManager
     }
     public void StartManager()
     {
-
+        playerData = saveManager.LoadLastGame();
     }
     private void OnDestroy()
     {
