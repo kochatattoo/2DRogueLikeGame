@@ -3,6 +3,8 @@ using System.IO;
 using UnityEngine.UI;
 using TMPro;
 using System;
+using Assets.ServiceLocator;
+using Assets.Scripts.Interfaces;
 
 public class SaveLoadMenu : MonoBehaviour
 {
@@ -10,14 +12,14 @@ public class SaveLoadMenu : MonoBehaviour
     public Transform contentPanel; // Панель, где будут отображаться кнопки
     public event EventHandler _LoadGame; // Событие обновления 
 
-    private SaveManager _saveManager; // Ссылка на объект SaveManager
+    private ISaveManager _saveManager; // Ссылка на объект SaveManager
     private string selectedFileName; // Переменная для хранения выбраного имени файла
     private TMP_Text selectedText; // Ссылка на текст выбранного файла
 
-    private void Start() //Метод вызываемый при запуске скрипта в сцене 
+    public void StartScript() //Метод вызываемый при запуске скрипта в сцене 
     {
-        _saveManager=SaveManager.Instance;
-        if (_saveManager != null && !string.IsNullOrEmpty(_saveManager.saveDirectory)) //проверяем не равен ли savemanager ничему и не пуст ли он
+        _saveManager=ServiceLocator.GetService<ISaveManager>();
+        if (_saveManager != null && !string.IsNullOrEmpty(_saveManager.GetSaveDirectory())) //проверяем не равен ли savemanager ничему и не пуст ли он
         {
             PopulateSaveLoadMenu();
         }
@@ -34,13 +36,13 @@ public class SaveLoadMenu : MonoBehaviour
             Destroy(child.gameObject);
         }
 
-        if (!Directory.Exists(_saveManager.saveDirectory))
+        if (!Directory.Exists(_saveManager.GetSaveDirectory()))
         {
             Debug.LogError("Save directory does not exist.");
             return;
         }
 
-        string[] files = Directory.GetFiles(_saveManager.saveDirectory, "*.json");
+        string[] files = Directory.GetFiles(_saveManager.GetSaveDirectory(), "*.json");
         foreach (string file in files)
         {
             string fileName = Path.GetFileNameWithoutExtension(file);

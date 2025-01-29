@@ -96,8 +96,8 @@ public class InitializationManager : MonoBehaviour
 
         //GameObject menuManagerPrefab = resourcesLoadManager.LoadManager("MenuManager");
         //GameObject menuManagerInstance = Instantiate(menuManagerPrefab);
-        var mainMenuManager = FindObjectOfType<MainMenuManager>();
-        ServiceLocator.RegisterService<IMainMenuManager>(mainMenuManager);
+        //var mainMenuManager = FindObjectOfType<MainMenuManager>();
+        //ServiceLocator.RegisterService<IMainMenuManager>(mainMenuManager);
         //DontDestroyOnLoad(menuManagerInstance);
 
         GameObject saveManagerPrefab = resourcesLoadManager.LoadManager("SaveLoadManager");
@@ -122,17 +122,15 @@ public class InitializationManager : MonoBehaviour
 
     private void EnableMenuManagers()
     {
-        // Включаем менеджеры главного меню
-       // var mainMenuManager = ServiceLocator.GetService<IMainMenuManager>();
-       // if (mainMenuManager is MonoBehaviour mainMenuScript) mainMenuScript.gameObject.SetActive(true);
-       
+       var menuManager= FindObjectOfType<MainMenuManager>();
+        if (menuManager != null)
+        {
+            menuManager.StartManager();
+        }
     }
 
     private void DisableMenuManagers()
     {
-        // Отключаем менеджеры главного меню
-       // var mainMenuManager = ServiceLocator.GetService<IMainMenuManager>();
-       // if (mainMenuManager is MonoBehaviour mainMenuScript) mainMenuScript.gameObject.SetActive(false);
 
     }
 
@@ -162,7 +160,6 @@ public class InitializationManager : MonoBehaviour
     {
         // Отключаем игровые менеджеры
         var gameInputManager = ServiceLocator.GetService<IGameInput>();
-        //gameInputManager.DisableManager();
         var mapManager = ServiceLocator.GetService<IMapManager>();
         var guiManager = ServiceLocator.GetService<IGUIManager>();
         var startScreenManager = ServiceLocator.GetService<IStartScreenManager>();
@@ -172,22 +169,20 @@ public class InitializationManager : MonoBehaviour
         if (guiManager is MonoBehaviour guiScript) guiScript.gameObject.SetActive(false);
         if (startScreenManager is MonoBehaviour startScreenScript) startScreenScript.gameObject.SetActive(false);
     }
-    private void CreateManagerFromPrefab(string name)
-    {
-        GameObject ManagerPrefab = resourcesLoadManager.LoadManager(name);
-        GameObject ManagerInstance = Instantiate(ManagerPrefab);
-    }
     private void StartGame()
     {
+        var menuManager = FindObjectOfType<MainMenuManager>();
+        if (menuManager != null)
+        {
+            menuManager.StartManager();
+        }
+
         var audioService = ServiceLocator.GetService<IAudioManager>();
         audioService.StartManager();
-       
-        //var guiService = ServiceLocator.GetService<IGUIManager>();
-        //guiService.StartManager();
 
         var saveService = ServiceLocator.GetService<ISaveManager>();
         saveService.StartManager();
-        //saveService.SaveGame("initial_savefile");
+
     }
     private void OnDestroy()
     {

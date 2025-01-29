@@ -9,6 +9,8 @@ using UnityEngine;
 public class SaveManager : MonoBehaviour, ISaveManager
 {
     public string saveDirectory;
+    public string GetSaveDirectory() => saveDirectory;
+
     public static SaveManager Instance;
 
     private void Awake()
@@ -20,7 +22,7 @@ public class SaveManager : MonoBehaviour, ISaveManager
         }
         else
         {
-            Destroy(gameObject); // ”далить дополнительные экземпл€ры
+           
         }
 
         saveDirectory =Application.persistentDataPath+"/saves/";

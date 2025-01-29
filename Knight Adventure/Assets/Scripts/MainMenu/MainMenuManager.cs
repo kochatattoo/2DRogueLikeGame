@@ -37,7 +37,21 @@ public class MainMenuManager : MonoBehaviour, IMainMenuManager
     }
     private void Start()
     {
-        if (GameManager.Instance.playerData !=null)
+        //if (GameManager.Instance.playerData !=null)
+        //{
+        //    User_Name_Panel.SetActive(true);
+        //    User_Name.text = GameManager.Instance.playerData.name;
+        //    Debug.Log(GameManager.Instance.playerData.name + "User name !=null");
+        //}
+
+        ////SaveMenu = FindAnyObjectByType<SaveLoadMenu>();
+        ////User_Name =FindAnyObjectByType<TMP_Text>();
+        //SaveMenu.StartScript();
+        //SaveMenu._LoadGame += SaveMenu_Refresh;
+    }
+    public void StartManager()
+    {
+        if (GameManager.Instance.playerData != null)
         {
             User_Name_Panel.SetActive(true);
             User_Name.text = GameManager.Instance.playerData.name;
@@ -46,12 +60,8 @@ public class MainMenuManager : MonoBehaviour, IMainMenuManager
 
         //SaveMenu = FindAnyObjectByType<SaveLoadMenu>();
         //User_Name =FindAnyObjectByType<TMP_Text>();
-
+        SaveMenu.StartScript();
         SaveMenu._LoadGame += SaveMenu_Refresh;
-    }
-    public void StartManager()
-    {
-
     }
     private void SaveMenu_Refresh(object sender, System.EventArgs e)
     {
