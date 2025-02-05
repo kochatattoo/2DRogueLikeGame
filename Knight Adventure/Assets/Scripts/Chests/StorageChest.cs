@@ -4,6 +4,7 @@ using UnityEngine;
 using System;
 using Assets.Scripts.Items;
 using TMPro;
+using Assets.ServiceLocator;
 
 public class StorageChest : MonoBehaviour
 {
@@ -17,6 +18,7 @@ public class StorageChest : MonoBehaviour
     public int inventoryWidth = 6; // Ширина инвентаря
     public int inventoryHeight = 6; // Высота инвентаря
 
+    private IGameInput _gameInput;
     private void Start()
     {
         //GameObject chestObject = new GameObject("ChestInventory");
@@ -27,7 +29,8 @@ public class StorageChest : MonoBehaviour
         chestInventory.height = inventoryHeight; // Устанавливаем высоту
         chestInventory.coins = 0; // Инициализируем монеты
 
-        GameInput.Instance.OnPlayerOpen += PlayerOnPlayerOpen;
+        _gameInput=ServiceLocator.GetService<IGameInput>();
+        _gameInput.OnPlayerOpen += PlayerOnPlayerOpen;
         HideInteractionPrompt(); // Скрываем подсказку в начале
     }
     private void Update()
@@ -97,7 +100,7 @@ public class StorageChest : MonoBehaviour
 
     private void OnDestroy() // Отписываемся от события при уничтожении объекта
     {
-        GameInput.Instance.OnPlayerOpen -= PlayerOnPlayerOpen;
+        _gameInput.OnPlayerOpen -= PlayerOnPlayerOpen;
     }
 
 }

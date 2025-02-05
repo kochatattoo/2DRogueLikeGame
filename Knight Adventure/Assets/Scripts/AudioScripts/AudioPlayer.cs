@@ -1,3 +1,4 @@
+using Assets.ServiceLocator;
 using UnityEngine;
 
 [RequireComponent(typeof(AudioSource))]
@@ -10,6 +11,8 @@ public class AudioPlayer : MonoBehaviour
 
     [SerializeField] float _stepInterval = 0.5f;
     private float _stepTimer;
+
+    private IGameInput _gameInput;
 
     private void Start()
     {
@@ -52,10 +55,16 @@ public class AudioPlayer : MonoBehaviour
         _player.OnPlayerDeath += Player_OnPlayerDeath;
         _player.OnTakeHit += Player_OnTakeHit;
 
-
-        GameInput.Instance.OnPlayerAttack += Player_OnPlayerAttack;
-        GameInput.Instance.OnPlayerRangeAttack += Player_OnPlayerRangeAttack;
-        GameInput.Instance.OnPlayerMagicAttack += Player_OnPlayerMagicAttack;
+        _gameInput=ServiceLocator.GetService<IGameInput>();
+        _gameInput.OnPlayerAttack += Player_OnPlayerAttack;
+        _gameInput.OnPlayerRangeAttack += Player_OnPlayerRangeAttack;
+        _gameInput.OnPlayerMagicAttack += Player_OnPlayerMagicAttack;
+    }
+    private void OnDestroy()
+    {
+        _gameInput.OnPlayerAttack -= Player_OnPlayerAttack;
+        _gameInput.OnPlayerRangeAttack -= Player_OnPlayerRangeAttack;
+        _gameInput.OnPlayerMagicAttack -= Player_OnPlayerMagicAttack;
     }
     private void Player_OnPlayerRangeAttack(object sender, System.EventArgs e)
     {

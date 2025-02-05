@@ -3,6 +3,7 @@ using UnityEngine.UI;
 using TMPro;
 using UnityEditor;
 using Assets.Scripts.Interfaces;
+using Assets.ServiceLocator;
 
 public class StartScreenManager : MonoBehaviour, IStartScreenManager
 {
@@ -11,6 +12,8 @@ public class StartScreenManager : MonoBehaviour, IStartScreenManager
     private Button continueButton; // Кнопка для продолжения
 
     private GameObject startScreen; // экземпляр стартового экрана
+    private IGameInput gameInput;
+    private IGUIManager guiManager;
 
     private void Start()
     {
@@ -23,11 +26,14 @@ public class StartScreenManager : MonoBehaviour, IStartScreenManager
         ResourcesLoadManager resourcesLoadManager  = gameObject.AddComponent<ResourcesLoadManager>(); 
         startScreenPrefab = resourcesLoadManager.LoadStartScreenWindow("Star_Screen_Window");
         // startScreenPrefab = Resources.Load<GameObject>("Windows/StartScreenWindow/Star_Screen_Window");
+        gameInput = ServiceLocator.GetService<IGameInput>();
+        guiManager = ServiceLocator.GetService<IGUIManager>();
         InitializeStartScreen(); // Инициализация стартового экрана
     }
     private void InitializeStartScreen()
     {
-        GameInput.Instance.DisableMovement();
+        gameInput.DisableMovement();
+
         // Создание экземпляра стартового экрана
         startScreen = Instantiate(startScreenPrefab);
         startScreen.transform.SetParent(GameObject.Find("GUI_Display").transform, false); // Привязываем к Canvas
@@ -47,9 +53,9 @@ public class StartScreenManager : MonoBehaviour, IStartScreenManager
         Destroy(startScreen);
 
         // Здесь мы открываем первое окно информации из очереди, если оно есть
-        if (GUIManager.Instance != null) // Проверяем, что GUIManager существует
+        if (guiManager != null) // Проверяем, что GUIManager существует
         {
-            GUIManager.Instance.ShowWindowQueue(); // Открываем первое информационное окно как пример
+            guiManager.ShowWindowQueue(); // Открываем первое информационное окно как пример
         }
     }
 }

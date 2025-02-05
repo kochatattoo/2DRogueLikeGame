@@ -25,7 +25,7 @@ public class GameInput : MonoBehaviour, IGameInput
     private void Awake()
     {
         //Объявляем синглтоном
-        Instance = this;
+        //Instance = this;
 
         // Регистрация самого себя в Service Locator
         //ServiceLocator.RegisterService<GameInput>(this);

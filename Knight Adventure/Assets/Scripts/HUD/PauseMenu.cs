@@ -1,3 +1,5 @@
+using Assets.Scripts.Interfaces;
+using Assets.ServiceLocator;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -5,16 +7,24 @@ public class PauseMenu : MonoBehaviour
 {
     //Переменная отвечающая за паузу
     private bool _pauseGame;
+    private IGameInput _gameInput;
+    private IGUIManager _guiManager;
 
     private void Start()
     {
+        _gameInput = ServiceLocator.GetService<IGameInput>();
+        _guiManager = ServiceLocator.GetService<IGUIManager>();
         //Подписываемся на событие паузы
-        GameInput.Instance.OnPlayerPause += Player_OnPlayerPause;
+        _gameInput.OnPlayerPause += Player_OnPlayerPause;
 
-        GUIManager.Instance.CloseCurrentWindow();
+        _guiManager.CloseCurrentWindow();
     }
-
-   //Событие паузы
+    private void OnDestroy()
+    {
+        _gameInput.OnPlayerPause -= Player_OnPlayerPause;
+    }
+   
+    //Событие паузы
     private void Player_OnPlayerPause(object sender, System.EventArgs e)
     {
         if (_pauseGame)
@@ -35,9 +45,11 @@ public class PauseMenu : MonoBehaviour
 
     public void Resume()
     {
-      
-        GUIManager.Instance.CloseCurrentWindow();
-        GameInput.Instance.EnableMovement(); // Включает действия игрока
+        _gameInput = ServiceLocator.GetService<IGameInput>();
+        _guiManager = ServiceLocator.GetService<IGUIManager>();
+
+        _guiManager.CloseCurrentWindow();
+        _gameInput.EnableMovement(); // Включает действия игрока
         Time.timeScale = 1.0f;
         _pauseGame = false;
     }
@@ -45,8 +57,8 @@ public class PauseMenu : MonoBehaviour
     public void Pause()
     {
         //GUIManager.Instance.OpenPlayerWindow(0);
-        GUIManager.Instance.OpenPlayerWindow(GameManager.Instance.resourcesLoadManager.LoadPlayerWindow("PauseMenuDisplay"));
-        GameInput.Instance.DisableMovement(); // Отключает действия игрока, но не дает действия для кнопки ESC
+        _guiManager.OpenPlayerWindow(GameManager.Instance.resourcesLoadManager.LoadPlayerWindow("PauseMenuDisplay"));
+        _gameInput.DisableMovement(); // Отключает действия игрока, но не дает действия для кнопки ESC
         Time.timeScale = 0f;
         _pauseGame = true;
 
@@ -61,13 +73,13 @@ public class PauseMenu : MonoBehaviour
     public void LoadGame()
     {
         SaveManager.Instance.LoadLastGame();
-        GUIManager.Instance.SetTextAreas();
+        _guiManager.SetTextAreas();
     }
 
     public void LoadMainMenuScene()
     {
         Time.timeScale = 1.0f;
         SceneManager.LoadScene("Menu");
-        GameInput.Instance.DisableMovement();
+        _gameInput.DisableMovement();
     }
 }

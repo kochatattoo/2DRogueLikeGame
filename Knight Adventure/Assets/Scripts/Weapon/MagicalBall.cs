@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using Assets.ServiceLocator;
 
 public class MagicalBall : MonoBehaviour
 {
@@ -56,8 +57,8 @@ public class MagicalBall : MonoBehaviour
            // magicBall.transform.SetParent(Player.Instance.transform);
             
             
-
-            Vector3 mousePos = GameInput.Instance.GetMousePositionToScreenWorldPoint();
+            var gameInput = ServiceLocator.GetService<IGameInput>();
+            Vector3 mousePos = gameInput.GetMousePositionToScreenWorldPoint();
             mousePos.z = 0;
 
             Vector2 direction = ( mousePos - transform.position).normalized; // Направление на курсор

@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System;
+using Assets.ServiceLocator;
 
 public class Window : MonoBehaviour
 {
@@ -31,7 +32,8 @@ public class Window : MonoBehaviour
         Time.timeScale = 0; // Ставим игру на паузу
         activeWindow = this; // Устанавливаем активное окно
 
-        GameInput.Instance.DisableMovement(); // Отключает действия игрока, но не дает действия для кнопки ESC
+        var gameInput = ServiceLocator.GetService<IGameInput>();
+        gameInput.DisableMovement(); // Отключает действия игрока, но не дает действия для кнопки ESC
     }
 
     // Почему то возвращает действия игрока, и он может ходить после первого закрытого сообщения
@@ -47,7 +49,8 @@ public class Window : MonoBehaviour
 
             if (GUIManager.IsQueueEmpty())
             {
-                GameInput.Instance.EnableMovement();
+                var gameInput = ServiceLocator.GetService<IGameInput>();
+                gameInput.EnableMovement();
             }
             else
             {

@@ -100,7 +100,7 @@ public class AudioManager : MonoBehaviour, IAudioManager
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         //Этот метод будет вызван всякий раз, когда загружается новая сцена
-        Debug.Log("Scene Loaded^ " + scene.name);
+       
         if (_playerAudio != null)
         {
             InitializePlayerAudio(); //Обновление ссылок или состояний

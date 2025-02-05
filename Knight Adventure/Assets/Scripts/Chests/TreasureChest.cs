@@ -1,3 +1,4 @@
+using Assets.ServiceLocator;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -16,10 +17,13 @@ public class TreasureChest : MonoBehaviour
     private bool isOpen = false; // Статус открытия сундука
     private Transform playerTransform; // Ссылка на игрока
 
+    private IGameInput _gameInput;
+
 
     private void Start()
     {
-        GameInput.Instance.OnPlayerOpen += Player_OnPlayerOpen;
+        _gameInput=ServiceLocator.GetService<IGameInput>();
+        _gameInput.OnPlayerOpen += Player_OnPlayerOpen;
         playerTransform = Player.Instance.transform; // Получаем ссылку на игрока
         HideInteractionPrompt(); // Скрываем подсказку в начале
     }
@@ -130,6 +134,6 @@ public class TreasureChest : MonoBehaviour
 
     private void OnDestroy() // Отписываемся от события при уничтожении объекта
     {
-        GameInput.Instance.OnPlayerOpen -= Player_OnPlayerOpen;
+        _gameInput.OnPlayerOpen -= Player_OnPlayerOpen;
     }
 }

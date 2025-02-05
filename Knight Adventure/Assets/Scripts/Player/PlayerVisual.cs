@@ -1,3 +1,4 @@
+using Assets.ServiceLocator;
 using UnityEngine;
 
 public class PlayerVisual : MonoBehaviour
@@ -16,6 +17,8 @@ public class PlayerVisual : MonoBehaviour
     private const string TAKE_DAMAGE = "TakeDamage";
     private const string ANIMATION_ATTACK = "AnimationAttack";
 
+    private IGameInput _gameInput;
+
     private void Awake()
     {
         //Кешируем аниматор и спрайтрендер
@@ -27,7 +30,9 @@ public class PlayerVisual : MonoBehaviour
         //Подписываемся на события Смерти и Получения урона персонажа
         Player.Instance.OnPlayerDeath += Player_OnPlayerDeath;
         Player.Instance.OnTakeHit += Player_OnTakeHit;
-        GameInput.Instance.OnPlayerMagicAttack += Player_OnPlayerMagicAttack;
+
+        _gameInput=ServiceLocator.GetService<IGameInput>();
+        _gameInput.OnPlayerMagicAttack += Player_OnPlayerMagicAttack;
 
     }
 
@@ -72,7 +77,7 @@ public class PlayerVisual : MonoBehaviour
     //Следим за нахождением мыши на экране и попорачиваем персонажа в ее сторону
     private void AdjustPlayerFacingDirection()
     {
-        Vector3 mousePos=GameInput.Instance.GetMousePosition();
+        Vector3 mousePos=_gameInput.GetMousePosition();
         Vector3 playerPos=Player.Instance.GetPlayerScreenPosition();
 
         if (mousePos.x < playerPos.x)

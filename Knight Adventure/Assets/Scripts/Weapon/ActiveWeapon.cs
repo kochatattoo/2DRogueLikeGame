@@ -1,3 +1,4 @@
+using Assets.ServiceLocator;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,11 +13,15 @@ public class ActiveWeapon : MonoBehaviour
     [SerializeField] private PlayerAnimationAttack _magic;
     [SerializeField] private MagicalBall _magicalBall;
 
-
+    private IGameInput _gameInput;
     private void Awake()
     {
         //Синглтон
         Instance = this;
+    }
+    private void Start()
+    {
+       _gameInput = ServiceLocator.GetService<IGameInput>();
     }
 
     private void Update()
@@ -38,7 +43,7 @@ public class ActiveWeapon : MonoBehaviour
 
     private void FollowMousePosition()
     {
-        Vector3 mousePos = GameInput.Instance.GetMousePosition();
+        Vector3 mousePos = _gameInput.GetMousePosition();
         Vector3 playerPos = Player.Instance.GetPlayerScreenPosition();
 
         if (mousePos.x < playerPos.x)
