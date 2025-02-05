@@ -14,6 +14,7 @@ namespace Assets.Scripts.Interfaces
         void AddQueueWindows();
         void SetTextAreas();
         void OpenPlayerWindow(GameObject name);
+        void OpenPlayerWindow(string name);
         void OpenInformationWindow(int windowIndex);
         void ShowWindowQueue();
         void OpenPriorityWindow(int windowIndex);

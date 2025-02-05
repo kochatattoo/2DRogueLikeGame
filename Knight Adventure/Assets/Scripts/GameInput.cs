@@ -99,7 +99,20 @@ public class GameInput : MonoBehaviour, IGameInput
     {
         _playerInputActions.Enable();
     }
-
+    public void DisablePlayerMovement()
+    {
+        _playerInputActions.Combat.Attack.started -= PlayerAttack_started;
+        _playerInputActions.Combat.Range_Attack.started -= Range_Attack_started;
+        _playerInputActions.Combat.Magic_Attack.started -= Magic_Attack_started;
+        _playerInputActions.Open.Open.started -= Open_started;
+    }
+   public void EnablePlayerMovement()
+    {
+        _playerInputActions.Combat.Attack.started += PlayerAttack_started;
+        _playerInputActions.Combat.Range_Attack.started += Range_Attack_started;
+        _playerInputActions.Combat.Magic_Attack.started += Magic_Attack_started;
+        _playerInputActions.Open.Open.started += Open_started;
+    }
     //Событие Атаки
     private void PlayerAttack_started(InputAction.CallbackContext obj)
     {

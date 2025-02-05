@@ -9,6 +9,10 @@ public class ResourcesLoadManager : MonoBehaviour
     {
         return LoadPrefab("Windows/Player_Windows_prefs/" + windowName);
     }
+    public GameObject LoadPauseMenuWindow(string windowName)
+    {
+        return LoadPrefab("Windows/PauseMenu" + windowName);
+    }
     // Загрузка стартового окна
     public GameObject LoadStartScreenWindow(string startScreenName)
     {
@@ -42,7 +46,7 @@ public class ResourcesLoadManager : MonoBehaviour
     }
 
     // Общий метод для загрузки префабов
-    private GameObject LoadPrefab(string resourcePath)
+    public GameObject LoadPrefab(string resourcePath)
     {
         GameObject prefab = Resources.Load<GameObject>(resourcePath);
         if (prefab == null)

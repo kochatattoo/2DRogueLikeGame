@@ -15,6 +15,8 @@ public interface IGameInput
       // Методы для включения и отключения движения
       void EnableMovement();
       void DisableMovement();
+      void DisablePlayerMovement();
+      void EnablePlayerMovement();
 
       //Метод для старта менеджера  
       void StartManager();

@@ -3,6 +3,7 @@ using Assets.Scripts.Interfaces;
 using Assets.ServiceLocator;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
 
 //Автоматически добавляем необходимые компонент
@@ -107,6 +108,18 @@ using UnityEngine.SceneManagement;
          // Создание нового окна
          _currentWindow = Instantiate(name, GUIDisplay.transform); // переписать ко всем интсниэйт родителей вторым аргументом
         
+    }
+    public void OpenPlayerWindow(string name)
+    {
+        var prefab= resourcesLoadManager.LoadPrefab(name);
+        // Закрывайте текущее окно, если оно существует
+        if (_currentWindow != null)
+        {
+            Destroy(_currentWindow);
+        }
+
+        // Создание нового окна
+        _currentWindow = Instantiate(prefab, GUIDisplay.transform);
     }
 
     /////////////////////////////////////////////////////////////////////////////////////
@@ -231,7 +244,6 @@ using UnityEngine.SceneManagement;
             //inventoryUI.UpdateInventoryUI(); // Обновляем UI для отображения содержимого сундука
         }
     }
-
     // Методот загружающий текст имени Пользователя
     private void FirstTextAwake()
     {
