@@ -62,7 +62,7 @@ public class Player : MonoBehaviour
     private Subject _subject = new Subject();
 
     //Добавляем ПАТЕРН СЕРВИС ЛОКАТОР
-    private IGameInput gameInput;
+    private IGameInput _gameInput;
 
 
     void Awake()
@@ -78,11 +78,11 @@ public class Player : MonoBehaviour
     {
         //Может получать урон
         _canTakeDamage=true;
-        gameInput = ServiceLocator.GetService<IGameInput>();
+        _gameInput = ServiceLocator.GetService<IGameInput>();
         //Подписываемся на события атаки 
-        gameInput.OnPlayerAttack += Player_OnPlayerAttack;
-        gameInput.OnPlayerRangeAttack += Player_OnPlayerRangeAttack;
-        gameInput.OnPlayerMagicAttack += Player_OnPlayerMagicAttack;
+        _gameInput.OnPlayerAttack += Player_OnPlayerAttack;
+        _gameInput.OnPlayerRangeAttack += Player_OnPlayerRangeAttack;
+        _gameInput.OnPlayerMagicAttack += Player_OnPlayerMagicAttack;
 
         SetPlayerCharacteristics();
         SetPlayerAchivements();
@@ -107,26 +107,26 @@ public class Player : MonoBehaviour
     }
     private void OnDisable()
     {
-        gameInput = ServiceLocator.GetService<IGameInput>();
+        _gameInput = ServiceLocator.GetService<IGameInput>();
         //Подписываемся на события атаки 
-        gameInput.OnPlayerAttack -= Player_OnPlayerAttack;
-        gameInput.OnPlayerRangeAttack -= Player_OnPlayerRangeAttack;
-        gameInput.OnPlayerMagicAttack -= Player_OnPlayerMagicAttack;
+        _gameInput.OnPlayerAttack -= Player_OnPlayerAttack;
+        _gameInput.OnPlayerRangeAttack -= Player_OnPlayerRangeAttack;
+        _gameInput.OnPlayerMagicAttack -= Player_OnPlayerMagicAttack;
     }
     private void OnDestroy()
     {
-        gameInput = ServiceLocator.GetService<IGameInput>();
+        _gameInput = ServiceLocator.GetService<IGameInput>();
         //Подписываемся на события атаки 
-        gameInput.OnPlayerAttack -= Player_OnPlayerAttack;
-        gameInput.OnPlayerRangeAttack -= Player_OnPlayerRangeAttack;
-        gameInput.OnPlayerMagicAttack -= Player_OnPlayerMagicAttack;
+        _gameInput.OnPlayerAttack -= Player_OnPlayerAttack;
+        _gameInput.OnPlayerRangeAttack -= Player_OnPlayerRangeAttack;
+        _gameInput.OnPlayerMagicAttack -= Player_OnPlayerMagicAttack;
 
     }
     private void Update()
     {
         //Отслеживание вектора персонажа
         //_inputVector = GameInput.Instance.GetMovementVector();
-        _inputVector = gameInput.GetMovementVector();
+        _inputVector = _gameInput.GetMovementVector();
         // Debug.Log(GameManager.Instance.user.GetName());
 
         // Поделючим инвентарь нашего персонажа к данным об игроке
@@ -290,7 +290,7 @@ public class Player : MonoBehaviour
         {
             _knockBack.StopKnockBackMovement();
             _isAlive = false;
-            GameInput.Instance.DisableMovement();
+            _gameInput.DisableMovement();
             OnPlayerDeath?.Invoke(this, EventArgs.Empty);
         }
            

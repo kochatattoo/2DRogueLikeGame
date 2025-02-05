@@ -83,8 +83,8 @@ public class GameManager : MonoBehaviour, IGameManager
         ServiceLocator.RegisterService(guiManager);
 
         //Регистрировать можно самих себя в методе Start
-        //var gameInput = FindObjectOfType<GameInput>();
-        //ServiceLocator.RegisterService(gameInput);
+        //var _gameInput = FindObjectOfType<GameInput>();
+        //ServiceLocator.RegisterService(_gameInput);
 
         var mapManager = FindObjectOfType<MapManager>();
         ServiceLocator.RegisterService(mapManager);
@@ -119,7 +119,7 @@ public class GameManager : MonoBehaviour, IGameManager
         saveManager = SaveManager.Instance; // Получение ссылки на SaveManager
         audioManager = AudioManager.Instance; // Получение ссылки на AudioManager
         guiManager = GUIManager.Instance; // Получение ссылки на GUIManager
-        gameInput = GameInput.Instance; // Получение ссылки на GameInput
+        //_gameInput = GameInput.Instance; // Получение ссылки на GameInput
         mapManager = MapManager.Instance; //Получение ссылки на MapManager
         playerData = PlayerData.Instance; //Получение ссылки на PlayerData
     }

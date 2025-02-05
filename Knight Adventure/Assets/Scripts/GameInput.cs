@@ -13,7 +13,7 @@ public class GameInput : MonoBehaviour, IGameInput
 
     //Создаем наш класс синглтоном, что бы можно было обращатся к его элементам 
     //в других классах
-    public static GameInput Instance {  get; private set; }
+    //public static GameInput Instance {  get; private set; }
     //Переменные событий Атака и Пауза
     public event EventHandler OnPlayerAttack;
     public event EventHandler OnPlayerPause;
