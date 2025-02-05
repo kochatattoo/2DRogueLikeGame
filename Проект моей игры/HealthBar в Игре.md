@@ -67,3 +67,6 @@ public class PlayerHealthManager : MonoBehaviour
 ```
 
 ```
+
+Дальнейшая логика отвечающая за Хелфбар будет представнлена в следующем скрипте 
+[[PlayerStatsUIManager]]

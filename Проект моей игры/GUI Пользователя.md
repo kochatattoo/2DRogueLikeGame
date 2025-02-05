@@ -267,3 +267,28 @@ using Assets.Scripts;
     }
 }
 ```
+
+Для отобажения информационных окон, которые будут вставать в очерди и закрывать остальной интерфейс от себя, добавим следующий метод в наш скрипт
+```
+   public GameObject[] uiPrefabsInformationWindows;
+	,,,,,
+	//Добавляю метод для создания информационных окон, коорый буду тзагружаться в очередь
+    public void OpenInformationWindow(int windowIndex)
+    {
+        if (windowIndex >= 0 && windowIndex < uiPrefabsInformationWindows.Length)
+        {
+            GameObject windowObject = Instantiate(uiPrefabsInformationWindows[windowIndex]);
+            Window window = windowObject.GetComponent<Window>();
+            if (window != null)
+            {
+                window.OpenWindow();
+            }
+        }
+        else
+        {
+            Debug.LogWarning("Window index out of range: " + windowIndex);
+        }
+    }
+
+```
+и идем к классу [[Window]]

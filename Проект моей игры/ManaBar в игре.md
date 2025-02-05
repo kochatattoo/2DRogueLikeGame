@@ -1,0 +1,1 @@
+реализую это в скрипте [[PlayerStatsUIManager]]

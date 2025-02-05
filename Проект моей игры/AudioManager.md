@@ -167,3 +167,19 @@ public class AudioMuter : MonoBehaviour
         }
     }
 ```
+
+
+## Было принято решение переписать скрипты менеджеров под более гибкие и актуальные
+
+### Шаг 1: Создание интерфейса для AudioManager
+
+Сначала создадим интерфейс `IAudioManager`, который будет определять функционал, который должен быть реализован в классе `AudioManager`.
+```
+public interface IAudioManager
+{
+    bool StatusMusic();
+    void SoundOffOn();
+    void SetVolume(float volume);
+    static void SaveSettings(); // Можно оставить как статический метод, если нужно
+}
+```
