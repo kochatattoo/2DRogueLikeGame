@@ -4,7 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PlayerStatsUIManager : MonoBehaviour, IObserver
+public class PlayerStatsUIManager : MonoBehaviour
 {
     // Обращаемся к переменным Изображения и Текста
     [SerializeField] private Image _healthBar;
@@ -25,23 +25,6 @@ public class PlayerStatsUIManager : MonoBehaviour, IObserver
     private int _level; // Уровень игрока
     private int _experienceToNextLevel; // Опыт до следующего уровня
 
-    private void Start()
-    {
-        //Subject subject = Player.Instance.GetSubject();
-        //if (subject != null)
-        //{
-        //    subject.RegisterObserver(this);
-        //}
-
-
-        //Player.Instance.OnTakeHit += Player_OnTakeHit;
-        //Player.Instance.OnPlayerUpdateCurrentExpirience += Player_OnPlayerUpdateCurrentExpirience;
-        //Player.Instance.OnPlayerUpdateCurrentHealth += Player_OnPlayerUpdateCurrentHealth;
-        //Player.Instance.OnPlayerUpdateCurrentMana += Player_OnPlayerUpdateCurrentMana;
-
-        
-        // Здесь можно подписаться на события маны и опыта, если они есть
-    }
     public void StartManager()
     {
         Player.Instance.OnTakeHit += Player_OnTakeHit;

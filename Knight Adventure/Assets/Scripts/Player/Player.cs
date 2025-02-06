@@ -2,6 +2,7 @@ using Assets.Scripts.gameEventArgs;
 using Assets.Scripts.Interfaces;
 using Assets.Scripts.Player;
 using Assets.ServiceLocator;
+using Cinemachine;
 using System;
 using System.Collections;
 using UnityEngine;
@@ -59,8 +60,7 @@ public class Player : MonoBehaviour
     //Переменная отвечающая за свет от персонажа
     private Light2D _playerLight;
 
-    // Попробуем добавить ПАТТЕРН НАБЛЮДАТЕЛЬ
-    private Subject _subject = new Subject();
+    private CinemachineVirtualCamera _cineMachine;
 
     //Добавляем ПАТЕРН СЕРВИС ЛОКАТОР
     private IGameInput _gameInput;
@@ -110,6 +110,15 @@ public class Player : MonoBehaviour
 
         LightSetting(); //Вызываем метод для установки света у нашего персонажа
 
+        _cineMachine = FindObjectOfType<CinemachineVirtualCamera>();
+        if (_cineMachine != null)
+        {
+            _cineMachine.Follow = this.transform;
+        }
+        else
+        {
+            Debug.Log("Cinemachine camera hasn.t founded in the Scene");
+        }
 
         // ПРисвоим инвентарю персонажа - инвентарь из наших данных 
         //playerInventory = GameManager.Instance.playerData.playerInventory;
@@ -196,7 +205,7 @@ public class Player : MonoBehaviour
     public float GetCurrentHealth() => _currentHealth;
     public float GetCurrentMana() => _currentMana;
     public float GetCurrentExpirience()=>_currentExpirience;
-    public Subject GetSubject() => _subject;
+  
     public float GetMaxHealth() => _maxHealth;
     public float GetMaxMana() => _maxMana;
     public float GetMaxExpirience()=>_maxExpirience;
@@ -256,8 +265,6 @@ public class Player : MonoBehaviour
             // Вызываем событие о получении урона, передаем текущий уровень здоровья
             OnTakeHit?.Invoke(this, new DamageEventArgs { Damage = damage, CurrentHealth = _currentHealth });
 
-            NotifyObservers("PlayerTakesDamage");
-
             //Начинаем отчет до следующей возможности получать урон
             StartCoroutine(DamageRecoveryRoutine());
             Debug.Log(_currentHealth);
@@ -265,10 +272,7 @@ public class Player : MonoBehaviour
         //Отслеживае состояние смерти
         DetectDeath();
     }
-    private void NotifyObservers(string message)
-    {
-        _subject.NotifyObservers(message);
-    }
+
 
     private void SetPlayerCharacteristics()
     {
