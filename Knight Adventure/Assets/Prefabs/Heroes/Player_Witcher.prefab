@@ -45,6 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   magicalBallPrefab: {fileID: 6364501318000965586, guid: c90748e0456152d45b5dee73c1fbaf14, type: 3}
+  magicalBallVisual: {fileID: 0}
   speed: 30
   damage: 2
 --- !u!1 &2548657134212605633
@@ -301,6 +302,8 @@ MonoBehaviour:
   playerInventory: {fileID: 6149334074932530076}
   _speed: 0
   _maxHealth: 0
+  _maxMana: 0
+  _maxExpirience: 0
   _damageRecoveryTime: 0.5
 --- !u!114 &1389518870108349314
 MonoBehaviour:
@@ -696,6 +699,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: fcb2cba046223324cae7c2a17ca39e7e, type: 3}
   - {fileID: 8300000, guid: 33d22adbe388f614689a1b8d935cde27, type: 3}
   - {fileID: 8300000, guid: 72aff85cb8af4274ea0681f530b63bc6, type: 3}
+  - {fileID: 8300000, guid: 110010d4dbab1b3479fa800b15ec9db5, type: 3}
   _player: {fileID: 3210193476586843347}
   _stepInterval: 0.3
 --- !u!114 &2459401041244197711
@@ -850,6 +854,10 @@ PrefabInstance:
     - target: {fileID: 8436725553013682471, guid: bc67c824c6479bb498331f889292baf5, type: 3}
       propertyPath: m_Name
       value: Sword
+      objectReference: {fileID: 0}
+    - target: {fileID: 8436725553013682471, guid: bc67c824c6479bb498331f889292baf5, type: 3}
+      propertyPath: m_TagString
+      value: Player
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

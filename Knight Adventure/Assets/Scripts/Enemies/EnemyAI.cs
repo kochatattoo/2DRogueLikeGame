@@ -70,18 +70,6 @@ public class EnemyAI : MonoBehaviour
             else { return true; }
         }
     }
-
-    //Метод для отслеживания бежит или нет
-    /*
-    public bool IsRunning()
-    {
-        //Если скорость нашего агента равна 0, то false
-        if(_navMeshAgent.velocity==Vector3.zero)
-        {  return false; }
-        //Если нет, то true
-        else { return true; }
-    }   */
-
     //Состояния
     private enum State
     {
