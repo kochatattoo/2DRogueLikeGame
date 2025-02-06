@@ -153,14 +153,14 @@ public class InitializationManager : MonoBehaviour
     }
     private void StartGame()
     {
-        var audioService = ServiceLocator.GetService<IAudioManager>();
-        audioService.StartManager();
+        var audioManager = ServiceLocator.GetService<IAudioManager>();
+        audioManager.StartManager();
 
-        var saveService = ServiceLocator.GetService<ISaveManager>();
-        saveService.StartManager();
+        var saveManager = ServiceLocator.GetService<ISaveManager>();
+        saveManager.StartManager();
 
-        var gameService = ServiceLocator.GetService<IGameManager>();
-        gameService.StartManager();
+        var gameManager = ServiceLocator.GetService<IGameManager>();
+        gameManager.StartManager();
 
         var menuManager = FindObjectOfType<MainMenuManager>();
         if (menuManager != null)

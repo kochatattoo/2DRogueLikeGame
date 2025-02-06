@@ -49,10 +49,6 @@ using UnityEngine.SceneManagement;
 
        }
 
-    private void Start()
-    {
-    
-    }
     public void StartManager()
     {
         resourcesLoadManager = gameObject.AddComponent<ResourcesLoadManager>();

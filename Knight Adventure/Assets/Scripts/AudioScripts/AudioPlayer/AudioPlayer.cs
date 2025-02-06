@@ -14,29 +14,6 @@ public class AudioPlayer : MonoBehaviour
 
     private IGameInput _gameInput;
 
-    private void Start()
-    {
-        //if (_playerAudioSource == null)
-        //{
-        //    _playerAudioSource = GetComponent<AudioSource>();
-        //}
-
-        //if (_player == null)
-        //{
-        //    Debug.LogError("Player is not assigned!");
-        //    return;
-        //}
-
-        //_stepTimer = _stepInterval;
-
-        //_player.OnPlayerDeath += Player_OnPlayerDeath;
-        //_player.OnTakeHit += Player_OnTakeHit;
-        
-
-        //GameInput.Instance.OnPlayerAttack += Player_OnPlayerAttack;
-        //GameInput.Instance.OnPlayerRangeAttack += Player_OnPlayerRangeAttack;
-        //GameInput.Instance.OnPlayerMagicAttack += Player_OnPlayerMagicAttack;
-    }
     public void StartScript()
     {
         if (_playerAudioSource == null)

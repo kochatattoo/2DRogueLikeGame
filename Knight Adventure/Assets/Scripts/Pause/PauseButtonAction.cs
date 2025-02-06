@@ -18,6 +18,11 @@ public class PauseButtonAction : MonoBehaviour
         var gameInput = ServiceLocator.GetService<IGameInput>();
         gameInput.OnPlayerPause -= OnPlayerPause;
     }
+    private void OnDestroy()
+    {
+        var gameInput = ServiceLocator.GetService<IGameInput>();
+        gameInput.OnPlayerPause -= OnPlayerPause;
+    }
 
     private void OnPlayerPause(object sender, System.EventArgs e)
     {

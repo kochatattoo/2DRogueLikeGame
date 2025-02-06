@@ -11,9 +11,7 @@ public class GameInput : MonoBehaviour, IGameInput
     //методы для управления
     private PlayerInputActions _playerInputActions;
 
-    //Создаем наш класс синглтоном, что бы можно было обращатся к его элементам 
-    //в других классах
-    //public static GameInput Instance {  get; private set; }
+
     //Переменные событий Атака и Пауза
     public event EventHandler OnPlayerAttack;
     public event EventHandler OnPlayerPause;
@@ -21,25 +19,6 @@ public class GameInput : MonoBehaviour, IGameInput
     public event EventHandler OnPlayerRangeAttack;
 
     public event EventHandler OnPlayerOpen;
-
-    private void Awake()
-    {
-        //Объявляем синглтоном
-        //Instance = this;
-
-        // Регистрация самого себя в Service Locator
-        //ServiceLocator.RegisterService<GameInput>(this);
-
-        ////вводим playerInputAction, делаем его доступным
-        //_playerInputActions = new PlayerInputActions();
-        //_playerInputActions.Enable();
-        ////Подписываемся на события Атаки и Паузы
-        //_playerInputActions.Combat.Attack.started += PlayerAttack_started;
-        //_playerInputActions.Combat.Range_Attack.started += Range_Attack_started;
-        //_playerInputActions.Combat.Magic_Attack.started += Magic_Attack_started;
-        //_playerInputActions.Player.Pause.started += PlayerPause_started;
-        //_playerInputActions.Open.Open.started += Open_started;
-    }
 
     public void StartManager()
     {
