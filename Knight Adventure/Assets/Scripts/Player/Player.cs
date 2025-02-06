@@ -6,6 +6,7 @@ using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
+using Zenject;
 
 [SelectionBase]
 public class Player : MonoBehaviour
@@ -64,6 +65,16 @@ public class Player : MonoBehaviour
     //ƒÓ·‡‚ÎˇÂÏ œ¿“≈–Õ —≈–¬»— ÀŒ ¿“Œ–
     private IGameInput _gameInput;
 
+
+    //[Inject]
+    //public void Construct(IGameInput gameInput)
+    //{
+    //    _gameInput = gameInput;
+    //    _gameInput.StartManager();
+    //    _gameInput.OnPlayerAttack += Player_OnPlayerAttack;
+    //    _gameInput.OnPlayerRangeAttack += Player_OnPlayerRangeAttack;
+    //    _gameInput.OnPlayerMagicAttack += Player_OnPlayerMagicAttack;
+    //}
 
     void Awake()
     {
