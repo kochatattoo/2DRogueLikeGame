@@ -3,8 +3,6 @@
 [System.Serializable]
 public class PlayerData
     {
-        public static  PlayerData Instance {  get; private set; }
-
         public PlayerStats playerStats;
         public PlayerAchievements playerAchievements;
         public Inventory playerInventory;

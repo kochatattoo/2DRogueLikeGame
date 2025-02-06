@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
 using Assets.Scripts.Interfaces;
+using Assets.ServiceLocator;
 
 
 public class MainMenuManager : MonoBehaviour, IMainMenuManager
@@ -19,6 +20,9 @@ public class MainMenuManager : MonoBehaviour, IMainMenuManager
     [SerializeField] private TMP_InputField _name;
 
     [SerializeField] private SaveLoadMenu _saveLoadMenu;
+
+    private ISaveManager _saveManager;
+    private PlayerData _playerData;
 
     private void Awake()
     {
@@ -39,11 +43,13 @@ public class MainMenuManager : MonoBehaviour, IMainMenuManager
     }
     public void StartManager()
     {
-        if (GameManager.Instance.playerData != null)
+       _saveManager=ServiceLocator.GetService<ISaveManager>();
+        _playerData = _saveManager.LoadLastGame();
+        if (_playerData != null)
         {
             _user_Name_Panel.SetActive(true);
-            _user_Name.text = GameManager.Instance.playerData.name;
-            Debug.Log(GameManager.Instance.playerData.name + "User name !=null");
+            _user_Name.text = _playerData.name;
+            Debug.Log(_playerData.name + "User name !=null");
         }
         else
         {
@@ -120,8 +126,8 @@ public class MainMenuManager : MonoBehaviour, IMainMenuManager
 
     public void RefreshName()
     {
-        _user_Name.text = GameManager.Instance.playerData.name;
-        Debug.Log(GameManager.Instance.playerData.name + "User name !=null");
+        _user_Name.text = _playerData.name;
+        Debug.Log(_playerData.name + "User name !=null");
     }
 
     public void StartGame()
@@ -147,13 +153,13 @@ public class MainMenuManager : MonoBehaviour, IMainMenuManager
         if (_name.text.Length > 4)
         {
 
-            GameManager.Instance.playerData.name=InputName;
+            _playerData.name=InputName;
 
             SetCharacteristics();
             SetRewardsAndAchivements();
 
             //SaveManager.SaveUser(User.Instance);
-            SaveManager.Instance.SaveGame(GameManager.Instance.playerData, InputName);
+            _saveManager.SaveGame(_playerData, InputName);
             
         }
         else
@@ -163,11 +169,11 @@ public class MainMenuManager : MonoBehaviour, IMainMenuManager
 
     private void SetCharacteristics()
     {
-        GameManager.Instance.playerData.playerStats.CreatePlayerCharacteristics(GameManager.Instance.playerData);
+        _playerData.playerStats.CreatePlayerCharacteristics(_playerData);
     }
 
     private void SetRewardsAndAchivements()
     {
-        GameManager.Instance.playerData.playerAchievements = new Assets.Scripts.Player.PlayerAchievements();
+        _playerData.playerAchievements = new Assets.Scripts.Player.PlayerAchievements();
     }
 }

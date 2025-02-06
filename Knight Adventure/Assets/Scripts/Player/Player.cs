@@ -64,6 +64,7 @@ public class Player : MonoBehaviour
 
     //Добавляем ПАТЕРН СЕРВИС ЛОКАТОР
     private IGameInput _gameInput;
+    private ISaveManager _saveManager;
 
 
     //[Inject]
@@ -84,26 +85,18 @@ public class Player : MonoBehaviour
         _rb= GetComponent<Rigidbody2D>();
         _knockBack=GetComponent<knockBack>();
     }
-
-
     private void Start()
     {
         //Может получать урон
         _canTakeDamage=true;
-        _gameInput = ServiceLocator.GetService<IGameInput>();
-        //Подписываемся на события атаки 
-        _gameInput.OnPlayerAttack += Player_OnPlayerAttack;
-        _gameInput.OnPlayerRangeAttack += Player_OnPlayerRangeAttack;
-        _gameInput.OnPlayerMagicAttack += Player_OnPlayerMagicAttack;
+        InitializeServices();
+        SubscribeGameInputEvent();
+        LoadPlayerData();
 
         SetPlayerCharacteristics();
         SetPlayerAchivements();
         SetPlayerActuallyStats();
-
-        ////Устанавливаем текущее здоровье = максимальноиу
-        _currentHealth = _maxHealth;
-        _currentExpirience = 0;
-        _currentMana = _maxMana;
+        SetPlayerCurrentStats();
 
         _statsUIManager = FindAnyObjectByType<PlayerStatsUIManager>();
         _statsUIManager.StartManager();
@@ -126,6 +119,22 @@ public class Player : MonoBehaviour
         //SetPlayerInventory();
 
     }
+    private void InitializeServices()
+    {
+        _gameInput = ServiceLocator.GetService<IGameInput>();
+        _saveManager = ServiceLocator.GetService<ISaveManager>();
+    }
+    private void SubscribeGameInputEvent()
+    {
+        //Подписываемся на события атаки 
+        _gameInput.OnPlayerAttack += Player_OnPlayerAttack;
+        _gameInput.OnPlayerRangeAttack += Player_OnPlayerRangeAttack;
+        _gameInput.OnPlayerMagicAttack += Player_OnPlayerMagicAttack;
+    }
+    private void LoadPlayerData()
+    {
+        playerData = _saveManager.LoadLastGame();
+    }
     private void OnDisable()
     {
         _gameInput = ServiceLocator.GetService<IGameInput>();
@@ -145,14 +154,8 @@ public class Player : MonoBehaviour
     }
     private void Update()
     {
-        //Отслеживание вектора персонажа
-        //_inputVector = GameInput.Instance.GetMovementVector();
         _inputVector = _gameInput.GetMovementVector();
-        // Debug.Log(GameManager.Instance.user.GetName());
-
         // Поделючим инвентарь нашего персонажа к данным об игроке
-        GameManager.Instance.playerData.playerInventory = playerInventory;
-
     }
 
     void FixedUpdate()
@@ -274,10 +277,9 @@ public class Player : MonoBehaviour
         DetectDeath();
     }
 
-
     private void SetPlayerCharacteristics()
     {
-        playerStats = GameManager.Instance.playerData.playerStats;
+        playerStats = playerData.playerStats;
     }
 
     // В данном методе будем устанавливать Актуальные характеристики нашего персонажа от его статистик
@@ -288,16 +290,18 @@ public class Player : MonoBehaviour
         _maxMana = playerStats.maxMana;
         _maxExpirience = playerStats.currentExperience;
     }
+
+    private void SetPlayerCurrentStats()
+    {
+        ////Устанавливаем текущее здоровье = максимальноиу
+        _currentHealth = _maxHealth;
+        _currentExpirience = 0;
+        _currentMana = _maxMana;
+    }
     private void SetPlayerAchivements()
     {
-        playerAchievements = GameManager.Instance.playerData.playerAchievements;
+        playerAchievements = playerData.playerAchievements;
     }
-
-    //private void SetPlayerInventory()
-    //{
-    //    playerInventory =GameManager.Instance.playerData.playerInventory;
-    //}
-
     //Метод отслеживающий состояние смерти героя
     private void DetectDeath()
     {

@@ -17,17 +17,89 @@ public class InitializationManager : MonoBehaviour
         {
             Instance = this; // Установка экземпляра
             DontDestroyOnLoad(gameObject); // Не уничтожать при загрузке новой сцены
+
             resourcesLoadManager = gameObject.AddComponent<ResourcesLoadManager>(); // Создаем экземпляр ResourcesLoadManager
             SceneManager.sceneLoaded += OnSceneLoaded; //Подписка на событие загрузки сцены
 
             CreateAndRegisterManagers();
-
-            InitializeServices();
-            InitializeSystems();
+            StartGame();
         }
         else
         {
             Destroy(gameObject); // Удаляем второй экземпляр
+        }
+    }
+  
+ 
+    private void CreateAndRegisterManagers()
+    {
+        GameObject audioManagerPrefab = resourcesLoadManager.LoadManager("AudioManager");
+        GameObject audioManagerInstance = Instantiate(audioManagerPrefab);
+        var audioManager = audioManagerInstance.GetComponent<AudioManager>();
+        ServiceLocator.RegisterService<IAudioManager>(audioManager);
+        DontDestroyOnLoad(audioManagerInstance);
+
+        GameObject saveManagerPrefab = resourcesLoadManager.LoadManager("SaveLoadManager");
+        GameObject saveManagerInstance = Instantiate(saveManagerPrefab);
+        var saveManager = saveManagerInstance.GetComponent<SaveManager>();
+        ServiceLocator.RegisterService<ISaveManager>(saveManager);
+        DontDestroyOnLoad(saveManagerInstance);
+
+        GameObject autarizationManagerPrefab = resourcesLoadManager.LoadManager("AutarizationManager");
+        GameObject autarizationManagerInstance = Instantiate(autarizationManagerPrefab);
+        var autarizationManager = autarizationManagerInstance.GetComponent<AutarizationManager>();
+        ServiceLocator.RegisterService<IAutarizationManager>(autarizationManager);
+        DontDestroyOnLoad(autarizationManagerInstance);
+
+        GameObject gameInputManagerPrefab = resourcesLoadManager.LoadManager("GameInput");
+        GameObject gameInputManagerInstance = Instantiate(gameInputManagerPrefab);
+        var gameInputManager = gameInputManagerInstance.GetComponent<GameInput>();
+        ServiceLocator.RegisterService<IGameInput>(gameInputManager);
+        DontDestroyOnLoad(gameInputManagerInstance);
+
+        GameObject mapManagerPrefab = resourcesLoadManager.LoadManager("MapManager");
+        GameObject mapManagerInstance = Instantiate(mapManagerPrefab);
+        var mapManager = mapManagerInstance.GetComponent<MapManager>();
+        ServiceLocator.RegisterService<IMapManager>(mapManager);
+        DontDestroyOnLoad(mapManagerInstance);
+
+        GameObject guiManagerPrefab = resourcesLoadManager.LoadManager("GUI_Manager");
+        GameObject guiManagerInstance = Instantiate(guiManagerPrefab);
+        var guiManager = guiManagerInstance.GetComponent<GUIManager>();
+        ServiceLocator.RegisterService<IGUIManager>(guiManager);
+        DontDestroyOnLoad(guiManagerInstance);
+
+        GameObject startScreenManagerPrefab = resourcesLoadManager.LoadManager("StartScreenManager");
+        GameObject startScreenManagerInstance = Instantiate(startScreenManagerPrefab);
+        var startScreenManager = startScreenManagerInstance.GetComponent<StartScreenManager>();
+        ServiceLocator.RegisterService<IStartScreenManager>(startScreenManager);
+        DontDestroyOnLoad(startScreenManagerInstance);
+
+        GameObject gameManagerPrefab = resourcesLoadManager.LoadManager("GameManager");
+        GameObject gameManagerInstance = Instantiate(gameManagerPrefab);
+        var gameManager = gameManagerInstance.GetComponent<GameManager>();
+        ServiceLocator.RegisterService<IGameManager>(gameManager);
+        DontDestroyOnLoad(gameManagerInstance);
+
+    }
+    private void StartGame()
+    {
+        var audioManager = ServiceLocator.GetService<IAudioManager>();
+        audioManager.StartManager();
+
+        var saveManager = ServiceLocator.GetService<ISaveManager>();
+        saveManager.StartManager();
+
+        var autarizationManager = ServiceLocator.GetService<AutarizationManager>();
+        autarizationManager.StartManager();
+
+        var gameManager = ServiceLocator.GetService<IGameManager>();
+        gameManager.StartManager();
+
+        var menuManager = FindObjectOfType<MainMenuManager>();
+        if (menuManager != null)
+        {
+            menuManager.StartManager();
         }
     }
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
@@ -51,66 +123,6 @@ public class InitializationManager : MonoBehaviour
                 break;
         }
     }
-    private void InitializeServices()
-    {
-        
-    }
-    private void InitializeSystems()
-    {
-        StartGame();
-    }
-    private void CreateAndRegisterManagers()
-    {
-        GameObject audioManagerPrefab = resourcesLoadManager.LoadManager("AudioManager");
-        GameObject audioManagerInstance = Instantiate(audioManagerPrefab);
-        var audioManager = audioManagerInstance.GetComponent<AudioManager>();
-        ServiceLocator.RegisterService<IAudioManager>(audioManager);
-        DontDestroyOnLoad(audioManagerInstance);
-
-        GameObject gameInputManagerPrefab = resourcesLoadManager.LoadManager("GameInput");
-        GameObject gameInputManagerInstance = Instantiate(gameInputManagerPrefab);
-        var gameInputManager = gameInputManagerInstance.GetComponent<GameInput>();
-        ServiceLocator.RegisterService<IGameInput>(gameInputManager);
-        DontDestroyOnLoad(gameInputManagerInstance);
-
-        GameObject guiManagerPrefab = resourcesLoadManager.LoadManager("GUI_Manager");
-        GameObject guiManagerInstance = Instantiate(guiManagerPrefab);
-        var guiManager = guiManagerInstance.GetComponent<GUIManager>();
-        ServiceLocator.RegisterService<IGUIManager>(guiManager);
-        DontDestroyOnLoad(guiManagerInstance);
-
-        GameObject mapManagerPrefab = resourcesLoadManager.LoadManager("MapManager");
-        GameObject mapManagerInstance = Instantiate(mapManagerPrefab);
-        var mapManager = mapManagerInstance.GetComponent<MapManager>();
-        ServiceLocator.RegisterService<IMapManager>(mapManager);
-        DontDestroyOnLoad(mapManagerInstance);
-
-        //GameObject menuManagerPrefab = resourcesLoadManager.LoadManager("MenuManager");
-        //GameObject menuManagerInstance = Instantiate(menuManagerPrefab);
-        //var mainMenuManager = FindObjectOfType<MainMenuManager>();
-        //ServiceLocator.RegisterService<IMainMenuManager>(mainMenuManager);
-        //DontDestroyOnLoad(menuManagerInstance);
-
-        GameObject saveManagerPrefab = resourcesLoadManager.LoadManager("SaveLoadManager");
-        GameObject saveManagerInstance = Instantiate(saveManagerPrefab);
-        var saveManager = saveManagerInstance.GetComponent<SaveManager>();
-        ServiceLocator.RegisterService<ISaveManager>(saveManager);
-        DontDestroyOnLoad(saveManagerInstance);
-
-        GameObject startScreenManagerPrefab = resourcesLoadManager.LoadManager("StartScreenManager");
-        GameObject startScreenManagerInstance = Instantiate(startScreenManagerPrefab);
-        var startScreenManager = startScreenManagerInstance.GetComponent<StartScreenManager>();
-        ServiceLocator.RegisterService<IStartScreenManager>(startScreenManager);
-        DontDestroyOnLoad(startScreenManagerInstance);
-
-        GameObject gameManagerPrefab = resourcesLoadManager.LoadManager("GameManager");
-        GameObject gameManagerInstance = Instantiate(gameManagerPrefab);
-        var gameManager = gameManagerInstance.GetComponent<GameManager>();
-        ServiceLocator.RegisterService<IGameManager>(gameManager);
-        DontDestroyOnLoad(gameManagerInstance);
-
-    }
-
     private void EnableMenuManagers()
     {
        var menuManager= FindObjectOfType<MainMenuManager>();
@@ -160,23 +172,7 @@ public class InitializationManager : MonoBehaviour
         if (guiManager is MonoBehaviour guiScript) guiScript.gameObject.SetActive(false);
         if (startScreenManager is MonoBehaviour startScreenScript) startScreenScript.gameObject.SetActive(false);
     }
-    private void StartGame()
-    {
-        var audioManager = ServiceLocator.GetService<IAudioManager>();
-        audioManager.StartManager();
-
-        var saveManager = ServiceLocator.GetService<ISaveManager>();
-        saveManager.StartManager();
-
-        var gameManager = ServiceLocator.GetService<IGameManager>();
-        gameManager.StartManager();
-
-        var menuManager = FindObjectOfType<MainMenuManager>();
-        if (menuManager != null)
-        {
-            menuManager.StartManager();
-        }
-    }
+  
     private void OnDestroy()
     {
         // Отписка от событий
