@@ -65,6 +65,7 @@ public class Player : MonoBehaviour
     //Äîáàâëÿåì ÏÀÒÅĞÍ ÑÅĞÂÈÑ ËÎÊÀÒÎĞ
     private IGameInput _gameInput;
     private ISaveManager _saveManager;
+    private IAutarizationManager _autarizationManager;
 
 
     //[Inject]
@@ -123,6 +124,7 @@ public class Player : MonoBehaviour
     {
         _gameInput = ServiceLocator.GetService<IGameInput>();
         _saveManager = ServiceLocator.GetService<ISaveManager>();
+        _autarizationManager = ServiceLocator.GetService<IAutarizationManager>();
     }
     private void SubscribeGameInputEvent()
     {
@@ -133,7 +135,7 @@ public class Player : MonoBehaviour
     }
     private void LoadPlayerData()
     {
-        playerData = _saveManager.LoadLastGame();
+        playerData = _autarizationManager.GetPlayerData();
     }
     private void OnDisable()
     {

@@ -5,8 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour, IGameManager
 {
+    
     public static GameManager Instance { get; private set; }
-
     public ResourcesLoadManager resourcesLoadManager;
     public SaveManager saveManager; // Ссылка на SaveManager
     public AudioManager audioManager; // Ссылка на AudioManager
@@ -21,23 +21,7 @@ public class GameManager : MonoBehaviour, IGameManager
 
     private void Awake()
     {
-        // Проверка на существование экземпляра GameManager
-        if (Instance == null)
-        {
-            Instance = this; // Установка экземпляра
-            DontDestroyOnLoad(gameObject); // Не уничтожать при загрузке новой сцены
-
-            SceneManager.sceneLoaded += OnSceneLoaded; //Подписка на событие загрузки сцены
-            InitializeManagers();
-            InitializeSingletons();
-           // InitializeManagersByServiceLocator();
-        }
-        else
-        {
-            Destroy(gameObject); // Удаляем второй экземпляр
-        }
-        // Инициализация ссылок на синглтоны
-       // InitializeSingletons();
+       
     }
     private void Start()
     {
@@ -98,7 +82,6 @@ public class GameManager : MonoBehaviour, IGameManager
         saveManager = SaveManager.Instance; // Получение ссылки на SaveManager
         guiManager = GUIManager.Instance; // Получение ссылки на GUIManager
         mapManager = MapManager.Instance; //Получение ссылки на MapManager
-        playerData = PlayerData.Instance; //Получение ссылки на PlayerData
     }
 
 

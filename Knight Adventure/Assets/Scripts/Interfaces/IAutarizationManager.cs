@@ -9,5 +9,6 @@ namespace Assets.Scripts.Interfaces
     public interface IAutarizationManager
     {
         void StartManager();
+        PlayerData GetPlayerData();
     }
 }

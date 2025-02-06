@@ -15,7 +15,7 @@ public class AutarizationManager : MonoBehaviour, IAutarizationManager
 
         _playerData = _saveManager.LoadLastGame();
     }
-    public PlayerData GetPlayerData => _playerData;
+    public PlayerData GetPlayerData() => _playerData;
     private void HandleData()
     {
 

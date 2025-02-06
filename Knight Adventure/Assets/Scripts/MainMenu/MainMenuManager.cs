@@ -22,6 +22,7 @@ public class MainMenuManager : MonoBehaviour, IMainMenuManager
     [SerializeField] private SaveLoadMenu _saveLoadMenu;
 
     private ISaveManager _saveManager;
+    private IAutarizationManager _autarizationManager;
     private PlayerData _playerData;
 
     private void Awake()
@@ -43,8 +44,9 @@ public class MainMenuManager : MonoBehaviour, IMainMenuManager
     }
     public void StartManager()
     {
-       _saveManager=ServiceLocator.GetService<ISaveManager>();
-        _playerData = _saveManager.LoadLastGame();
+        _saveManager=ServiceLocator.GetService<ISaveManager>();
+        _autarizationManager=ServiceLocator.GetService<IAutarizationManager>();
+        _playerData = _autarizationManager.GetPlayerData();
         if (_playerData != null)
         {
             _user_Name_Panel.SetActive(true);
