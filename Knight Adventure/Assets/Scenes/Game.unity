@@ -407,11 +407,6 @@ MonoBehaviour:
   m_CameraActivatedEvent:
     m_PersistentCalls:
       m_Calls: []
---- !u!4 &569260460 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 433093437036271474, guid: 14976eb025eae754db564b4f3def98c5, type: 3}
-  m_PrefabInstance: {fileID: 9067977000153831322}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &571402014
 GameObject:
   m_ObjectHideFlags: 3
@@ -699,7 +694,7 @@ MonoBehaviour:
   m_Priority: 10
   m_StandbyUpdate: 2
   m_LookAt: {fileID: 0}
-  m_Follow: {fileID: 569260460}
+  m_Follow: {fileID: 0}
   m_Lens:
     FieldOfView: 34
     OrthographicSize: 22
@@ -784,6 +779,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   StartPoint: {fileID: 0}
   HeroPrefab: {fileID: 2783451701619702284, guid: 14976eb025eae754db564b4f3def98c5, type: 3}
+  GameInjputPrefab: {fileID: 0}
+  GUIManager: {fileID: 0}
+  MapManager: {fileID: 0}
+  StartScreenManager: {fileID: 0}
 --- !u!114 &1370491939
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -48,7 +48,7 @@ public class MapManager : MonoBehaviour, IMapManager
 
         // Загружаем новую карту
         currentMap = Instantiate(maps[index]); // Создаём новый экземпляр карты
-        currentMap.transform.position = Player.Instance.transform.position; // Устанавливаем нужную позицию, если необходимо
+       // currentMap.transform.position = Player.Instance.transform.position; // Устанавливаем нужную позицию, если необходимо
     }
 
     // Метод для переключения на следующую карту

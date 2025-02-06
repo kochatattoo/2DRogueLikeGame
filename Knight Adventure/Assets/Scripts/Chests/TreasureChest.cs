@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using Zenject;
 
 public class TreasureChest : MonoBehaviour
 {
@@ -16,13 +17,22 @@ public class TreasureChest : MonoBehaviour
 
     private bool isOpen = false; // Статус открытия сундука
     private Transform playerTransform; // Ссылка на игрока
+    private Player _player;
 
     private IGameInput _gameInput;
+
+    // Тестируем ZENJECT
+    //[Inject]
+    //private void Construct(Player player)
+    //{ 
+    //    _player = player; 
+    //    Debug.Log("Что то произошло!!!!!!!!! "+_player.transform.position+"  чему то равен");
+    //}
 
 
     private void Start()
     {
-        _gameInput=ServiceLocator.GetService<IGameInput>();
+        _gameInput =ServiceLocator.GetService<IGameInput>();
         _gameInput.OnPlayerOpen += Player_OnPlayerOpen;
         playerTransform = Player.Instance.transform; // Получаем ссылку на игрока
         HideInteractionPrompt(); // Скрываем подсказку в начале
@@ -32,7 +42,7 @@ public class TreasureChest : MonoBehaviour
     {
         if (isOpen) return;
 
-        if (Vector3.Distance(Player.Instance.transform.position, transform.position) < interactionDistance)
+        if (Vector3.Distance(playerTransform.position, transform.position) < interactionDistance)
         {
             // Отображаем клавишу нажатия
             ShowInteractionPrompt();
@@ -44,7 +54,7 @@ public class TreasureChest : MonoBehaviour
     private void Update()
     {
         // Проверяем расстояние до игрока каждую кадр
-        if (!isOpen && Vector3.Distance(Player.Instance.transform.position, transform.position) < interactionDistance)
+        if (!isOpen && Vector3.Distance(playerTransform.position, transform.position) < interactionDistance)
         {
             ShowInteractionPrompt(); // Отображаем подсказку
         }

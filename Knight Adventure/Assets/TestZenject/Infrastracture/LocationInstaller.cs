@@ -10,6 +10,7 @@ namespace Assets.TestZenject.Infrastracture
 
         public Transform StartPoint;
         public GameObject HeroPrefab;
+
         public GameInput GameInjputPrefab;
         public GUIManager GUIManager;
         public MapManager MapManager;
@@ -17,9 +18,7 @@ namespace Assets.TestZenject.Infrastracture
 
         public override void InstallBindings()
         {
-            BindGameInput();
-            BindGUIManager();
-            BindingPlayer();
+            
         }
 
         private void BindingPlayer()
@@ -27,7 +26,6 @@ namespace Assets.TestZenject.Infrastracture
             Player Hero = Container
                            .InstantiatePrefabForComponent<Player>(HeroPrefab, StartPoint.position, Quaternion.identity, null);
 
-            // Регистрировать серивисы удобно по Интерфейсам, а не самой реализации
             Container
                 .Bind<Player>()
                 .FromInstance(Hero)
@@ -35,6 +33,7 @@ namespace Assets.TestZenject.Infrastracture
         }
         private void BindGameInput()
         {
+            // Регистрировать сервисы удобно по Интерфейсам, а не самой реализации
             Container
                  .Bind<IGameInput>()
                  .To<GameInput>()

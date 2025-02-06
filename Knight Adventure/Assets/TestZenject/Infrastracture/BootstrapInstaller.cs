@@ -1,5 +1,6 @@
 ﻿using Zenject;
 using Assets.Scripts.Interfaces;
+using UnityEngine;
 
 namespace Assets.TestZenject.Infrastracture
 {
@@ -13,10 +14,7 @@ namespace Assets.TestZenject.Infrastracture
 
         public override void InstallBindings()
         {
-           
+            Debug.Log("IT WORKS");
         }
-
-       
-      
     }
 }

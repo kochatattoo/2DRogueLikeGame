@@ -2,24 +2,33 @@
 using Assets.Scripts.Interfaces;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Zenject.ReflectionBaking.Mono.Cecil;
 
 public class InitializationManager : MonoBehaviour
 {
     private IAudioManager audioManager;
     private ISaveManager saveManager;
     private ResourcesLoadManager resourcesLoadManager;
+    private static InitializationManager Instance { get; set;}
 
     private void Awake()
     {
-        resourcesLoadManager = gameObject.AddComponent<ResourcesLoadManager>(); // Создаем экземпляр ResourcesLoadManager
+        if (Instance == null)
+        {
+            Instance = this; // Установка экземпляра
+            DontDestroyOnLoad(gameObject); // Не уничтожать при загрузке новой сцены
+            resourcesLoadManager = gameObject.AddComponent<ResourcesLoadManager>(); // Создаем экземпляр ResourcesLoadManager
+            SceneManager.sceneLoaded += OnSceneLoaded; //Подписка на событие загрузки сцены
 
-        CreateAndRegisterManagers();
+            CreateAndRegisterManagers();
 
-        InitializeServices();
-        InitializeSystems();
-
-        SceneManager.sceneLoaded += OnSceneLoaded;
-        DontDestroyOnLoad(this);
+            InitializeServices();
+            InitializeSystems();
+        }
+        else
+        {
+            Destroy(gameObject); // Удаляем второй экземпляр
+        }
     }
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {

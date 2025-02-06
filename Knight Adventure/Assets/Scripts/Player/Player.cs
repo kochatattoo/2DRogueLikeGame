@@ -85,6 +85,7 @@ public class Player : MonoBehaviour
         _knockBack=GetComponent<knockBack>();
     }
 
+
     private void Start()
     {
         //Может получать урон

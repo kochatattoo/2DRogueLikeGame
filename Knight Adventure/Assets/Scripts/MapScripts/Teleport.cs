@@ -10,10 +10,10 @@ public class Teleport : MonoBehaviour
 
         if (collision.CompareTag("Player"))
         {
-            MapManager guiManager = FindObjectOfType<MapManager>();
+            MapManager mapManager = FindObjectOfType<MapManager>();
 
             //MapManager guiManager=MapManager.Instance;
-            guiManager.LoadMap(mapIndex); // Переход к соответствующей карте
+            mapManager.LoadMap(mapIndex); // Переход к соответствующей карте
             
         }
     }

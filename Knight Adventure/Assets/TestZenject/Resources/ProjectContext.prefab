@@ -46,9 +46,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _scriptableObjectInstallers: []
-  _monoInstallers: []
-  _installerPrefabs:
+  _monoInstallers:
   - {fileID: -350631693146219296}
+  _installerPrefabs: []
   _parentNewObjectsUnderContext: 0
   _editorReflectionBakingCoverageMode: 0
   _buildsReflectionBakingCoverageMode: 0
@@ -74,4 +74,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e0bdb2356047804681c3688a0e4969c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GameInjputPrefab: {fileID: 8493438349767303713, guid: c91b7bf210295214894cfa9646eebd6b, type: 3}
+  AudioManager: {fileID: 7171103103751313111, guid: 0cc2d3fa5f3eac44a8c1750971a2ccd5, type: 3}
+  SaveManager: {fileID: 5211981106571337961, guid: 7665476040804bc4e9c9ef18dedadc0d, type: 3}
+  GameManager: {fileID: 2228840444204471734, guid: 6c16ec94e0de45241ad77ca02908dc54, type: 3}

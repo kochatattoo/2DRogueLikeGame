@@ -71,27 +71,6 @@ public class GameManager : MonoBehaviour, IGameManager
         mapManager = FindObjectOfType<MapManager>();
 
     }
-    private void InitializeManagersByServiceLocator()
-    {
-        var saveManager = FindObjectOfType<SaveManager>();
-        ServiceLocator.RegisterService(saveManager);
-
-        //var audioManager = FindObjectOfType<AudioManager>();
-        //ServiceLocator.RegisterService(audioManager);
-
-        var guiManager = FindObjectOfType<GUIManager>();
-        ServiceLocator.RegisterService(guiManager);
-
-        //Регистрировать можно самих себя в методе Start
-        //var _gameInput = FindObjectOfType<GameInput>();
-        //ServiceLocator.RegisterService(_gameInput);
-
-        var mapManager = FindObjectOfType<MapManager>();
-        ServiceLocator.RegisterService(mapManager);
-
-        var playerData = new PlayerData();
-        ServiceLocator.RegisterService(playerData);
-    }
     private void InitializeManagers()
     {
         resourcesLoadManager = gameObject.AddComponent<ResourcesLoadManager>(); // Создаем экземпляр ResourcesLoadManager
@@ -117,9 +96,7 @@ public class GameManager : MonoBehaviour, IGameManager
     private void InitializeSingletons()
     {
         saveManager = SaveManager.Instance; // Получение ссылки на SaveManager
-        audioManager = AudioManager.Instance; // Получение ссылки на AudioManager
         guiManager = GUIManager.Instance; // Получение ссылки на GUIManager
-        //_gameInput = GameInput.Instance; // Получение ссылки на GameInput
         mapManager = MapManager.Instance; //Получение ссылки на MapManager
         playerData = PlayerData.Instance; //Получение ссылки на PlayerData
     }
