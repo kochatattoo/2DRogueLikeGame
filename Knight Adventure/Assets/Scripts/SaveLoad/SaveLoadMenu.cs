@@ -10,7 +10,7 @@ public class SaveLoadMenu : MonoBehaviour
 {
     public GameObject buttonPrefab; // Префаб кнопки для файлов
     public Transform contentPanel; // Панель, где будут отображаться кнопки
-    public event EventHandler _LoadGame; // Событие обновления 
+    public event EventHandler _LoadGame; // Событие обновления //////////////////////////////////////////////////////////////
 
     private ISaveManager _saveManager; // Ссылка на объект SaveManager
     private IAutarizationManager _autarizationManager;
@@ -60,7 +60,7 @@ public class SaveLoadMenu : MonoBehaviour
                 Debug.LogError("TMP_Text component not found on button prefab");
             }
             // Добавляем слушателя для загрузки сохранения
-            newButton.GetComponent<Button>().onClick.AddListener(()=>LoadGame(fileName));
+            newButton.GetComponent<Button>().onClick.AddListener(() => LoadGame(fileName));
             // Добавляем слушатель для удаления сохранения
             newButton.GetComponent<Button>().onClick.AddListener(() => SelectFileForDeletion(fileName));
             // Добавляем слушателя для выбора загрузки
@@ -99,15 +99,22 @@ public class SaveLoadMenu : MonoBehaviour
     }
 
 
-    private void LoadGame(string fileName)
+    public void LoadGame(string fileName)
     {
-        _autarizationManager.SetPlayerData(_saveManager.LoadGame(fileName));
-        if (GameManager.Instance.playerData != null)
+        if (!string.IsNullOrEmpty(selectedFileName))
         {
-            Debug.Log("Load player: " + GameManager.Instance.playerData.name);
-        }
+            _autarizationManager.SetPlayerData(_saveManager.LoadGame(fileName));
+            if (_autarizationManager.GetPlayerData() != null)
+            {
+                Debug.Log("Load player: " + _autarizationManager.GetPlayerData().name);
+            }
 
-        _LoadGame?.Invoke(this, EventArgs.Empty);
+            _LoadGame?.Invoke(this, EventArgs.Empty);
+        }
+        else
+        {
+           // Debug.LogError("No file selected for loading.");
+        }
     }
 
     private void SelectFileForDeletion(string fileName)

@@ -128,7 +128,7 @@ public class MainMenuManager : MonoBehaviour, IMainMenuManager
 
     public void RefreshName()
     {
-        _user_Name.text = _playerData.name;
+        _user_Name.text = _autarizationManager.GetPlayerData().name;
         Debug.Log(_playerData.name + "User name !=null");
     }
 
