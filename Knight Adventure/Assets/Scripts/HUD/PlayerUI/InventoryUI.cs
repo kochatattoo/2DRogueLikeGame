@@ -1,8 +1,11 @@
+using Assets.Scripts.Interfaces;
+using Assets.ServiceLocator;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using Zenject;
 
 public class InventoryUI : MonoBehaviour
 {
@@ -11,6 +14,7 @@ public class InventoryUI : MonoBehaviour
     public Inventory inventory; // Ссылка на инвентарь
     public GameObject slotPrefab; // Префаб слота инвентаря
     public Transform slotsParent;  // Родительский объект для слотов
+    
 
     private void Start()
     {
@@ -97,7 +101,9 @@ public class InventoryUI : MonoBehaviour
     public static void OpenInventory()
     {
         //OpenPlayerWindow(INVENTORY_WINDOW);
-        GUIManager.Instance.OpenPlayerWindow(GameManager.Instance.resourcesLoadManager.LoadPlayerWindow("InventoryWindow")); // Новый метод по пути
+        var guiManager = ServiceLocator.GetService<IGUIManager>();
+        guiManager.OpenPlayerWindow("Windows/Player_Windows_prefs/InventoryWindow");
+       // GUIManager.Instance.OpenPlayerWindow(GameManager.Instance.resourcesLoadManager.LoadPlayerWindow("InventoryWindow")); // Новый метод по пути
         Debug.Log("Open Inventory");
     }
 

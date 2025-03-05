@@ -6,8 +6,6 @@ using Zenject.ReflectionBaking.Mono.Cecil;
 
 public class InitializationManager : MonoBehaviour
 {
-    private IAudioManager audioManager;
-    private ISaveManager saveManager;
     private ResourcesLoadManager resourcesLoadManager;
     private static InitializationManager Instance { get; set;}
 
@@ -90,7 +88,7 @@ public class InitializationManager : MonoBehaviour
         var saveManager = ServiceLocator.GetService<ISaveManager>();
         saveManager.StartManager();
 
-        var autarizationManager = ServiceLocator.GetService<AutarizationManager>();
+        var autarizationManager = ServiceLocator.GetService<IAutarizationManager>();
         autarizationManager.StartManager();
 
         var gameManager = ServiceLocator.GetService<IGameManager>();

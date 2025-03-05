@@ -25,11 +25,14 @@ public class GameManager : MonoBehaviour, IGameManager
     }
     private void Start()
     {
-        playerData = saveManager.LoadLastGame(); 
+        var saveManagerLocator = ServiceLocator.GetService<ISaveManager>();
+        playerData = saveManagerLocator.LoadLastGame();
+        resourcesLoadManager = gameObject.AddComponent<ResourcesLoadManager>();
     }
     public void StartManager()
     {
-        playerData = saveManager.LoadLastGame();
+        var saveManagerLocator = ServiceLocator.GetService<ISaveManager>();
+        playerData = saveManagerLocator.LoadLastGame();
     }
     private void OnDestroy()
     {

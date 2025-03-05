@@ -13,12 +13,14 @@ public class SaveLoadMenu : MonoBehaviour
     public event EventHandler _LoadGame; // Событие обновления 
 
     private ISaveManager _saveManager; // Ссылка на объект SaveManager
+    private IAutarizationManager _autarizationManager;
     private string selectedFileName; // Переменная для хранения выбраного имени файла
     private TMP_Text selectedText; // Ссылка на текст выбранного файла
 
     public void StartScript() //Метод вызываемый при запуске скрипта в сцене 
     {
         _saveManager=ServiceLocator.GetService<ISaveManager>();
+        _autarizationManager=ServiceLocator.GetService<IAutarizationManager>();
         if (_saveManager != null && !string.IsNullOrEmpty(_saveManager.GetSaveDirectory())) //проверяем не равен ли savemanager ничему и не пуст ли он
         {
             PopulateSaveLoadMenu();
@@ -99,7 +101,7 @@ public class SaveLoadMenu : MonoBehaviour
 
     private void LoadGame(string fileName)
     {
-        GameManager.Instance.playerData = _saveManager.LoadGame(fileName);
+        _autarizationManager.SetPlayerData(_saveManager.LoadGame(fileName));
         if (GameManager.Instance.playerData != null)
         {
             Debug.Log("Load player: " + GameManager.Instance.playerData.name);

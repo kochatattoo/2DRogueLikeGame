@@ -140,7 +140,8 @@ public class MainMenuManager : MonoBehaviour, IMainMenuManager
 
     public void LoadGame()
     {
-        if (SaveManager.Instance.LoadLastGame() != null)
+
+        if (_saveManager.LoadLastGame() != null)
         {
             SceneManager.LoadScene("Game");
         }

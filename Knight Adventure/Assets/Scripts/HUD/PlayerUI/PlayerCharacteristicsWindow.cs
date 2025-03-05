@@ -1,4 +1,6 @@
+using Assets.Scripts.Interfaces;
 using Assets.Scripts.Player;
+using Assets.ServiceLocator;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -62,7 +64,9 @@ public class PlayerCharacteristicsWindow : MonoBehaviour
     public static void OpenCharacteristic()
     {
         //OpenPlayerWindow(CHARACTERISTIC_WINDOW);
-        GUIManager.Instance.OpenPlayerWindow(GameManager.Instance.resourcesLoadManager.LoadPlayerWindow("CharactristicWindow")); // Новый метод по пути
+        //GUIManager.Instance.OpenPlayerWindow(GameManager.Instance.resourcesLoadManager.LoadPlayerWindow("CharactristicWindow")); // Новый метод по пути
+        var guiManager = ServiceLocator.GetService<IGUIManager>();
+        guiManager.OpenPlayerWindow("Windows/Player_Windows_prefs/CharactristicWindow");
         Debug.Log("Open Characteristic Window");
     }
 }

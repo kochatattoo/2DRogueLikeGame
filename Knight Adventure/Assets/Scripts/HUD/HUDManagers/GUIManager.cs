@@ -53,12 +53,11 @@ using UnityEngine.SceneManagement;
     {
         resourcesLoadManager = gameObject.AddComponent<ResourcesLoadManager>();
         //GameManager.Instance.playerData = SaveManager.Instance.LoadLastGame();
-       
-       var saveManager=ServiceLocator.GetService<ISaveManager>();
-       _playerData = saveManager.LoadLastGame();
+        // var saveManager=ServiceLocator.GetService<ISaveManager>();
+       var autarizationManager = ServiceLocator.GetService<IAutarizationManager>();
+       _playerData = autarizationManager.GetPlayerData();
 
-        //FirstTextAwake();
-        FirstTextAwake2();
+        SetTextAreas();
 
         IniitializeUIPrefabsInformationWindows();
         IniitializeUIPrefabsWarningWindows();
@@ -87,9 +86,9 @@ using UnityEngine.SceneManagement;
     public void SetTextAreas()
     {
         //Присваиваем значеие переменных из значения полей USER
-        _name.text = GameManager.Instance.playerData.name;
-        _coins.text = GameManager.Instance.playerData.coins.ToString();
-        _level.text = GameManager.Instance.playerData.level.ToString();
+        _name.text = _playerData.name;
+        _coins.text = _playerData.coins.ToString();
+        _level.text = _playerData.level.ToString();
     }
 
     // Сделаем перегрузку для метода OpenPlayerWindow
@@ -225,7 +224,6 @@ using UnityEngine.SceneManagement;
         Debug.Log("Open Option Window");
     }
 
-
     public void OpenStorageChestInventory(Inventory chestInventory)
     {
         //OpenPlayerWindow(STORAGE_CHEST_WINDOW); - старый метод по мндексу
@@ -241,21 +239,5 @@ using UnityEngine.SceneManagement;
         }
     }
     // Методот загружающий текст имени Пользователя
-    private void FirstTextAwake()
-    {
-        if (Player.Instance == null)
-            GameManager.Instance.playerData = SaveManager.Instance.LoadLastGame();
-
-        //Присваиваем значеие переменных из значения полей USER
-        _name.text = GameManager.Instance.playerData.name;
-        _coins.text = GameManager.Instance.playerData.coins.ToString();
-        _level.text = GameManager.Instance.playerData.level.ToString();
-
-    }
-    private void FirstTextAwake2()
-    {
-        _name.text = _playerData.name;
-        _coins.text = _playerData.coins.ToString();
-        _level.text = _playerData.level.ToString();
-    }
+  
 }

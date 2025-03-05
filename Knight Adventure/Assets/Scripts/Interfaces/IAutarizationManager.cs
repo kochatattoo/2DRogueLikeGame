@@ -10,5 +10,6 @@ namespace Assets.Scripts.Interfaces
     {
         void StartManager();
         PlayerData GetPlayerData();
+        void SetPlayerData(PlayerData playerData);
     }
 }
