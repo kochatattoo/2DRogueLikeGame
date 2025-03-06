@@ -10,5 +10,6 @@ namespace Assets.Scripts.Interfaces
     {
         //Метод для старта менеджера  
         void StartManager();
+        void LoadMap(int index);
     }
 }

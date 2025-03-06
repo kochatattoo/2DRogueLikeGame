@@ -132,7 +132,11 @@ public class InitializationManager : MonoBehaviour
 
     private void DisableMenuManagers()
     {
-
+        var menuManager = FindObjectOfType<MainMenuManager>();
+        if (menuManager != null)
+        {
+            menuManager.DisableManager();
+        }
     }
 
     private void EnableGameManagers()

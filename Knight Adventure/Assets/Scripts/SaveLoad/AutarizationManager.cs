@@ -6,7 +6,7 @@ public class AutarizationManager : MonoBehaviour, IAutarizationManager
 {
     // Данный класс будт отслеживать авторизацию и загрузку данных, а после передавать ее необходимым элементам
     // В частности объекту Player
-    private PlayerData _playerData;
+    public PlayerData _playerData;
 
     private ISaveManager _saveManager;
     public void StartManager()

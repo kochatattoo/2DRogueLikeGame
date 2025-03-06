@@ -25,8 +25,8 @@ using UnityEngine.SceneManagement;
 
     [SerializeField] GameObject GUIDisplay;
 
-    private static Queue<Window> windowQueue = new Queue<Window>(); // Очередь окон
-    private static Window activeWindow; // Текущее активное окно
+    private static readonly Queue<Window> windowQueue = new Queue<Window>(); // Очередь окон
+    private static readonly Window activeWindow; // Текущее активное окно
 
     private ResourcesLoadManager resourcesLoadManager;
 

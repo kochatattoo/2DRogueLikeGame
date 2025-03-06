@@ -59,12 +59,13 @@ public class SaveLoadMenu : MonoBehaviour
             {
                 Debug.LogError("TMP_Text component not found on button prefab");
             }
-            // Добавляем слушателя для загрузки сохранения
-            newButton.GetComponent<Button>().onClick.AddListener(() => LoadGame(fileName));
+            
             // Добавляем слушатель для удаления сохранения
             newButton.GetComponent<Button>().onClick.AddListener(() => SelectFileForDeletion(fileName));
             // Добавляем слушателя для выбора загрузки
             newButton.GetComponent<Button>().onClick.AddListener(() => SelectFileForLoading(fileName, buttonText));
+            // Добавляем слушателя для загрузки сохранения
+            newButton.GetComponent<Button>().onClick.AddListener(() => LoadGame(fileName));
         }
     }
 

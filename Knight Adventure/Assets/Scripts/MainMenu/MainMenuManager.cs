@@ -38,10 +38,7 @@ public class MainMenuManager : MonoBehaviour, IMainMenuManager
         _user_Name_Panel.SetActive(false);
         
     }
-    private void Start()
-    {
-     
-    }
+   
     public void StartManager()
     {
         _saveManager=ServiceLocator.GetService<ISaveManager>();
@@ -65,7 +62,12 @@ public class MainMenuManager : MonoBehaviour, IMainMenuManager
     {
         RefreshName();
     }
-    
+    public void DisableManager()
+    {
+        _saveLoadMenu._LoadGame -= SaveMenu_Refresh;
+
+    }
+
     // Отсюда я пытался настроить загрузку окон посредством загрузки префабов //////////////////////////////////////
     // Но столкнулся с проблемой, почему то при поиске объекта - объект подключался к префабу в папке /////////////
     // А не объекту на сцене Иеархии и поэтому не работали методы записи и загрузки///////////////////////////////
@@ -129,6 +131,7 @@ public class MainMenuManager : MonoBehaviour, IMainMenuManager
     public void RefreshName()
     {
         _user_Name.text = _autarizationManager.GetPlayerData().name;
+        _playerData= _autarizationManager.GetPlayerData();
         Debug.Log(_playerData.name + "User name !=null");
     }
 

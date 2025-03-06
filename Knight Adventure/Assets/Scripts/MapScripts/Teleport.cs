@@ -1,4 +1,6 @@
+using Assets.ServiceLocator;
 using UnityEngine;
+using Assets.Scripts.Interfaces;
 
 public class Teleport : MonoBehaviour
 {
@@ -10,9 +12,9 @@ public class Teleport : MonoBehaviour
 
         if (collision.CompareTag("Player"))
         {
-            MapManager mapManager = FindObjectOfType<MapManager>();
-
-            //MapManager guiManager=MapManager.Instance;
+            var mapManager = ServiceLocator.GetService<IMapManager>();
+           // MapManager mapManager = FindObjectOfType<MapManager>();
+           // MapManager guiManager=MapManager.Instance;
             mapManager.LoadMap(mapIndex); // Переход к соответствующей карте
             
         }

@@ -35,7 +35,7 @@ public class GameInput : MonoBehaviour, IGameInput
     public void DisableManager()
     {
         _playerInputActions.Disable();
-        //Подписываемся на события Атаки и Паузы
+        //Отписываемся события Атаки и Паузы
         _playerInputActions.Combat.Attack.started -= PlayerAttack_started;
         _playerInputActions.Combat.Range_Attack.started -= Range_Attack_started;
         _playerInputActions.Combat.Magic_Attack.started -= Magic_Attack_started;
