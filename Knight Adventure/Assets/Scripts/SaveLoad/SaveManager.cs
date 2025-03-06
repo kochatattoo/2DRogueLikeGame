@@ -11,30 +11,6 @@ public class SaveManager : MonoBehaviour, ISaveManager
     public string saveDirectory;
     public string GetSaveDirectory() => saveDirectory;
 
-    public static SaveManager Instance;
-
-    private void Awake()
-    {
-        if (Instance == null)
-        {
-            Instance = this; // ”становка единственного экземпл€ра
-            DontDestroyOnLoad(gameObject); // ќпционально: предотвратить уничтожение при загрузке новой сцены
-        }
-        else
-        {
-           
-        }
-
-        saveDirectory =Application.persistentDataPath+"/saves/";
-
-        if(!Directory.Exists(saveDirectory))
-        {
-            Directory.CreateDirectory(saveDirectory);
-        }
-
-        //PlayerData.Instance.LoadLastGame();
-        //GameManager.Instance.playerData=LoadLastGame();
-    }
     public void StartManager()
     {
         saveDirectory = Application.persistentDataPath + "/saves/";

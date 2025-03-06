@@ -22,6 +22,7 @@ public class Player : MonoBehaviour
     public PlayerStats playerStats;
     public PlayerAchievements playerAchievements;
     public Inventory playerInventory;
+    public ActiveWeapon playerActiveWeapon;
 
     //Объявляем события Смерти и получения урона
     public event EventHandler OnPlayerDeath;
@@ -92,13 +93,10 @@ public class Player : MonoBehaviour
         _canTakeDamage=true;
         InitializeServices();
         SubscribeGameInputEvent();
+        
         LoadPlayerData();
-
-        SetPlayerCharacteristics();
-        SetPlayerAchivements();
-        SetPlayerActuallyStats();
-        SetPlayerCurrentStats();
-
+        SetPlayer();
+     
         _statsUIManager = FindAnyObjectByType<PlayerStatsUIManager>();
         _statsUIManager.StartManager();
         _statsUIManager.StartPlayerStatsUIManager(_maxHealth, _maxMana);
@@ -173,14 +171,14 @@ public class Player : MonoBehaviour
     private void Player_OnPlayerAttack(object sender, System.EventArgs e)
     {
         //Вызываем метод в атаки в классе Актив Вепон
-        ActiveWeapon.Instance.GetActiveWeapon().Attack();
+        playerActiveWeapon.GetActiveWeapon().Attack();
  
     }
     //Событие магической атаки
     private void Player_OnPlayerMagicAttack(object sender, EventArgs e)
     {
         //Вызываем метод в атаки в классе Актив Вепон
-        ActiveWeapon.Instance.GetMagicWeapon().Attack();
+        playerActiveWeapon.GetMagicWeapon().Attack();
         _currentMana -= 5;
         GetCurrentManaEvent();
 
@@ -188,7 +186,7 @@ public class Player : MonoBehaviour
     private void Player_OnPlayerRangeAttack(object sender, EventArgs e)
     {
         //Вызываем метод в атаки в классе Актив Вепон
-        ActiveWeapon.Instance.GetMagicalBall().Attack();
+        playerActiveWeapon.GetMagicalBall().Attack();
         _currentMana -= 2;
         GetCurrentManaEvent();
     }
@@ -303,6 +301,18 @@ public class Player : MonoBehaviour
     private void SetPlayerAchivements()
     {
         playerAchievements = playerData.playerAchievements;
+    }
+    private void SetPlayerInventory()
+    {
+        // Тут необходима логика для переноса инвентаря из PlayerData в Player, просто присвоить нельзя
+    }
+    private void SetPlayer()
+    {
+        SetPlayerCharacteristics();
+        SetPlayerAchivements();
+        SetPlayerActuallyStats();
+        SetPlayerCurrentStats();
+        SetPlayerInventory();
     }
     //Метод отслеживающий состояние смерти героя
     private void DetectDeath()

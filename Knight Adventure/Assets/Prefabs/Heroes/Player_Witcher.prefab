@@ -300,6 +300,7 @@ MonoBehaviour:
     achievements:
     - No Achievements
   playerInventory: {fileID: 6149334074932530076}
+  playerActiveWeapon: {fileID: 1270154003247506765}
   _speed: 0
   _maxHealth: 0
   _maxMana: 0

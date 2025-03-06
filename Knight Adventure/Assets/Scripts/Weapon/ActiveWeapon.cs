@@ -5,20 +5,13 @@ using UnityEngine;
 
 public class ActiveWeapon : MonoBehaviour
 {
-    //Делаем из класса СинглТон
-    public static ActiveWeapon Instance { get; private set; }
-
     //Объявляем переменные классов Меч и Магия
     [SerializeField] private Sword sword;
     [SerializeField] private PlayerAnimationAttack _magic;
     [SerializeField] private MagicalBall _magicalBall;
 
     private IGameInput _gameInput;
-    private void Awake()
-    {
-        //Синглтон
-        Instance = this;
-    }
+
     private void Start()
     {
        _gameInput = ServiceLocator.GetService<IGameInput>();

@@ -5,8 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour, IGameManager
 {
-    
-    public static GameManager Instance { get; private set; }
     public ResourcesLoadManager resourcesLoadManager;
     public SaveManager saveManager; // —сылка на SaveManager
     public AudioManager audioManager; // —сылка на AudioManager
@@ -18,11 +16,6 @@ public class GameManager : MonoBehaviour, IGameManager
 
     // ћетоды Awake и Start посмотреть что бы все срабатывали правильно
 
-
-    private void Awake()
-    {
-       
-    }
     private void Start()
     {
         var saveManagerLocator = ServiceLocator.GetService<ISaveManager>();

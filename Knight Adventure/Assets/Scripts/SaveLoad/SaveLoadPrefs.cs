@@ -1,4 +1,6 @@
+using Assets.ServiceLocator;
 using UnityEngine;
+using Assets.Scripts.Interfaces;
 
 public class SaveLoadPrefs : MonoBehaviour
 {
@@ -60,9 +62,10 @@ public class SaveLoadPrefs : MonoBehaviour
 
     private void GetUserData()
     {
-        _userName = GameManager.Instance.playerData.name;
-        _userlvl = GameManager.Instance.playerData.level;
-        _userCoins = GameManager.Instance.playerData.coins;
+        var autarizationManager = ServiceLocator.GetService<IAutarizationManager>();
+        _userName = autarizationManager.GetPlayerData().name;
+        _userlvl = autarizationManager.GetPlayerData().level;
+        _userCoins = autarizationManager.GetPlayerData().coins;
         _userPositionX = 0.0f;
         _userPositionY = 0.0f;
     }

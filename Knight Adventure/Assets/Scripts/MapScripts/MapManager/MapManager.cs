@@ -5,24 +5,10 @@ using System.Collections.Generic;
 
 public class MapManager : MonoBehaviour, IMapManager
 {
-    public static MapManager Instance {  get; private set; }
-
+ 
     public GameObject[] maps; // Список тайловых карт
     public GameObject currentMap; // Текущая карта
     private int currentMapIndex = 0; // Индекс текущей карты
-
-    private void Awake()
-    {
-        if(Instance == null)
-        {
-            Instance = this;
-            DontDestroyOnLoad(gameObject); // Опционально: предотвратить уничтожение при загрузке новой сцены
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
-    }
 
     private void Start()
     {

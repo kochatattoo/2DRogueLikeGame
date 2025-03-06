@@ -28,7 +28,7 @@ public class PauseMenu : MonoBehaviour
     public void SaveGame()
     {
         _saveManager=ServiceLocator.GetService<ISaveManager>();
-        _saveManager.QuickSaveGame(GameManager.Instance.playerData);
+        _saveManager.QuickSaveGame(Player.Instance.playerData);
     }
 
     public void LoadGame()
