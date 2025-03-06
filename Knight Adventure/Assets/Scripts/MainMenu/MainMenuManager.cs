@@ -163,6 +163,7 @@ public class MainMenuManager : MonoBehaviour, IMainMenuManager
 
             SetCharacteristics();
             SetRewardsAndAchivements();
+            _autarizationManager.SetPlayerData(_playerData);
 
             //SaveManager.SaveUser(User.Instance);
             _saveManager.SaveGame(_playerData, InputName);

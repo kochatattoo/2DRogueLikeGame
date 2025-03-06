@@ -46,7 +46,6 @@ public class GameManager : MonoBehaviour, IGameManager
         Debug.Log("Scene Loaded^ " + scene.name);
         UpdateSceneReferences(); //Обновление ссылок или состояний
     }
-    
     private void UpdateSceneReferences()
     {
         // Обновите ссылки на объекты, если это необходимо
@@ -58,35 +57,7 @@ public class GameManager : MonoBehaviour, IGameManager
         mapManager = FindObjectOfType<MapManager>();
 
     }
-    private void InitializeManagers()
-    {
-        resourcesLoadManager = gameObject.AddComponent<ResourcesLoadManager>(); // Создаем экземпляр ResourcesLoadManager
-
-        //Поиск необходим элементов в объектах сцены
-        saveManager = FindObjectOfType<SaveManager>();
-        audioManager = FindObjectOfType<AudioManager>();
-        guiManager = FindObjectOfType<GUIManager>();
-        gameInput = FindObjectOfType<GameInput>();
-        mapManager = FindObjectOfType<MapManager>();
-
-
-        // Проверяем, найдены ли менеджеры
-        Debug.Assert(saveManager != null, "SaveManager not found in the scene."); //Проверка на наличие подключения менеджера
-        Debug.Assert(audioManager != null, "AudioManager not found in the scene.");
-        Debug.Assert(guiManager != null, "GUIManager not found in the scene.");
-        Debug.Assert(gameInput != null, "GameInput not found in the scene");
-        Debug.Assert(mapManager != null, "MapManager not found  in the scene");
-    }
-
-
-    //Метод для инициализации ссылок на синглтоны
-    private void InitializeSingletons()
-    {
-        saveManager = SaveManager.Instance; // Получение ссылки на SaveManager
-        guiManager = GUIManager.Instance; // Получение ссылки на GUIManager
-        mapManager = MapManager.Instance; //Получение ссылки на MapManager
-    }
-
+  
 
     // Вы можете добавить методы, которые обращаются к функционалу других менеджеров
     public void SaveGame(string fileName)

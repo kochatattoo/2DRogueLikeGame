@@ -5,6 +5,7 @@ using System;
 using Assets.Scripts.Items;
 using TMPro;
 using Assets.ServiceLocator;
+using Assets.Scripts.Interfaces;
 
 public class StorageChest : MonoBehaviour
 {
@@ -19,6 +20,7 @@ public class StorageChest : MonoBehaviour
     public int inventoryHeight = 6; // Высота инвентаря
 
     private IGameInput _gameInput;
+   
     private void Start()
     {
         //GameObject chestObject = new GameObject("ChestInventory");
@@ -65,7 +67,8 @@ public class StorageChest : MonoBehaviour
 
          ChestOpened?.Invoke(this, EventArgs.Empty);
         // Открытие инвентаря сундука через GUI_Manager
-        GUIManager.Instance.OpenStorageChestInventory(chestInventory); // Открываем инвентарь через GUI_Manager
+        var guiManager = ServiceLocator.GetService<IGUIManager>();
+        guiManager.OpenStorageChestInventory(chestInventory); // Открываем инвентарь через GUI_Manager
     }
 
     public void AddItemToChest(Item item, int x, int y)

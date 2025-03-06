@@ -12,7 +12,7 @@ using UnityEngine.SceneManagement;
 // ласс отвечающий за реализацию HUD меню
   public class GUIManager : MonoBehaviour, IGUIManager
     {
-    public static GUIManager Instance {  get; private set; }
+
         //ќбъ€вл€ем переменные текстовых полей
     [SerializeField] TextMeshProUGUI _name;
     [SerializeField] TextMeshProUGUI _coins;
@@ -31,23 +31,6 @@ using UnityEngine.SceneManagement;
     private ResourcesLoadManager resourcesLoadManager;
 
     private PlayerData _playerData;
-
-
-       private void Awake()
-        {
-            if (Instance == null)
-            {
-                Instance = this;
-            }
-            else 
-            {
-                Destroy(gameObject);
-            }
-
-            DontDestroyOnLoad(gameObject);
-            //Debug.Log(GameManager.Instance.user.GetName());
-
-       }
 
     public void StartManager()
     {
