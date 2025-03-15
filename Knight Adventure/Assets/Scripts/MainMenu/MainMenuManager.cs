@@ -144,7 +144,8 @@ public class MainMenuManager : MonoBehaviour, IMainMenuManager
     public void LoadGame()
     {
 
-        if (_saveManager.LoadLastGame() != null)
+        //if (_saveManager.LoadLastGame() != null)
+        if(_playerData !=null)
         {
             SceneManager.LoadScene("Game");
         }

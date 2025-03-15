@@ -11,6 +11,7 @@ public class SaveManager : MonoBehaviour, ISaveManager
     public string saveDirectory;
     public string GetSaveDirectory() => saveDirectory;
 
+
     public void StartManager()
     {
         saveDirectory = Application.persistentDataPath + "/saves/";
