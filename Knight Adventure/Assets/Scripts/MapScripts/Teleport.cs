@@ -13,8 +13,6 @@ public class Teleport : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             var mapManager = ServiceLocator.GetService<IMapManager>();
-           // MapManager mapManager = FindObjectOfType<MapManager>();
-           // MapManager guiManager=MapManager.Instance;
             mapManager.LoadMap(mapIndex); // Переход к соответствующей карте
             
         }

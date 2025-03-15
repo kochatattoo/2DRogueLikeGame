@@ -10,11 +10,6 @@ public class MapManager : MonoBehaviour, IMapManager
     public GameObject currentMap; // Текущая карта
     private int currentMapIndex = 0; // Индекс текущей карты
 
-    private void Start()
-    {
-        //LoadMapFromResources();
-        //LoadMap(currentMapIndex);
-    }
     public void StartManager()
     {
         LoadMapFromResources();
