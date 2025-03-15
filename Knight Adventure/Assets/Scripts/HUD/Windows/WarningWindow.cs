@@ -17,5 +17,6 @@ namespace Assets.Scripts.HUD.Windows
             WarningWindow warning = Instantiate(Resources.Load<WarningWindow>("WarningWindowPrefab"));
             ShowPriorityWindow(warning);
         }
+        
     }
 }

@@ -3,13 +3,13 @@ using UnityEngine;
 
  public class NotificationManager : MonoBehaviour, INotificationManager
  {
-    [SerializeField] private GameObject _notificationDisplay;
+    [SerializeField] private GameObject _notificationCanvas;
     private ResourcesLoadManager _resourcesLoadManager;
     private GameObject[] uiPrefabsPriorityWindows;
     
     public void StartManager()
     {
-        _resourcesLoadManager = GetComponent<ResourcesLoadManager>();
+        _resourcesLoadManager = gameObject.AddComponent<ResourcesLoadManager>(); ;
         LoadNotificationWindows();
 
     }
@@ -27,7 +27,7 @@ using UnityEngine;
                 OpenPriorityWindow(0);
                 break;
 
-            case "Notifice":
+            case "Notice":
                 OpenPriorityWindow(1);
                 break;
 
@@ -40,7 +40,7 @@ using UnityEngine;
     {
         if (windowIndex >= 0 && windowIndex < uiPrefabsPriorityWindows.Length)
         {
-            GameObject windowObject = Instantiate(uiPrefabsPriorityWindows[windowIndex], _notificationDisplay.transform);
+            GameObject windowObject = Instantiate(uiPrefabsPriorityWindows[windowIndex], _notificationCanvas.transform);
             // windowObject.transform.SetParent(GUIDisplay.transform.transform, false);
 
             Window window = windowObject.GetComponent<Window>();

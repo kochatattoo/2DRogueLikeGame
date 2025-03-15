@@ -31,6 +31,12 @@ public class InitializationManager : MonoBehaviour
  
     private void CreateAndRegisterManagers()
     {
+        GameObject notificationManagerPrefab = resourcesLoadManager.LoadManager("NotificationManager");
+        GameObject notificationManagerInstance = Instantiate(notificationManagerPrefab);
+        var notifiactionManager = notificationManagerInstance.GetComponent<NotificationManager>();
+        ServiceLocator.RegisterService<INotificationManager>(notifiactionManager);
+        DontDestroyOnLoad(notificationManagerInstance);
+
         GameObject audioManagerPrefab = resourcesLoadManager.LoadManager("AudioManager");
         GameObject audioManagerInstance = Instantiate(audioManagerPrefab);
         var audioManager = audioManagerInstance.GetComponent<AudioManager>();
@@ -82,6 +88,9 @@ public class InitializationManager : MonoBehaviour
     }
     private void StartGame()
     {
+        var notificationManager = ServiceLocator.GetService<INotificationManager>();
+        notificationManager.StartManager();
+
         var audioManager = ServiceLocator.GetService<IAudioManager>();
         audioManager.StartManager();
 

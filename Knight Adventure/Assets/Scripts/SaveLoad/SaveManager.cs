@@ -1,4 +1,5 @@
 using Assets.Scripts.Interfaces;
+using Assets.ServiceLocator;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -56,6 +57,9 @@ public class SaveManager : MonoBehaviour, ISaveManager
         }
         else
         {
+            var notificationManager = ServiceLocator.GetService<INotificationManager>();
+            notificationManager.OpenNotificationWindow("Error");
+
             Debug.LogError("Save file not found at " + path);
             return null;
         }
