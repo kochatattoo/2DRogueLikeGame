@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour, IGameManager
 {
-    public ResourcesLoadManager resourcesLoadManager;
+   
     public SaveManager saveManager; // —сылка на SaveManager
     public AudioManager audioManager; // —сылка на AudioManager
     public GUIManager guiManager; // —сылка на GUIManager
@@ -20,7 +20,7 @@ public class GameManager : MonoBehaviour, IGameManager
     {
         var saveManagerLocator = ServiceLocator.GetService<ISaveManager>();
         playerData = saveManagerLocator.LoadLastGame();
-        resourcesLoadManager = gameObject.AddComponent<ResourcesLoadManager>();
+      
     }
     public void StartManager()
     {
