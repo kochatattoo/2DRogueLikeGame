@@ -3,7 +3,6 @@ using Assets.Scripts.Interfaces;
 using Assets.ServiceLocator;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
 
 //Автоматически добавляем необходимые компонент

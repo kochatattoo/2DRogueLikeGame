@@ -3,7 +3,6 @@ using Assets.Scripts.Player;
 using Assets.ServiceLocator;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class AchievementsMenuUI : MonoBehaviour
 {
