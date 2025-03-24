@@ -19,7 +19,7 @@ using UnityEngine.SceneManagement;
     [SerializeField] TextMeshProUGUI _level;
 
     private GameObject[] uiPrefabsInformationWindows; // Массив префабов для окон с информацией
-    private GameObject[] uiPrefabsPriorityWindows; // Массив префабов для окон с ошибками 
+   // private GameObject[] uiPrefabsPriorityWindows; // Массив префабов для окон с ошибками 
 
     private GameObject _currentWindow; // Текущее окно
 
@@ -206,14 +206,12 @@ using UnityEngine.SceneManagement;
     // Методы для открытия окон, которые ни к чему не привязаны(ну или пока не получилось привязать) 
     public void OpenOption()
     {
-        //OpenPlayerWindow(OPTION_WINDOW);
         OpenPlayerWindow(resourcesLoadManager.LoadPlayerWindow("OptionWindow")); // Новый метод по пути
         Debug.Log("Open Option Window");
     }
 
     public void OpenStorageChestInventory(Inventory chestInventory)
     {
-        //OpenPlayerWindow(STORAGE_CHEST_WINDOW); - старый метод по мндексу
         OpenPlayerWindow( resourcesLoadManager.LoadChestWindow("Storage_Chest_Window")); // Новый метод по пути
 
         // Получаем доступ к компоненту инвентаря (InventoryUI)
