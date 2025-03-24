@@ -55,4 +55,25 @@ public class ResourcesLoadManager : MonoBehaviour
         }
         return prefab;
     }
+    public AudioClip LoadPlayerAudioClips(string audioClipsName)
+    {
+        return LoadAudioClip("Audio_Resources/Player_Audio_Clips/" + audioClipsName);
+    }
+    public AudioClip LoadEnemyAudioClips(string audioClipsName)
+    {
+        return LoadAudioClip("Audio_Resources/Enemies_Audio_Clips/" + audioClipsName);
+    }
+    public AudioClip LoadNotificationAudioClips(string audioClipsName)
+    {
+        return LoadAudioClip("Audio_Resources/Notification_Audio_Clips/" + audioClipsName);
+    }
+    public AudioClip LoadAudioClip(string audioClipName)
+    {
+        AudioClip audioClip = Resources.Load<AudioClip>(audioClipName);
+        if (audioClip == null)
+        {
+            Debug.LogError($"Префаб по пути '{audioClipName}' не найден.");
+        }
+        return audioClip;
+    }
 }
