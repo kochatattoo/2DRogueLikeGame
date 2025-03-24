@@ -12,6 +12,7 @@ namespace Assets.Scripts.Interfaces
         void OpenNotificationWindow(string name);
         void PlayNotificationAudio(string name);
         void StartManager();
+        void HandleError(string errorMessage, int numberOfError);
 
     }
 }

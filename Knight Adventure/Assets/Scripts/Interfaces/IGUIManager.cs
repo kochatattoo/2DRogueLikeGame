@@ -17,8 +17,8 @@ namespace Assets.Scripts.Interfaces
         void OpenPlayerWindow(string name);
         void OpenInformationWindow(int windowIndex);
         void ShowWindowQueue();
-        void OpenPriorityWindow(int windowIndex);
-        void HandleError(string errorMessage, int numberOfError);
+       // void OpenPriorityWindow(int windowIndex);
+       // void HandleError(string errorMessage, int numberOfError);
         void CloseCurrentWindow();
         void OpenOption();
         void OpenStorageChestInventory(Inventory chestInventory);

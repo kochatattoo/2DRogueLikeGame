@@ -34,16 +34,15 @@ using UnityEngine.SceneManagement;
 
     public void StartManager()
     {
-        resourcesLoadManager = gameObject.AddComponent<ResourcesLoadManager>();
-        //GameManager.Instance.playerData = SaveManager.Instance.LoadLastGame();
-        // var saveManager=ServiceLocator.GetService<ISaveManager>();
-       var autarizationManager = ServiceLocator.GetService<IAutarizationManager>();
-       _playerData = autarizationManager.GetPlayerData();
+       resourcesLoadManager = gameObject.AddComponent<ResourcesLoadManager>();
+
+        var autarizationManager = ServiceLocator.GetService<IAutarizationManager>();
+        _playerData = autarizationManager.GetPlayerData();
 
         SetTextAreas();
 
         IniitializeUIPrefabsInformationWindows();
-        IniitializeUIPrefabsWarningWindows();
+        //IniitializeUIPrefabsWarningWindows();
 
         CloseCurrentWindow();
 
@@ -56,12 +55,12 @@ using UnityEngine.SceneManagement;
         uiPrefabsInformationWindows[1] = resourcesLoadManager.LoadInformationWindow("Window_Shares");
         uiPrefabsInformationWindows[2] = resourcesLoadManager.LoadInformationWindow("Window_Entry");
     }
-    private void IniitializeUIPrefabsWarningWindows()
+    /*private void IniitializeUIPrefabsWarningWindows()
     {
         uiPrefabsPriorityWindows = new GameObject[1];
 
         uiPrefabsPriorityWindows[0] = resourcesLoadManager.LoadPriorityWindow("Window_Warning");
-    }
+    }*/
     public void AddQueueWindows()
     {
 
@@ -119,8 +118,12 @@ using UnityEngine.SceneManagement;
         }
         else
         {
+            /* Debug.LogWarning("Window index out of range: " + windowIndex);
+             HandleError("Произошла ошибка: Не существует окна в указаном индексе.", 0);*/
+
             Debug.LogWarning("Window index out of range: " + windowIndex);
-            HandleError("Произошла ошибка: Не существует окна в указаном индексе.", 0);
+            var notificationManager = ServiceLocator.GetService<INotificationManager>();
+            notificationManager.HandleError("Произошла ошибка: Не существует окна в указаном индексе.", 0);
         }
     }
     public static void QueueWindow(Window window) // Метод для добавления в очередь
@@ -160,6 +163,7 @@ using UnityEngine.SceneManagement;
     }
 
     //Добавляю метод для создания  окон который отображают ОШИБКИ
+    /*
     public void OpenPriorityWindow(int windowIndex)
     {
         if (windowIndex >= 0 && windowIndex < uiPrefabsPriorityWindows.Length)
@@ -187,7 +191,7 @@ using UnityEngine.SceneManagement;
         // Можно создать и открыть окно с сообщением об ошибке
         OpenPriorityWindow(numberOfError); // Например, если у вас есть префаб окна с индексом 0 для ошибок
     }
-    ////////////////////////////////////////////////////////////////////////////////////////////////////
+    *////////////////////////////////////////////////////////////////////////////////////////////////////
     
     // Метод для закрытия текущего окна
     public void CloseCurrentWindow()
@@ -221,6 +225,4 @@ using UnityEngine.SceneManagement;
             //inventoryUI.UpdateInventoryUI(); // Обновляем UI для отображения содержимого сундука
         }
     }
-    // Методот загружающий текст имени Пользователя
-  
 }
