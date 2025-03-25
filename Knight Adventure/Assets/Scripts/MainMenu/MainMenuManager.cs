@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
+using UnityEngine.UI;
 using Assets.Scripts.Interfaces;
 using Assets.ServiceLocator;
 
@@ -20,29 +21,23 @@ public class MainMenuManager : MonoBehaviour, IMainMenuManager
     [SerializeField] private TMP_InputField _name;
 
     [SerializeField] private SaveLoadMenu _saveLoadMenu;
+    [SerializeField] private GameObject _background;
+    private Material _blurMaterial;
 
     private ISaveManager _saveManager;
     private IAutarizationManager _autarizationManager;
     private PlayerData _playerData;
-
-    private void Awake()
-    {
-        _gameMenu.SetActive(true);
-        _startMenu.SetActive(false);
-        _loadMenu.SetActive(false);
-        _optionMenu.SetActive(false);
-        _quitMenu.SetActive(false);
-        //CloseCurrentWindow();
-        //OpenGameMenu();
-        _panelBarMenu.SetActive(true);
-        _user_Name_Panel.SetActive(false);
-        
-    }
-   
+  
     public void StartManager()
     {
+        ActivateMenu();
+
+        GetBlurController();
+        BlurOff();
+
         _saveManager=ServiceLocator.GetService<ISaveManager>();
         _autarizationManager=ServiceLocator.GetService<IAutarizationManager>();
+
         _playerData = _autarizationManager.GetPlayerData();
         if (_playerData != null)
         {
@@ -58,6 +53,27 @@ public class MainMenuManager : MonoBehaviour, IMainMenuManager
         _saveLoadMenu.StartScript();
         _saveLoadMenu._LoadGame += SaveMenu_Refresh;
     }
+    private void ActivateMenu()
+    {
+        _gameMenu.SetActive(true);
+        _startMenu.SetActive(false);
+        _loadMenu.SetActive(false);
+        _optionMenu.SetActive(false);
+        _quitMenu.SetActive(false);
+        //CloseCurrentWindow();
+        //OpenGameMenu();
+        _panelBarMenu.SetActive(true);
+        _user_Name_Panel.SetActive(false);
+    }
+    private void GetBlurController()
+    {
+        var backgroundImage = _background.GetComponent<Image>();
+
+        if(backgroundImage != null)
+        {
+            _blurMaterial=backgroundImage.material;
+        }
+    }
     private void SaveMenu_Refresh(object sender, System.EventArgs e)
     {
         RefreshName();
@@ -65,7 +81,6 @@ public class MainMenuManager : MonoBehaviour, IMainMenuManager
     public void DisableManager()
     {
         _saveLoadMenu._LoadGame -= SaveMenu_Refresh;
-
     }
 
     // Отсюда я пытался настроить загрузку окон посредством загрузки префабов //////////////////////////////////////
@@ -183,5 +198,20 @@ public class MainMenuManager : MonoBehaviour, IMainMenuManager
     private void SetRewardsAndAchivements()
     {
         _playerData.playerAchievements = new Assets.Scripts.Player.PlayerAchievements();
+    }
+
+    public void BlurOn()
+    {
+        if (_blurMaterial != null)
+        {
+            _blurMaterial.SetFloat("_BlurAmount", 4.8f);
+        }
+    }
+    public void BlurOff()
+    {
+        if (_blurMaterial != null)
+        {
+            _blurMaterial.SetFloat("_BlurAmount", 0.63f);
+        }
     }
 }
