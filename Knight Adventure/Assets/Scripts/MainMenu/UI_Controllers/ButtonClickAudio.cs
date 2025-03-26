@@ -21,11 +21,25 @@ public class ButtonClickAudio : MonoBehaviour, IPointerClickHandler
     public void OnPointerClick(PointerEventData eventData)
     {
         var audioManager = ServiceLocator.GetService<IAudioManager>();
+        var notificationManager = ServiceLocator.GetService<INotificationManager>();
 
         if (audioSource != null && clickSound != null)
         {
             audioSource.volume = audioManager.GetVolume();
-            audioSource.Play(); // Воспроизводим звук нажатия
+            try
+            {
+                audioSource.PlayOneShot(clickSound); // Воспроизводим звук нажатия
+            }
+            catch (CustomException ex) // Ловим именно пользовательское исключение
+            {
+                Debug.LogError("Ошибка: " + ex.Message); // Логируем ошибку
+                notificationManager.PlayNotificationAudio("Error");
+            }
+            catch (System.Exception ex)
+            {
+                Debug.LogError("Ошибка: " + ex.Message); // Логируем ошибку
+                notificationManager.PlayNotificationAudio("Error");
+            }
         }
     }
     public void PlayClickAudio()
