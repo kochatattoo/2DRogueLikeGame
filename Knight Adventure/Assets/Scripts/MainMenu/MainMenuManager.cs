@@ -4,6 +4,7 @@ using TMPro;
 using UnityEngine.UI;
 using Assets.Scripts.Interfaces;
 using Assets.ServiceLocator;
+using Unity.VisualScripting;
 
 
 public class MainMenuManager : MonoBehaviour, IMainMenuManager
@@ -27,12 +28,15 @@ public class MainMenuManager : MonoBehaviour, IMainMenuManager
     private ISaveManager _saveManager;
     private IAutarizationManager _autarizationManager;
     private PlayerData _playerData;
+
+   private ButtonClickAudio _buttonClickAudio;
   
     public void StartManager()
     {
         ActivateMenu();
 
         GetBlurController();
+        GetButtonClickAudioController();
         BlurOff();
 
         _saveManager=ServiceLocator.GetService<ISaveManager>();
@@ -73,6 +77,11 @@ public class MainMenuManager : MonoBehaviour, IMainMenuManager
         {
             _blurMaterial=backgroundImage.material;
         }
+    }
+    private void GetButtonClickAudioController()
+    {
+        _buttonClickAudio = gameObject.AddComponent<ButtonClickAudio>();
+        _buttonClickAudio.StartScript();
     }
     private void SaveMenu_Refresh(object sender, System.EventArgs e)
     {
@@ -213,5 +222,10 @@ public class MainMenuManager : MonoBehaviour, IMainMenuManager
         {
             _blurMaterial.SetFloat("_BlurAmount", 0.63f);
         }
+    }
+
+    public void PlayClickAudio()
+    {
+        _buttonClickAudio.PlayClickAudio();
     }
 }

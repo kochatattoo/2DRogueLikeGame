@@ -5,6 +5,7 @@ using TMPro;
 using System;
 using Assets.ServiceLocator;
 using Assets.Scripts.Interfaces;
+using Assets.Scripts.Exceptions;
 
 public class SaveLoadMenu : MonoBehaviour
 {
@@ -136,7 +137,9 @@ public class SaveLoadMenu : MonoBehaviour
         }
         else
         {
-            Debug.LogError("No file selected for deletion.");
+            var notificationManager = ServiceLocator.GetService<INotificationManager>();
+            notificationManager.PlayNotificationAudio("Error");
+            throw new CustomException("No file selected for deletion.");
         }
     }
 }

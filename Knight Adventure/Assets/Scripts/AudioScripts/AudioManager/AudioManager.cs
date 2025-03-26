@@ -52,9 +52,11 @@ public class AudioManager : MonoBehaviour, IAudioManager
     public void SetVolume(float volume)
     {
         _audioSource.volume = volume;
-        
     }
-
+    public float GetVolume()
+    {
+        return _audioSource.volume;
+    }
     public static void SaveSettings()
     {
         PlayerPrefs.SetString("music",music.ToString()); //применяем параметры музыки
