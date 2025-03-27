@@ -9,6 +9,7 @@ using Unity.VisualScripting;
 
 public class MainMenuManager : MonoBehaviour, IMainMenuManager
 {
+    [SerializeField] private GameObject _firstStartMenu;
     [SerializeField] private GameObject _gameMenu;
     [SerializeField] private GameObject _startMenu;
     [SerializeField] private GameObject _loadMenu;
@@ -47,11 +48,13 @@ public class MainMenuManager : MonoBehaviour, IMainMenuManager
         {
             _user_Name_Panel.SetActive(true);
             _user_Name.text = _playerData.name;
+            _gameMenu.SetActive(true);
             Debug.Log(_playerData.name + "User name !=null");
         }
         else
         {
             _user_Name_Panel.SetActive(true);
+            _firstStartMenu.SetActive(true);
         }
 
         _saveLoadMenu.StartScript();
@@ -59,7 +62,8 @@ public class MainMenuManager : MonoBehaviour, IMainMenuManager
     }
     private void ActivateMenu()
     {
-        _gameMenu.SetActive(true);
+        _firstStartMenu.SetActive(false);
+        _gameMenu.SetActive(false);
         _startMenu.SetActive(false);
         _loadMenu.SetActive(false);
         _optionMenu.SetActive(false);
