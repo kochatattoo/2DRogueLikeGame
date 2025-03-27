@@ -68,7 +68,7 @@ public class Window : MonoBehaviour
         CloseWindow();
     }
 
-    private void PlaySound(AudioClip clip)
+    protected void PlaySound(AudioClip clip)
     {
         if (clip != null && audioSource != null)
         {

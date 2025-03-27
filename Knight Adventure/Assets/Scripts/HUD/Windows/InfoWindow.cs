@@ -4,6 +4,7 @@
     {
         protected override void OnOkButtonClicked()
         {
+            PlaySound(closeSound);
             // Логика закрытия окна
             CloseWindow(); // Закрыть окно при нажатии "ОК"
         }
