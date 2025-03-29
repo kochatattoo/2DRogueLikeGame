@@ -4,10 +4,8 @@ using TMPro;
 using UnityEngine.UI;
 using Assets.Scripts.Interfaces;
 using Assets.ServiceLocator;
-using Unity.VisualScripting;
 
-
-public class MainMenuManager : MonoBehaviour, IMainMenuManager
+public class MainMenuManager : MonoBehaviour, IMainMenuManager, IManager
 {
     [SerializeField] private GameObject _firstStartMenu;
     [SerializeField] private GameObject _gameMenu;

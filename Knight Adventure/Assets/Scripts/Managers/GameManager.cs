@@ -3,7 +3,7 @@ using Assets.Scripts.Interfaces;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class GameManager : MonoBehaviour, IGameManager
+public class GameManager : MonoBehaviour, IManager, IGameManager
 {
    
     public SaveManager saveManager; // —сылка на SaveManager

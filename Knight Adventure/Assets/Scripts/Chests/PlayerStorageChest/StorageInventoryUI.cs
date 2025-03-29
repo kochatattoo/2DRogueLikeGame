@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using UnityEngine.UI;
 using Assets.Scripts.Items;
 
 public class StorageInventoryUI : InventoryUI

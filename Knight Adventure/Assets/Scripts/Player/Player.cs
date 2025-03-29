@@ -7,7 +7,6 @@ using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
-using Zenject;
 
 [SelectionBase]
 public class Player : MonoBehaviour

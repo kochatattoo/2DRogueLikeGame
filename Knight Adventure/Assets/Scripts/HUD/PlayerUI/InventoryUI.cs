@@ -1,11 +1,8 @@
 using Assets.Scripts.Interfaces;
 using Assets.ServiceLocator;
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using Zenject;
 
 public class InventoryUI : MonoBehaviour
 {

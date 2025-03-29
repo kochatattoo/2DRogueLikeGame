@@ -3,11 +3,9 @@ using Assets.ServiceLocator;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Runtime.Serialization.Formatters.Binary;
-using System.Security.Cryptography;
 using UnityEngine;
 
-public class SaveManager : MonoBehaviour, ISaveManager
+public class SaveManager : MonoBehaviour, IManager, ISaveManager
 {
     public string saveDirectory;
     public string GetSaveDirectory() => saveDirectory;

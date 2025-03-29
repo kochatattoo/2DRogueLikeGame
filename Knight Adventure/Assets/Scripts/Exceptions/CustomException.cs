@@ -1,6 +1,5 @@
 ﻿using System;
 
-
 namespace Assets.Scripts.Exceptions
 {
     public class CustomException: Exception

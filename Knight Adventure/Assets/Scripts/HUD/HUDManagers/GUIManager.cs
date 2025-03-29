@@ -9,7 +9,7 @@ using UnityEngine.SceneManagement;
 [RequireComponent (typeof(SceneManager))]
 
 // ласс отвечающий за реализацию HUD меню
-  public class GUIManager : MonoBehaviour, IGUIManager
+  public class GUIManager : MonoBehaviour, IManager, IGUIManager
     {
 
         //ќбъ€вл€ем переменные текстовых полей

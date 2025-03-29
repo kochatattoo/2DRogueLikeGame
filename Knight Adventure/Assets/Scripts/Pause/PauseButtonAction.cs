@@ -1,9 +1,6 @@
 using Assets.Scripts.Interfaces;
 using Assets.ServiceLocator;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.EventSystems;
 
 public class PauseButtonAction : MonoBehaviour
 {

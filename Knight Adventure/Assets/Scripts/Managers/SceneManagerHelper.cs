@@ -1,12 +1,18 @@
+using Assets.Scripts.Interfaces;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class SceneManagerHelper : MonoBehaviour
+public class SceneManagerHelper : MonoBehaviour, IManager
 {
     public delegate void SceneLoadedHandler(string sceneName);
     public static event SceneLoadedHandler OnSceneLoaded;
 
     private void Start()
+    {
+        SceneManager.sceneLoaded += HandleSceneLoaded;
+    }
+
+    public void StartManager()
     {
         SceneManager.sceneLoaded += HandleSceneLoaded;
     }

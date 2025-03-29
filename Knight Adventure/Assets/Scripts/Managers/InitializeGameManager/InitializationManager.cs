@@ -2,14 +2,18 @@
 using Assets.Scripts.Interfaces;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using Zenject.ReflectionBaking.Mono.Cecil;
 
-public class InitializationManager : MonoBehaviour
+public class InitializationManager : MonoBehaviour, IManager
 {
     private ResourcesLoadManager resourcesLoadManager;
     private static InitializationManager Instance { get; set;}
 
     private void Awake()
+    {
+        StartManager();
+    }
+
+    public void StartManager()
     {
         if (Instance == null)
         {

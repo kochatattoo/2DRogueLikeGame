@@ -1,11 +1,9 @@
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
-using UnityEditor;
 using Assets.Scripts.Interfaces;
 using Assets.ServiceLocator;
 
-public class StartScreenManager : MonoBehaviour, IStartScreenManager
+public class StartScreenManager : MonoBehaviour, IManager, IStartScreenManager
 {
     [Header("UI Elements")]
     private GameObject startScreenPrefab; // Префаб стартового экрана
@@ -15,12 +13,6 @@ public class StartScreenManager : MonoBehaviour, IStartScreenManager
     private IGameInput gameInput;
     private IGUIManager guiManager;
 
-    private void Start()
-    {
-       // startScreenPrefab = GameManager.Instance.resourcesLoadManager.LoadStartScreenWindow("Star_Screen_Window");
-       //// startScreenPrefab = Resources.Load<GameObject>("Windows/StartScreenWindow/Star_Screen_Window");
-       // InitializeStartScreen(); // Инициализация стартового экрана
-    }
     public void StartManager()
     {
         ResourcesLoadManager resourcesLoadManager  = gameObject.AddComponent<ResourcesLoadManager>(); 

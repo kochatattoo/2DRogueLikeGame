@@ -4,7 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PlayerStatsUIManager : MonoBehaviour
+public class PlayerStatsUIManager : MonoBehaviour, IManager
 {
     // Обращаемся к переменным Изображения и Текста
     [SerializeField] private Image _healthBar;

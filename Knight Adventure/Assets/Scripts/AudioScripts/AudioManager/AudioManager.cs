@@ -1,9 +1,8 @@
 using Assets.Scripts.Interfaces;
-using Assets.ServiceLocator;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class AudioManager : MonoBehaviour, IAudioManager
+public class AudioManager : MonoBehaviour,IManager, IAudioManager
 {
     public static bool music = true; //Параметр доступности музыки
     public static bool sounds = true; //Параметр доступности звуков

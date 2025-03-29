@@ -1,7 +1,4 @@
-﻿using Assets.Scripts;
-using UnityEditor.Search;
-using UnityEngine;
-using UnityEngine.U2D;
+﻿using UnityEngine;
 
 [System.Serializable]
 public class Item

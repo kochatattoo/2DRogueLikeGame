@@ -1,9 +1,7 @@
 using UnityEngine;
 using Assets.Scripts.Interfaces;
-using UnityEngine.Tilemaps;
-using System.Collections.Generic;
 
-public class MapManager : MonoBehaviour, IMapManager
+public class MapManager : MonoBehaviour, IManager, IMapManager
 {
  
     public GameObject[] maps; // Список тайловых карт

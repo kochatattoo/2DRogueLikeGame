@@ -1,7 +1,7 @@
 ﻿using Assets.Scripts.Interfaces;
 using UnityEngine;
 
- public class NotificationManager : MonoBehaviour, INotificationManager
+ public class NotificationManager : MonoBehaviour, IManager, INotificationManager
  {
     [SerializeField] private GameObject _notificationCanvas;
     private ResourcesLoadManager _resourcesLoadManager;

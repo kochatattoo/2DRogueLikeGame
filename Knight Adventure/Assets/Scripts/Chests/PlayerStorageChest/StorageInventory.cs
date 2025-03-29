@@ -1,5 +1,4 @@
-﻿
-namespace Assets.Scripts.Items
+﻿namespace Assets.Scripts.Items
 {
     public class StorageInventory : Inventory
     {
