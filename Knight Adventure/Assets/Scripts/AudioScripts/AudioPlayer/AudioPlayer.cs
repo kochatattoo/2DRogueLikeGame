@@ -85,7 +85,7 @@ public class AudioPlayer : MonoBehaviour
 
     private void Update()
     {
-        if (_player != null && _player.IsRunning())
+        if (_player != null && _player.IsRunning)
         {
             _stepTimer -= Time.deltaTime;
             if (_stepTimer <= 0)

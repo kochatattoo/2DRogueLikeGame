@@ -24,7 +24,7 @@ public class PlayerHealthManager : MonoBehaviour
 
     private void Player_OnTakeHit(object sender, System.EventArgs e)
     {
-        _healthCurrent = Player.Instance.GetCurrentHealth();
+        _healthCurrent = Player.Instance.CurrentHealth;
         _damage = _healthAmount - _healthCurrent;
         TakeDamage(_damage);
         

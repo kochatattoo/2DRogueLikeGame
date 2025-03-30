@@ -14,7 +14,7 @@ public class SaveLoadPrefs : MonoBehaviour
     float _userPositionX = 0.0f;
     float _userPositionY=0.0f;
 
-    float _playerHealth = Player.Instance.GetCurrentHealth();
+    float _playerHealth = Player.Instance.CurrentHealth;
 
 
     public void SaveGame()
@@ -56,7 +56,7 @@ public class SaveLoadPrefs : MonoBehaviour
         _userlvl = 1;
         _userPositionX = 0.0f;
         _userPositionY = 0.0f;
-        _playerHealth=Player.Instance.GetMaxHealth();
+        _playerHealth=Player.Instance.MaxHealth;
         Debug.Log("Data reset complete");
     }
 

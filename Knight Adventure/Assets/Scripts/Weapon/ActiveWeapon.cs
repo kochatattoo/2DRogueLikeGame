@@ -18,7 +18,7 @@ public class ActiveWeapon : MonoBehaviour
     private void Update()
     {
         //Если игрок жив, то следуюем за игроком
-        if (Player.Instance.IsAlive())
+        if (Player.Instance.IsAlive)
         { 
             FollowMousePosition();
         }

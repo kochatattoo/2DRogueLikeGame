@@ -54,10 +54,10 @@ public class PlayerVisual : MonoBehaviour
     private void Update()
     {
         //Проверяем бежит наш герой или нет и ставим соотвествующий статус
-        animator.SetBool(IS_RUNNING, Player.Instance.IsRunning());
+        animator.SetBool(IS_RUNNING, Player.Instance.IsRunning);
 
         //Если наш персонаж живой
-        if (Player.Instance.IsAlive())
+        if (Player.Instance.IsAlive)
         {
             //Следим за направлением мыши
             AdjustPlayerFacingDirection();
@@ -67,7 +67,7 @@ public class PlayerVisual : MonoBehaviour
     //Событие магической атаки
     private void Player_OnPlayerMagicAttack(object sender, System.EventArgs e)
     {
-        if (Player.Instance.IsAlive())
+        if (Player.Instance.IsAlive)
         //Устанавливаем тригер анимамтора 
         { 
             animator.SetTrigger(ANIMATION_ATTACK);
@@ -89,7 +89,7 @@ public class PlayerVisual : MonoBehaviour
             spriteRenderer.flipX = false;
         }
     }
-    public void triggerEndAttackAnimation()
+    public void TriggerEndAttackAnimation()
     {
         //Метод вызываемый в классе Sword, для отключения колайдера
         _animatioAttack.AttackCollaiderTurnOff();

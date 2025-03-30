@@ -32,10 +32,10 @@ public class Player : MonoBehaviour
 
     //Объявляем переменные
     //Скорость, макс здоровье, время востановления для получения урона, место нахождения
-    [SerializeField] private float _speed;
-    [SerializeField] private float _maxHealth;
-    [SerializeField] private float _maxMana;
-    [SerializeField] private float _maxExpirience;
+    [SerializeField] private float _speed { get; set; }
+    [SerializeField] private float _maxHealth {  get; set; }
+    [SerializeField] private float _maxMana { get; set; }
+    [SerializeField] private float _maxExpirience { get; set; }
     [SerializeField] private float _damageRecoveryTime = 0.5f;
     Vector2 _inputVector;
 
@@ -49,10 +49,10 @@ public class Player : MonoBehaviour
 
 
     //текущее здоровье, возможно ли получать урон, статус жизни
-    private float _currentHealth;
-    private float _currentMana;
-    private float _currentExpirience;
-    private bool _canTakeDamage;
+    private float _currentHealth { get; set; } 
+    private float _currentMana { get; set; }
+    private float _currentExpirience { get; set; }
+    private bool _canTakeDamage {  get; set; } 
     private bool _isAlive = true;
 
     private PlayerStatsUIManager _statsUIManager;
@@ -67,16 +67,6 @@ public class Player : MonoBehaviour
     private ISaveManager _saveManager;
     private IAutarizationManager _autarizationManager;
 
-
-    //[Inject]
-    //public void Construct(IGameInput gameInput)
-    //{
-    //    _gameInput = gameInput;
-    //    _gameInput.StartManager();
-    //    _gameInput.OnPlayerAttack += Player_OnPlayerAttack;
-    //    _gameInput.OnPlayerRangeAttack += Player_OnPlayerRangeAttack;
-    //    _gameInput.OnPlayerMagicAttack += Player_OnPlayerMagicAttack;
-    //}
 
     void Awake()
     {
@@ -111,10 +101,6 @@ public class Player : MonoBehaviour
         {
             Debug.Log("Cinemachine camera hasn.t founded in the Scene");
         }
-
-        // ПРисвоим инвентарю персонажа - инвентарь из наших данных 
-        //playerInventory = GameManager.Instance.playerData.playerInventory;
-        //SetPlayerInventory();
 
     }
     private void InitializeServices()
@@ -202,29 +188,50 @@ public class Player : MonoBehaviour
         }
     }
 
-    //Возвращаем статус нашего персонажа и получение закрытых переменных
-    public bool IsRunning() { return _isRunning; }
-    public bool IsAlive() =>_isAlive;
-    public float GetCurrentHealth() => _currentHealth;
-    public float GetCurrentMana() => _currentMana;
-    public float GetCurrentExpirience()=>_currentExpirience;
-  
-    public float GetMaxHealth() => _maxHealth;
-    public float GetMaxMana() => _maxMana;
-    public float GetMaxExpirience()=>_maxExpirience;
-  
-    public float SetCurrentHealth(float health)
+    // Переписал стандартные методы возвращающие и устанавливающие закрытие члены класса
+    // На свойства класса 
+    public bool IsRunning
     {
-       return _currentHealth = health;
+        get { return _isRunning; }
+        set { _isRunning = value; }
     }
-    public float SetCurrentMana(float mana)
+    public bool IsAlive
     {
-        return _currentMana = mana;
+        get { return _isAlive; }
+        set { _isAlive = value; }
     }
-    public float SetCurrentExpirience(float exp)
+    public float CurrentHealth
     {
-        return _currentExpirience = exp;
+        get { return _currentHealth; }
+        set { _currentHealth = value; }
     }
+    public float CurrentMana
+    {
+        get { return _currentMana; }
+        set { _currentMana = value; }
+    }
+    public float CurrentExpirience
+    {
+        get { return _currentExpirience; }
+        set { _currentExpirience = value; }
+    }
+    public float MaxHealth
+    {
+        get { return _maxHealth; }
+        set { _maxHealth = value; }
+    }
+    public float MaxMana
+    {
+        get { return _maxMana; }
+        set { _maxMana = value; }
+    }
+    public float MaxExpirience
+    {
+        get { return _maxExpirience; }
+        set { _maxExpirience = value; }
+    }
+
+
 
     // Методы вызывающие события для обновления значений характеристик баров у перса
     public void GetCurrentHealthEvent()
@@ -294,7 +301,7 @@ public class Player : MonoBehaviour
     {
         ////Устанавливаем текущее здоровье = максимальноиу
         _currentHealth = _maxHealth;
-        _currentExpirience = 0;
+        _currentExpirience = 0; // TODO: Настройка текущих состояний персонажа
         _currentMana = _maxMana;
     }
     private void SetPlayerAchivements()
@@ -303,7 +310,7 @@ public class Player : MonoBehaviour
     }
     private void SetPlayerInventory()
     {
-        // Тут необходима логика для переноса инвентаря из PlayerData в Player, просто присвоить нельзя
+        // TODO: Тут необходима логика для переноса инвентаря из PlayerData в Player, просто присвоить нельзя
     }
     private void SetPlayer()
     {
