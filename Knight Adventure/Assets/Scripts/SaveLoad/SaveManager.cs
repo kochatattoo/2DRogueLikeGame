@@ -7,7 +7,7 @@ using UnityEngine;
 
 public class SaveManager : MonoBehaviour, IManager, ISaveManager
 {
-    public string saveDirectory;
+    public string saveDirectory {  get; private set; }
     public string GetSaveDirectory() => saveDirectory;
 
 

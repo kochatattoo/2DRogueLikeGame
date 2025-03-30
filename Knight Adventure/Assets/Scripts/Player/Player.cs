@@ -156,14 +156,14 @@ public class Player : MonoBehaviour
     private void Player_OnPlayerAttack(object sender, System.EventArgs e)
     {
         //Вызываем метод в атаки в классе Актив Вепон
-        playerActiveWeapon.GetActiveWeapon().Attack();
+        playerActiveWeapon.SwordWeapon.Attack();
  
     }
     //Событие магической атаки
     private void Player_OnPlayerMagicAttack(object sender, EventArgs e)
     {
         //Вызываем метод в атаки в классе Актив Вепон
-        playerActiveWeapon.GetMagicWeapon().Attack();
+        playerActiveWeapon.MagicAttack.Attack();
         _currentMana -= 5;
         GetCurrentManaEvent();
 
@@ -171,7 +171,7 @@ public class Player : MonoBehaviour
     private void Player_OnPlayerRangeAttack(object sender, EventArgs e)
     {
         //Вызываем метод в атаки в классе Актив Вепон
-        playerActiveWeapon.GetMagicalBall().Attack();
+        playerActiveWeapon.MagicalBall.Attack();
         _currentMana -= 2;
         GetCurrentManaEvent();
     }

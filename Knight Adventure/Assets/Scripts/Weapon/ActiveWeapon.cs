@@ -4,7 +4,7 @@ using UnityEngine;
 public class ActiveWeapon : MonoBehaviour
 {
     //Объявляем переменные классов Меч и Магия
-    [SerializeField] private Sword sword;
+    [SerializeField] private Sword _sword;
     [SerializeField] private PlayerAnimationAttack _magic;
     [SerializeField] private MagicalBall _magicalBall;
 
@@ -26,11 +26,27 @@ public class ActiveWeapon : MonoBehaviour
 
     //Методы для получения активного орудия атаки
     public Sword GetActiveWeapon()
-    { return sword; }
+    { return _sword; }
     public PlayerAnimationAttack GetMagicWeapon() 
     { return _magic; }
     public MagicalBall GetMagicalBall()
     { return _magicalBall; }
+
+    public Sword SwordWeapon
+    {
+        get { return _sword; }
+        set { _sword = value; }
+    }
+    public PlayerAnimationAttack MagicAttack
+    {
+        get { return _magic; }
+        set { _magic = value; }
+    }
+    public MagicalBall MagicalBall
+    {
+        get { return _magicalBall; }
+        set { _magicalBall = value; }
+    }
 
     private void FollowMousePosition()
     {
