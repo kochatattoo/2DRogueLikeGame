@@ -69,6 +69,10 @@ public class ResourcesLoadManager : MonoBehaviour
     {
         return LoadAudioClip("Audio_Resources/UI_Effects_Audio_Clips/" + audioClipsName);
     }
+    public AudioClip LoadAudioResourcesForManager(string audioClipsName)
+    {
+        return LoadAudioClip("Audio_Resources/Audio_Resources_ForManager/" + audioClipsName);
+    }
     public AudioClip LoadAudioClip(string audioClipName)
     {
         AudioClip audioClip = Resources.Load<AudioClip>(audioClipName);

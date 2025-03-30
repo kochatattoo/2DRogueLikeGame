@@ -9,6 +9,7 @@
         void StartManager();
         float GetVolume();
         void InitializePlayerAudio();
+        void PlayAudio(AudioName audioName);
 
     }
 }

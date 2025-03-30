@@ -1,6 +1,14 @@
 using Assets.Scripts.Interfaces;
+using Assets.ServiceLocator;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+public enum AudioName
+{
+    CLICK,
+    OPEN,
+    CLOSE
+}
 
 public class AudioManager : MonoBehaviour,IManager, IAudioManager
 {
@@ -8,11 +16,15 @@ public class AudioManager : MonoBehaviour,IManager, IAudioManager
     public static bool sounds = true; //Параметр доступности звуков
 
     private AudioSource _audioSource;
-    [SerializeField] AudioPlayer _playerAudio;
+    private ResourcesLoadManager _resourcesLoadManager;
+
+    [SerializeField] private AudioPlayer _playerAudio;
+    [SerializeField] private AudioClip[] _clips;  
     
-  
     public void StartManager()
     {
+        _resourcesLoadManager = gameObject.AddComponent<ResourcesLoadManager>();
+        LoadAudioResources();
         InitializeManager();
 
         _audioSource = GetComponent<AudioSource>();
@@ -84,6 +96,24 @@ public class AudioManager : MonoBehaviour,IManager, IAudioManager
         if (_playerAudio != null)
         {
             InitializePlayerAudio(); //Обновление ссылок или состояний
+        }
+    }
+    private void LoadAudioResources()
+    {
+        _clips = new AudioClip[1];
+        _clips[0] = _resourcesLoadManager.LoadAudioResourcesForManager("Click_Manager");
+    }
+    public void PlayAudio(AudioName audioName)
+    {
+        if (_clips[(int)audioName] != null)
+        {
+            _audioSource.PlayOneShot(_clips[(int)audioName]);
+        }
+        else
+        {
+            var notificationManager = ServiceLocator.GetService<INotificationManager>();
+            notificationManager.PlayNotificationAudio("Error");
+            Debug.LogWarning($"Аудиоклип для {audioName} не загружен или отсутствует.");
         }
     }
 }

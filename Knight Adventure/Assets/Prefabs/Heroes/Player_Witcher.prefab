@@ -95,7 +95,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b7a94d840e47ee45a46e2b8e275499c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sword: {fileID: 1847707016629962642}
+  _sword: {fileID: 1847707016629962642}
   _magic: {fileID: 1585101795893045098}
   _magicalBall: {fileID: 1656678922237480119}
 --- !u!1 &2783451701619702284
@@ -301,10 +301,6 @@ MonoBehaviour:
     - No Achievements
   playerInventory: {fileID: 6149334074932530076}
   playerActiveWeapon: {fileID: 1270154003247506765}
-  _speed: 0
-  _maxHealth: 0
-  _maxMana: 0
-  _maxExpirience: 0
   _damageRecoveryTime: 0.5
 --- !u!114 &1389518870108349314
 MonoBehaviour:
@@ -848,17 +844,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 229.646
       objectReference: {fileID: 0}
-    - target: {fileID: 7337769793950116539, guid: bc67c824c6479bb498331f889292baf5, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 8436725553013682471, guid: bc67c824c6479bb498331f889292baf5, type: 3}
       propertyPath: m_Name
       value: Sword
-      objectReference: {fileID: 0}
-    - target: {fileID: 8436725553013682471, guid: bc67c824c6479bb498331f889292baf5, type: 3}
-      propertyPath: m_TagString
-      value: Player
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

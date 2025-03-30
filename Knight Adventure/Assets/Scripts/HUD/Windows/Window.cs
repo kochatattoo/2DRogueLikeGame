@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System;
 using Assets.ServiceLocator;
+using Assets.Scripts.Interfaces;
 
 public class Window : MonoBehaviour
 {
@@ -40,8 +41,11 @@ public class Window : MonoBehaviour
     {
         if (activeWindow == this) // Проверка, является ли текущее активное окно
         {
-            PlaySound(closeSound); // Воспроизведение звука закрытия
-          //  gameObject.SetActive(false); // Деактивируем окно
+           // PlaySound(closeSound); // Воспроизведение звука закрытия
+
+            var audioManager = ServiceLocator.GetService<IAudioManager>();
+            audioManager.PlayAudio(0); // TODO: что то тут надо сделать с выбором и перечислением
+   
             Time.timeScale = 1; // Возобновляем игру
 
             OnWindowClosed?.Invoke(); // Вызываем событие закрытия

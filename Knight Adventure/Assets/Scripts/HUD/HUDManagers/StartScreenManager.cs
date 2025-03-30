@@ -44,6 +44,9 @@ public class StartScreenManager : MonoBehaviour, IManager, IStartScreenManager
         // Скрываем стартовый экран
         Destroy(startScreen);
 
+        var audioManager = ServiceLocator.GetService<IAudioManager>();
+        audioManager.PlayAudio(0);
+
         // Здесь мы открываем первое окно информации из очереди, если оно есть
         if (guiManager != null) // Проверяем, что GUIManager существует
         {
