@@ -20,7 +20,7 @@ public class AudioManager : MonoBehaviour,IManager, IAudioManager
     private ButtonClickAudio _buttonClickAudio {  get; set; }
 
     [SerializeField] private AudioPlayer _playerAudio;
-    [SerializeField] private AudioClip[] _clips;  
+    [SerializeField] private AudioClip[] _clips;  // Ну сюда надо загружать аудиоКлипы ДОН ( но по СОЛИД ДОН, надо сделать отдельный скрипт для такого ДОН)
     
     public void StartManager()
     {
@@ -118,5 +118,5 @@ public class AudioManager : MonoBehaviour,IManager, IAudioManager
     {
         _buttonClickAudio.PlayClickAudio();
     }
-    public ButtonClickAudio ButtonClickAudio {  get { return _buttonClickAudio; } }
+    public ButtonClickAudio ButtonClickAudio {  get { return _buttonClickAudio; } } // Подумамть зачем???
 }
