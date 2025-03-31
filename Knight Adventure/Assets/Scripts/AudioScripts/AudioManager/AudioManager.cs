@@ -15,9 +15,9 @@ public class AudioManager : MonoBehaviour,IManager, IAudioManager
     public static bool music = true; //Параметр доступности музыки
     public static bool sounds = true; //Параметр доступности звуков
 
-    private AudioSource _audioSource;
+    private AudioSource _audioSource {  get; set; }
     private ResourcesLoadManager _resourcesLoadManager;
-    private ButtonClickAudio _buttonClickAudio;
+    private ButtonClickAudio _buttonClickAudio {  get; set; }
 
     [SerializeField] private AudioPlayer _playerAudio;
     [SerializeField] private AudioClip[] _clips;  
@@ -47,20 +47,16 @@ public class AudioManager : MonoBehaviour,IManager, IAudioManager
             _playerAudio.StartScript();
         }
     }
+    public float AudioVolume { get { return _audioSource.volume; } set { value = _audioSource.volume; } }
     public bool StatusMusic()
     {
         return !_audioSource.mute;
     }
-
     public void SoundOffOn()
     {
         if (_audioSource != null)
         {
             _audioSource.mute = !_audioSource.mute;
-        }
-        else
-        {
-
         }
     }
     public void SetVolume(float volume)
@@ -104,7 +100,6 @@ public class AudioManager : MonoBehaviour,IManager, IAudioManager
     private void LoadAudioResources()
     {
         _clips = new AudioClip[1];
-        _clips[0] = _resourcesLoadManager.LoadAudioResourcesForManager("Click_Manager");
     }
     public void PlayAudio(AudioName audioName)
     {
@@ -123,4 +118,5 @@ public class AudioManager : MonoBehaviour,IManager, IAudioManager
     {
         _buttonClickAudio.PlayClickAudio();
     }
+    public ButtonClickAudio ButtonClickAudio {  get { return _buttonClickAudio; } }
 }

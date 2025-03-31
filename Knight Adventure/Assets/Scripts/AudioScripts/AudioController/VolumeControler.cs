@@ -16,7 +16,7 @@ public class VolumeControler : MonoBehaviour
     {
         float volume = volumeSlider.value;
         var audioManager = ServiceLocator.GetService<IAudioManager>();
-        audioManager.SetVolume(volume);
+        audioManager.AudioVolume = volume;
 
         //AudioManager.Instance.SetVolume(volume);
         PlayerPrefs.SetFloat("volume", volume);

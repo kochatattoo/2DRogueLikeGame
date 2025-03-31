@@ -25,7 +25,7 @@ public class ButtonClickAudio : MonoBehaviour, IPointerClickHandler
 
         if (audioSource != null && clickSound != null)
         {
-            audioSource.volume = audioManager.GetVolume();
+            audioSource.volume = audioManager.AudioVolume;
             try
             {
                 audioSource.PlayOneShot(clickSound); // Воспроизводим звук нажатия
@@ -49,7 +49,7 @@ public class ButtonClickAudio : MonoBehaviour, IPointerClickHandler
 
         if (audioSource != null && clickSound != null)
         {
-            audioSource.volume = audioManager.GetVolume();
+            audioSource.volume = audioManager.AudioVolume;
             try
             {
                 audioSource.PlayOneShot(clickSound); // Воспроизводим звук нажатия
