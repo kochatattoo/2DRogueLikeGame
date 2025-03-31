@@ -3,7 +3,7 @@ using UnityEngine.SceneManagement;
 
 public class BootsTrapManager : MonoBehaviour
 {
-    
+  
     private void Awake()
     {
         // Проверяем, что объекты этого класса существуют только в одном экземпляре

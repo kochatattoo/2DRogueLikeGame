@@ -11,40 +11,31 @@ using UnityEngine.SceneManagement;
 //Класс отвечающий за реализацию HUD меню
   public class GUIManager : MonoBehaviour, IManager, IGUIManager
     {
-
-        //Объявляем переменные текстовых полей
+    //Объявляем переменные текстовых полей
     [SerializeField] TextMeshProUGUI _name;
     [SerializeField] TextMeshProUGUI _coins;
     [SerializeField] TextMeshProUGUI _level;
 
     private GameObject[] uiPrefabsInformationWindows; // Массив префабов для окон с информацией
-   // private GameObject[] uiPrefabsPriorityWindows; // Массив префабов для окон с ошибками 
 
     private GameObject _currentWindow; // Текущее окно
-
-    [SerializeField] GameObject GUIDisplay;
+    [SerializeField] private GameObject GUIDisplay;
 
     private static readonly Queue<Window> windowQueue = new Queue<Window>(); // Очередь окон
     private static readonly Window activeWindow; // Текущее активное окно
 
     private ResourcesLoadManager resourcesLoadManager;
-
     private PlayerData _playerData;
 
     public void StartManager()
     {
-       resourcesLoadManager = gameObject.AddComponent<ResourcesLoadManager>();
-
+        resourcesLoadManager = gameObject.AddComponent<ResourcesLoadManager>();
         var autarizationManager = ServiceLocator.GetService<IAutarizationManager>();
         _playerData = autarizationManager.GetPlayerData();
 
         SetTextAreas();
-
         IniitializeUIPrefabsInformationWindows();
-        //IniitializeUIPrefabsWarningWindows();
-
         CloseCurrentWindow();
-
     }
     private void IniitializeUIPrefabsInformationWindows()
     {
@@ -54,12 +45,7 @@ using UnityEngine.SceneManagement;
         uiPrefabsInformationWindows[1] = resourcesLoadManager.LoadInformationWindow("Window_Shares");
         uiPrefabsInformationWindows[2] = resourcesLoadManager.LoadInformationWindow("Window_Entry");
     }
-    /*private void IniitializeUIPrefabsWarningWindows()
-    {
-        uiPrefabsPriorityWindows = new GameObject[1];
 
-        uiPrefabsPriorityWindows[0] = resourcesLoadManager.LoadPriorityWindow("Window_Warning");
-    }*/
     public void AddQueueWindows()
     {
 
@@ -105,21 +91,15 @@ using UnityEngine.SceneManagement;
         if (windowIndex >= 0 && windowIndex < uiPrefabsInformationWindows.Length)
         {
             GameObject windowObject = Instantiate(uiPrefabsInformationWindows[windowIndex], GUIDisplay.transform);
-
-           // windowObject.transform.SetParent(GUIDisplay.transform, false) ;
-
             Window window = windowObject.GetComponent<Window>();
+
             if (window != null)
             {
                 Window.QueueWindow(window); // Добавляем окно в очередь
-                //window.OpenWindow();
             }
         }
         else
         {
-            /* Debug.LogWarning("Window index out of range: " + windowIndex);
-             HandleError("Произошла ошибка: Не существует окна в указаном индексе.", 0);*/
-
             Debug.LogWarning("Window index out of range: " + windowIndex);
             var notificationManager = ServiceLocator.GetService<INotificationManager>();
             notificationManager.HandleError("Произошла ошибка: Не существует окна в указаном индексе.", 0);
@@ -160,38 +140,7 @@ using UnityEngine.SceneManagement;
             OpenInformationWindow(i); // Добавляем окна в очередь
         }
     }
-
-    //Добавляю метод для создания  окон который отображают ОШИБКИ
-    /*
-    public void OpenPriorityWindow(int windowIndex)
-    {
-        if (windowIndex >= 0 && windowIndex < uiPrefabsPriorityWindows.Length)
-        {
-            GameObject windowObject = Instantiate(uiPrefabsPriorityWindows[windowIndex], GUIDisplay.transform);
-           // windowObject.transform.SetParent(GUIDisplay.transform.transform, false);
-
-            Window window = windowObject.GetComponent<Window>();
-            if (window != null)
-            {
-                Window.ShowPriorityWindow(window); // Открываем окно с высоким приоритетом
-                //Window.QueueWindow(window);
-            }
-        }
-        else
-        {
-            Debug.LogWarning("Window index out of range: " + windowIndex);
-            HandleError("Произошла ошибка: Не существует окна в указаном индексе.", 0);
-        }
-    }
-    public void HandleError(string errorMessage, int numberOfError)
-    {
-        Debug.LogError(errorMessage); // Записываем сообщение об ошибке в консоль
-
-        // Можно создать и открыть окно с сообщением об ошибке
-        OpenPriorityWindow(numberOfError); // Например, если у вас есть префаб окна с индексом 0 для ошибок
-    }
-    *////////////////////////////////////////////////////////////////////////////////////////////////////
-    
+  
     // Метод для закрытия текущего окна
     public void CloseCurrentWindow()
     {

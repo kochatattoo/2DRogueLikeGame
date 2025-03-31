@@ -55,6 +55,11 @@ public class Player : MonoBehaviour
     private bool _canTakeDamage {  get; set; } 
     private bool _isAlive = true;
 
+    private Coroutine regenCoroutine;
+    private float _healthRegenRate = 2f; // Количество здоровья, восстанавливаемое в секунду
+    private float manaRegenRate = 5f;   // Количество маны, восстанавливаемое в секунду
+    private float _regenInterval = 1f; // Интервал регенерации
+
     private PlayerStatsUIManager _statsUIManager;
 
     //Переменная отвечающая за свет от персонажа
@@ -89,6 +94,9 @@ public class Player : MonoBehaviour
         _statsUIManager = FindAnyObjectByType<PlayerStatsUIManager>();
         _statsUIManager.StartManager();
         _statsUIManager.StartPlayerStatsUIManager(_maxHealth, _maxMana);
+
+        // Запускаем корутину, чтобы начать восстановление
+        regenCoroutine = StartCoroutine(RegenCoroutine());
 
         LightSetting(); //Вызываем метод для установки света у нашего персонажа
 
@@ -232,7 +240,6 @@ public class Player : MonoBehaviour
     }
 
 
-
     // Методы вызывающие события для обновления значений характеристик баров у перса
     public void GetCurrentHealthEvent()
     {
@@ -327,6 +334,11 @@ public class Player : MonoBehaviour
         if (_currentHealth <= 0 && _isAlive)
         {
             _knockBack.StopKnockBackMovement();
+
+            if (regenCoroutine != null)
+            {
+                StopCoroutine(regenCoroutine);
+            }
             _isAlive = false;
             _gameInput.DisableMovement();
             OnPlayerDeath?.Invoke(this, EventArgs.Empty);
@@ -341,6 +353,30 @@ public class Player : MonoBehaviour
             yield return new WaitForSeconds(_damageRecoveryTime);
             //Выставляем возможность получения урона
             _canTakeDamage = true;
+    }
+    private IEnumerator RegenCoroutine()
+    {
+        while (true)
+        {
+            // Восстанавливаем здоровье
+            if (_currentHealth < _maxHealth)
+            {
+                _currentHealth += _healthRegenRate * _regenInterval;
+                _currentHealth = Mathf.Min(_currentHealth, _maxHealth); // Убедитесь, что здоровье не превышает максимум\
+                GetCurrentHealthEvent();
+            }
+
+            // Восстанавливаем ману
+            if (_currentMana < _maxMana)
+            {
+                _currentMana += manaRegenRate * _regenInterval;
+                _currentMana = Mathf.Min(_currentMana, _maxMana); // Убедитесь, что мана не превышает максимум
+                GetCurrentManaEvent();
+            }
+
+            yield return new WaitForSeconds(_regenInterval); // Ждем указанный интервал
+        }
+
     }
 
     private void LightSetting()
@@ -358,5 +394,4 @@ public class Player : MonoBehaviour
         lightObject.transform.parent = transform; // Устанавливаем объект света как дочерний к персонажу
         lightObject.transform.localPosition = new Vector3(0, 0.5f, 0); // Позиция относительно персонажа
     }
-
 }
