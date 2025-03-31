@@ -17,6 +17,7 @@ public class AudioManager : MonoBehaviour,IManager, IAudioManager
 
     private AudioSource _audioSource;
     private ResourcesLoadManager _resourcesLoadManager;
+    private ButtonClickAudio _buttonClickAudio;
 
     [SerializeField] private AudioPlayer _playerAudio;
     [SerializeField] private AudioClip[] _clips;  
@@ -24,6 +25,8 @@ public class AudioManager : MonoBehaviour,IManager, IAudioManager
     public void StartManager()
     {
         _resourcesLoadManager = gameObject.AddComponent<ResourcesLoadManager>();
+        _buttonClickAudio = gameObject.AddComponent<ButtonClickAudio>();
+        _buttonClickAudio.StartScript();
         LoadAudioResources();
         InitializeManager();
 
@@ -115,5 +118,9 @@ public class AudioManager : MonoBehaviour,IManager, IAudioManager
             notificationManager.PlayNotificationAudio("Error");
             Debug.LogWarning($"Аудиоклип для {audioName} не загружен или отсутствует.");
         }
+    }
+    public void PlayClick()
+    {
+        _buttonClickAudio.PlayClickAudio();
     }
 }

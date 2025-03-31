@@ -10,6 +10,7 @@
         float GetVolume();
         void InitializePlayerAudio();
         void PlayAudio(AudioName audioName);
+        void PlayClick();
 
     }
 }

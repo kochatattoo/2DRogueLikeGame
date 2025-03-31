@@ -8,7 +8,6 @@ public class StartScreenManager : MonoBehaviour, IManager, IStartScreenManager
     [Header("UI Elements")]
     private GameObject startScreenPrefab; // Префаб стартового экрана
     private Button continueButton; // Кнопка для продолжения
-    private ButtonClickAudio _buttonClickAudio;
 
     private GameObject startScreen; // экземпляр стартового экрана
     private IGameInput gameInput;
@@ -21,9 +20,6 @@ public class StartScreenManager : MonoBehaviour, IManager, IStartScreenManager
         // startScreenPrefab = Resources.Load<GameObject>("Windows/StartScreenWindow/Star_Screen_Window");
         gameInput = ServiceLocator.GetService<IGameInput>();
         guiManager = ServiceLocator.GetService<IGUIManager>();
-
-        _buttonClickAudio = gameObject.AddComponent<ButtonClickAudio>();
-        _buttonClickAudio.StartScript();
 
         InitializeStartScreen(); // Инициализация стартового экрана
     }
@@ -49,10 +45,8 @@ public class StartScreenManager : MonoBehaviour, IManager, IStartScreenManager
         // Скрываем стартовый экран
         Destroy(startScreen);
 
-        //var audioManager = ServiceLocator.GetService<IAudioManager>();
-        //audioManager.PlayAudio(0);
-
-        _buttonClickAudio.PlayClickAudio();
+        var audioManager = ServiceLocator.GetService<IAudioManager>();
+        audioManager.PlayClick();
 
         // Здесь мы открываем первое окно информации из очереди, если оно есть
         if (guiManager != null) // Проверяем, что GUIManager существует

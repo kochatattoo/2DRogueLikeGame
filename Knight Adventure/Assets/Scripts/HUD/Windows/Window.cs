@@ -9,8 +9,6 @@ public class Window : MonoBehaviour
     public AudioClip openSound;  // Звук появления окна
     public AudioClip closeSound; // Звук закрытия окна
 
-    protected ButtonClickAudio _buttonClickAudio;
-
     public Button closeButton;    // Кнопка закрытия окна
     public Button okButton;       // Кнопка "ОК"
 
@@ -23,17 +21,9 @@ public class Window : MonoBehaviour
 
     private void Awake()
     {
-        GetButtonClickAudioController();
-
         _audioSource = gameObject.AddComponent<AudioSource>(); // Добавляем компонент AudioSource
         closeButton.onClick.AddListener(CloseWindow); // Подписка на событие кнопки закрытия
         okButton.onClick.AddListener(OnOkButtonClicked); // Подписка на событие кнопки "ОК"
-    }
-
-    private void GetButtonClickAudioController() 
-    {
-        _buttonClickAudio = gameObject.AddComponent<ButtonClickAudio>();
-        _buttonClickAudio.StartScript();
     }
 
     public virtual void OpenWindow()
@@ -52,10 +42,7 @@ public class Window : MonoBehaviour
     {
         if (activeWindow == this) // Проверка, является ли текущее активное окно
         {
-            // PlaySound(closeSound); // Воспроизведение звука закрытия
-            _buttonClickAudio.PlayClickAudio();
-            //  var audioManager = ServiceLocator.GetService<IAudioManager>();
-            //  audioManager.PlayAudio(0); // TODO: что то тут надо сделать с выбором и перечислением
+             PlaySound(closeSound); // Воспроизведение звука закрытия
 
             Time.timeScale = 1; // Возобновляем игру
 
@@ -74,14 +61,10 @@ public class Window : MonoBehaviour
 
            Destroy(this.gameObject);
     }
-    private void OnDestroy()
+     protected virtual void OnOkButtonClicked()
     {
-           var audioManager = ServiceLocator.GetService<IAudioManager>();
-           audioManager.PlayAudio(0); // TODO: что то тут надо сделать с выбором и перечислением
-    }
-    protected virtual void OnOkButtonClicked()
-    {
-        _buttonClickAudio.PlayClickAudio();
+        var audioManager = ServiceLocator.GetService<IAudioManager>();
+        audioManager.PlayClick();
         // Закрываем окно при нажатии "ОК"
         CloseWindow();
     }
