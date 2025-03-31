@@ -35,7 +35,6 @@ public class MainMenuManager : MonoBehaviour, IMainMenuManager, IManager
         ActivateMenu();
 
         GetBlurController();
-        GetButtonClickAudioController();
         BlurOff();
 
         _saveManager=ServiceLocator.GetService<ISaveManager>();
@@ -79,11 +78,6 @@ public class MainMenuManager : MonoBehaviour, IMainMenuManager, IManager
         {
             _blurMaterial=backgroundImage.material;
         }
-    }
-    private void GetButtonClickAudioController()
-    {
-        _buttonClickAudio = gameObject.AddComponent<ButtonClickAudio>();
-        _buttonClickAudio.StartScript();
     }
     private void SaveMenu_Refresh(object sender, System.EventArgs e)
     {
@@ -147,6 +141,7 @@ public class MainMenuManager : MonoBehaviour, IMainMenuManager, IManager
     {
         OpenMenuWindow(_optionMenu);
     }
+
     public void OpenQuitMenu()
     {
         OpenMenuWindow(_quitMenu);
@@ -166,7 +161,6 @@ public class MainMenuManager : MonoBehaviour, IMainMenuManager, IManager
         SceneManager.LoadScene("Game");
         //Использовать поиск скриптов для подключения
     }
-
     public void LoadGame()
     {
 
@@ -200,17 +194,14 @@ public class MainMenuManager : MonoBehaviour, IMainMenuManager, IManager
             Debug.Log("Слишком короткое Имя, Введите длинее");
 
     }
-
     private void SetCharacteristics()
     {
         _playerData.playerStats.CreatePlayerCharacteristics(_playerData);
     }
-
     private void SetRewardsAndAchivements()
     {
         _playerData.playerAchievements = new Assets.Scripts.Player.PlayerAchievements();
     }
-
     public void BlurOn()
     {
         if (_blurMaterial != null)
@@ -225,13 +216,11 @@ public class MainMenuManager : MonoBehaviour, IMainMenuManager, IManager
             _blurMaterial.SetFloat("_BlurAmount", 0.63f);
         }
     }
-
     public void PlayClickAudio()
     {
-        _buttonClickAudio.PlayClickAudio();
+        var audioManager = ServiceLocator.GetService<IAudioManager>();
+        audioManager.PlayClick();
     }
-
-    // Метод, который вызывается для выхода из приложения
     public void ExitApplication()
     {
 #if UNITY_EDITOR
