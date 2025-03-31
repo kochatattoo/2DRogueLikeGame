@@ -15,7 +15,7 @@ public class AudioManager : MonoBehaviour,IManager, IAudioManager
     public static bool music = true; //Параметр доступности музыки
     public static bool sounds = true; //Параметр доступности звуков
 
-    private AudioSource _audioSource {  get; set; }
+    private AudioSource _audioSource;
     private ResourcesLoadManager _resourcesLoadManager;
     private ButtonClickAudio _buttonClickAudio {  get; set; }
 

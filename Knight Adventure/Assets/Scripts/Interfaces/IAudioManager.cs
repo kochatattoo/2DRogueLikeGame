@@ -2,7 +2,8 @@
 {
     public interface IAudioManager
     {
-        public float AudioVolume {get; set;}
+        public float AudioVolume {get;}
+        public void SetVolume(float volume);
         bool StatusMusic();
         void SoundOffOn();
         void StartManager();
