@@ -8,10 +8,13 @@ public class Window : MonoBehaviour
 {
     public AudioClip openSound;  // Звук появления окна
     public AudioClip closeSound; // Звук закрытия окна
+
+    protected ButtonClickAudio _buttonClickAudio;
+
     public Button closeButton;    // Кнопка закрытия окна
     public Button okButton;       // Кнопка "ОК"
 
-    private AudioSource audioSource;  // Аудиомодуль
+    private AudioSource _audioSource;  // Аудиомодуль
 
     private static Window activeWindow; // Текущее активное окно
 
@@ -20,9 +23,17 @@ public class Window : MonoBehaviour
 
     private void Awake()
     {
-        audioSource = gameObject.AddComponent<AudioSource>(); // Добавляем компонент AudioSource
+        GetButtonClickAudioController();
+
+        _audioSource = gameObject.AddComponent<AudioSource>(); // Добавляем компонент AudioSource
         closeButton.onClick.AddListener(CloseWindow); // Подписка на событие кнопки закрытия
         okButton.onClick.AddListener(OnOkButtonClicked); // Подписка на событие кнопки "ОК"
+    }
+
+    private void GetButtonClickAudioController() 
+    {
+        _buttonClickAudio = gameObject.AddComponent<ButtonClickAudio>();
+        _buttonClickAudio.StartScript();
     }
 
     public virtual void OpenWindow()
@@ -41,11 +52,11 @@ public class Window : MonoBehaviour
     {
         if (activeWindow == this) // Проверка, является ли текущее активное окно
         {
-           // PlaySound(closeSound); // Воспроизведение звука закрытия
+            // PlaySound(closeSound); // Воспроизведение звука закрытия
+            _buttonClickAudio.PlayClickAudio();
+            //  var audioManager = ServiceLocator.GetService<IAudioManager>();
+            //  audioManager.PlayAudio(0); // TODO: что то тут надо сделать с выбором и перечислением
 
-            var audioManager = ServiceLocator.GetService<IAudioManager>();
-            audioManager.PlayAudio(0); // TODO: что то тут надо сделать с выбором и перечислением
-   
             Time.timeScale = 1; // Возобновляем игру
 
             OnWindowClosed?.Invoke(); // Вызываем событие закрытия
@@ -59,23 +70,27 @@ public class Window : MonoBehaviour
             {
                 GUIManager.ShowNextWindow(); // Показ следующего окна из очереди
             }
-
         }
-     
-        Destroy(this.gameObject);
-    }
 
+           Destroy(this.gameObject);
+    }
+    private void OnDestroy()
+    {
+           var audioManager = ServiceLocator.GetService<IAudioManager>();
+           audioManager.PlayAudio(0); // TODO: что то тут надо сделать с выбором и перечислением
+    }
     protected virtual void OnOkButtonClicked()
     {
+        _buttonClickAudio.PlayClickAudio();
         // Закрываем окно при нажатии "ОК"
         CloseWindow();
     }
 
     protected void PlaySound(AudioClip clip)
     {
-        if (clip != null && audioSource != null)
+        if (clip != null && _audioSource != null)
         {
-            audioSource.PlayOneShot(clip);
+            _audioSource.PlayOneShot(clip);
         }
     }
 

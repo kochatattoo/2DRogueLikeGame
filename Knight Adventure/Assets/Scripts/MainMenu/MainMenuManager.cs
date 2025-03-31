@@ -230,4 +230,16 @@ public class MainMenuManager : MonoBehaviour, IMainMenuManager, IManager
     {
         _buttonClickAudio.PlayClickAudio();
     }
+
+    // Метод, который вызывается для выхода из приложения
+    public void ExitApplication()
+    {
+#if UNITY_EDITOR
+        // Если вы в редакторе Unity, останавливаем воспроизведение
+        UnityEditor.EditorApplication.isPlaying = false;
+#else
+            // Если вы на реальной сборке, выходим из приложения
+            Application.Quit();
+#endif
+    }
 }

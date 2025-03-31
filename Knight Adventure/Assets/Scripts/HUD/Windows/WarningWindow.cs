@@ -7,7 +7,6 @@ namespace Assets.Scripts.HUD.Windows
         // Вы можете дополнить функционал данного окна
         protected override void OnOkButtonClicked()
         {
-            PlaySound(closeSound);
             base.OnOkButtonClicked(); // Вызов родительской логики
                                       // Дополнительная логика для окна предупреждения
             Debug.Log("Warning acknowledged!"); // Пример логики

@@ -2,11 +2,11 @@
 {
     public class InfoWindow : Window
     {
+
         protected override void OnOkButtonClicked()
         {
-            PlaySound(closeSound);
             // Логика закрытия окна
-            CloseWindow(); // Закрыть окно при нажатии "ОК"
+            base.OnOkButtonClicked();
         }
 
         public override void OpenWindow()
@@ -17,5 +17,6 @@
         {
             QueueWindow(this);
         }
+       
     }
 }
