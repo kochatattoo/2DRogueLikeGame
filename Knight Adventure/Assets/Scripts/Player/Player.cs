@@ -55,10 +55,14 @@ public class Player : MonoBehaviour
     private bool _canTakeDamage {  get; set; } 
     private bool _isAlive = true;
 
-    private Coroutine regenCoroutine;
+    private Coroutine _regenCoroutine;
     private float _healthRegenRate = 2f; // Количество здоровья, восстанавливаемое в секунду
     private float manaRegenRate = 5f;   // Количество маны, восстанавливаемое в секунду
     private float _regenInterval = 1f; // Интервал регенерации
+
+    private Coroutine _skillsCoroutine; // TODO: Реализуем корутину отката скила (для перезарядки) 
+    private float _timeInterval = 5f; // возможно придется реализовать по другому, дабы дать каждому скилу свою перезарядку через ивенты
+    private bool _canUseSkills = true;
 
     private PlayerStatsUIManager _statsUIManager;
 
@@ -76,7 +80,7 @@ public class Player : MonoBehaviour
     void Awake()
     {
         //Инициализируем синглтон
-       Instance = this;
+       Instance = this; // TODO - вроде как можно отказаться от синглТона в Player и реализовать его исходя от менеджера (хотя там реализован PlaterData)
         //Кешируем компоненты
         _rb= GetComponent<Rigidbody2D>();
         _knockBack=GetComponent<knockBack>();
@@ -96,7 +100,7 @@ public class Player : MonoBehaviour
         _statsUIManager.StartPlayerStatsUIManager(_maxHealth, _maxMana);
 
         // Запускаем корутину, чтобы начать восстановление
-        regenCoroutine = StartCoroutine(RegenCoroutine());
+        _regenCoroutine = StartCoroutine(RegenCoroutine());
 
         LightSetting(); //Вызываем метод для установки света у нашего персонажа
 
@@ -170,11 +174,20 @@ public class Player : MonoBehaviour
     //Событие магической атаки
     private void Player_OnPlayerMagicAttack(object sender, EventArgs e)
     {
-        //Вызываем метод в атаки в классе Актив Вепон
-        playerActiveWeapon.MagicAttack.Attack();
-        _currentMana -= 5;
-        GetCurrentManaEvent();
-
+        if (_canUseSkills)
+        {
+            //Вызываем метод в атаки в классе Актив Вепон
+            playerActiveWeapon.MagicAttack.Attack();
+            _currentMana -= 5;
+            GetCurrentManaEvent();
+            _canUseSkills = false;
+            _skillsCoroutine = StartCoroutine(SkillsCoroutine()); // Вот тут должна вызываться корутина
+        }
+        else
+        {
+            var notificationManager = ServiceLocator.GetService<INotificationManager>();
+            notificationManager.PlayNotificationAudio("Lock");
+        }
     }
     private void Player_OnPlayerRangeAttack(object sender, EventArgs e)
     {
@@ -335,9 +348,9 @@ public class Player : MonoBehaviour
         {
             _knockBack.StopKnockBackMovement();
 
-            if (regenCoroutine != null)
+            if (_regenCoroutine != null)
             {
-                StopCoroutine(regenCoroutine);
+                StopCoroutine(_regenCoroutine);
             }
             _isAlive = false;
             _gameInput.DisableMovement();
@@ -377,6 +390,12 @@ public class Player : MonoBehaviour
             yield return new WaitForSeconds(_regenInterval); // Ждем указанный интервал
         }
 
+    }
+    private IEnumerator SkillsCoroutine()
+    {
+        // TODO: Крч вот тут будем делать логику для корутины 
+        yield return new WaitForSeconds(_timeInterval); // Ждем указанный интервал
+        _canUseSkills = true;
     }
 
     private void LightSetting()
