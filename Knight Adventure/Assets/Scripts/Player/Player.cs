@@ -178,9 +178,6 @@ public class Player : MonoBehaviour
         //Вызываем метод в атаки в классе Актив Вепон
         playerActiveWeapon.SwordWeapon.Attack();
 
-        var notifiactionManager1 = ServiceLocator.GetService<INotificationManager>();
-        notifiactionManager1.OpenNotificationWindow("Error");
-
     }
     //Событие магической атаки
     private void Player_OnPlayerMagicAttack(object sender, EventArgs e)
