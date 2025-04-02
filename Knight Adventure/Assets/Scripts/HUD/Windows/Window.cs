@@ -3,6 +3,7 @@ using UnityEngine.UI;
 using System;
 using Assets.ServiceLocator;
 using Assets.Scripts.Interfaces;
+using TMPro;
 
 public class Window : MonoBehaviour
 {
@@ -11,6 +12,8 @@ public class Window : MonoBehaviour
 
     public Button closeButton;    // Кнопка закрытия окна
     public Button okButton;       // Кнопка "ОК"
+
+    public TextMeshProUGUI window_text;
 
     private AudioSource _audioSource;  // Аудиомодуль
 

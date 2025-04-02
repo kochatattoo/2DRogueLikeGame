@@ -60,6 +60,7 @@ public class Player : MonoBehaviour
     private float manaRegenRate = 5f;   // Количество маны, восстанавливаемое в секунду
     private float _regenInterval = 1f; // Интервал регенерации
 
+    [SerializeField] private PlayerAnimationAttack _playerAnimationAttack;
     private Coroutine _skillsCoroutine; // TODO: Реализуем корутину отката скила (для перезарядки) 
     private float _timeInterval = 5f; // возможно придется реализовать по другому, дабы дать каждому скилу свою перезарядку через ивенты
     private bool _canUseSkills = true;
@@ -88,10 +89,11 @@ public class Player : MonoBehaviour
     private void Start()
     {
         //Может получать урон
-        _canTakeDamage=true;
+        _canTakeDamage= true;
         InitializeServices();
         SubscribeGameInputEvent();
-        
+        InitializeGameComponents();
+
         LoadPlayerData();
         SetPlayer();
      
@@ -111,6 +113,8 @@ public class Player : MonoBehaviour
         }
         else
         {
+            var notifiactionManager = ServiceLocator.GetService<INotificationManager>();
+            notifiactionManager.OpenNotificationWindow("Error", "Cinemachine camera hasn.t founded in the Scene");
             Debug.Log("Cinemachine camera hasn.t founded in the Scene");
         }
 
@@ -127,6 +131,10 @@ public class Player : MonoBehaviour
         _gameInput.OnPlayerAttack += Player_OnPlayerAttack;
         _gameInput.OnPlayerRangeAttack += Player_OnPlayerRangeAttack;
         _gameInput.OnPlayerMagicAttack += Player_OnPlayerMagicAttack;
+    }
+    private void InitializeGameComponents()
+    {
+        _playerAnimationAttack.StartScript();
     }
     private void LoadPlayerData()
     {
@@ -169,7 +177,10 @@ public class Player : MonoBehaviour
     {
         //Вызываем метод в атаки в классе Актив Вепон
         playerActiveWeapon.SwordWeapon.Attack();
- 
+
+        var notifiactionManager1 = ServiceLocator.GetService<INotificationManager>();
+        notifiactionManager1.OpenNotificationWindow("Error");
+
     }
     //Событие магической атаки
     private void Player_OnPlayerMagicAttack(object sender, EventArgs e)
@@ -180,7 +191,7 @@ public class Player : MonoBehaviour
             playerActiveWeapon.MagicAttack.Attack();
             _currentMana -= 5;
             GetCurrentManaEvent();
-            _canUseSkills = false;
+            _canUseSkills = false; // TODO: Надо отключить анимацию, что бы и ее нельзя было воспроизвести
             _skillsCoroutine = StartCoroutine(SkillsCoroutine()); // Вот тут должна вызываться корутина
         }
         else

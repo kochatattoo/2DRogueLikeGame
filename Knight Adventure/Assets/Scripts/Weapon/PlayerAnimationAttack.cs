@@ -7,15 +7,11 @@ public class PlayerAnimationAttack : MonoBehaviour
     //Вводим переменную полигон колайдера 2д
     private PolygonCollider2D _polygonCollider2D;
 
-    private void Awake()
+    public void StartScript()
     {
         //Инициализируем полигонколайдер (кешируем)
         _polygonCollider2D = GetComponent<PolygonCollider2D>();
         _polygonCollider2D.enabled = false;
-    }
-
-    private void Start()
-    {
         //Выключаем полигонколайдер в самом начале
         AttackCollaiderTurnOff();
     }
@@ -25,7 +21,6 @@ public class PlayerAnimationAttack : MonoBehaviour
     {
         //Включаем полигонколайдер2д при атаке
         AttackCollaiderOffOn();
-     
     }
 
     //Метод, для проверки не коcнулся ли колайдер, другого колайдера в 2д

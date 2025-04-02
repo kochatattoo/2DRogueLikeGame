@@ -49,6 +49,24 @@ using UnityEngine;
 
         }
     }
+    public void OpenNotificationWindow(string name, string txt)
+    {
+        switch (name)
+        {
+            case "Error":
+                OpenPriorityWindow(0);
+                SetWindowText(0, txt);
+                break;
+
+            case "Notice":
+                OpenPriorityWindow(1);
+                break;
+
+            default:
+                break;
+
+        }
+    }
     // Метод для срабатывания звука при невозможности использования, своего рода звуковое уведомелние без необходимости вызыва окна с ошибкой
     // На окно с ошибкой, поставлю отдельный звук для загрузки и вызова при появлении
     // Звуки кликов, вызова менюшек и прочие будут загружаться и вызываться из AudioManager
@@ -93,6 +111,13 @@ using UnityEngine;
             HandleError("Произошла ошибка: Не существует окна в указаном индексе.", 0);
             PlayNotificationAudio("Error");
         }
+    }
+    private void SetWindowText(int window_index, string txt)
+    {
+        GameObject window_prefab = uiPrefabsPriorityWindows[(int)window_index];
+        var window = GetComponent<Window>();
+        window.window_text.text = txt; // TODO: Вот тут ошибка Object Reference not set
+        
     }
     public void HandleError(string errorMessage, int numberOfError)
     {

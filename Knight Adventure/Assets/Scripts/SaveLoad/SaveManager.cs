@@ -56,7 +56,7 @@ public class SaveManager : MonoBehaviour, IManager, ISaveManager
         else
         {
             var notificationManager = ServiceLocator.GetService<INotificationManager>();
-            notificationManager.OpenNotificationWindow("Error");
+            notificationManager.OpenNotificationWindow("Error", "Save file not found at " + path);
 
             Debug.LogError("Save file not found at " + path);
             return null;

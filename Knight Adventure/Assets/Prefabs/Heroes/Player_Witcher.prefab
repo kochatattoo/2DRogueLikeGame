@@ -302,6 +302,7 @@ MonoBehaviour:
   playerInventory: {fileID: 6149334074932530076}
   playerActiveWeapon: {fileID: 1270154003247506765}
   _damageRecoveryTime: 0.5
+  _playerAnimationAttack: {fileID: 1585101795893045098}
 --- !u!114 &1389518870108349314
 MonoBehaviour:
   m_ObjectHideFlags: 0
