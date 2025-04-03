@@ -61,7 +61,7 @@ public class AudioPlayer : MonoBehaviour
 
     private void Player_OnPlayerMagicAttack(object sender, System.EventArgs e)
     {
-        if (_audioClips.Length > 1 && _audioClips[4] != null)
+        if (_audioClips.Length > 1 && _audioClips[4] != null && Player.Instance.CanUseSkills)
         {
             _playerAudioSource.PlayOneShot(_audioClips[4]);
         }

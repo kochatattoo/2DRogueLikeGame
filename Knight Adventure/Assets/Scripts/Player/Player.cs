@@ -63,7 +63,7 @@ public class Player : MonoBehaviour
     [SerializeField] private PlayerAnimationAttack _playerAnimationAttack;
     private Coroutine _skillsCoroutine; // TODO: –еализуем корутину отката скила (дл€ перезар€дки) 
     private float _timeInterval = 5f; // возможно придетс€ реализовать по другому, дабы дать каждому скилу свою перезар€дку через ивенты
-    private bool _canUseSkills = true;
+    private bool _canUseSkills { get; set; }
 
     private PlayerStatsUIManager _statsUIManager;
 
@@ -90,6 +90,7 @@ public class Player : MonoBehaviour
     {
         //ћожет получать урон
         _canTakeDamage= true;
+        _canUseSkills= true;
         InitializeServices();
         SubscribeGameInputEvent();
         InitializeGameComponents();
@@ -259,7 +260,11 @@ public class Player : MonoBehaviour
         set { _maxExpirience = value; }
     }
 
-
+    public bool CanUseSkills
+    {
+        get { return _canUseSkills; }
+        set { _canUseSkills = value; }
+    }
     // ћетоды вызывающие событи€ дл€ обновлени€ значений характеристик баров у перса
     public void GetCurrentHealthEvent()
     {

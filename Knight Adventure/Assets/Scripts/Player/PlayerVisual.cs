@@ -67,7 +67,7 @@ public class PlayerVisual : MonoBehaviour
     //Событие магической атаки
     private void Player_OnPlayerMagicAttack(object sender, System.EventArgs e)
     {
-        if (Player.Instance.IsAlive)
+        if (Player.Instance.IsAlive && Player.Instance.CanUseSkills)
         //Устанавливаем тригер анимамтора 
         { 
             animator.SetTrigger(ANIMATION_ATTACK);
