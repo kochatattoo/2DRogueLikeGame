@@ -93,4 +93,12 @@ public class Window : MonoBehaviour
         }
         window.OpenWindow(); // Откроем приоритетное окно
     }
+
+    public virtual void SetText(string newText)
+    {
+        if (window_text != null)
+        {
+            window_text.text = newText;
+        }
+    }
 }

@@ -177,7 +177,6 @@ public class Player : MonoBehaviour
     {
         //Вызываем метод в атаки в классе Актив Вепон
         playerActiveWeapon.SwordWeapon.Attack();
-
     }
     //Событие магической атаки
     private void Player_OnPlayerMagicAttack(object sender, EventArgs e)

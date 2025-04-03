@@ -11,6 +11,10 @@ namespace Assets.Scripts.HUD.Windows
                                       // Дополнительная логика для окна предупреждения
             Debug.Log("Warning acknowledged!"); // Пример логики
         }
+        public override void SetText(string newText)
+        {
+            base.SetText(newText);
+        }
         public static void ShowImportantWarning()
         {
             // Создание экземпляра WarningWindow

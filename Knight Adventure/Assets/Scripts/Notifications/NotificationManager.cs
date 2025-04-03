@@ -54,8 +54,8 @@ using UnityEngine;
         switch (name)
         {
             case "Error":
-                OpenPriorityWindow(0);
                 SetWindowText(0, txt);
+                OpenPriorityWindow(0);
                 break;
 
             case "Notice":
@@ -115,8 +115,8 @@ using UnityEngine;
     private void SetWindowText(int window_index, string txt)
     {
         GameObject window_prefab = uiPrefabsPriorityWindows[(int)window_index];
-        var window = GetComponent<Window>();
-        window.window_text.text = txt; // TODO: Вот тут ошибка Object Reference not set
+        var window = window_prefab.GetComponent<Window>();
+        window.SetText(txt); // TODO: Вот тут ошибка Object Reference not set
         
     }
     public void HandleError(string errorMessage, int numberOfError)
