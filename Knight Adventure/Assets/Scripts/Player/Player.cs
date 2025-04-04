@@ -319,7 +319,6 @@ public class Player : MonoBehaviour
     {
         playerStats = playerData.playerStats;
     }
-
     // В данном методе будем устанавливать Актуальные характеристики нашего персонажа от его статистик
     private void SetPlayerActuallyStats()
     {
@@ -328,7 +327,6 @@ public class Player : MonoBehaviour
         _maxMana = playerStats.maxMana;
         _maxExpirience = playerStats.currentExperience;
     }
-
     private void SetPlayerCurrentStats()
     {
         ////Устанавливаем текущее здоровье = максимальноиу
