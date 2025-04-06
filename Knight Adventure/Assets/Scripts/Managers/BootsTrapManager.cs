@@ -16,8 +16,12 @@ public class BootsTrapManager : MonoBehaviour
         // Не уничтожать объект при переходе между сценами
         DontDestroyOnLoad(gameObject);
 
+        InitializeGameStateManager();
+        InitializeManager();
+
         // Загрузка начальной сцены
         LoadInitialScene();
+       
     }
 
     private void LoadInitialScene()
@@ -32,5 +36,12 @@ public class BootsTrapManager : MonoBehaviour
         GameObject gameStateManager = new GameObject("GameStateManager");
         gameStateManager.AddComponent<GameStateManager>();
         DontDestroyOnLoad(gameStateManager);
+    }
+
+    private void InitializeManager()
+    {
+        GameObject initializeManagerObject = new GameObject("InitializeManager");
+        var initializeManager = initializeManagerObject.AddComponent<InitializationManager>();
+        initializeManager.StartManager();
     }
 }
