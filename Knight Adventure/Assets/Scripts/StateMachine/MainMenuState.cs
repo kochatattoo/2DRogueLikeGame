@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 
     public class MainMenuState: IGameState
     {
@@ -13,6 +13,12 @@
         {
             Debug.Log("Entering Main Menu State");
             // Здесь можно добавить код для инициализации состояния меню
+			var menuManager = FindObjectOfType<MainMenuManager>();
+			if (menuManager != null)
+			{
+				menuManager.StartManager();
+			}
+			
         }
 
         public void Update()
