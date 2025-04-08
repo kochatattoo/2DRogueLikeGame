@@ -14,7 +14,7 @@ using UnityEngine;
         {
             Debug.Log("Entering Main Menu State");
             // Здесь можно добавить код для инициализации состояния меню
-			_menuManager = FindObjectOfType<MainMenuManager>();
+			_menuManager = _stateManager.FindObject<MainMenuManager>();
 			if (_menuManager != null)
 			{
 				_menuManager.StartManager();

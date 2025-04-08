@@ -17,12 +17,12 @@ public class AttackSkill : Skill
 {
 	public float mainDamage; // Основной урон
 	public float addDamage; // Добавочный урон
-	public float distance // Дистанция атаки
+	public float distance; // Дистанция атаки
 	
 	public void ScaleLevelState(int level) // Метод для изменения уровня атаки с повышением уровня героя
 	{
-		mainDamage = + 0.1*level;
-		addDamage = + 0.1*level;
+		mainDamage = + 0.1f*level;
+		addDamage = + 0.1f*level;
 	}
 }
 

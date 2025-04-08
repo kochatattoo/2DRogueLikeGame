@@ -28,7 +28,7 @@ public class MainMenuManager : MonoBehaviour, IMainMenuManager, IManager
     private IAutarizationManager _autarizationManager;
     private PlayerData _playerData;
 
-    private ButtonClickAudio _buttonClickAudio;
+    private ButtonClickAudio _buttonClickAudio; // TODO: Не помню можно убрать его или нет
   
     public void StartManager()
     { 
@@ -43,7 +43,6 @@ public class MainMenuManager : MonoBehaviour, IMainMenuManager, IManager
 		_playerData = _autarizationManager.GetPlayerData(); 
         if (_playerData != null)
         {
-			_isFirstEnter = false;
             _user_Name_Panel.SetActive(true);
             _user_Name.text = _playerData.name;
             _gameMenu.SetActive(true);
@@ -192,7 +191,12 @@ public class MainMenuManager : MonoBehaviour, IMainMenuManager, IManager
             
         }
         else
-            Debug.Log("Ñëèøêîì êîðîòêîå Èìÿ, Ââåäèòå äëèíåå");
+        {
+            var notificationManager = ServiceLocator.GetService<INotificationManager>();
+            notificationManager.OpenNotificationWindow("Error", "Name cann't be less then 4 symbols");
+            Debug.Log("Имя должно быть не меньше 4х символов");
+        }
+           
 
     }
     private void SetCharacteristics()
@@ -225,10 +229,10 @@ public class MainMenuManager : MonoBehaviour, IMainMenuManager, IManager
     public void ExitApplication()
     {
 #if UNITY_EDITOR
-        // Åñëè âû â ðåäàêòîðå Unity, îñòàíàâëèâàåì âîñïðîèçâåäåíèå
+        // В редакторе
         UnityEditor.EditorApplication.isPlaying = false;
 #else
-            // Åñëè âû íà ðåàëüíîé ñáîðêå, âûõîäèì èç ïðèëîæåíèÿ
+            // На сборке
             Application.Quit();
 #endif
     }

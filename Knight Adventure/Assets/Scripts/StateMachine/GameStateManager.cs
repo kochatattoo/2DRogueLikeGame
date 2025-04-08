@@ -26,4 +26,21 @@ public class GameStateManager : MonoBehaviour
         // Вход в новое состояние
         _currentState.Enter();
     }
+    public MainMenuManager FindMainMenu()
+    {
+        var findObect = FindObjectOfType<MainMenuManager>();
+        return findObect;
+    }
+
+    public T FindObject<T>() where T : MonoBehaviour
+    {
+        T foundObject = GameObject.FindObjectOfType<T>();
+
+        if (foundObject == null)
+        {
+            Debug.LogWarning($"Object of type {typeof(T)} not found!");
+        }
+
+        return foundObject;
+    }
 }

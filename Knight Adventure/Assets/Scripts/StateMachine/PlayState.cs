@@ -1,5 +1,6 @@
 using UnityEngine;
-
+using Assets.Scripts.Interfaces;
+using Assets.ServiceLocator;
     public class PlayState : IGameState
     {
         private GameStateManager _stateManager;
