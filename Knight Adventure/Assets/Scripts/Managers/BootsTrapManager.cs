@@ -3,38 +3,39 @@ using UnityEngine.SceneManagement;
 
 public class BootsTrapManager : MonoBehaviour
 {
-  
+		
     private void Awake()
     {
-        // Проверяем, что объекты этого класса существуют только в одном экземпляре
+        // ГЏГ°Г®ГўГҐГ°ГїГҐГ¬, Г·ГІГ® Г®ГЎГєГҐГЄГІГ» ГЅГІГ®ГЈГ® ГЄГ«Г Г±Г±Г  Г±ГіГ№ГҐГ±ГІГўГіГѕГІ ГІГ®Г«ГјГЄГ® Гў Г®Г¤Г­Г®Г¬ ГЅГЄГ§ГҐГ¬ГЇГ«ГїГ°ГҐ
         if (FindObjectsOfType<BootsTrapManager>().Length > 1)
         {
             Destroy(gameObject);
             return;
         }
 
-        // Не уничтожать объект при переходе между сценами
+        // ГЌГҐ ГіГ­ГЁГ·ГІГ®Г¦Г ГІГј Г®ГЎГєГҐГЄГІ ГЇГ°ГЁ ГЇГҐГ°ГҐГµГ®Г¤ГҐ Г¬ГҐГ¦Г¤Гі Г±Г¶ГҐГ­Г Г¬ГЁ
         DontDestroyOnLoad(gameObject);
 
-        InitializeGameStateManager();
         InitializeManager();
 
-        // Загрузка начальной сцены
+        // Г‡Г ГЈГ°ГіГ§ГЄГ  Г­Г Г·Г Г«ГјГ­Г®Г© Г±Г¶ГҐГ­Г»
         LoadInitialScene();
        
     }
 
     private void LoadInitialScene()
     {
-        // Загружаем основную сцену (например, "MainMenu")
+        // Г‡Г ГЈГ°ГіГ¦Г ГҐГ¬ Г®Г±Г­Г®ГўГ­ГіГѕ Г±Г¶ГҐГ­Гі (Г­Г ГЇГ°ГЁГ¬ГҐГ°, "MainMenu")
         SceneManager.LoadScene("Menu");
+				InitializeGameStateManager();
     }
 
     private void InitializeGameStateManager()
     {
-        // Создаем объект GameStateManager
+        // Г‘Г®Г§Г¤Г ГҐГ¬ Г®ГЎГєГҐГЄГІ GameStateManager
         GameObject gameStateManager = new GameObject("GameStateManager");
         gameStateManager.AddComponent<GameStateManager>();
+		
         DontDestroyOnLoad(gameStateManager);
     }
 
