@@ -15,7 +15,7 @@ public class MainMenuManager : MonoBehaviour, IMainMenuManager, IManager
     [SerializeField] private GameObject _quitMenu;
     [SerializeField] private GameObject _panelBarMenu;
     [SerializeField] private GameObject _user_Name_Panel;
-    [SerializeField] private GameObject _currentWindow; // Текущее окно
+    [SerializeField] private GameObject _currentWindow; // Г’ГҐГЄГіГ№ГҐГҐ Г®ГЄГ­Г®
 
     [SerializeField] private TMP_Text _user_Name;
     [SerializeField] private TMP_InputField _name;
@@ -28,21 +28,22 @@ public class MainMenuManager : MonoBehaviour, IMainMenuManager, IManager
     private IAutarizationManager _autarizationManager;
     private PlayerData _playerData;
 
-   private ButtonClickAudio _buttonClickAudio;
+    private ButtonClickAudio _buttonClickAudio;
   
     public void StartManager()
-    {
-        ActivateMenu();
-
+    { 
+  	    ActivateMenu();
+		
         GetBlurController();
         BlurOff();
 
         _saveManager=ServiceLocator.GetService<ISaveManager>();
         _autarizationManager=ServiceLocator.GetService<IAutarizationManager>();
-
-        _playerData = _autarizationManager.GetPlayerData();
+		
+		_playerData = _autarizationManager.GetPlayerData(); 
         if (_playerData != null)
         {
+			_isFirstEnter = false;
             _user_Name_Panel.SetActive(true);
             _user_Name.text = _playerData.name;
             _gameMenu.SetActive(true);
@@ -50,7 +51,7 @@ public class MainMenuManager : MonoBehaviour, IMainMenuManager, IManager
         }
         else
         {
-            _user_Name_Panel.SetActive(true);
+            _user_Name_Panel.SetActive(false);
             _firstStartMenu.SetActive(true);
         }
 
@@ -67,7 +68,7 @@ public class MainMenuManager : MonoBehaviour, IMainMenuManager, IManager
         _quitMenu.SetActive(false);
         //CloseCurrentWindow();
         //OpenGameMenu();
-        _panelBarMenu.SetActive(true);
+        _panelBarMenu.SetActive(false);
         _user_Name_Panel.SetActive(false);
     }
     private void GetBlurController()
@@ -88,23 +89,23 @@ public class MainMenuManager : MonoBehaviour, IMainMenuManager, IManager
         _saveLoadMenu._LoadGame -= SaveMenu_Refresh;
     }
 
-    // Отсюда я пытался настроить загрузку окон посредством загрузки префабов //////////////////////////////////////
-    // Но столкнулся с проблемой, почему то при поиске объекта - объект подключался к префабу в папке /////////////
-    // А не объекту на сцене Иеархии и поэтому не работали методы записи и загрузки///////////////////////////////
+    // ГЋГІГ±ГѕГ¤Г  Гї ГЇГ»ГІГ Г«Г±Гї Г­Г Г±ГІГ°Г®ГЁГІГј Г§Г ГЈГ°ГіГ§ГЄГі Г®ГЄГ®Г­ ГЇГ®Г±Г°ГҐГ¤Г±ГІГўГ®Г¬ Г§Г ГЈГ°ГіГ§ГЄГЁ ГЇГ°ГҐГґГ ГЎГ®Гў //////////////////////////////////////
+    // ГЌГ® Г±ГІГ®Г«ГЄГ­ГіГ«Г±Гї Г± ГЇГ°Г®ГЎГ«ГҐГ¬Г®Г©, ГЇГ®Г·ГҐГ¬Гі ГІГ® ГЇГ°ГЁ ГЇГ®ГЁГ±ГЄГҐ Г®ГЎГєГҐГЄГІГ  - Г®ГЎГєГҐГЄГІ ГЇГ®Г¤ГЄГ«ГѕГ·Г Г«Г±Гї ГЄ ГЇГ°ГҐГґГ ГЎГі Гў ГЇГ ГЇГЄГҐ /////////////
+    // ГЂ Г­ГҐ Г®ГЎГєГҐГЄГІГі Г­Г  Г±Г¶ГҐГ­ГҐ Г€ГҐГ Г°ГµГЁГЁ ГЁ ГЇГ®ГЅГІГ®Г¬Гі Г­ГҐ Г°Г ГЎГ®ГІГ Г«ГЁ Г¬ГҐГІГ®Г¤Г» Г§Г ГЇГЁГ±ГЁ ГЁ Г§Г ГЈГ°ГіГ§ГЄГЁ///////////////////////////////
 
     public void OpenMenuWindow(GameObject window)
     {
-        // Закрывайте текущее окно, если оно существует
+        // Г‡Г ГЄГ°Г»ГўГ Г©ГІГҐ ГІГҐГЄГіГ№ГҐГҐ Г®ГЄГ­Г®, ГҐГ±Г«ГЁ Г®Г­Г® Г±ГіГ№ГҐГ±ГІГўГіГҐГІ
         CloseCurrentWindow();
-        // Создание нового окна
+        // Г‘Г®Г§Г¤Г Г­ГЁГҐ Г­Г®ГўГ®ГЈГ® Г®ГЄГ­Г 
         _currentWindow = Instantiate(window);
-        // Убедитесь, что новое окно прикреплено к Canvas
+        // Г“ГЎГҐГ¤ГЁГІГҐГ±Гј, Г·ГІГ® Г­Г®ГўГ®ГҐ Г®ГЄГ­Г® ГЇГ°ГЁГЄГ°ГҐГЇГ«ГҐГ­Г® ГЄ Canvas
         _currentWindow.transform.SetParent(GameObject.Find("Background").transform, false);
         _currentWindow.SetActive(true) ;
         
        
     }
-    // Метод для закрытия текущего окна
+    // ГЊГҐГІГ®Г¤ Г¤Г«Гї Г§Г ГЄГ°Г»ГІГЁГї ГІГҐГЄГіГ№ГҐГЈГ® Г®ГЄГ­Г 
     public void CloseCurrentWindow()
     {
         if (_currentWindow != null)
@@ -147,7 +148,7 @@ public class MainMenuManager : MonoBehaviour, IMainMenuManager, IManager
         OpenMenuWindow(_quitMenu);
     }
 
-    ///////////////////////Вот по сюда, я страдал дичью////////////////////////////////
+    ///////////////////////Г‚Г®ГІ ГЇГ® Г±ГѕГ¤Г , Гї Г±ГІГ°Г Г¤Г Г« Г¤ГЁГ·ГјГѕ////////////////////////////////
 
     public void RefreshName()
     {
@@ -159,7 +160,7 @@ public class MainMenuManager : MonoBehaviour, IMainMenuManager, IManager
     public void StartGame()
     {
         SceneManager.LoadScene("Game");
-        //Использовать поиск скриптов для подключения
+        //Г€Г±ГЇГ®Г«ГјГ§Г®ГўГ ГІГј ГЇГ®ГЁГ±ГЄ Г±ГЄГ°ГЁГЇГІГ®Гў Г¤Г«Гї ГЇГ®Г¤ГЄГ«ГѕГ·ГҐГ­ГЁГї
     }
     public void LoadGame()
     {
@@ -171,7 +172,7 @@ public class MainMenuManager : MonoBehaviour, IMainMenuManager, IManager
         }
         else
         {
-            Debug.LogError("Пользователь не существует");
+            Debug.LogError("ГЏГ®Г«ГјГ§Г®ГўГ ГІГҐГ«Гј Г­ГҐ Г±ГіГ№ГҐГ±ГІГўГіГҐГІ");
         }
     }
     public void Create()
@@ -191,7 +192,7 @@ public class MainMenuManager : MonoBehaviour, IMainMenuManager, IManager
             
         }
         else
-            Debug.Log("Слишком короткое Имя, Введите длинее");
+            Debug.Log("Г‘Г«ГЁГёГЄГ®Г¬ ГЄГ®Г°Г®ГІГЄГ®ГҐ Г€Г¬Гї, Г‚ГўГҐГ¤ГЁГІГҐ Г¤Г«ГЁГ­ГҐГҐ");
 
     }
     private void SetCharacteristics()
@@ -224,10 +225,10 @@ public class MainMenuManager : MonoBehaviour, IMainMenuManager, IManager
     public void ExitApplication()
     {
 #if UNITY_EDITOR
-        // Если вы в редакторе Unity, останавливаем воспроизведение
+        // Г…Г±Г«ГЁ ГўГ» Гў Г°ГҐГ¤Г ГЄГІГ®Г°ГҐ Unity, Г®Г±ГІГ Г­Г ГўГ«ГЁГўГ ГҐГ¬ ГўГ®Г±ГЇГ°Г®ГЁГ§ГўГҐГ¤ГҐГ­ГЁГҐ
         UnityEditor.EditorApplication.isPlaying = false;
 #else
-            // Если вы на реальной сборке, выходим из приложения
+            // Г…Г±Г«ГЁ ГўГ» Г­Г  Г°ГҐГ Г«ГјГ­Г®Г© Г±ГЎГ®Г°ГЄГҐ, ГўГ»ГµГ®Г¤ГЁГ¬ ГЁГ§ ГЇГ°ГЁГ«Г®Г¦ГҐГ­ГЁГї
             Application.Quit();
 #endif
     }
