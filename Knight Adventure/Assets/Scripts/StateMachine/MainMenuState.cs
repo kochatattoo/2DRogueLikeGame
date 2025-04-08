@@ -3,6 +3,7 @@ using UnityEngine;
     public class MainMenuState: IGameState
     {
         private GameStateManager _stateManager;
+		private MainMenuManager _menuManager;
 
         public MainMenuState(GameStateManager stateManager)
         {
@@ -13,10 +14,10 @@ using UnityEngine;
         {
             Debug.Log("Entering Main Menu State");
             // Здесь можно добавить код для инициализации состояния меню
-			var menuManager = FindObjectOfType<MainMenuManager>();
-			if (menuManager != null)
+			_menuManager = FindObjectOfType<MainMenuManager>();
+			if (_menuManager != null)
 			{
-				menuManager.StartManager();
+				_menuManager.StartManager();
 			}
 			
         }
@@ -30,6 +31,10 @@ using UnityEngine;
         {
             Debug.Log("Exiting Main Menu State");
             // Здесь можно добавить код для очистки состояния
+			if(_menuManager != null)
+			{
+				_menuManager.DisableManager();
+			}
         }
     }
 
