@@ -1,39 +1,42 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-    public class MainMenuState: IGameState
+public class MainMenuState: IGameState
     {
         private GameStateManager _stateManager;
-		private MainMenuManager _menuManager;
+		private MainMenuManager _mainMenuManager;
+        private GameInput _gameInput;
 
-        public MainMenuState(GameStateManager stateManager)
+        public MainMenuState(GameStateManager stateManager, MainMenuManager mainMenuManager)
         {
-            _stateManager = stateManager;
+           _stateManager = stateManager;
+           _mainMenuManager = mainMenuManager;
         }
 
         public void Enter()
         {
             Debug.Log("Entering Main Menu State");
             // Здесь можно добавить код для инициализации состояния меню
-			_menuManager = _stateManager.FindObject<MainMenuManager>();
-			if (_menuManager != null)
+			_mainMenuManager = _stateManager.FindObject<MainMenuManager>();
+			if (_mainMenuManager != null)
 			{
-				_menuManager.StartManager();
+				_mainMenuManager.StartManager();
 			}
 			
         }
 
         public void Update()
         {
-            // Здесь можно обработать ввод пользователя для изменения состояния
+           // _stateManager.ChangeState(new PlayState(_stateManager)); 
         }
 
         public void Exit()
         {
             Debug.Log("Exiting Main Menu State");
             // Здесь можно добавить код для очистки состояния
-			if(_menuManager != null)
+			if(_mainMenuManager != null)
 			{
-				_menuManager.DisableManager();
+				_mainMenuManager.DisableManager();
 			}
         }
     }

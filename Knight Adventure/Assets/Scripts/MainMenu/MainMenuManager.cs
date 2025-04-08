@@ -159,12 +159,9 @@ public class MainMenuManager : MonoBehaviour, IMainMenuManager, IManager
     public void StartGame()
     {
         SceneManager.LoadScene("Game");
-        //Èñïîëüçîâàòü ïîèñê ñêðèïòîâ äëÿ ïîäêëþ÷åíèÿ
     }
     public void LoadGame()
     {
-
-        //if (_saveManager.LoadLastGame() != null)
         if(_playerData !=null)
         {
             SceneManager.LoadScene("Game");
@@ -185,8 +182,6 @@ public class MainMenuManager : MonoBehaviour, IMainMenuManager, IManager
             SetCharacteristics();
             SetRewardsAndAchivements();
             _autarizationManager.SetPlayerData(_playerData);
-
-            //SaveManager.SaveUser(User.Instance);
             _saveManager.SaveGame(_playerData, InputName);
             
         }

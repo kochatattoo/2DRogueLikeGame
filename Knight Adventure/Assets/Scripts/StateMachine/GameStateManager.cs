@@ -3,11 +3,13 @@
 public class GameStateManager : MonoBehaviour
 {
     private IGameState _currentState;
+    private MainMenuManager _mainMenuManager;
 
     private void Start()
     {
+        _mainMenuManager = FindObjectOfType<MainMenuManager>();
         // Устанавливаем начальное состояние
-        ChangeState(new MainMenuState(this));
+        ChangeState(new MainMenuState(this, _mainMenuManager));
     }
 
     private void Update()
