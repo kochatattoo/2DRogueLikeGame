@@ -2,14 +2,33 @@
 
 [System.Serializable]
 public class PlayerData
+{
+   public PlayerStats playerStats;
+   public PlayerAchievements playerAchievements;
+   public Inventory playerInventory;
+
+   public string name;
+   public int level;
+   public int coins;
+
+   public PlayerData CreatePlayer(string name)
     {
-        public PlayerStats playerStats;
-        public PlayerAchievements playerAchievements;
-        public Inventory playerInventory;
+        var newPlayer = new PlayerData();
+        newPlayer.name = name;
+        newPlayer.level = 1;
+        newPlayer.coins = 0;
+        newPlayer.SetStartStats(name);
+        newPlayer.SetStartAchievements();
 
-        public string name = "";
-        public int level = 1;
-        public int coins = 10;
-
+        return newPlayer;
     }
+    private void SetStartStats(string name)
+    {
+        playerStats.CreatePlayerCharacteristics(name);
+    }
+    private void SetStartAchievements()
+    {
+        playerAchievements = new PlayerAchievements();
+    }
+}
 

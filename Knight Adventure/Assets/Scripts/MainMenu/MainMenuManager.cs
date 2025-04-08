@@ -18,7 +18,7 @@ public class MainMenuManager : MonoBehaviour, IMainMenuManager, IManager
     [SerializeField] private GameObject _currentWindow; // Òåêóùåå îêíî
 
     [SerializeField] private TMP_Text _user_Name;
-    [SerializeField] private TMP_InputField _name;
+    [SerializeField] private TMP_InputField _nameInputField;
 
     [SerializeField] private SaveLoadMenu _saveLoadMenu;
     [SerializeField] private GameObject _background;
@@ -123,8 +123,8 @@ public class MainMenuManager : MonoBehaviour, IMainMenuManager, IManager
     {
         OpenMenuWindow(_startMenu);
 
-        _name = FindObjectOfType<TMP_InputField>();
-        Debug.Log(_name);
+        _nameInputField = FindObjectOfType<TMP_InputField>();
+        Debug.Log(_nameInputField);
     }
 
     public void OpenLoadMenu()
@@ -173,14 +173,12 @@ public class MainMenuManager : MonoBehaviour, IMainMenuManager, IManager
     }
     public void Create()
     {
-        string InputName=_name.text;
-        if (_name.text.Length > 4)
+        string InputName=_nameInputField.text;
+        if (_nameInputField.text.Length > 4)
         {
 
-            _playerData.name=InputName;
+            _playerData = _playerData.CreatePlayer(InputName);
 
-            SetCharacteristics();
-            SetRewardsAndAchivements();
             _autarizationManager.SetPlayerData(_playerData);
             _saveManager.SaveGame(_playerData, InputName);
             
@@ -194,14 +192,7 @@ public class MainMenuManager : MonoBehaviour, IMainMenuManager, IManager
            
 
     }
-    private void SetCharacteristics()
-    {
-        _playerData.playerStats.CreatePlayerCharacteristics(_playerData);
-    }
-    private void SetRewardsAndAchivements()
-    {
-        _playerData.playerAchievements = new Assets.Scripts.Player.PlayerAchievements();
-    }
+  
     public void BlurOn()
     {
         if (_blurMaterial != null)

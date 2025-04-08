@@ -17,10 +17,10 @@ namespace Assets.Scripts.Player
         public int intelligence;
         public int agility;
 
-        public void CreatePlayerCharacteristics(PlayerData playerData)
+        public void CreatePlayerCharacteristics(string name)
         {
             // Заглушка для создания характеристики персонажа
-            characterName =playerData.name;
+            characterName =name;
             level = 1;
             currentExperience = 0f;
             experienceToNextLevel = 10f;
