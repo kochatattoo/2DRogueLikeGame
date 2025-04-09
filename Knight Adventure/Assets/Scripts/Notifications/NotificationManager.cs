@@ -8,9 +8,11 @@ using UnityEngine;
     private GameObject[] uiPrefabsPriorityWindows;
     private AudioSource _audioSource;
     public AudioClip[] uiPrefabsSounds;
-    
+
     public void StartManager()
     {
+        gameObject.SetActive(true);
+
         _resourcesLoadManager = gameObject.AddComponent<ResourcesLoadManager>(); ;
         _audioSource = gameObject.AddComponent<AudioSource>();
         _audioSource.GetComponent<AudioSource>();

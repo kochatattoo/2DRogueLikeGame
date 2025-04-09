@@ -10,6 +10,7 @@ public class MapManager : MonoBehaviour, IManager, IMapManager
 
     public void StartManager()
     {
+        gameObject.SetActive(true);
         LoadMapFromResources();
         LoadMap(currentMapIndex);
     }

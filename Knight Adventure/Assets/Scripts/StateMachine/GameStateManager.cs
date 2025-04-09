@@ -1,15 +1,13 @@
 ﻿using UnityEngine;
 
-public class GameStateManager : MonoBehaviour
+public class GameStateManager 
 {
     private IGameState _currentState;
     private MainMenuManager _mainMenuManager;
 
     private void Start()
     {
-        //_mainMenuManager = FindObjectOfType<MainMenuManager>();
-        // Устанавливаем начальное состояние
-        //ChangeState(new MainMenuState(this, _mainMenuManager));
+       
     }
 
     private void Update()
@@ -28,21 +26,5 @@ public class GameStateManager : MonoBehaviour
         // Вход в новое состояние
         _currentState.Enter();
     }
-    public MainMenuManager FindMainMenu()
-    {
-        var findObect = FindObjectOfType<MainMenuManager>();
-        return findObect;
-    }
-
-    public T FindObject<T>() where T : MonoBehaviour
-    {
-        T foundObject = GameObject.FindObjectOfType<T>();
-
-        if (foundObject == null)
-        {
-            Debug.LogWarning($"Object of type {typeof(T)} not found!");
-        }
-
-        return foundObject;
-    }
+ 
 }

@@ -27,8 +27,11 @@ using UnityEngine.SceneManagement;
     private ResourcesLoadManager resourcesLoadManager;
     private PlayerData _playerData;
 
+
     public void StartManager()
     {
+        gameObject.SetActive (true);
+
         resourcesLoadManager = gameObject.AddComponent<ResourcesLoadManager>();
         var autarizationManager = ServiceLocator.GetService<IAutarizationManager>();
         _playerData = autarizationManager.GetPlayerData();

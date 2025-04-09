@@ -29,10 +29,10 @@ public class BootsTrapManager : MonoBehaviour
     private void InitializeGameStateManager()
     {
         // Ñîçäàåì îáúåêò GameStateManager
-        GameObject gameStateManager = new GameObject("GameStateManager");
-        gameStateManager.AddComponent<GameStateManager>();
+        //GameObject gameStateManager = new GameObject("GameStateManager");
+       var  gameStateManager = new GameStateManager();
 		
-        DontDestroyOnLoad(gameStateManager);
+       // DontDestroyOnLoad(gameStateManager);
     }
 
     private void InitializeManager()

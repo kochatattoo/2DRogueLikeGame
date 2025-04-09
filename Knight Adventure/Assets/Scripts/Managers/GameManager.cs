@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour, IManager, IGameManager
 
     private void Start()
     {
+        gameObject.SetActive(true);
         var saveManagerLocator = ServiceLocator.GetService<ISaveManager>();
         playerData = saveManagerLocator.LoadLastGame();
       

@@ -15,6 +15,7 @@ public class StartScreenManager : MonoBehaviour, IManager, IStartScreenManager
 
     public void StartManager()
     {
+        gameObject.SetActive(true);
         ResourcesLoadManager resourcesLoadManager  = gameObject.AddComponent<ResourcesLoadManager>(); 
         startScreenPrefab = resourcesLoadManager.LoadStartScreenWindow("Star_Screen_Window");
         // startScreenPrefab = Resources.Load<GameObject>("Windows/StartScreenWindow/Star_Screen_Window");

@@ -21,6 +21,7 @@ public class GameInput : MonoBehaviour, IManager, IGameInput
 
     public void StartManager()
     {
+        gameObject.SetActive(true);
         //вводим playerInputAction, делаем его доступным
         _playerInputActions = new PlayerInputActions();
         _playerInputActions.Enable();

@@ -11,7 +11,8 @@ public class AutarizationManager : MonoBehaviour, IManager, IAutarizationManager
     private ISaveManager _saveManager;
     public void StartManager()
     {
-        _saveManager=ServiceLocator.GetService<ISaveManager>();
+        gameObject.SetActive(true);
+        _saveManager =ServiceLocator.GetService<ISaveManager>();
 
         _playerData = _saveManager.LoadLastGame();
     }

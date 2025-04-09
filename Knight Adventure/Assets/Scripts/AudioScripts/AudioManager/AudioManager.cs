@@ -21,9 +21,11 @@ public class AudioManager : MonoBehaviour,IManager, IAudioManager
 
     [SerializeField] private AudioPlayer _playerAudio;
     [SerializeField] private AudioClip[] _clips;  // Ну сюда надо загружать аудиоКлипы ДОН ( но по СОЛИД ДОН, надо сделать отдельный скрипт для такого ДОН)
-    
+  
     public void StartManager()
     {
+        gameObject.SetActive(true);
+
         _resourcesLoadManager = gameObject.AddComponent<ResourcesLoadManager>();
         _buttonClickAudio = gameObject.AddComponent<ButtonClickAudio>();
         _buttonClickAudio.StartScript();

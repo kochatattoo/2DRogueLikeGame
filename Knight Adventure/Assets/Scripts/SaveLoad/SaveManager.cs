@@ -13,6 +13,8 @@ public class SaveManager : MonoBehaviour, IManager, ISaveManager
 
     public void StartManager()
     {
+        gameObject.SetActive(true);
+
         saveDirectory = Application.persistentDataPath + "/saves/";
 
         if (!Directory.Exists(saveDirectory))

@@ -25,7 +25,7 @@ public class InitializationManager : MonoBehaviour, IManager
     {
         if (Instance == null)
         {
-            _stateMachine = gameObject.AddComponent<GameStateManager>();
+            _stateMachine = new GameStateManager();
            
             Instance = this; // Установка экземпляра
             DontDestroyOnLoad(gameObject); // Не уничтожать при загрузке новой сцены
@@ -45,59 +45,73 @@ public class InitializationManager : MonoBehaviour, IManager
             Destroy(gameObject); // Удаляем второй экземпляр
         }
     }
-   
+    private void InitializeStates()
+    {
+        _stateMachine.ChangeState(new ResourceLoadingState(this));
+        _stateMachine.ChangeState(new ManagerCreationState(this));
+        _stateMachine.ChangeState(new StartingGameState(this));
+    }
     public void CreateAndRegisterManagers()
     {
         GameObject notificationManagerPrefab = resourcesLoadManager.LoadManager("NotificationManager");
         GameObject notificationManagerInstance = Instantiate(notificationManagerPrefab);
+        notificationManagerInstance.gameObject.SetActive(false);
         var notifiactionManager = notificationManagerInstance.GetComponent<NotificationManager>();
         ServiceLocator.RegisterService<INotificationManager>(notifiactionManager);
         DontDestroyOnLoad(notificationManagerInstance);
 
         GameObject audioManagerPrefab = resourcesLoadManager.LoadManager("AudioManager");
         GameObject audioManagerInstance = Instantiate(audioManagerPrefab);
+        audioManagerInstance.gameObject.SetActive(false);
         var audioManager = audioManagerInstance.GetComponent<AudioManager>();
         ServiceLocator.RegisterService<IAudioManager>(audioManager);
         DontDestroyOnLoad(audioManagerInstance);
 
         GameObject saveManagerPrefab = resourcesLoadManager.LoadManager("SaveLoadManager");
         GameObject saveManagerInstance = Instantiate(saveManagerPrefab);
+        saveManagerInstance.gameObject.SetActive(false);
         var saveManager = saveManagerInstance.GetComponent<SaveManager>();
         ServiceLocator.RegisterService<ISaveManager>(saveManager);
         DontDestroyOnLoad(saveManagerInstance);
 
         GameObject autarizationManagerPrefab = resourcesLoadManager.LoadManager("AutarizationManager");
         GameObject autarizationManagerInstance = Instantiate(autarizationManagerPrefab);
+        autarizationManagerInstance.gameObject.SetActive(false);
         var autarizationManager = autarizationManagerInstance.GetComponent<AutarizationManager>();
         ServiceLocator.RegisterService<IAutarizationManager>(autarizationManager);
         DontDestroyOnLoad(autarizationManagerInstance);
 
         GameObject gameInputManagerPrefab = resourcesLoadManager.LoadManager("GameInput");
         GameObject gameInputManagerInstance = Instantiate(gameInputManagerPrefab);
+        gameInputManagerInstance.gameObject.SetActive(false);
         var gameInputManager = gameInputManagerInstance.GetComponent<GameInput>();
         ServiceLocator.RegisterService<IGameInput>(gameInputManager);
         DontDestroyOnLoad(gameInputManagerInstance);
 
         GameObject mapManagerPrefab = resourcesLoadManager.LoadManager("MapManager");
         GameObject mapManagerInstance = Instantiate(mapManagerPrefab);
+        mapManagerInstance.gameObject.SetActive(false);
         var mapManager = mapManagerInstance.GetComponent<MapManager>();
         ServiceLocator.RegisterService<IMapManager>(mapManager);
         DontDestroyOnLoad(mapManagerInstance);
 
         GameObject guiManagerPrefab = resourcesLoadManager.LoadManager("GUI_Manager");
         GameObject guiManagerInstance = Instantiate(guiManagerPrefab);
+        guiManagerInstance.gameObject.SetActive(false);
         var guiManager = guiManagerInstance.GetComponent<GUIManager>();
         ServiceLocator.RegisterService<IGUIManager>(guiManager);
         DontDestroyOnLoad(guiManagerInstance);
 
         GameObject startScreenManagerPrefab = resourcesLoadManager.LoadManager("StartScreenManager");
         GameObject startScreenManagerInstance = Instantiate(startScreenManagerPrefab);
+        startScreenManagerInstance.gameObject.SetActive(false);
         var startScreenManager = startScreenManagerInstance.GetComponent<StartScreenManager>();
         ServiceLocator.RegisterService<IStartScreenManager>(startScreenManager);
         DontDestroyOnLoad(startScreenManagerInstance);
 
         GameObject gameManagerPrefab = resourcesLoadManager.LoadManager("GameManager");
         GameObject gameManagerInstance = Instantiate(gameManagerPrefab);
+        gameManagerInstance.gameObject.SetActive(false);
         var gameManager = gameManagerInstance.GetComponent<GameManager>();
         ServiceLocator.RegisterService<IGameManager>(gameManager);
         DontDestroyOnLoad(gameManagerInstance);
@@ -142,14 +156,10 @@ public class InitializationManager : MonoBehaviour, IManager
         switch (sceneName)
         {
             case "Menu": //Сцена меню
-               // EnableMenuManagers();
-               // DisableGameManagers();
                 _stateMachine.ChangeState(new MainMenuState(this));
                 break;
 
             case "Game": //Сцена игры
-              //  DisableMenuManagers();
-              //  EnableGameManagers();
                 _stateMachine.ChangeState(new PlayState(this));
                 break;
             default:
@@ -174,7 +184,7 @@ public class InitializationManager : MonoBehaviour, IManager
         }
     }
 
-    private void EnableGameManagers()
+    public void EnableGameManagers()
     {
         // Включаем игровые менеджеры
         var gameInputManager = ServiceLocator.GetService<IGameInput>();
@@ -216,13 +226,10 @@ public class InitializationManager : MonoBehaviour, IManager
         SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 
+  
+    ////////////////////////////////////////////////////////////////////////////
     // Где то тут я пытаюсь переписать на асинхронность и машину состояний
-    private void InitializeStates()
-    {
-        _stateMachine.ChangeState(new ResourceLoadingState(this));
-        _stateMachine.ChangeState(new ManagerCreationState(this));
-        _stateMachine.ChangeState(new StartingGameState(this));
-    }
+
     public void LoadResources()
     {
         _coroutine = StartCoroutine(LoadAndInitializeManagers()); // Начинаем вызов корутины
