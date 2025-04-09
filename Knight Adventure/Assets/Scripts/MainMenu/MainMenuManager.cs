@@ -168,7 +168,9 @@ public class MainMenuManager : MonoBehaviour, IMainMenuManager, IManager
         }
         else
         {
-            Debug.LogError("Ïîëüçîâàòåëü íå ñóùåñòâóåò");
+            var notificationManager = ServiceLocator.GetService<INotificationManager>();
+            notificationManager.OpenNotificationWindow("Error", "Player don't load");
+            Debug.Log("Игрок не загружен");
         }
     }
     public void Create()

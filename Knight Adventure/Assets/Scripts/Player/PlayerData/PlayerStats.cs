@@ -10,7 +10,7 @@ namespace Assets.Scripts.Player
         public float experienceToNextLevel;
         public float speed;
         public float maxHealth;
-        public int maxMana;
+        public float maxMana;
         public int attack;
         public int defense;
         public int strength;
@@ -26,12 +26,22 @@ namespace Assets.Scripts.Player
             experienceToNextLevel = 10f;
             speed =  15.0f;
             maxHealth = 15.0f;
-            maxMana = 15;
+            maxMana = 15.0f;
             attack = 2;
             defense = 2;
             strength = 5;
             intelligence = 5;
             agility = 5;
+        }
+
+        public void CreatePlayerCharacteristicStats(float MaxHealth, float MaxMana, int Defense, int Strength, int Agility, int Intelligence)
+        {
+            maxHealth = MaxHealth;
+            maxMana = MaxMana;
+            defense= Defense;
+            strength = Strength;
+            agility= Agility;
+            intelligence= Intelligence;
         }
     }
 }

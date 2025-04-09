@@ -1,6 +1,8 @@
 using UnityEngine;
 using System;
 using Assets.ServiceLocator;
+using Assets.Scripts.Interfaces;
+using Assets.Scripts.Exceptions;
 
 public class MagicalBall : MonoBehaviour
 {
@@ -69,7 +71,10 @@ public class MagicalBall : MonoBehaviour
         }
         else
         {
+            var notificationManager = ServiceLocator.GetService<INotificationManager>();
+            notificationManager.PlayNotificationAudio("Error");
             Debug.LogError("MagicalBall prefab or shootPoint is not assigned.");
+            throw new CustomException("MagicalBall prefab or shootPoint is not assigned."); // TODO: не то что бы понял как работает
         }
     }
 
