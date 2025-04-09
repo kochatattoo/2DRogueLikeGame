@@ -2,38 +2,51 @@
 using Assets.Scripts.Interfaces;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Collections;
+using System.Runtime.InteropServices.WindowsRuntime;
 
 public class InitializationManager : MonoBehaviour, IManager
 {
+    private static InitializationManager Instance { get; set; }
     private ResourcesLoadManager resourcesLoadManager;
-    private static InitializationManager Instance { get; set;}
+
+    // Использую их для реакторинга кода
+    private GameStateManager _stateMachine;
+    private Coroutine _coroutine;
+
+    private string _sceneName;
 
     private void Awake()
     {
         StartManager();
     }
-
+   
     public void StartManager()
     {
         if (Instance == null)
         {
+            _stateMachine = gameObject.AddComponent<GameStateManager>();
+           
             Instance = this; // Установка экземпляра
             DontDestroyOnLoad(gameObject); // Не уничтожать при загрузке новой сцены
 
             resourcesLoadManager = gameObject.AddComponent<ResourcesLoadManager>(); // Создаем экземпляр ResourcesLoadManager
             SceneManager.sceneLoaded += OnSceneLoaded; //Подписка на событие загрузки сцены
 
-            CreateAndRegisterManagers();
-            StartGame();
+            InitializeStates();
+
+            // _coroutine = StartCoroutine(LoadAndInitializeManagers()); // Начинаем вызов корутины
+
+            // CreateAndRegisterManagers();
+            // StartGame();
         }
         else
         {
             Destroy(gameObject); // Удаляем второй экземпляр
         }
     }
-  
- 
-    private void CreateAndRegisterManagers()
+   
+    public void CreateAndRegisterManagers()
     {
         GameObject notificationManagerPrefab = resourcesLoadManager.LoadManager("NotificationManager");
         GameObject notificationManagerInstance = Instantiate(notificationManagerPrefab);
@@ -90,7 +103,8 @@ public class InitializationManager : MonoBehaviour, IManager
         DontDestroyOnLoad(gameManagerInstance);
 
     }
-    private void StartGame()
+  
+    public void StartGame() // TODO
     {
         var notificationManager = ServiceLocator.GetService<INotificationManager>();
         notificationManager.StartManager();
@@ -112,9 +126,15 @@ public class InitializationManager : MonoBehaviour, IManager
         {
             menuManager.StartManager();
         }
+
+        HandleSceneChange(_sceneName); // TODO
     }
+
+    // Из за проверок здесь, вызываются ошибки при инициализации менеджеров в необходимом поряде с корутинами
+    // Надо изменять на машину состояний и отслеживать в ней
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
+        _sceneName = scene.name;
         HandleSceneChange(scene.name);
     }
     private void HandleSceneChange(string sceneName)
@@ -122,19 +142,21 @@ public class InitializationManager : MonoBehaviour, IManager
         switch (sceneName)
         {
             case "Menu": //Сцена меню
-                EnableMenuManagers();
-                DisableGameManagers();
+               // EnableMenuManagers();
+               // DisableGameManagers();
+                _stateMachine.ChangeState(new MainMenuState(this));
                 break;
 
             case "Game": //Сцена игры
-                DisableMenuManagers();
-                EnableGameManagers();
+              //  DisableMenuManagers();
+              //  EnableGameManagers();
+                _stateMachine.ChangeState(new PlayState(this));
                 break;
             default:
                 break;
         }
     }
-    private void EnableMenuManagers()
+    public void EnableMenuManagers()
     {
        var menuManager= FindObjectOfType<MainMenuManager>();
         if (menuManager != null)
@@ -143,7 +165,7 @@ public class InitializationManager : MonoBehaviour, IManager
         }
     }
 
-    private void DisableMenuManagers()
+    public void DisableMenuManagers()
     {
         var menuManager = FindObjectOfType<MainMenuManager>();
         if (menuManager != null)
@@ -174,7 +196,7 @@ public class InitializationManager : MonoBehaviour, IManager
         audioManager.InitializePlayerAudio();
     }
 
-    private void DisableGameManagers()
+    public void DisableGameManagers()
     {
         // Отключаем игровые менеджеры
         var gameInputManager = ServiceLocator.GetService<IGameInput>();
@@ -192,5 +214,53 @@ public class InitializationManager : MonoBehaviour, IManager
     {
         // Отписка от событий
         SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    // Где то тут я пытаюсь переписать на асинхронность и машину состояний
+    private void InitializeStates()
+    {
+        _stateMachine.ChangeState(new ResourceLoadingState(this));
+        _stateMachine.ChangeState(new ManagerCreationState(this));
+        _stateMachine.ChangeState(new StartingGameState(this));
+    }
+    public void LoadResources()
+    {
+        _coroutine = StartCoroutine(LoadAndInitializeManagers()); // Начинаем вызов корутины
+    }
+    private IEnumerator LoadAndInitializeManagers()
+    {
+        yield return LoadManager<INotificationManager, NotificationManager>("NotificationManager");
+        yield return LoadManager<IAudioManager, AudioManager>("AudioManager");
+        yield return LoadManager<ISaveManager, SaveManager>("SaveLoadManager");
+        yield return LoadManager<IAutarizationManager, AutarizationManager>("AutarizationManager");
+        yield return LoadManager<IGameInput, GameInput>("GameInput");
+        yield return LoadManager<IMapManager, MapManager>("MapManager");
+        yield return LoadManager<IGUIManager, GUIManager>("GUI_Manager");
+        yield return LoadManager<IStartScreenManager, StartScreenManager>("StartScreenManager");
+        yield return LoadManager<IGameManager, GameManager>("GameManager");
+
+        StartGame();
+    }
+    private IEnumerator LoadManager<TInterface, TImplementation>(string resourceName)
+        where TInterface : class
+        where TImplementation : MonoBehaviour, TInterface
+    {
+        // Загрузка префаба асинхронно
+        GameObject prefab = resourcesLoadManager.LoadManager(resourceName);
+        yield return new WaitUntil(() => prefab != null); // Даём время на загрузку (можно заменить на асинхронный метод)
+
+        GameObject instance = Instantiate(prefab);
+        var manager = instance.GetComponent<TImplementation>();
+
+        if (manager != null)
+        {
+            ServiceLocator.RegisterService<TInterface>(manager);
+            Debug.Log("Service " + resourceName + " was loaded");
+            DontDestroyOnLoad(instance);
+        }
+        else
+        {
+            Debug.LogError($"Failed to get component of type {typeof(TImplementation)} from {resourceName}");
+        }
     }
 }

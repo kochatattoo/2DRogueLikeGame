@@ -43,8 +43,8 @@ public class MainMenuManager : MonoBehaviour, IMainMenuManager, IManager
 		_playerData = _autarizationManager.GetPlayerData(); 
         if (_playerData != null)
         {
-            _user_Name_Panel.SetActive(true);
             _user_Name.text = _playerData.name;
+            _user_Name_Panel.SetActive(true);
             _gameMenu.SetActive(true);
             Debug.Log(_playerData.name + "User name !=null");
         }
@@ -65,9 +65,7 @@ public class MainMenuManager : MonoBehaviour, IMainMenuManager, IManager
         _loadMenu.SetActive(false);
         _optionMenu.SetActive(false);
         _quitMenu.SetActive(false);
-        //CloseCurrentWindow();
-        //OpenGameMenu();
-        _panelBarMenu.SetActive(false);
+        _panelBarMenu.SetActive(true);
         _user_Name_Panel.SetActive(false);
     }
     private void GetBlurController()
@@ -87,68 +85,6 @@ public class MainMenuManager : MonoBehaviour, IMainMenuManager, IManager
     {
         _saveLoadMenu._LoadGame -= SaveMenu_Refresh;
     }
-
-    // Îòñþäà ÿ ïûòàëñÿ íàñòðîèòü çàãðóçêó îêîí ïîñðåäñòâîì çàãðóçêè ïðåôàáîâ //////////////////////////////////////
-    // Íî ñòîëêíóëñÿ ñ ïðîáëåìîé, ïî÷åìó òî ïðè ïîèñêå îáúåêòà - îáúåêò ïîäêëþ÷àëñÿ ê ïðåôàáó â ïàïêå /////////////
-    // À íå îáúåêòó íà ñöåíå Èåàðõèè è ïîýòîìó íå ðàáîòàëè ìåòîäû çàïèñè è çàãðóçêè///////////////////////////////
-
-    public void OpenMenuWindow(GameObject window)
-    {
-        // Çàêðûâàéòå òåêóùåå îêíî, åñëè îíî ñóùåñòâóåò
-        CloseCurrentWindow();
-        // Ñîçäàíèå íîâîãî îêíà
-        _currentWindow = Instantiate(window);
-        // Óáåäèòåñü, ÷òî íîâîå îêíî ïðèêðåïëåíî ê Canvas
-        _currentWindow.transform.SetParent(GameObject.Find("Background").transform, false);
-        _currentWindow.SetActive(true) ;
-        
-       
-    }
-    // Ìåòîä äëÿ çàêðûòèÿ òåêóùåãî îêíà
-    public void CloseCurrentWindow()
-    {
-        if (_currentWindow != null)
-        {
-            Destroy(_currentWindow);
-            _currentWindow = null;
-        }
-    }
-
-    public void OpenGameMenu()
-    {
-        OpenMenuWindow(_gameMenu);
-    }
-
-    public void OpenStartMenu()
-    {
-        OpenMenuWindow(_startMenu);
-
-        _nameInputField = FindObjectOfType<TMP_InputField>();
-        Debug.Log(_nameInputField);
-    }
-
-    public void OpenLoadMenu()
-    {
-        OpenMenuWindow(_loadMenu);
-
-        _saveLoadMenu = FindObjectOfType<SaveLoadMenu>();
-        _saveLoadMenu._LoadGame += SaveMenu_Refresh;
-
-        Debug.Log(_saveLoadMenu);
-    }
-
-    public void OpenOptionMenu()
-    {
-        OpenMenuWindow(_optionMenu);
-    }
-
-    public void OpenQuitMenu()
-    {
-        OpenMenuWindow(_quitMenu);
-    }
-
-    ///////////////////////Âîò ïî ñþäà, ÿ ñòðàäàë äè÷üþ////////////////////////////////
-
     public void RefreshName()
     {
         _user_Name.text = _autarizationManager.GetPlayerData().name;
@@ -158,12 +94,23 @@ public class MainMenuManager : MonoBehaviour, IMainMenuManager, IManager
 
     public void StartGame()
     {
-        SceneManager.LoadScene("Game");
+        if (_playerData != null)
+        {
+            BlurOff();
+            SceneManager.LoadScene("Game");
+        }
+        else
+        {
+            var notificationManager = ServiceLocator.GetService<INotificationManager>();
+            notificationManager.OpenNotificationWindow("Error", "Player don't create");
+            Debug.Log("Игрок не создан");
+        }
     }
     public void LoadGame()
     {
         if(_playerData !=null)
         {
+            BlurOff();
             SceneManager.LoadScene("Game");
         }
         else
@@ -175,24 +122,22 @@ public class MainMenuManager : MonoBehaviour, IMainMenuManager, IManager
     }
     public void Create()
     {
-        string InputName=_nameInputField.text;
-        if (_nameInputField.text.Length > 4)
-        {
+        do {
+            string InputName = _nameInputField.text;
+            if (_nameInputField.text.Length > 4)
+            {
+                _playerData = _playerData.CreatePlayer(InputName);
+                _autarizationManager.SetPlayerData(_playerData);
+                _saveManager.SaveGame(_playerData, InputName);
 
-            _playerData = _playerData.CreatePlayer(InputName);
-
-            _autarizationManager.SetPlayerData(_playerData);
-            _saveManager.SaveGame(_playerData, InputName);
-            
-        }
-        else
-        {
-            var notificationManager = ServiceLocator.GetService<INotificationManager>();
-            notificationManager.OpenNotificationWindow("Error", "Name cann't be less then 4 symbols");
-            Debug.Log("Имя должно быть не меньше 4х символов");
-        }
-           
-
+            }
+            else
+            {
+                var notificationManager = ServiceLocator.GetService<INotificationManager>();
+                notificationManager.OpenNotificationWindow("Error", "Name cann't be less then 4 symbols");
+                Debug.Log("Имя должно быть не меньше 4х символов");
+            }
+        } while (_nameInputField.text.Length < 4);
     }
   
     public void BlurOn()

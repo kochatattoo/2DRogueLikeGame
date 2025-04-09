@@ -3,11 +3,11 @@ using Assets.Scripts.Interfaces;
 using Assets.ServiceLocator;
     public class PlayState : IGameState
     {
-        private GameStateManager _stateManager;
-
-        public PlayState(GameStateManager stateManager)
+        private InitializationManager _initializationManager;
+    
+        public PlayState(InitializationManager initManager)
         {
-            _stateManager = stateManager;
+            _initializationManager = initManager;
         }
 
         public void Enter()

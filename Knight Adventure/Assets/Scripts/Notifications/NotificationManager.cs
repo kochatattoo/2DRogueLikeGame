@@ -22,7 +22,6 @@ using UnityEngine;
     private void LoadNotificationWindows()
     {
         uiPrefabsPriorityWindows = new GameObject[1];
-
         uiPrefabsPriorityWindows[0] = _resourcesLoadManager.LoadPriorityWindow("Window_Warning");
     }
     private void LoadNotificationAudioClips()

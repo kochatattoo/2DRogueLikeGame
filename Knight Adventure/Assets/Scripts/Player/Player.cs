@@ -37,6 +37,7 @@ public class Player : MonoBehaviour
     [SerializeField] private float _maxMana { get; set; }
     [SerializeField] private float _maxExpirience { get; set; }
     [SerializeField] private float _damageRecoveryTime = 0.5f;
+
     Vector2 _inputVector;
 
     //Переменные RigidBody (физика) и класс отвечающий за отталкивание при получении урона

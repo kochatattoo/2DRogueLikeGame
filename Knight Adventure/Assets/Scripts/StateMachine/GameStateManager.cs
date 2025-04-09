@@ -7,9 +7,9 @@ public class GameStateManager : MonoBehaviour
 
     private void Start()
     {
-        _mainMenuManager = FindObjectOfType<MainMenuManager>();
+        //_mainMenuManager = FindObjectOfType<MainMenuManager>();
         // Устанавливаем начальное состояние
-        ChangeState(new MainMenuState(this, _mainMenuManager));
+        //ChangeState(new MainMenuState(this, _mainMenuManager));
     }
 
     private void Update()
