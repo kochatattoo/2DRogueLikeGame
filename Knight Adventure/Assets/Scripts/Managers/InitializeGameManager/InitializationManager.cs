@@ -214,6 +214,8 @@ public class InitializationManager : MonoBehaviour, IManager
         var guiManager = ServiceLocator.GetService<IGUIManager>();
         var startScreenManager = ServiceLocator.GetService<IStartScreenManager>();
         
+        gameInputManager.DisableManager();
+
         if (gameInputManager is MonoBehaviour gameInputScript) gameInputScript.gameObject.SetActive(false);
         if (mapManager is MonoBehaviour mapScript) mapScript.gameObject.SetActive(false);
         if (guiManager is MonoBehaviour guiScript) guiScript.gameObject.SetActive(false);

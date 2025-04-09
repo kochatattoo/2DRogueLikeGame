@@ -424,4 +424,5 @@ public class Player : MonoBehaviour
         lightObject.transform.parent = transform; // Устанавливаем объект света как дочерний к персонажу
         lightObject.transform.localPosition = new Vector3(0, 0.5f, 0); // Позиция относительно персонажа
     }
+
 }

@@ -39,6 +39,18 @@ public class AudioPlayer : MonoBehaviour
     }
     private void OnDestroy()
     {
+        _player.OnPlayerDeath -= Player_OnPlayerDeath;
+        _player.OnTakeHit -= Player_OnTakeHit;
+
+        _gameInput.OnPlayerAttack -= Player_OnPlayerAttack;
+        _gameInput.OnPlayerRangeAttack -= Player_OnPlayerRangeAttack;
+        _gameInput.OnPlayerMagicAttack -= Player_OnPlayerMagicAttack;
+    }
+    private void OnDisable()
+    {
+        _player.OnPlayerDeath -= Player_OnPlayerDeath;
+        _player.OnTakeHit -= Player_OnTakeHit;
+
         _gameInput.OnPlayerAttack -= Player_OnPlayerAttack;
         _gameInput.OnPlayerRangeAttack -= Player_OnPlayerRangeAttack;
         _gameInput.OnPlayerMagicAttack -= Player_OnPlayerMagicAttack;

@@ -43,6 +43,14 @@ public class GameInput : MonoBehaviour, IManager, IGameInput
         _playerInputActions.Open.Open.started -= Open_started;
         _playerInputActions=null;
     }
+    private void OnDestroy()
+    {
+      //  DisableManager();
+    }
+    private void OnDisable()
+    {
+      //  DisableManager();
+    }
     //Метод отвечающий за передвижение
     public Vector2 GetMovementVector()
     {
