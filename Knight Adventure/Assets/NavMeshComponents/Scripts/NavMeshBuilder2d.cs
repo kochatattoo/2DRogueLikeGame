@@ -198,15 +198,15 @@ namespace NavMeshPlus.Extensions
             }
             else
             {
-                var tilemap = modifier.GetComponent<Tilemap>();
-                if (tilemap != null)
-                {
-                    CollectTileSources(sources, tilemap, area, builder);
-                }
                 var sprite = modifier.GetComponent<SpriteRenderer>();
                 if (sprite != null)
                 {
                     CollectSources(sources, sprite, area, builder);
+                }
+                var tilemap = modifier.GetComponent<Tilemap>();
+                if (tilemap != null)
+                {
+                    CollectTileSources(sources, tilemap, area, builder);
                 }
             }
         }
