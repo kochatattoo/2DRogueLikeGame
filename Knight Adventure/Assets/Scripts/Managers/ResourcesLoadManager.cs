@@ -37,7 +37,10 @@ public class ResourcesLoadManager : MonoBehaviour
     {
         return LoadPrefab("Maps/" + mapName);
     }
-
+    public GameObject LoadEnemyPrefab(string enemyName)
+    {
+        return LoadPrefab("Enemies/"+enemyName);
+    }
     public GameObject LoadManager(string managerName)
     {
         return LoadPrefab("Managers/"+managerName);

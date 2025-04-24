@@ -5,15 +5,19 @@ using UnityEngine.AI;
 
 public class EnemySpawner : MonoBehaviour
 {
-    public GameObject enemyPrefab;
-    public GameObject[] spawnPointsObjects;
-    public Transform[] spawnPoints;
+    private GameObject enemyPrefab;
+    private GameObject[] spawnPointsObjects;
+    private Transform[] spawnPoints;
 
     public void StartScript()
     {
         Debug.Log("Start Script");
         spawnPointsObjects = GameObject.FindGameObjectsWithTag("Enemy_Spawn");
         SpawnPointTransformPosition();
+
+        var resourceloadManager = gameObject.AddComponent<ResourcesLoadManager>();
+        enemyPrefab = resourceloadManager.LoadEnemyPrefab("Skeleton");
+
         SpawnEnemies();
     }
     private void SpawnPointTransformPosition()
