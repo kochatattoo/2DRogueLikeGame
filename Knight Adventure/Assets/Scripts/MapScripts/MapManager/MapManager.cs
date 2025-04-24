@@ -11,6 +11,7 @@ public class MapManager : MonoBehaviour, IManager, IMapManager
     public void StartManager()
     {
         gameObject.SetActive(true);
+        maps = new GameObject[3];
         LoadMapFromResources();
         LoadMap(currentMapIndex);
     }
@@ -49,8 +50,9 @@ public class MapManager : MonoBehaviour, IManager, IMapManager
     {
         ResourcesLoadManager resourcesLoadManager = gameObject.AddComponent<ResourcesLoadManager>();
 
-        maps[0]=resourcesLoadManager.LoadMap("Taverna");
-        maps[1] = resourcesLoadManager.LoadMap("Map_1");
+        maps[0] = resourcesLoadManager.LoadMap("Taverna");
+        maps[1] = resourcesLoadManager.LoadMap("Map_2");
+        maps[2] = resourcesLoadManager.LoadMap("Map_1");
     }
 
     //// Метод для сохранения состояния персонажа

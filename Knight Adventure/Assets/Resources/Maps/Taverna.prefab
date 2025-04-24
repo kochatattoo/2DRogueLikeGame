@@ -32,6 +32,37 @@ Transform:
   - {fileID: 8089563606969180269}
   m_Father: {fileID: 1384980980314122275}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1315760841526098858
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6437034593266134444}
+  m_Layer: 0
+  m_Name: Player_Instance_Position
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6437034593266134444
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1315760841526098858}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -9.46, y: -13.99, z: 0.67793155}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1384980980314122275}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3058686941456686630
 GameObject:
   m_ObjectHideFlags: 0
@@ -93,6 +124,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.1
   m_BuildHeightMesh: 0
+  m_MinRegionArea: 0
   m_HideEditorLogs: 0
   m_NavMeshData: {fileID: 23800000, guid: a9ba8ca0f5b6ef64584d430c06d8c0db, type: 2}
 --- !u!114 &8844652209027559902
@@ -796,6 +828,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1384980980314122275}
+  - component: {fileID: 3511606848967660485}
   m_Layer: 0
   m_Name: Taverna
   m_TagString: Untagged
@@ -822,8 +855,22 @@ Transform:
   - {fileID: 4384573326879195491}
   - {fileID: 4677905140563153431}
   - {fileID: 5968684665940637662}
+  - {fileID: 6437034593266134444}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3511606848967660485
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6572857945714035440}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2aa5920e22f004d43ba47be7d16e7544, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _playerInstatePositionObject: {fileID: 1315760841526098858}
 --- !u!1 &6661992061696682917
 GameObject:
   m_ObjectHideFlags: 0

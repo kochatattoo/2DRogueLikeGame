@@ -287,6 +287,14 @@ public class Player : MonoBehaviour
         return playerScreenPosition;
     }
 
+    public Vector3 GetPlayerPosition()
+    {
+        return gameObject.transform.position;
+    }
+    public void SetPlayerPosition(Vector3 playerPosition)
+    {
+        gameObject.transform.position = playerPosition;
+    }
     //Метод вызываемый при получении урона главным героем
     public void TakeDamage(Transform damageSourse, int damage)
     {
