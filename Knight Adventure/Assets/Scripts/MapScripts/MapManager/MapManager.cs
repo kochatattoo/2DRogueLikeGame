@@ -29,7 +29,10 @@ public class MapManager : MonoBehaviour, IManager, IMapManager
 
         // Загружаем новую карту
         currentMap = Instantiate(maps[index]); // Создаём новый экземпляр карты
-       // currentMap.transform.position = Player.Instance.transform.position; // Устанавливаем нужную позицию, если необходимо
+
+        var mapObject = maps[index];
+        var mapStartScript = mapObject.GetComponent<MapStartScript>();
+        mapStartScript.StartScript();
     }
 
     // Метод для переключения на следующую карту

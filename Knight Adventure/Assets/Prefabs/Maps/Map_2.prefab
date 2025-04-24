@@ -9,10 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 24721021633712034}
-  - component: {fileID: 1547528910906989505}
   m_Layer: 0
   m_Name: Skeleton_Spawn_7
-  m_TagString: Untagged
+  m_TagString: Enemy_Spawn
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -32,18 +31,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4376511388402439961}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1547528910906989505
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 819607509922540682}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 43807b78db9dca94b9cd4abb7f79cd23, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1169732845174395119
 GameObject:
   m_ObjectHideFlags: 0
@@ -53,10 +40,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3238957217046619540}
-  - component: {fileID: 5870621327151066454}
   m_Layer: 0
   m_Name: Skeleton_Spawn_6
-  m_TagString: Untagged
+  m_TagString: Enemy_Spawn
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -76,18 +62,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4376511388402439961}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5870621327151066454
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1169732845174395119}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 43807b78db9dca94b9cd4abb7f79cd23, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1397306565764242142
 GameObject:
   m_ObjectHideFlags: 0
@@ -97,10 +71,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3179253535347502255}
-  - component: {fileID: 5425467627335017874}
   m_Layer: 0
   m_Name: Skeleton_Spawn_5
-  m_TagString: Untagged
+  m_TagString: Enemy_Spawn
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -120,18 +93,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4376511388402439961}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5425467627335017874
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1397306565764242142}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 43807b78db9dca94b9cd4abb7f79cd23, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1451190631756618010
 GameObject:
   m_ObjectHideFlags: 0
@@ -141,10 +102,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 415485010695801518}
-  - component: {fileID: 8178147371793115144}
   m_Layer: 0
   m_Name: Skeleton_Spawn_13
-  m_TagString: Untagged
+  m_TagString: Enemy_Spawn
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -164,18 +124,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4376511388402439961}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8178147371793115144
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1451190631756618010}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 43807b78db9dca94b9cd4abb7f79cd23, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1686975736813444719
 GameObject:
   m_ObjectHideFlags: 0
@@ -224,10 +172,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2757839916712591574}
-  - component: {fileID: 4986658685781844939}
   m_Layer: 0
   m_Name: Skeleton_Spawn_2
-  m_TagString: Untagged
+  m_TagString: Enemy_Spawn
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -247,18 +194,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4376511388402439961}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4986658685781844939
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2033311172827329521}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 43807b78db9dca94b9cd4abb7f79cd23, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &2540233282504778503
 GameObject:
   m_ObjectHideFlags: 0
@@ -268,10 +203,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7880757853556872238}
-  - component: {fileID: 2342726487568288792}
   m_Layer: 0
   m_Name: Skeleton_Spawn_1
-  m_TagString: Untagged
+  m_TagString: Enemy_Spawn
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -291,18 +225,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4376511388402439961}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2342726487568288792
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2540233282504778503}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 43807b78db9dca94b9cd4abb7f79cd23, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &2809121776068929353
 GameObject:
   m_ObjectHideFlags: 0
@@ -400,10 +322,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 894830901583765951}
-  - component: {fileID: 4488528677936373528}
   m_Layer: 0
   m_Name: Skeleton_Spawn_11
-  m_TagString: Untagged
+  m_TagString: Enemy_Spawn
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -423,18 +344,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4376511388402439961}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4488528677936373528
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3096883505571745900}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 43807b78db9dca94b9cd4abb7f79cd23, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &4246362209856258691
 GameObject:
   m_ObjectHideFlags: 0
@@ -6780,10 +6689,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2854635948985836024}
-  - component: {fileID: 807872777809920528}
   m_Layer: 0
   m_Name: Skeleton_Spawn_4
-  m_TagString: Untagged
+  m_TagString: Enemy_Spawn
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6803,18 +6711,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4376511388402439961}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &807872777809920528
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5239012927174107686}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 43807b78db9dca94b9cd4abb7f79cd23, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &6119904526723183621
 GameObject:
   m_ObjectHideFlags: 0
@@ -6824,6 +6720,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4376511388402439961}
+  - component: {fileID: 106892657269228397}
   m_Layer: 0
   m_Name: Enemies
   m_TagString: Untagged
@@ -6859,6 +6756,21 @@ Transform:
   - {fileID: 415485010695801518}
   m_Father: {fileID: 3528682597740936168}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &106892657269228397
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6119904526723183621}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76f1b6bbb785309488234a7d33aedb69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyPrefab: {fileID: 1944047158796740626, guid: c205660c491970a4b973ed9b3526b3f5, type: 3}
+  spawnPointsObjects: []
+  spawnPoints: []
 --- !u!1 &6356292530122774938
 GameObject:
   m_ObjectHideFlags: 0
@@ -6868,10 +6780,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5811585955417322340}
-  - component: {fileID: 5666087788210442133}
   m_Layer: 0
   m_Name: Skeleton_Spawn_8
-  m_TagString: Untagged
+  m_TagString: Enemy_Spawn
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6891,18 +6802,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4376511388402439961}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5666087788210442133
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6356292530122774938}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 43807b78db9dca94b9cd4abb7f79cd23, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &6378004802354330848
 GameObject:
   m_ObjectHideFlags: 0
@@ -16590,10 +16489,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6455499554230136036}
-  - component: {fileID: 2105095395996286160}
   m_Layer: 0
   m_Name: Skeleton_Spawn_9
-  m_TagString: Untagged
+  m_TagString: Enemy_Spawn
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -16613,18 +16511,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4376511388402439961}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2105095395996286160
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6701986882421568024}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 43807b78db9dca94b9cd4abb7f79cd23, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &6733379297807426044
 GameObject:
   m_ObjectHideFlags: 0
@@ -16739,7 +16625,7 @@ Transform:
   m_GameObject: {fileID: 7483904518934627121}
   serializedVersion: 2
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 4.4, y: -3.1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -16801,10 +16687,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3778950077702562032}
-  - component: {fileID: 3065081738696526711}
   m_Layer: 0
   m_Name: Skeleton_Spawn_10
-  m_TagString: Untagged
+  m_TagString: Enemy_Spawn
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -16824,18 +16709,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4376511388402439961}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3065081738696526711
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7891808252932192211}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 43807b78db9dca94b9cd4abb7f79cd23, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &8119230214168131567
 GameObject:
   m_ObjectHideFlags: 0
@@ -16845,10 +16718,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5806229933469101961}
-  - component: {fileID: 503025935562635027}
   m_Layer: 0
   m_Name: Skeleton_Spawn_12
-  m_TagString: Untagged
+  m_TagString: Enemy_Spawn
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -16868,18 +16740,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4376511388402439961}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &503025935562635027
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8119230214168131567}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 43807b78db9dca94b9cd4abb7f79cd23, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &8431721872999773525
 GameObject:
   m_ObjectHideFlags: 0
@@ -19497,10 +19357,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1580551702867541227}
-  - component: {fileID: 5121199400266021263}
   m_Layer: 0
   m_Name: Skeleton_Spawn_3
-  m_TagString: Untagged
+  m_TagString: Enemy_Spawn
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -19520,18 +19379,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4376511388402439961}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5121199400266021263
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8534302900432817134}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 43807b78db9dca94b9cd4abb7f79cd23, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &8634246186479847884
 GameObject:
   m_ObjectHideFlags: 0

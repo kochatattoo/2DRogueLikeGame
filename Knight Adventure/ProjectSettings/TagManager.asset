@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Enemy
   - Sword
+  - Enemy_Spawn
   layers:
   - Default
   - TransparentFX
