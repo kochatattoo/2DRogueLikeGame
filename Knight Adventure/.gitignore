@@ -67,6 +67,9 @@ sysinfo.txt
 # Crashlytics generated file
 crashlytics-build.properties
 
+# Игнорировать файлы формата mp4
+*.mp4
+
 # Packed Addressables
 /[Aa]ssets/[Aa]ddressable[Aa]ssets[Dd]ata/*/*.bin*
 
